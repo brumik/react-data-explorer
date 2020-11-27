@@ -1,1 +1,3 @@
-export const Greeter = (name: string) => `Hello ${name}`; 
+import DataExplorer from './components/DataExplorer';
+
+export default DataExplorer;
