@@ -15,7 +15,12 @@
     "noUnusedLocals": true,
     "declaration": true,
     "outDir": "lib/",
-    "allowSyntheticDefaultImports": true
+    "allowSyntheticDefaultImports": true,
+    "paths": {
+      "@assets/*": ["./node_modules/@patternfly/react-core/dist/styles/assets/*"]
+    },
+    "importHelpers": true,
+    "skipLibCheck": true
   },
   "exclude": [
     "node_modules",

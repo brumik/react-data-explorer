@@ -1,37 +1,42 @@
-/**
- * This file will be the base component.
- * It will contain a ChartCreator form, save the JSON from it,
- * store the JSON and give the JSON to the Chart renderer to
- * render the charts itself.
- */
-import React, { FunctionComponent, useState, useEffect } from 'react';
-import { VictoryBar, VictoryChart } from 'victory';
+import React, { FunctionComponent, useEffect, useState } from 'react';
+import ChartRenderer from './ChartRenderer';
+import ChartCreator from './Form/';
+import { dailyNoGroupBy, jobExplorerOptions } from './api';
+import {
+    ChartType,
+    ReducerType
+} from '../types';
+import useDataReducer from './useDataReducer';
+import { apiOptionsToFormOptions } from './helpers';
 
-const DataExplorer: FunctionComponent<{}> = () => {
-    const [ isLoading, setIsLoading ] = useState(true);
-
-    const data = [
-        { quarter: 1, earnings: 13000 },
-        { quarter: 2, earnings: 16500 },
-        { quarter: 3, earnings: 14250 },
-        { quarter: 4, earnings: 19000 }
-    ];
+const DataExplorer: FunctionComponent<Record<string, unknown>> = () => {
+    const [ state, dispatch ] = useDataReducer();
+    const [ y, setY ] = useState('host_count');
+    useEffect(() => {
+        dispatch({
+            type: ReducerType.setForm,
+            payload: apiOptionsToFormOptions(jobExplorerOptions, dispatch)
+        })
+    }, [])
 
     useEffect(() => {
-        setTimeout(() => { setIsLoading(false); }, 3000);
-    }, []);
+        const attr = state.form.find(i => i.name === 'attributes');
+        if (attr) {
+            setY(attr.value);
+        }
+    }, [ state.form ])
 
     return (
         <>
-            { isLoading && (<div>Loading</div>)}
-            { !isLoading && (<div>Loaded</div>)}
-            <VictoryChart>
-                <VictoryBar
-                    data={ data }
-                    x='quarter'
-                    y="earnings"
-                />
-            </VictoryChart>
+            <ChartCreator
+                fields={state.form}
+            />
+            <ChartRenderer
+                data={dailyNoGroupBy}
+                chartType={ChartType.bar}
+                x='created_date'
+                y={y}
+            />
         </>
     );
 };

@@ -15,6 +15,10 @@ module.exports = {
         new HtmlWebPackPlugin({
             template: './public/index.html',
             filename: './index.html',
+        }),
+        new HtmlWebPackPlugin({
+            template: './public/favicon.ico',
+            filename: './favicon.ico',
         })
     ],
     module: {
