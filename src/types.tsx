@@ -50,6 +50,6 @@ export interface FormOption {
 }
 
 export interface State {
-    charts: Record<string, ChartState[]>
+    charts: ChartState[]
     form: FormOption[]
 }

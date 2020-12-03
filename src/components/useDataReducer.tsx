@@ -1,8 +1,8 @@
 import { useReducer } from 'react';
-import { ReducerType, State, Action, FormOption } from '../types';
+import { ReducerType, State, ChartState, Action, FormOption } from '../types';
 
 const initial = {
-    charts: {},
+    charts: [] as ChartState[],
     form: [] as FormOption[]
 };
 
