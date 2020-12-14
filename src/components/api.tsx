@@ -438,6 +438,12 @@ export const dailyNoGroupBy = [
     }
 ];
 
+export const dailyNoGroupByPromise = new Promise((resolve, reject) => {
+    setTimeout( function() {
+        resolve(dailyNoGroupBy);
+    }, 250);
+});
+
 export const jobExplorerOptions: Options = {
     "group_by":[
         {

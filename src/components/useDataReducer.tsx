@@ -1,8 +1,14 @@
 import { useReducer } from 'react';
-import { ReducerType, State, ChartState, Action, FormOption } from '../types';
+import {
+    ReducerType,
+    State,
+    Action,
+    FormOption,
+    ChartElementArray
+} from '../types';
 
 const initial = {
-    charts: [] as ChartState[],
+    charts: [] as ChartElementArray,
     form: [] as FormOption[]
 };
 
@@ -30,6 +36,8 @@ const reducer = (state: State, { type, payload }: Action) => {
             return { ...state, form: setFormOptionValue(state.form, payload) };
         case ReducerType.reset:
             return { ...initial };
+        case ReducerType.setCharts:
+            return { ...state, charts: payload as ChartElementArray }
         default:
             return state;
     }
