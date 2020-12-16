@@ -41,6 +41,7 @@ export interface AxisProps {
     label?: string,
     tickFormat?: (value: string | number) => string | number,
     fixLabelOverlap?: boolean,
+    domain?: any,
     style?: any
 }
 

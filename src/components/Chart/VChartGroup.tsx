@@ -1,13 +1,32 @@
 import React, { FunctionComponent } from 'react';
-// import { VictoryGroup } from 'victory';
-// import VChart from './VChart';
+import { VictoryGroup } from 'victory';
+import VChart from './VChart';
 import { GroupChart } from '../../types';
 
-const VChartGroup: FunctionComponent<GroupChart> = () => (<></>)
-// (
-//     <VictoryGroup>
-//         {charts.map((chart, idx) => <VChart key={idx} {...chart} />)}
-//     </VictoryGroup>
-// );
+interface Props extends GroupChart{
+    [x: string]: any
+}
+
+const VChartGroup: FunctionComponent<Props> = ({
+    children = [],
+    ...rest
+}) => {
+    return (
+        <VictoryGroup
+            {...rest}
+            offset={5}
+            colorScale={['tomato', 'orange']}
+        >
+            {children.map((id) =>
+                (<VChart
+                    {...rest}
+                    key={id}
+                    id={id}
+                    barWidth={1}
+                />)
+            )}
+        </VictoryGroup>
+    );
+};
 
 export default VChartGroup;

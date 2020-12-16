@@ -1,10 +1,12 @@
 import React from 'react'
+import { useSelector, TypedUseSelectorHook } from 'react-redux'
 import {
     ReducerType,
     FormOption,
     JobExplorerOptions,
     Action
 } from '../types';
+import { RootState } from '../store/';
 
 export const apiOptionsToFormOptions = (
     obj: JobExplorerOptions,
@@ -24,3 +26,5 @@ export const apiOptionsToFormOptions = (
             name: key
         } as FormOption;
     });
+
+export const useTypedSelector: TypedUseSelectorHook<RootState> = useSelector;

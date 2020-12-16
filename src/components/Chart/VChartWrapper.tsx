@@ -1,5 +1,4 @@
-import React, { FunctionComponent, useContext } from 'react';
-import ChartElementsContext from '../ChartElementsContext'
+import React, { FunctionComponent } from 'react';
 import {
     VictoryChart,
     VictoryTheme,
@@ -13,6 +12,7 @@ import {
 import VChart from './VChart';
 import VChartGroup from './VChartGroup';
 import VChartStack from './VChartStack';
+import { useTypedSelector } from '../helpers';
 
 const components: Partial<Record<ChartKind, React.ReactType>> = {
     [ChartKind.group]: VChartGroup,
@@ -27,26 +27,26 @@ const axisStyle = {
 };
 
 const VChartWrapper: FunctionComponent<ChartWrapper> = ({
-    id,
     height = 200,
     xAxis = {},
     yAxis = {},
+    children,
     status = APIStatus.success
 }) => {
-    const chartElements = useContext(ChartElementsContext);
-    const chart = chartElements.find(({ parent }) => parent === id);
+    const child = useTypedSelector(store => store.charts.find(({ id: i }) => i === children[0]));
 
-    const Component = components[chart.kind];
+    const Component = components[child.kind];
 
     xAxis = {
         style: axisStyle,
-        // tickFormat: (i: string) => (i ? parseInt(i.split('-')[2], 10) : i),
         fixLabelOverlap: false,
+        domain: [0, 31],
         ...xAxis
     };
 
     yAxis = {
         style: axisStyle,
+        domain: [0, 60000],
         tickFormat: (i: number) => (i && i >= 1000 ? `${i / 1000}k` : i),
         ...yAxis
     };
@@ -54,16 +54,14 @@ const VChartWrapper: FunctionComponent<ChartWrapper> = ({
     return status === APIStatus.success && (
         <VictoryChart
             theme={VictoryTheme.material}
-            domainPadding={20}
             height={height}
-            {...chart}
         >
             <VictoryAxis {...xAxis} />
             <VictoryAxis
                 dependentAxis
                 {...yAxis}
             />
-            <Component {...chart}/>
+            <Component id={child.id} children={child.children}/>
         </VictoryChart>
     );
 };

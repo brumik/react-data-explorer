@@ -1,10 +1,10 @@
-import React, { FunctionComponent, useContext } from 'react';
+import React, { FunctionComponent } from 'react';
 import VChartWrapper from './VChartWrapper';
-import ChartElementsContext from '../ChartElementsContext'
+import { useTypedSelector } from '../helpers';
 
 const ChartRenderer: FunctionComponent<Record<string, undefined>> = () => {
-    const chartElements = useContext(ChartElementsContext);
-    const charts = chartElements.filter(({ parent }) => parent === null);
+    const charts = useTypedSelector(store =>
+        store.charts.filter(({ parent }) => parent === null));
 
     return (
         <React.Fragment>

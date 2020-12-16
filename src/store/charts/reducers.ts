@@ -4,9 +4,7 @@ import {
     ReducerTypes
 } from './types';
 
-const initialState: ChartState = {
-    charts: []
-};
+const initialState: ChartState = [];
 
 const reducer = (
     state = initialState,
@@ -14,9 +12,9 @@ const reducer = (
 ): ChartState => {
     switch (action.type) {
         case ReducerTypes.setCharts:
-            return { ...state, charts: action.payload };
+            return action.payload;
         case ReducerTypes.resetCharts:
-            return { ...state, charts: [] };
+            return initialState;
         default:
             return state;
     }

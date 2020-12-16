@@ -3,33 +3,29 @@ import {
     VictoryBar,
     VictoryLine
 } from 'victory';
-import { Chart, ChartType } from '../../types';
+import { ChartType, Chart } from '../../types';
+import { useTypedSelector } from '../helpers';
 
 const components: Partial<Record<ChartType, React.ReactType>> = {
     [ChartType.bar]: VictoryBar,
     [ChartType.line]: VictoryLine
 };
 
-interface Props extends Chart {
-    [x:string]: any
+interface Props {
+    id: number,
+    [x: string]: any
 }
 
 const VChart: FunctionComponent<Props> = ({
-    data,
-    type,
-    x = 'x',
-    y = 'y',
+    id,
     ...rest
 }) => {
-    const MyChart = components[type];
+    const chart = useTypedSelector(store => store.charts.find(({ id: i }) => i === id)) as Chart;
+
+    const MyChart = components[chart.type];
 
     return (
-        <MyChart
-            data={data}
-            x={x}
-            y={y}
-            {...rest}
-        />
+        <MyChart {...rest} {...chart} />
     );
 };
 

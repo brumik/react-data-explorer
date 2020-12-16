@@ -2,9 +2,7 @@ import {
     ChartElementArray
 } from '../../types';
 
-export interface ChartState {
-    charts: ChartElementArray
-}
+export type ChartState = ChartElementArray;
 
 export enum ReducerTypes {
     setCharts,

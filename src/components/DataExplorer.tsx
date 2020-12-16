@@ -1,4 +1,5 @@
 import React, { FunctionComponent, useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
 import ChartRenderer from './Chart/';
 import ChartCreator from './Form/';
 import { dailyNoGroupByPromise, jobExplorerOptions } from './api';
@@ -10,10 +11,10 @@ import {
     ChartElementArray
 } from '../types';
 import useDataReducer from './useDataReducer';
-import { apiOptionsToFormOptions } from './helpers';
-import { ChartElementsProvider } from './ChartElementsContext'
-import useChartElementStore from './useChartElementStore';
+import { apiOptionsToFormOptions, useTypedSelector } from './helpers';
+import { setCharts } from '../store/charts/actions';
 
+import Vchart from './ComparisonComp';
 
 const chartTest = (data: Record<string, unknown>[], y: string, yLabel: string): ChartElementArray => ([
     {
@@ -52,8 +53,24 @@ const chartTest = (data: Record<string, unknown>[], y: string, yLabel: string): 
     },
     {
         id: 4,
-        kind: ChartKind.simple,
+        kind: ChartKind.group,
         parent: 3,
+        children: [5, 6]
+    },
+    {
+        id: 5,
+        kind: ChartKind.simple,
+        parent: 4,
+        children: [],
+        data,
+        type: ChartType.bar,
+        x: 'created_date',
+        y
+    },
+    {
+        id: 6,
+        kind: ChartKind.simple,
+        parent: 4,
         children: [],
         data,
         type: ChartType.bar,
@@ -62,7 +79,6 @@ const chartTest = (data: Record<string, unknown>[], y: string, yLabel: string): 
     }
 ]);
 
-
 interface Props {
     apis?: EndpointProps[]
     schema?: ChartElementArray
@@ -70,13 +86,15 @@ interface Props {
 
 const DataExplorer: FunctionComponent<Props> = ({
     // apis = [], // for the form
-    schema = [] // for the charts
+    // schema = [] // for the charts
 }) => {
     const [ state, dispatch ] = useDataReducer();
     const [ y, setY ] = useState('host_count');
     const [ yLabel, setYLabel ] = useState('Host Count');
     const [ loaded, setLoaded ] = useState(false);
-    const { data, reInitCharts } = useChartElementStore(schema);
+    const data = useTypedSelector(store => store.charts);
+    const dispatch2 = useDispatch();
+    const [ s, setS ] = useState([]);
 
     useEffect(() => {
         dispatch({
@@ -94,7 +112,8 @@ const DataExplorer: FunctionComponent<Props> = ({
 
             dailyNoGroupByPromise.then(
                 (d: []) => {
-                    reInitCharts(chartTest(d, y, yLabel));
+                    dispatch2(setCharts(chartTest(d, y, yLabel)));
+                    setS(d);
                     setLoaded(true);
                 },
                 () => ({})
@@ -103,12 +122,13 @@ const DataExplorer: FunctionComponent<Props> = ({
     }, [ state.form ])
 
     return (
-        <ChartElementsProvider value={data}>
+        <React.Fragment>
             <ChartCreator
                 fields={state.form}
             />
             { loaded && data.length > 0 && <ChartRenderer /> }
-        </ChartElementsProvider>
+            { loaded && <Vchart data={s} /> }
+        </React.Fragment>
     );
 };
 

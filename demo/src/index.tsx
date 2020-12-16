@@ -12,7 +12,6 @@ const store = createStore(
     applyMiddleware(promiseMiddleware)
 );
 
-
 ReactDOM.render(
     <div>
         <Provider store={store}>
