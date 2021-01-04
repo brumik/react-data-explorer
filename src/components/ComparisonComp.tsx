@@ -1,5 +1,5 @@
 import React, { FunctionComponent } from 'react';
-import { VictoryChart, VictoryBar, VictoryGroup, VictoryAxis } from 'victory';
+import { VictoryChart, VictoryBar, VictoryGroup, VictoryAxis, VictoryLine } from 'victory';
 
 interface Props {
     data: any[]
@@ -22,6 +22,20 @@ const yAxis = {
 };
 
 const ComparisonComp: FunctionComponent<Props> = ({ data }) => (
+    <><VictoryChart
+        height={200}
+    >
+        <VictoryAxis {...xAxis} />
+        <VictoryAxis
+            dependentAxis
+            {...yAxis}
+        />
+        <VictoryLine
+            data={data}
+            x={'created_date'}
+            y={'host_count'}
+        />
+    </VictoryChart>
     <VictoryChart
         height={200}
     >
@@ -45,7 +59,7 @@ const ComparisonComp: FunctionComponent<Props> = ({ data }) => (
                 y={'host_count'}
             />
         </VictoryGroup>
-    </VictoryChart>
+    </VictoryChart></>
 );
 
 export default ComparisonComp;
