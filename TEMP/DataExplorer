@@ -1,0 +1,15 @@
+/*
+Props: {
+    initial schema: the initial schema to render
+    API endpoints: [{
+        APIednpoint,
+        APIendpointOptions
+    }] --> for the chart editor.
+}
+
+This component does:
+- load the data for the initial schema (if not loaded).
+- <ChartRenderer />
+- <Editor />
+
+ */

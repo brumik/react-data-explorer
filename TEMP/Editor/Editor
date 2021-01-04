@@ -1,0 +1,8 @@
+/*
+Props: chartId? - just open the editor and load the chart into it.
+
+Connected to the store, uses actions to update the edited chart.
+
+It renders and updates the chart currently edited.
+Also renders some kind of form with the settings for the chart.
+ */
