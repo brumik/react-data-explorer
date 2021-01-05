@@ -12,7 +12,9 @@ const createChart = (id: number): React.ReactElement => {
         [ChartType.line]: VictoryLine
     };
 
-    const { children: _, ...c } = useTypedSelector(store => store.charts.find(({ id: i }) => i === id)) as Chart;
+    const { children: _, ...c } = useTypedSelector(store =>
+        store.charts.find(({ id: i }) => i === id)) as Chart;
+
     const SelectedChart = components[c.type];
 
     return (

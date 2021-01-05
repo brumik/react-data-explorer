@@ -60,7 +60,7 @@ export interface Chart extends ChartElement {
     y?: string,
     // For loading the data from the API
     apiParams: Record<string, string>[],
-    apiEndpoint: EndpointProps
+    apiEndpoint: Promise<unknown>
 }
 
 export interface GroupChart extends ChartElement {
