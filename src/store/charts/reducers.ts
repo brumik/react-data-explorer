@@ -13,6 +13,11 @@ const reducer = (
     switch (action.type) {
         case ReducerTypes.setCharts:
             return action.payload;
+        case ReducerTypes.updateChart:
+            return [
+                ...state.filter(({ id }) => id !== action.payload.id),
+                { ...action.payload }
+            ];
         case ReducerTypes.resetCharts:
             return initialState;
         default:

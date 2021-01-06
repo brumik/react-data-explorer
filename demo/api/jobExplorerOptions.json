@@ -1031,6 +1031,6 @@
         {
             "key":"average_host_task_count_per_host",
             "value":"Average tasks count per host"
-        },
+        }
     ]
 }

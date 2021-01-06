@@ -1,9 +1,7 @@
 export enum ReducerType {
     reset = 'reset',
-    set = 'set',
     setForm = 'setForm',
-    setFormOptionValue = 'setFormOptionValue',
-    setCharts = 'setCharts',
+    setFormOptionValue = 'setFormOptionValue'
 }
 
 export enum ChartKind {
@@ -14,8 +12,8 @@ export enum ChartKind {
 }
 
 export enum ChartType {
-    bar,
-    line
+    bar = 'bar',
+    line = 'line'
 }
 
 export enum APIStatus {
@@ -26,9 +24,7 @@ export enum APIStatus {
 
 export type Action =
  | { type: ReducerType.reset, payload: any }
- | { type: ReducerType.set, payload: State }
  | { type: ReducerType.setForm, payload: FormOption[] }
- | { type: ReducerType.setCharts, payload: ChartElementArray }
  | { type: ReducerType.setFormOptionValue, payload: { key: string | number, value: string } };
 
 export interface EndpointProps {
@@ -92,15 +88,10 @@ export type JobExplorerOptions = Record<string, {
 
 export interface FormOption {
     value: string,
-    setValue: SetterFunc<string>,
+    setValue: SetterFunc<string | ChartType>,
     options: SelectOptionProps[],
     placeholder: string,
     name: string
 }
 
 export type ChartElementArray = (Chart | ChartWrapper)[];
-
-export interface State {
-    charts: ChartElementArray
-    form: FormOption[]
-}

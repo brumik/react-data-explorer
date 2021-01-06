@@ -1,16 +1,11 @@
 import { useReducer } from 'react';
 import {
     ReducerType,
-    State,
     Action,
-    FormOption,
-    ChartElementArray
+    FormOption
 } from '../types';
 
-const initial = {
-    charts: [] as ChartElementArray,
-    form: [] as FormOption[]
-};
+const initial = [] as FormOption[];
 
 const setFormOptionValue = (
     form: FormOption[],
@@ -23,28 +18,21 @@ const setFormOptionValue = (
         return item;
     });
 
-const reducer = (state: State, { type, payload }: Action) => {
+const reducer = (state: FormOption[], { type, payload }: Action) => {
     switch (type) {
-        case ReducerType.set:
-            return ({ ...payload } as State);
         case ReducerType.setForm:
-            return { ...state, form: payload as FormOption[] };
+            return payload as FormOption[];
         case ReducerType.setFormOptionValue:
-            /* Update the chart value */
-            // TODO
-
-            return { ...state, form: setFormOptionValue(state.form, payload) };
+            return setFormOptionValue(state, payload);
         case ReducerType.reset:
-            return { ...initial };
-        case ReducerType.setCharts:
-            return { ...state, charts: payload as ChartElementArray }
+            return [...initial];
         default:
             return state;
     }
 };
 
-type CustomReducerType = () => [ State, React.Dispatch<Action> ];
+type CustomReducerType = () => [ FormOption[], React.Dispatch<Action> ];
 
-const useDataReducer: CustomReducerType = () => useReducer(reducer, { ...initial });
+const useDataReducer: CustomReducerType = () => useReducer(reducer, [...initial]);
 
 export default useDataReducer;

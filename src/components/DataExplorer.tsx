@@ -11,6 +11,7 @@ import {
     useTypedSelector
 } from './helpers';
 import { setCharts } from '../store/charts/actions';
+import Form from './Form/';
 
 interface Props {
     apis?: EndpointProps[]
@@ -53,6 +54,7 @@ const DataExplorer: FunctionComponent<Props> = ({
 
     return (
         <React.Fragment>
+            <Form chartId={2} />
             { schema === [] && 'No schema provided' }
             { loaded && data.length > 0 && <ChartRenderer /> }
         </React.Fragment>

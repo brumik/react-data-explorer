@@ -1,12 +1,14 @@
 import {
-    ChartElementArray
+    ChartElementArray,
+    Chart
 } from '../../types';
 
 export type ChartState = ChartElementArray;
 
 export enum ReducerTypes {
     setCharts,
-    resetCharts
+    resetCharts,
+    updateChart
 }
 
 interface SetChartsAction {
@@ -18,4 +20,12 @@ interface ResetChartsAction {
     type: ReducerTypes.resetCharts
 }
 
-export type ChartActionTypes = SetChartsAction | ResetChartsAction;
+interface UpdateChartAction {
+    type: ReducerTypes.updateChart,
+    payload: Chart
+}
+
+export type ChartActionTypes =
+    SetChartsAction |
+    ResetChartsAction |
+    UpdateChartAction;

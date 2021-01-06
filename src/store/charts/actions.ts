@@ -1,5 +1,6 @@
 import {
-    ChartElementArray
+    ChartElementArray,
+    Chart
 } from '../../types';
 
 import {
@@ -14,6 +15,13 @@ export const setCharts = (charts: ChartElementArray): ChartActionTypes => {
         payload: charts
     };
 };
+
+export const updateChart = (payload: Chart): ChartActionTypes => {
+    return {
+        type: ReducerTypes.updateChart,
+        payload
+    }
+}
 
 export const resetCharts = (): ChartActionTypes => {
     return {
