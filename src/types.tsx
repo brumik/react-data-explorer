@@ -54,7 +54,7 @@ export interface Chart extends ChartElement {
     x?: string,
     y?: string,
     // For loading the data from the API
-    apiParams: Record<string, string>[],
+    apiParams: Record<string, boolean | string>,
     apiEndpoint: EndpointProps
 }
 

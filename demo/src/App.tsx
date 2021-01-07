@@ -20,9 +20,9 @@ const schema: ChartElementArray = [
         kind: ChartKind.simple,
         parent: 1,
         children: [],
-        apiParams: [],
+        apiParams: { 'group_by_time': true },
         apiEndpoint: {
-            url: '/demo/api/jobExplorer.json',
+            url: 'https://prod.foo.redhat.com:1337/api/tower-analytics/v1/job_explorer/',
             optionUrl: '/demo/api/jobExplorerOptions.json'
         },
         type: ChartType.line,
@@ -52,9 +52,9 @@ const schema: ChartElementArray = [
         kind: ChartKind.simple,
         parent: 4,
         children: [],
-        apiParams: [],
+        apiParams: { 'group_by_time': true },
         apiEndpoint: {
-            url: '/demo/api/jobExplorer.json',
+            url: 'https://prod.foo.redhat.com:1337/api/tower-analytics/v1/job_explorer/',
             optionUrl: '/demo/api/jobExplorerOptions.json'
         },
         type: ChartType.bar,
@@ -66,9 +66,9 @@ const schema: ChartElementArray = [
         kind: ChartKind.simple,
         parent: 4,
         children: [],
-        apiParams: [],
+        apiParams:  { 'group_by_time': true },
         apiEndpoint: {
-            url: '/demo/api/jobExplorer.json',
+            url: 'https://prod.foo.redhat.com:1337/api/tower-analytics/v1/job_explorer/',
             optionUrl: '/demo/api/jobExplorerOptions.json'
         },
         type: ChartType.bar,
