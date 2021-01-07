@@ -21,7 +21,10 @@ const schema: ChartElementArray = [
         parent: 1,
         children: [],
         apiParams: [],
-        apiEndpoint: fetch('/demo/api/jobExplorer.json').then(r => r.json()),
+        apiEndpoint: {
+            url: '/demo/api/jobExplorer.json',
+            optionUrl: '/demo/api/jobExplorerOptions.json'
+        },
         type: ChartType.line,
         x: 'created_date',
         y: 'host_count'
@@ -50,7 +53,10 @@ const schema: ChartElementArray = [
         parent: 4,
         children: [],
         apiParams: [],
-        apiEndpoint: fetch('/demo/api/jobExplorer.json').then(r => r.json()),
+        apiEndpoint: {
+            url: '/demo/api/jobExplorer.json',
+            optionUrl: '/demo/api/jobExplorerOptions.json'
+        },
         type: ChartType.bar,
         x: 'created_date',
         y: 'host_count'
@@ -61,13 +67,26 @@ const schema: ChartElementArray = [
         parent: 4,
         children: [],
         apiParams: [],
-        apiEndpoint: fetch('/demo/api/jobExplorer.json').then(r => r.json()),
+        apiEndpoint: {
+            url: '/demo/api/jobExplorer.json',
+            optionUrl: '/demo/api/jobExplorerOptions.json'
+        },
         type: ChartType.bar,
         x: 'created_date',
         y: 'host_count'
     }
 ];
 
-const App = () => <DataExplorer schema={schema} />;
+const App = () => {
+    const logger = (json: ChartElementArray) => {
+        /* eslint-disable-next-line */
+        console.debug(JSON.stringify(json, null, 2));
+    }
+
+    return <DataExplorer
+        schema={schema}
+        onSchemaChange={logger}
+    />;
+};
 
 export default App;

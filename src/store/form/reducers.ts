@@ -13,13 +13,16 @@ const reducer = (
     switch (action.type) {
         case ReducerTypes.set:
             return action.payload;
-        case ReducerTypes.updateChart:
-            return [
-                ...state.filter(({ id }) => id !== action.payload.id),
-                { ...action.payload }
-            ];
         case ReducerTypes.reset:
-            return initialState;
+            return [ ...initialState ];
+        case ReducerTypes.setOptionValue:
+            const { key, value } = action.payload;
+            return state.map(item => {
+                if (item.name === key) {
+                    item.value = value;
+                }
+                return item;
+            });
         default:
             return state;
     }

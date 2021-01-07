@@ -5,26 +5,19 @@ import {
 
 import {
     ReducerTypes,
-    ChartActionTypes
+    ActionTypes
 } from './types';
 
+export const set = (charts: ChartElementArray): ActionTypes => ({
+    type: ReducerTypes.set,
+    payload: charts
+})
 
-export const setCharts = (charts: ChartElementArray): ChartActionTypes => {
-    return {
-        type: ReducerTypes.setCharts,
-        payload: charts
-    };
-};
+export const updateChart = (chart: Chart): ActionTypes => ({
+    type: ReducerTypes.updateChart,
+    payload: chart
+})
 
-export const updateChart = (payload: Chart): ChartActionTypes => {
-    return {
-        type: ReducerTypes.updateChart,
-        payload
-    }
-}
-
-export const resetCharts = (): ChartActionTypes => {
-    return {
-        type: ReducerTypes.resetCharts
-    };
-};
+export const reset = (): ActionTypes => ({
+    type: ReducerTypes.reset
+});

@@ -6,10 +6,10 @@ import {
     apiOptionsToFormOptions,
     useTypedSelector
 } from '../helpers';
-import useDataReducer from '../useDataReducer';
 import { useDispatch } from 'react-redux';
-import { ReducerType, ChartType } from '../../types';
+import { ChartType } from '../../types';
 import { updateChart } from '../../store/charts/actions';
+import { set as setForm } from '../../store/form/actions';
 
 interface PropType {
     chartId: number,
@@ -51,28 +51,26 @@ const options = {
     ]
 }
 
-
 const Form: FunctionComponent<PropType> = ({ chartId }) => {
-    const [ state, dispatch ] = useDataReducer();
-    const dispatchChart = useDispatch();
-
-    const fieldValue = (n: string) =>
-        state.find(({ name }) => name === n).value
+    const dispatch = useDispatch();
+    const state = useTypedSelector(store => store.form);
 
     const chart = useTypedSelector(store =>
         store.charts.find(({ id }) => id === chartId));
 
+    const fieldValue = (n: string) =>
+        state.find(({ name }) => name === n).value
+
     useEffect(() => {
-        dispatch({
-            type: ReducerType.setForm,
-            payload: apiOptionsToFormOptions(options, dispatch)
-        });
+        dispatch(
+            setForm(apiOptionsToFormOptions(options, dispatch))
+        );
     }, [])
 
     useEffect(() => {
-        if (state.length <= 0) return;
+        if (state.length <= 0 || !chart) return;
 
-        dispatchChart(updateChart({
+        dispatch(updateChart({
             ...chart,
             type: fieldValue('chartTypes'),
             y: fieldValue('attributes')

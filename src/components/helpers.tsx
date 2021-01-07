@@ -1,25 +1,23 @@
 import React from 'react'
 import { useSelector, TypedUseSelectorHook } from 'react-redux'
 import {
-    ReducerType,
     FormOption,
-    JobExplorerOptions,
-    Action
+    JobExplorerOptions
 } from '../types';
-import { RootState } from '../store/';
+import { RootState, ActionTypes } from '../store/';
+import { setOptionValue } from '../store/form/actions';
 
 export const apiOptionsToFormOptions = (
     obj: JobExplorerOptions,
-    dispatch: React.Dispatch<Action>
+    dispatch: React.Dispatch<ActionTypes>
 ): FormOption[] =>
     Object.keys(obj).map(key => {
         return {
             value: obj[key][0].key,
             setValue: (value) => {
-                dispatch({
-                    type: ReducerType.setFormOptionValue,
-                    payload: { key, value }
-                });
+                dispatch(
+                    setOptionValue(key, value)
+                );
             },
             options: obj[key],
             placeholder: key,

@@ -30,7 +30,6 @@ export type Action =
 export interface EndpointProps {
     url: string,
     optionUrl: string
-    name: string
 }
 
 export interface AxisProps {
@@ -56,7 +55,7 @@ export interface Chart extends ChartElement {
     y?: string,
     // For loading the data from the API
     apiParams: Record<string, string>[],
-    apiEndpoint: Promise<unknown>
+    apiEndpoint: EndpointProps
 }
 
 export interface GroupChart extends ChartElement {

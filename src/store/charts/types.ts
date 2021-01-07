@@ -3,21 +3,21 @@ import {
     Chart
 } from '../../types';
 
-export type ChartState = ChartElementArray;
+export type State = ChartElementArray;
 
 export enum ReducerTypes {
-    setCharts,
-    resetCharts,
-    updateChart
+    set = 'CHARTS_SET',
+    reset = 'CHARTS_RESET',
+    updateChart = 'CHARTS_UPDATE_CHART'
 }
 
-interface SetChartsAction {
-    type: ReducerTypes.setCharts,
+interface SetAction {
+    type: ReducerTypes.set,
     payload: ChartElementArray
 }
 
-interface ResetChartsAction {
-    type: ReducerTypes.resetCharts
+interface ResetAction {
+    type: ReducerTypes.reset
 }
 
 interface UpdateChartAction {
@@ -25,7 +25,7 @@ interface UpdateChartAction {
     payload: Chart
 }
 
-export type ChartActionTypes =
-    SetChartsAction |
-    ResetChartsAction |
+export type ActionTypes =
+    SetAction |
+    ResetAction |
     UpdateChartAction;
