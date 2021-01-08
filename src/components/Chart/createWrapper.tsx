@@ -32,14 +32,14 @@ const createWrapper = (id: number): React.ReactElement => {
         style: axisStyle,
         fixLabelOverlap: true,
         // TODO: Apply this logic when?
-        tickFormat: (i: string) => (i && i.split('-')[2]),
+        // tickFormat: (i: string) => (i && i.split('-')[2]),
         ...wrapper.xAxis
     };
 
     const yAxis = {
         style: axisStyle,
         // TODO: Apply this logic when?
-        tickFormat: (i: number) => (i && i >= 1000 ? `${i / 1000}k` : i),
+        // tickFormat: (i: number) => (i && i >= 1000 ? `${i / 1000}k` : i),
         ...wrapper.yAxis
     };
 

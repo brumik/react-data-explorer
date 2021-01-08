@@ -7,7 +7,8 @@ import { useTypedSelector } from '../../store/';
 import { apiOptionsToFormOptions } from './helpers'
 import { useDispatch } from 'react-redux';
 import { updateChart } from '../../store/charts/actions';
-import { set as setForm } from '../../store/form/actions';
+import { set as setForm, setOptionValue } from '../../store/form/actions';
+import { fetchApi } from '../helpers';
 
 interface PropType {
     chartId: number,
@@ -34,11 +35,15 @@ const options = {
     chartTypes: [
         {
             key: ChartType.bar,
-            value:  'Bar Chart'
+            value: 'Bar Chart'
         },
         {
             key: ChartType.line,
-            value:  'Line Chart'
+            value: 'Line Chart'
+        },
+        {
+            key: ChartType.pie,
+            value: 'Pie Chart'
         }
     ],
     attributes: [
@@ -72,8 +77,10 @@ const Form: FunctionComponent<PropType> = ({ chartId }) => {
     const chart = useTypedSelector(store =>
         store.charts.find(({ id }) => id === chartId) as Chart);
 
-    const fieldValue = (n: string) =>
-        state.find(({ name }) => name === n).value
+    const getField = (n: string) =>
+        state.length > 0
+            ? state.find(({ name }) => name === n)
+            : { value: '' };
 
     useEffect(() => {
         dispatch(
@@ -86,13 +93,45 @@ const Form: FunctionComponent<PropType> = ({ chartId }) => {
 
         dispatch(updateChart({
             ...chart,
-            type: fieldValue('chartTypes'),
+            type: getField('chartTypes').value,
             props: {
                 ...chart.props,
-                y: fieldValue('attributes')
+                y: getField('attributes').value
             }
         } as Chart));
-    }, [ state ]);
+        /* eslint-disable */
+        console.log('attr or type changed');
+    }, [ getField('attributes').value, getField('chartTypes').value ]);
+
+    useEffect(() => {
+        if (state.length <= 0 || !chart) return;
+        const newValue = getField('groupByTime').value;
+        const newChart = { ...chart };
+
+        newChart.api.params = {
+            ...newChart.api.params,
+            'group_by_time': newValue,
+            'limit': newValue === 'true' ? '20' : '4'
+        };
+
+        fetchApi(newChart.api)
+            .then(({ items }: Record<string, unknown>) => {
+                newChart.props = {
+                    ...newChart.props,
+                    data: items as Record<string, unknown>[],
+                    x: newValue === 'true' ? 'created_date' : ''
+                }
+                dispatch(updateChart(newChart));
+                dispatch(setOptionValue(
+                    'chartTypes',
+                    newValue === 'true' ? 'line' : 'pie'
+                ))
+                /* eslint-disable */
+                console.log('groupby changed');
+            })
+            .catch(() => ({}));
+
+    }, [ getField('groupByTime').value ])
 
     return (
         <Card>

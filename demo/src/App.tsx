@@ -34,23 +34,23 @@ const schema: ChartElement[] = [
         },
         type: ChartType.line,
     },
-    {
-        id: 11,
-        kind: ChartKind.simple,
-        parent: null,
-        children: [],
-        props: {
-            height: 200,
-            x: '',
-            y: 'host_count'
-        },
-        api: {
-            params: { 'group_by_time': 'false', 'limit': '5' },
-            url: 'https://prod.foo.redhat.com:1337/api/tower-analytics/v1/job_explorer/',
-            optionUrl: '/demo/api/jobExplorerOptions.json'
-        },
-        type: ChartType.pie,
-    },
+    // {
+    //     id: 11,
+    //     kind: ChartKind.simple,
+    //     parent: null,
+    //     children: [],
+    //     props: {
+    //         height: 200,
+    //         x: '',
+    //         y: 'host_count'
+    //     },
+    //     api: {
+    //         params: { 'group_by_time': 'false', 'limit': '5' },
+    //         url: 'https://prod.foo.redhat.com:1337/api/tower-analytics/v1/job_explorer/',
+    //         optionUrl: '/demo/api/jobExplorerOptions.json'
+    //     },
+    //     type: ChartType.pie,
+    // },
     // {
     //     id: 3,
     //     kind: ChartKind.wrapper,
