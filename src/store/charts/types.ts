@@ -1,9 +1,9 @@
 import {
-    ChartElementArray,
+    ChartElement,
     Chart
-} from '../../types';
+} from '../../components/Chart/types';
 
-export type State = ChartElementArray;
+export type State = ChartElement[];
 
 export enum ReducerTypes {
     set = 'CHARTS_SET',
@@ -13,7 +13,7 @@ export enum ReducerTypes {
 
 interface SetAction {
     type: ReducerTypes.set,
-    payload: ChartElementArray
+    payload: ChartElement[]
 }
 
 interface ResetAction {

@@ -1,8 +1,8 @@
 import React from 'react';
 import { VictoryGroup } from 'victory';
 import chart from './createChart';
-import { Chart } from '../../types';
-import { useTypedSelector } from '../helpers';
+import { Chart } from './types';
+import { useTypedSelector } from '../../store';
 
 const createGroup = (id: number): React.ReactElement => {
     const { children, ...c } = useTypedSelector(store => store.charts.find(({ id: i }) => i === id)) as Chart;

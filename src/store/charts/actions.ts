@@ -1,14 +1,14 @@
 import {
-    ChartElementArray,
+    ChartElement,
     Chart
-} from '../../types';
+} from '../../components/Chart/types';
 
 import {
     ReducerTypes,
     ActionTypes
 } from './types';
 
-export const set = (charts: ChartElementArray): ActionTypes => ({
+export const set = (charts: ChartElement[]): ActionTypes => ({
     type: ReducerTypes.set,
     payload: charts
 })

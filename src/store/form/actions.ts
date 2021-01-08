@@ -1,6 +1,6 @@
 import {
     FormOption
-} from '../../types';
+} from '../../components/Form/types';
 
 import {
     ReducerTypes,

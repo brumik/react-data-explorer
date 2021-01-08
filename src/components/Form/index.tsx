@@ -1,13 +1,11 @@
 import React, { FunctionComponent, useEffect } from 'react';
 import { Card, CardTitle, CardBody } from '@patternfly/react-core';
 import Select from './Select';
-import { FormOption, Chart } from '../../types';
-import {
-    apiOptionsToFormOptions,
-    useTypedSelector
-} from '../helpers';
+import { FormOption } from './types';
+import { Chart, ChartType } from '../Chart/types';
+import { useTypedSelector } from '../../store/';
+import { apiOptionsToFormOptions } from './helpers'
 import { useDispatch } from 'react-redux';
-import { ChartType } from '../../types';
 import { updateChart } from '../../store/charts/actions';
 import { set as setForm } from '../../store/form/actions';
 
@@ -17,36 +15,52 @@ interface PropType {
 }
 
 const options = {
-    chartTypes: [
+    apis: [
         {
-            'key': ChartType.bar,
-            'value':  'Bar Chart'
+            key: 'https://prod.foo.redhat.com:1337/api/tower-analytics/v1/job_explorer/',
+            value: 'Job Explorer'
+        }
+    ],
+    groupByTime: [
+        {
+            key: 'true',
+            value: 'Group By Time'
         },
         {
-            'key': ChartType.line,
-            'value':  'Line Chart'
+            key: 'false',
+            value: 'Don\'t Group By Time'
+        }
+    ],
+    chartTypes: [
+        {
+            key: ChartType.bar,
+            value:  'Bar Chart'
+        },
+        {
+            key: ChartType.line,
+            value:  'Line Chart'
         }
     ],
     attributes: [
         {
-            'key': 'host_count',
-            'value': 'Host count'
+            key: 'host_count',
+            value: 'Host count'
         },
         {
-            'key': 'failed_host_count',
-            'value': 'Failed host count'
+            key: 'failed_host_count',
+            value: 'Failed host count'
         },
         {
-            'key': 'unreachable_host_count',
-            'value': 'Unreachable host count'
+            key: 'unreachable_host_count',
+            value: 'Unreachable host count'
         },
         {
-            'key': 'average_elapsed_per_host',
-            'value': 'Average elapsed time per host'
+            key: 'average_elapsed_per_host',
+            value: 'Average elapsed time per host'
         },
         {
-            'key': 'average_host_task_count_per_host',
-            'value': 'Average tasks count per host'
+            key: 'average_host_task_count_per_host',
+            value: 'Average tasks count per host'
         }
     ]
 }
@@ -56,7 +70,7 @@ const Form: FunctionComponent<PropType> = ({ chartId }) => {
     const state = useTypedSelector(store => store.form);
 
     const chart = useTypedSelector(store =>
-        store.charts.find(({ id }) => id === chartId));
+        store.charts.find(({ id }) => id === chartId) as Chart);
 
     const fieldValue = (n: string) =>
         state.find(({ name }) => name === n).value
@@ -73,7 +87,10 @@ const Form: FunctionComponent<PropType> = ({ chartId }) => {
         dispatch(updateChart({
             ...chart,
             type: fieldValue('chartTypes'),
-            y: fieldValue('attributes')
+            props: {
+                ...chart.props,
+                y: fieldValue('attributes')
+            }
         } as Chart));
     }, [ state ]);
 

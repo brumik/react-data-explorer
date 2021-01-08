@@ -1,6 +1,6 @@
 import {
     FormOption
-} from '../../types';
+} from '../../components/Form/types';
 
 export type State = FormOption[];
 

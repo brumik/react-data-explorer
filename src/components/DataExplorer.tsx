@@ -3,37 +3,35 @@ import { useDispatch } from 'react-redux';
 import ChartRenderer from './Chart/';
 import {
     ChartKind,
-    EndpointProps,
-    ChartElementArray,
+    ChartElement,
+    ApiProps,
     Chart
-} from '../types';
-import {
-    useTypedSelector
-} from './helpers';
+} from './Chart/types';
+import { useTypedSelector } from '../store/';
 import { set as setCharts } from '../store/charts/actions';
 import Form from './Form/';
 
 interface Props {
-    apis?: EndpointProps[]
-    schema?: ChartElementArray,
-    onSchemaChange?: (json: ChartElementArray) => void
+    apis?: ApiProps[]
+    schema?: ChartElement[],
+    onSchemaChange?: (json: ChartElement[]) => void
 }
 
-const singleFetch = (baseUrl: string, body: Record<string, string | boolean>): Promise<unknown> => {
+const singleFetch = (baseUrl: string, body: Record<string, string>): Promise<unknown> => {
     const url = new URL(baseUrl);
-    Object.keys(body).forEach(key => url.searchParams.append(key, body[key] as string));
+    Object.keys(body).forEach(key => url.searchParams.append(key, body[key]));
     return fetch(url.toString()).then(r => r.json()) as Promise<unknown>;
 }
 
-const initialFetch = async (schema: ChartElementArray): Promise<ChartElementArray> => {
+const initialFetch = async (schema: ChartElement[]): Promise<ChartElement[]> => {
     const chartsToLoad = schema.filter(({ kind }) => kind === ChartKind.simple) as Chart[];
     const staticSchema = schema.filter(({ kind }) => kind !== ChartKind.simple)
 
     await Promise.all(
-        chartsToLoad.map(el => singleFetch(el.apiEndpoint.url, el.apiParams))
+        chartsToLoad.map(el => singleFetch(el.api.url, el.api.params))
     ).then((results: Record<string, unknown>[]) => {
         for(let i = 0; i < chartsToLoad.length; i++) {
-            chartsToLoad[i].data = results[i].items as Record<string, unknown>[];
+            chartsToLoad[i].props.data = results[i].items as Record<string, unknown>[];
         }
     });
 

@@ -5,7 +5,7 @@ import {
     SelectOption,
     SelectVariant
 } from '@patternfly/react-core';
-import { FormOption } from '../../types'
+import { FormOption } from './types'
 
 const inStyle: CSS.Properties = {
     width: '25%',

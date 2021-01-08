@@ -7,8 +7,8 @@ import {
 import {
     ChartWrapper,
     ChartKind
-} from '../../types';
-import { useTypedSelector } from '../helpers';
+} from './types';
+import { useTypedSelector } from '../../store/';
 import createChart from './createChart'
 import createGroup from './createGroup'
 
@@ -25,7 +25,7 @@ const components: Partial<Record<ChartKind, (id: number) => any>> = {
 };
 
 const VChartWrapper: FunctionComponent<ChartWrapper> = ({
-    height = 200,
+    props,
     xAxis = {},
     yAxis = {},
     children
@@ -52,7 +52,7 @@ const VChartWrapper: FunctionComponent<ChartWrapper> = ({
     return (
         <VictoryChart
             theme={VictoryTheme.material}
-            height={height}
+            height={props.height}
             // Apply this logic only on bar charts
             domainPadding={{ x: [10, 10] }}
         >

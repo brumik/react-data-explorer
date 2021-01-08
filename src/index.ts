@@ -1,4 +1,4 @@
 import DataExplorer from './components/DataExplorer';
 export { rootReducer, RootState } from './store/';
-export { ChartKind, ChartElementArray, ChartType } from './types';
+export { ChartKind, ChartElement, ChartType } from './components/Chart/types';
 export default DataExplorer;

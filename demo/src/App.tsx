@@ -1,13 +1,16 @@
 import '@patternfly/react-core/dist/styles/base.css';
 import * as React from 'react';
-import DataExplorer, { ChartKind, ChartElementArray, ChartType } from '../../src/';
+import DataExplorer, { ChartKind, ChartElement, ChartType } from '../../src/';
 
-const schema: ChartElementArray = [
+const schema: ChartElement[] = [
     {
         id: 1,
         kind: ChartKind.wrapper,
-        parent: null as number,
+        parent: null,
         children: [2],
+        props: {
+            height: 200
+        },
         xAxis: {
             label: 'Days in the month'
         },
@@ -20,65 +23,67 @@ const schema: ChartElementArray = [
         kind: ChartKind.simple,
         parent: 1,
         children: [],
-        apiParams: { 'group_by_time': true },
-        apiEndpoint: {
+        props: {
+            x: 'created_date',
+            y: 'host_count'
+        },
+        api: {
+            params: { 'group_by_time': 'true' },
             url: 'https://prod.foo.redhat.com:1337/api/tower-analytics/v1/job_explorer/',
             optionUrl: '/demo/api/jobExplorerOptions.json'
         },
         type: ChartType.line,
-        x: 'created_date',
-        y: 'host_count'
-    },
-    {
-        id: 3,
-        kind: ChartKind.wrapper,
-        parent: null as number,
-        children: [4],
-        xAxis: {
-            label: 'Days in the month'
-        },
-        yAxis: {
-            label: 'Host Count'
-        }
-    },
-    {
-        id: 4,
-        kind: ChartKind.group,
-        parent: 3,
-        children: [5, 6]
-    },
-    {
-        id: 5,
-        kind: ChartKind.simple,
-        parent: 4,
-        children: [],
-        apiParams: { 'group_by_time': true },
-        apiEndpoint: {
-            url: 'https://prod.foo.redhat.com:1337/api/tower-analytics/v1/job_explorer/',
-            optionUrl: '/demo/api/jobExplorerOptions.json'
-        },
-        type: ChartType.bar,
-        x: 'created_date',
-        y: 'host_count'
-    },
-    {
-        id: 6,
-        kind: ChartKind.simple,
-        parent: 4,
-        children: [],
-        apiParams:  { 'group_by_time': true },
-        apiEndpoint: {
-            url: 'https://prod.foo.redhat.com:1337/api/tower-analytics/v1/job_explorer/',
-            optionUrl: '/demo/api/jobExplorerOptions.json'
-        },
-        type: ChartType.bar,
-        x: 'created_date',
-        y: 'host_count'
     }
+    // {
+    //     id: 3,
+    //     kind: ChartKind.wrapper,
+    //     parent: null as number,
+    //     children: [4],
+    //     xAxis: {
+    //         label: 'Days in the month'
+    //     },
+    //     yAxis: {
+    //         label: 'Host Count'
+    //     }
+    // },
+    // {
+    //     id: 4,
+    //     kind: ChartKind.group,
+    //     parent: 3,
+    //     children: [5, 6]
+    // },
+    // {
+    //     id: 5,
+    //     kind: ChartKind.simple,
+    //     parent: 4,
+    //     children: [],
+    //     api: {
+    //         params: { 'group_by_time': 'true' },
+    //         url: 'https://prod.foo.redhat.com:1337/api/tower-analytics/v1/job_explorer/',
+    //         optionUrl: '/demo/api/jobExplorerOptions.json'
+    //     }
+    //     type: ChartType.bar,
+    //     x: 'created_date',
+    //     y: 'host_count'
+    // },
+    // {
+    //     id: 6,
+    //     kind: ChartKind.simple,
+    //     parent: 4,
+    //     children: [],
+    //     api: {
+    //         params: { 'group_by_time': 'true' },
+    //         url: 'https://prod.foo.redhat.com:1337/api/tower-analytics/v1/job_explorer/',
+    //         optionUrl: '/demo/api/jobExplorerOptions.json'
+    //     }
+    //     type: ChartType.bar,
+    //     x: 'created_date',
+    //     y: 'host_count'
+    // }
 ];
 
 const App = () => {
-    const logger = (json: ChartElementArray) => {
+    const logger = (json: ChartElement[]) => {
         /* eslint-disable-next-line */
         console.debug(JSON.stringify(json, null, 2));
     }
