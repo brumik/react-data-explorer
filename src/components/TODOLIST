@@ -1,4 +1,5 @@
-* Select API
 * Select API Param
+  * Group by time -> line/bar options
+  * Not grouping by time -> pie chart
 * Add new chart
 * Edit a concrete chart

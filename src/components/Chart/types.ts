@@ -27,11 +27,13 @@ export interface ChartBase {
 /* Chart Types */
 export enum ChartType {
     bar = 'bar',
-    line = 'line'
+    line = 'line',
+    pie = 'pie'
 }
 
 export interface ChartProps {
     data?: Record<string, unknown>[],
+    height?: number,
     x?: string,
     y?: string
 }

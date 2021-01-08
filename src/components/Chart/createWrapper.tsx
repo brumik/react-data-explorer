@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from 'react';
+import React from 'react';
 import {
     VictoryChart,
     VictoryTheme,
@@ -18,41 +18,36 @@ const axisStyle = {
     tickLabels: { fontSize: 5, padding: 2 }
 };
 
-const components: Partial<Record<ChartKind, (id: number) => any>> = {
+const components: Partial<Record<ChartKind, (id: number) => React.ReactElement>> = {
     [ChartKind.group]: createGroup,
     // [ChartKind.stack]: VChartStack,
     [ChartKind.simple]: createChart
 };
 
-const VChartWrapper: FunctionComponent<ChartWrapper> = ({
-    props,
-    xAxis = {},
-    yAxis = {},
-    children
-}) => {
-    const child = useTypedSelector(store => store.charts.find(({ id: i }) => i === children[0]));
+const createWrapper = (id: number): React.ReactElement => {
+    const wrapper = useTypedSelector(store => store.charts.find(({ id: i }) => i === id) as ChartWrapper);
+    const child = useTypedSelector(store => store.charts.find(({ id: i }) => i === wrapper.children[0]));
 
-    const component = components[child.kind];
-
-    xAxis = {
+    const xAxis = {
         style: axisStyle,
         fixLabelOverlap: true,
         // TODO: Apply this logic when?
         tickFormat: (i: string) => (i && i.split('-')[2]),
-        ...xAxis
+        ...wrapper.xAxis
     };
 
-    yAxis = {
+    const yAxis = {
         style: axisStyle,
         // TODO: Apply this logic when?
         tickFormat: (i: number) => (i && i >= 1000 ? `${i / 1000}k` : i),
-        ...yAxis
+        ...wrapper.yAxis
     };
 
     return (
         <VictoryChart
+            key={id}
             theme={VictoryTheme.material}
-            height={props.height}
+            height={wrapper.props.height}
             // Apply this logic only on bar charts
             domainPadding={{ x: [10, 10] }}
         >
@@ -61,9 +56,9 @@ const VChartWrapper: FunctionComponent<ChartWrapper> = ({
                 dependentAxis
                 {...yAxis}
             />
-            { component(child.id) }
+            { components[child.kind](child.id) }
         </VictoryChart>
     );
 };
 
-export default VChartWrapper;
+export default createWrapper;

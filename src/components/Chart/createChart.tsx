@@ -1,7 +1,8 @@
 import React from 'react';
 import {
     VictoryBar,
-    VictoryLine
+    VictoryLine,
+    VictoryPie
 } from 'victory';
 import { ChartType, Chart } from './types';
 import { useTypedSelector } from '../../store/';
@@ -9,7 +10,8 @@ import { useTypedSelector } from '../../store/';
 const createChart = (id: number): React.ReactElement => {
     const components: Partial<Record<ChartType, React.ReactType>> = {
         [ChartType.bar]: VictoryBar,
-        [ChartType.line]: VictoryLine
+        [ChartType.line]: VictoryLine,
+        [ChartType.pie]: VictoryPie
     };
 
     const c = useTypedSelector(store =>
