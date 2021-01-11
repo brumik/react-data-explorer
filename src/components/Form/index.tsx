@@ -2,12 +2,24 @@ import React, { FunctionComponent, useEffect } from 'react';
 import { Card, CardTitle, CardBody } from '@patternfly/react-core';
 import Select from './Select';
 import { FormOption } from './types';
-import { Chart, ChartType } from '../Chart/types';
+import {
+    Chart,
+    ChartType,
+    ChartKind,
+    ChartWrapper
+} from '../Chart/types';
 import { useTypedSelector } from '../../store/';
 import { apiOptionsToFormOptions } from './helpers'
 import { useDispatch } from 'react-redux';
-import { updateChart } from '../../store/charts/actions';
-import { set as setForm, setOptionValue } from '../../store/form/actions';
+import {
+    updateChart,
+    deleteElements,
+    addWrapperElement
+} from '../../store/charts/actions';
+import {
+    set as setForm,
+    setOptionValue
+} from '../../store/form/actions';
 import { fetchApi } from '../helpers';
 
 interface PropType {
@@ -93,15 +105,52 @@ const Form: FunctionComponent<PropType> = ({ chartId }) => {
 
         dispatch(updateChart({
             ...chart,
-            type: getField('chartTypes').value,
             props: {
                 ...chart.props,
                 y: getField('attributes').value
             }
         } as Chart));
-        /* eslint-disable */
-        console.log('attr or type changed');
-    }, [ getField('attributes').value, getField('chartTypes').value ]);
+    }, [ getField('attributes').value ]);
+
+    useEffect(() => {
+        if (state.length <= 0 || !chart) return;
+        const newValue = getField('chartTypes').value;
+
+        if (newValue === ChartType.pie) {
+            // If has wrapper delete it.
+            if (chart.parent) {
+                dispatch(deleteElements([ chart.parent ]));
+            }
+
+            dispatch(updateChart({
+                ...chart,
+                type: newValue,
+                parent: null,
+                props: {
+                    ...chart.props,
+                    height: 200
+                }
+            } as Chart));
+        } else {
+            if (!chart.parent) {
+                dispatch(addWrapperElement({
+                    id: 0,
+                    parent: null,
+                    kind: ChartKind.wrapper,
+                    children: [ chart.id ],
+                    props: {
+                        height: 200
+                    }
+                } as ChartWrapper))
+            }
+            dispatch(updateChart({
+                ...chart,
+                type: newValue,
+                parent: 1
+            } as Chart));
+        }
+
+    }, [ getField('chartTypes').value ]);
 
     useEffect(() => {
         if (state.length <= 0 || !chart) return;
@@ -126,8 +175,6 @@ const Form: FunctionComponent<PropType> = ({ chartId }) => {
                     'chartTypes',
                     newValue === 'true' ? 'line' : 'pie'
                 ))
-                /* eslint-disable */
-                console.log('groupby changed');
             })
             .catch(() => ({}));
 

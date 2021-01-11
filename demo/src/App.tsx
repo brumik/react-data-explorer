@@ -101,8 +101,7 @@ const schema: ChartElement[] = [
 
 const App = () => {
     const logger = (json: ChartElement[]) => {
-        /* eslint-disable-next-line */
-        console.debug(JSON.stringify(json, null, 2));
+        console.debug(json);
     }
 
     return <DataExplorer

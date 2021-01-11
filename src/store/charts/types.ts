@@ -1,6 +1,7 @@
 import {
     ChartElement,
-    Chart
+    Chart,
+    ChartWrapper
 } from '../../components/Chart/types';
 
 export type State = ChartElement[];
@@ -8,7 +9,9 @@ export type State = ChartElement[];
 export enum ReducerTypes {
     set = 'CHARTS_SET',
     reset = 'CHARTS_RESET',
-    updateChart = 'CHARTS_UPDATE_CHART'
+    updateChart = 'CHARTS_UPDATE_CHART',
+    deleteElements = 'CHARTS_DELETE_ELEMENTS',
+    addWrapperElement = 'CHARTS_ADD_WRAPPER_ELEMENT'
 }
 
 interface SetAction {
@@ -25,7 +28,19 @@ interface UpdateChartAction {
     payload: Chart
 }
 
+interface DeleteElementsAction {
+    type: ReducerTypes.deleteElements,
+    ids: number[]
+}
+
+interface AddWrapperElementAction {
+    type: ReducerTypes.addWrapperElement,
+    wrapper: ChartWrapper
+}
+
 export type ActionTypes =
     SetAction |
     ResetAction |
-    UpdateChartAction;
+    UpdateChartAction |
+    DeleteElementsAction |
+    AddWrapperElementAction;

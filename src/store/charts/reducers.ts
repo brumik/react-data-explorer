@@ -4,8 +4,14 @@ import {
     ReducerTypes
 } from './types';
 
-const initialState: State = [];
+import {
+    ChartElement
+} from '../../components/Chart/types';
 
+const nextId = (state: State): number =>
+    Math.max(...state.map((el: ChartElement) => el.id)) + 1;
+
+const initialState: State = [];
 const reducer = (
     state = initialState,
     action: ActionTypes
@@ -18,6 +24,13 @@ const reducer = (
                 ...state.filter(({ id }) => id !== action.payload.id),
                 { ...action.payload }
             ];
+        case ReducerTypes.deleteElements:
+            return state.filter(({ id }) => !action.ids.includes(id));
+        case ReducerTypes.addWrapperElement:
+            return [ ...state, {
+                ...action.wrapper,
+                id: nextId(state)
+            } ];
         case ReducerTypes.reset:
             return initialState;
         default:
