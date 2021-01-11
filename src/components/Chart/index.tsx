@@ -1,21 +1,36 @@
 import React, { FunctionComponent } from 'react';
-import { ChartKind } from './types';
-import { useTypedSelector } from '../../store/';
+import {
+    ChartKind,
+    ChartElement
+} from './types';
 import createChart from './createChart'
 import createWrapper from './createWrapper';
 
-const ChartRenderer: FunctionComponent<Record<string, undefined>> = () => {
-    const charts = useTypedSelector(store =>
-        store.charts.filter(({ parent }) => parent === null));
+interface Props {
+    ids?: number[],
+    allCharts: ChartElement[]
+}
 
-    const components: Partial<Record<ChartKind, (id: number) => React.ReactElement>> = {
+const ChartRenderer: FunctionComponent<Props> = ({
+    ids = [],
+    allCharts
+}) => {
+    const getCharts = () => {
+        if (ids.length > 0) {
+            return allCharts.filter(({ id }) => ids.includes(id));
+        } else {
+            return allCharts.filter(({ parent }) => parent === null);
+        }
+    }
+
+    const components: Partial<Record<ChartKind, (id: number, allCharts: ChartElement[]) => React.ReactElement>> = {
         [ChartKind.wrapper]: createWrapper,
         [ChartKind.simple]: createChart
     };
 
     return (
         <React.Fragment>
-            {charts.map(el => components[el.kind](el.id))}
+            {getCharts() && getCharts().map(el => components[el.kind](el.id, allCharts))}
         </React.Fragment>
     );
 }

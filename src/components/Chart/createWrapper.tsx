@@ -6,9 +6,9 @@ import {
 } from 'victory';
 import {
     ChartWrapper,
-    ChartKind
+    ChartKind,
+    ChartElement
 } from './types';
-import { useTypedSelector } from '../../store/';
 import createChart from './createChart'
 import createGroup from './createGroup'
 
@@ -18,15 +18,15 @@ const axisStyle = {
     tickLabels: { fontSize: 5, padding: 2 }
 };
 
-const components: Partial<Record<ChartKind, (id: number) => React.ReactElement>> = {
+const components: Partial<Record<ChartKind, (id: number, allCharts: ChartElement[]) => React.ReactElement>> = {
     [ChartKind.group]: createGroup,
     // [ChartKind.stack]: VChartStack,
     [ChartKind.simple]: createChart
 };
 
-const createWrapper = (id: number): React.ReactElement => {
-    const wrapper = useTypedSelector(store => store.charts.find(({ id: i }) => i === id) as ChartWrapper);
-    const child = useTypedSelector(store => store.charts.find(({ id: i }) => i === wrapper.children[0]));
+const createWrapper = (id: number, allCharts: ChartElement[]): React.ReactElement => {
+    const wrapper = allCharts.find(({ id: i }) => i === id) as ChartWrapper;
+    const child = allCharts.find(({ id: i }) => i === wrapper.children[0]);
 
     const xAxis = {
         style: axisStyle,
@@ -49,14 +49,14 @@ const createWrapper = (id: number): React.ReactElement => {
             theme={VictoryTheme.material}
             height={wrapper.props.height}
             // Apply this logic only on bar charts
-            domainPadding={{ x: [10, 10] }}
+            // domainPadding={{ x: [10, 10] }}
         >
             <VictoryAxis {...xAxis} />
             <VictoryAxis
                 dependentAxis
                 {...yAxis}
             />
-            { components[child.kind](child.id) }
+            { components[child.kind](child.id, allCharts) }
         </VictoryChart>
     );
 };

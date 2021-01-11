@@ -67,7 +67,7 @@ const DataExplorer: FunctionComponent<Props> = ({
         <React.Fragment>
             { loaded && data.length > 0 && <Form chartId={2} /> }
             { schema === [] && 'No schema provided' }
-            { loaded && data.length > 0 && <ChartRenderer /> }
+            { loaded && data.length > 0 && <ChartRenderer allCharts={data} /> }
         </React.Fragment>
     );
 };
