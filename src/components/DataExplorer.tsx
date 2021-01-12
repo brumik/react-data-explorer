@@ -1,4 +1,5 @@
 import React, { FunctionComponent, useEffect, useState } from 'react';
+import { Button } from '@patternfly/react-core';
 import { useDispatch } from 'react-redux';
 import ChartRenderer from './Chart/';
 import {
@@ -39,8 +40,10 @@ const DataExplorer: FunctionComponent<Props> = ({
     onSchemaChange = () => ([])
 }) => {
     const [ loaded, setLoaded ] = useState(false);
-    const data = useTypedSelector(store => store.charts);
-    const dispatchChart = useDispatch();
+    const charts = useTypedSelector(store => store.charts);
+    const dispatch = useDispatch();
+    const chartsIdsToRender = charts.filter(({ parent }) => parent === null).map(({ id }) => id);
+    const [ editorChartId, setEditorChartId ] = useState(null as number);
 
     useEffect(() => {
         if (schema === []) {
@@ -48,26 +51,54 @@ const DataExplorer: FunctionComponent<Props> = ({
         }
 
         initialFetch(schema).then((fetched) => {
-            dispatchChart(setCharts(fetched));
+            dispatch(setCharts(fetched));
             setLoaded(true);
         }).catch(() => ({}));
     }, [])
 
     useEffect(() => {
-        onSchemaChange(data.map(el => {
+        onSchemaChange(charts.map(el => {
             if (el.kind === ChartKind.simple) {
-                return { ...el, data: []}
+                return { ...el, props: { ...el.props, data: []}}
             } else {
                 return el;
             }
-        }))
-    }, [ data ])
+        }));
+    }, [ charts ])
+
+    const addNewChart = () => {
+        return;
+    };
 
     return (
         <React.Fragment>
-            { loaded && data.length > 0 && <Form chartId={2} /> }
+            { chartsIdsToRender.length > 0 &&
+                chartsIdsToRender.map(id => (
+                    <Button
+                        key={id}
+                        onClick={() => {
+                            setEditorChartId(id);
+                        }}
+                    >
+                        Edit the { id } chart.
+                    </Button>
+                ))
+            }
+            <Button
+                onClick={() => {
+                    addNewChart()
+                }}
+            >
+                New Chart
+            </Button>
+            { loaded && editorChartId && <Form wrapperId={editorChartId} /> }
             { schema === [] && 'No schema provided' }
-            { loaded && data.length > 0 && <ChartRenderer allCharts={data} /> }
+            { loaded && charts.length > 0 &&
+                <ChartRenderer
+                    charts={charts}
+                    ids={chartsIdsToRender.filter(id => true || editorChartId !== id)}
+                />
+            }
         </React.Fragment>
     );
 };

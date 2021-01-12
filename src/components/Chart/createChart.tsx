@@ -6,23 +6,20 @@ import {
 } from 'victory';
 import {
     ChartType,
-    Chart,
-    ChartElement
+    Chart
 } from './types';
 
-const createChart = (id: number, allCharts: ChartElement[]): React.ReactElement => {
+const createChart = (chart: Chart): React.ReactElement => {
     const components: Partial<Record<ChartType, React.ReactType>> = {
         [ChartType.bar]: VictoryBar,
         [ChartType.line]: VictoryLine,
         [ChartType.pie]: VictoryPie
     };
 
-    const c = allCharts.find(({ id: chartId }) => chartId === id) as Chart;
-
-    const SelectedChart = components[c.type];
+    const SelectedChart = components[chart.type];
 
     return (
-        <SelectedChart key={id} {...c.props} />
+        <SelectedChart key={chart.id} {...chart.props} />
     );
 };
 

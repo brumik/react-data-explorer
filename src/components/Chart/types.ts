@@ -5,12 +5,6 @@ export enum ChartKind {
     wrapper = 'wrapper'
 }
 
-export enum APIStatus {
-    loading = 0,
-    success = 1,
-    error = -1
-}
-
 export interface ApiProps {
     params: Record<string, string>,
     url: string,
@@ -22,6 +16,7 @@ export interface ChartBase {
     kind: ChartKind,
     parent: number, // Id of the parent wrapper Element
     children: number[], // ids of the children
+    hidden?: boolean
 }
 
 /* Chart Types */
@@ -72,9 +67,8 @@ export interface ChartWrapper extends ChartBase {
     kind: ChartKind.wrapper,
     parent: null,
     props: WrapperProps,
-    xAxis?: AxisProps,
-    yAxis?: AxisProps,
-    status?: APIStatus
+    xAxis: AxisProps,
+    yAxis: AxisProps
 }
 
 export type ChartElement = Chart | ChartWrapper;

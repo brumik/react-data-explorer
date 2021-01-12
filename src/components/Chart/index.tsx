@@ -8,29 +8,32 @@ import createWrapper from './createWrapper';
 
 interface Props {
     ids?: number[],
-    allCharts: ChartElement[]
+    charts: ChartElement[]
 }
 
 const ChartRenderer: FunctionComponent<Props> = ({
-    ids = [],
-    allCharts
+    ids = null,
+    charts
 }) => {
     const getCharts = () => {
-        if (ids.length > 0) {
-            return allCharts.filter(({ id }) => ids.includes(id));
+        if (ids.length !== null) {
+            return charts.filter(({ id }) => ids.includes(id));
         } else {
-            return allCharts.filter(({ parent }) => parent === null);
+            return charts.filter(({ parent }) => parent === null);
         }
     }
 
-    const components: Partial<Record<ChartKind, (id: number, allCharts: ChartElement[]) => React.ReactElement>> = {
-        [ChartKind.wrapper]: createWrapper,
-        [ChartKind.simple]: createChart
-    };
-
     return (
         <React.Fragment>
-            {getCharts() && getCharts().map(el => components[el.kind](el.id, allCharts))}
+            {
+                getCharts() && getCharts().map(el => {
+                    if (el.kind === ChartKind.wrapper) {
+                        return createWrapper(el.id, charts);
+                    } else {
+                        return createChart(el);
+                    }
+                })
+            }
         </React.Fragment>
     );
 }

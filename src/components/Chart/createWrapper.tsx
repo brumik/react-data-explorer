@@ -7,10 +7,11 @@ import {
 import {
     ChartWrapper,
     ChartKind,
-    ChartElement
+    ChartElement,
+    Chart
 } from './types';
 import createChart from './createChart'
-import createGroup from './createGroup'
+// import createGroup from './createGroup'
 
 const axisStyle = {
     axisLabel: { fontSize: 7, padding: 22 },
@@ -18,15 +19,15 @@ const axisStyle = {
     tickLabels: { fontSize: 5, padding: 2 }
 };
 
-const components: Partial<Record<ChartKind, (id: number, allCharts: ChartElement[]) => React.ReactElement>> = {
-    [ChartKind.group]: createGroup,
+const components: Partial<Record<ChartKind, (chart: Chart) => React.ReactElement>> = {
+    // [ChartKind.group]: createGroup,
     // [ChartKind.stack]: VChartStack,
     [ChartKind.simple]: createChart
 };
 
-const createWrapper = (id: number, allCharts: ChartElement[]): React.ReactElement => {
-    const wrapper = allCharts.find(({ id: i }) => i === id) as ChartWrapper;
-    const child = allCharts.find(({ id: i }) => i === wrapper.children[0]);
+const createWrapper = (id: number, charts: ChartElement[]): React.ReactElement => {
+    const wrapper = charts.find(({ id: i }) => i === id) as ChartWrapper;
+    const child = charts.find(({ id: i }) => i === wrapper.children[0]) as Chart;
 
     const xAxis = {
         style: axisStyle,
@@ -43,22 +44,36 @@ const createWrapper = (id: number, allCharts: ChartElement[]): React.ReactElemen
         ...wrapper.yAxis
     };
 
-    return (
-        <VictoryChart
-            key={id}
-            theme={VictoryTheme.material}
-            height={wrapper.props.height}
-            // Apply this logic only on bar charts
-            // domainPadding={{ x: [10, 10] }}
-        >
-            <VictoryAxis {...xAxis} />
-            <VictoryAxis
-                dependentAxis
-                {...yAxis}
-            />
-            { components[child.kind](child.id, allCharts) }
-        </VictoryChart>
-    );
+    const render = () => {
+        if (!wrapper.hidden) {
+            return (
+                <VictoryChart
+                    key={id}
+                    theme={VictoryTheme.material}
+                    height={wrapper.props.height}
+                    // Apply this logic only on bar charts
+                    // domainPadding={{ x: [10, 10] }}
+                >
+                    <VictoryAxis {...xAxis} />
+                    <VictoryAxis
+                        dependentAxis
+                        {...yAxis}
+                    />
+                    { components[child.kind](child) }
+                </VictoryChart>
+            );
+        } else {
+            return components[child.kind]({
+                ...child,
+                props: {
+                    ...wrapper.props,
+                    ...child.props
+                }
+            });
+        }
+    }
+
+    return render();
 };
 
 export default createWrapper;

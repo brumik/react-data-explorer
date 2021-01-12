@@ -11,7 +11,9 @@ export enum ReducerTypes {
     reset = 'CHARTS_RESET',
     updateChart = 'CHARTS_UPDATE_CHART',
     deleteElements = 'CHARTS_DELETE_ELEMENTS',
-    addWrapperElement = 'CHARTS_ADD_WRAPPER_ELEMENT'
+    addWrapperElement = 'CHARTS_ADD_WRAPPER_ELEMENT',
+    updateWrapperHidden = 'CHARTS_UPDATE_WRAPPER_HIDDEN',
+    updateWrapper = 'CHARTS_UPDATE_WRAPPER'
 }
 
 interface SetAction {
@@ -38,9 +40,24 @@ interface AddWrapperElementAction {
     wrapper: ChartWrapper
 }
 
+interface UpdateWrapperHiddenAction {
+    type: ReducerTypes.updateWrapperHidden,
+    payload: {
+        id: number,
+        hidden: boolean
+    }
+}
+
+interface UpdateWrapperAction {
+    type: ReducerTypes.updateWrapper,
+    payload: ChartWrapper
+}
+
 export type ActionTypes =
     SetAction |
     ResetAction |
     UpdateChartAction |
     DeleteElementsAction |
-    AddWrapperElementAction;
+    AddWrapperElementAction |
+    UpdateWrapperHiddenAction |
+    UpdateWrapperAction;

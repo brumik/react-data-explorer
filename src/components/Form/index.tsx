@@ -1,30 +1,13 @@
 import React, { FunctionComponent, useEffect } from 'react';
 import { Card, CardTitle, CardBody } from '@patternfly/react-core';
-import Select from './Select';
-import { FormOption } from './types';
-import {
-    Chart,
-    ChartType,
-    ChartKind,
-    ChartWrapper
-} from '../Chart/types';
-import { useTypedSelector } from '../../store/';
+import { ChartType } from '../Chart/types';
 import { apiOptionsToFormOptions } from './helpers'
 import { useDispatch } from 'react-redux';
-import {
-    updateChart,
-    deleteElements,
-    addWrapperElement
-} from '../../store/charts/actions';
-import {
-    set as setForm,
-    setOptionValue
-} from '../../store/form/actions';
-import { fetchApi } from '../helpers';
+import { set as setForm } from '../../store/form/actions';
+import WrapperEditor from './WrapperEditor';
 
 interface PropType {
-    chartId: number,
-    fields?: FormOption[],
+    wrapperId: number
 }
 
 const options = {
@@ -82,17 +65,8 @@ const options = {
     ]
 }
 
-const Form: FunctionComponent<PropType> = ({ chartId }) => {
+const Form: FunctionComponent<PropType> = ({ wrapperId }) => {
     const dispatch = useDispatch();
-    const state = useTypedSelector(store => store.form);
-
-    const chart = useTypedSelector(store =>
-        store.charts.find(({ id }) => id === chartId) as Chart);
-
-    const getField = (n: string) =>
-        state.length > 0
-            ? state.find(({ name }) => name === n)
-            : { value: '' };
 
     useEffect(() => {
         dispatch(
@@ -100,91 +74,12 @@ const Form: FunctionComponent<PropType> = ({ chartId }) => {
         );
     }, [])
 
-    useEffect(() => {
-        if (state.length <= 0 || !chart) return;
-
-        dispatch(updateChart({
-            ...chart,
-            props: {
-                ...chart.props,
-                y: getField('attributes').value
-            }
-        } as Chart));
-    }, [ getField('attributes').value ]);
-
-    useEffect(() => {
-        if (state.length <= 0 || !chart) return;
-        const newValue = getField('chartTypes').value;
-
-        if (newValue === ChartType.pie) {
-            // If has wrapper delete it.
-            if (chart.parent) {
-                dispatch(deleteElements([ chart.parent ]));
-            }
-
-            dispatch(updateChart({
-                ...chart,
-                type: newValue,
-                parent: null,
-                props: {
-                    ...chart.props,
-                    height: 200
-                }
-            } as Chart));
-        } else {
-            if (!chart.parent) {
-                dispatch(addWrapperElement({
-                    id: 0,
-                    parent: null,
-                    kind: ChartKind.wrapper,
-                    children: [ chart.id ],
-                    props: {
-                        height: 200
-                    }
-                } as ChartWrapper))
-            }
-            dispatch(updateChart({
-                ...chart,
-                type: newValue,
-                parent: 1
-            } as Chart));
-        }
-
-    }, [ getField('chartTypes').value ]);
-
-    useEffect(() => {
-        if (state.length <= 0 || !chart) return;
-        const newValue = getField('groupByTime').value;
-        const newChart = { ...chart };
-
-        newChart.api.params = {
-            ...newChart.api.params,
-            'group_by_time': newValue,
-            'limit': newValue === 'true' ? '20' : '4'
-        };
-
-        fetchApi(newChart.api)
-            .then(({ items }: Record<string, unknown>) => {
-                newChart.props = {
-                    ...newChart.props,
-                    data: items as Record<string, unknown>[],
-                    x: newValue === 'true' ? 'created_date' : ''
-                }
-                dispatch(updateChart(newChart));
-                dispatch(setOptionValue(
-                    'chartTypes',
-                    newValue === 'true' ? 'line' : 'pie'
-                ))
-            })
-            .catch(() => ({}));
-
-    }, [ getField('groupByTime').value ])
-
     return (
         <Card>
             <CardTitle>Options</CardTitle>
             <CardBody>
-                { state.map((item, idx) => <Select key={idx} {...item} />) }
+                <h3>Wrapper Oprions</h3>
+                <WrapperEditor wrapperId={wrapperId} />
             </CardBody>
         </Card>
     );

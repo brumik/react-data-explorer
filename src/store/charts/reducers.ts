@@ -19,6 +19,7 @@ const reducer = (
     switch (action.type) {
         case ReducerTypes.set:
             return action.payload;
+        case ReducerTypes.updateWrapper:
         case ReducerTypes.updateChart:
             return [
                 ...state.filter(({ id }) => id !== action.payload.id),
@@ -31,6 +32,15 @@ const reducer = (
                 ...action.wrapper,
                 id: nextId(state)
             } ];
+        case ReducerTypes.updateWrapperHidden:
+            const wrapper = state.find(({ id }) => id === action.payload.id);
+            return [
+                ...state.filter(({ id }) => id !== action.payload.id),
+                {
+                    ...wrapper,
+                    hidden: action.payload.hidden
+                }
+            ]
         case ReducerTypes.reset:
             return initialState;
         default:
