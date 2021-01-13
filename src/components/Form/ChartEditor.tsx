@@ -1,14 +1,14 @@
 import React, { FunctionComponent, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import {
-    updateChart,
-    updateWrapperHidden
-} from '../../store/charts/actions';
-import {
     ChartKind,
     ChartType,
     Chart
 } from '../Chart/types';
+import {
+    updateChart,
+    updateWrapperHidden
+} from '../../store/charts/actions';
 import { setOptionValue } from '../../store/form/actions';
 import { useTypedSelector } from '../../store/';
 import { fetchApi } from '../helpers';
@@ -96,6 +96,7 @@ const WrapperEditor: FunctionComponent<Props> = ({ chartId }) => {
 
     return (
         <React.Fragment>
+            <h3>Chart options</h3>
             { state.map((item, idx) => <Select key={idx} {...item} />) }
         </React.Fragment>
     );

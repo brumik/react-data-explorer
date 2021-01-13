@@ -12,6 +12,10 @@ import { useTypedSelector } from '../store/';
 import { set as setCharts } from '../store/charts/actions';
 import Form from './Form/';
 import { fetchApi } from './helpers';
+import {
+    addWrapperElement
+} from '../store/charts/actions';
+
 
 interface Props {
     apis?: ApiProps[]
@@ -67,7 +71,17 @@ const DataExplorer: FunctionComponent<Props> = ({
     }, [ charts ])
 
     const addNewChart = () => {
-        return;
+        dispatch(addWrapperElement({
+            id: null,
+            kind: ChartKind.wrapper,
+            parent: null,
+            props: {
+                height: 200
+            },
+            xAxis: { label: 'Label X' },
+            yAxis: { label: 'Label Y' },
+            hidden: false
+        }))
     };
 
     return (
@@ -96,7 +110,7 @@ const DataExplorer: FunctionComponent<Props> = ({
             { loaded && charts.length > 0 &&
                 <ChartRenderer
                     charts={charts}
-                    ids={chartsIdsToRender.filter(id => true || editorChartId !== id)}
+                    ids={editorChartId ? [ editorChartId ] : chartsIdsToRender}
                 />
             }
         </React.Fragment>

@@ -23,11 +23,16 @@ export const updateChart = (chart: Chart): ActionTypes => ({
 //     type: ReducerTypes.deleteElements,
 //     ids
 // })
-//
-// export const addWrapperElement = (wrapper: ChartWrapper): ActionTypes => ({
-//     type: ReducerTypes.addWrapperElement,
-//     wrapper
-// });
+
+export const addChartElement = (chart: Chart): ActionTypes => ({
+    type: ReducerTypes.addChartElement,
+    payload: chart
+});
+
+export const addWrapperElement = (wrapper: ChartWrapper): ActionTypes => ({
+    type: ReducerTypes.addWrapperElement,
+    payload: wrapper
+});
 
 export const updateWrapperHidden = (wrapperId: number, value: boolean): ActionTypes => ({
     type: ReducerTypes.updateWrapperHidden,

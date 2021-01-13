@@ -7,7 +7,6 @@ const schema: ChartElement[] = [
         id: 1,
         kind: ChartKind.wrapper,
         parent: null,
-        children: [2],
         props: {
             height: 200
         },
@@ -22,7 +21,6 @@ const schema: ChartElement[] = [
         id: 2,
         kind: ChartKind.simple,
         parent: 1,
-        children: [],
         props: {
             x: 'created_date',
             y: 'host_count'

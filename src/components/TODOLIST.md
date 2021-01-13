@@ -1,11 +1,7 @@
 ## TODO
-* Add new chart
+* Close the editor (OK / Cancel --> cancel restore the state when it was first opened)
 * Edit a concrete chart
 * Wrapper functions for axes
-
-
-## To edit the chart options:
-* Edit live, save old values of the whole chart, on pressing cancel restore these values.
 
 ## Brainstorm
 To edit the chart:
@@ -13,4 +9,3 @@ To edit the chart:
     * wrapper -> group -> chart
 * each component is responsible for the one element
 * this would allow to add more components to one form
- 

@@ -14,9 +14,7 @@ export interface ApiProps {
 export interface ChartBase {
     id: number
     kind: ChartKind,
-    parent: number, // Id of the parent wrapper Element
-    children: number[], // ids of the children
-    hidden?: boolean
+    parent: number // Id of the parent wrapper Element
 }
 
 /* Chart Types */
@@ -68,7 +66,8 @@ export interface ChartWrapper extends ChartBase {
     parent: null,
     props: WrapperProps,
     xAxis: AxisProps,
-    yAxis: AxisProps
+    yAxis: AxisProps,
+    hidden?: boolean
 }
 
 export type ChartElement = Chart | ChartWrapper;

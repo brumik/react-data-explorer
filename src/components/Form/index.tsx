@@ -78,7 +78,6 @@ const Form: FunctionComponent<PropType> = ({ wrapperId }) => {
         <Card>
             <CardTitle>Options</CardTitle>
             <CardBody>
-                <h3>Wrapper Oprions</h3>
                 <WrapperEditor wrapperId={wrapperId} />
             </CardBody>
         </Card>

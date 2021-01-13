@@ -5,7 +5,8 @@ import {
 } from './types';
 
 import {
-    ChartElement
+    ChartElement,
+    ChartWrapper
 } from '../../components/Chart/types';
 
 const nextId = (state: State): number =>
@@ -27,13 +28,15 @@ const reducer = (
             ];
         case ReducerTypes.deleteElements:
             return state.filter(({ id }) => !action.ids.includes(id));
+        case ReducerTypes.addChartElement:
         case ReducerTypes.addWrapperElement:
             return [ ...state, {
-                ...action.wrapper,
+                ...action.payload,
                 id: nextId(state)
             } ];
         case ReducerTypes.updateWrapperHidden:
-            const wrapper = state.find(({ id }) => id === action.payload.id);
+            const wrapper = state.find(({ id }) =>
+                id === action.payload.id) as ChartWrapper;
             return [
                 ...state.filter(({ id }) => id !== action.payload.id),
                 {

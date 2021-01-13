@@ -27,7 +27,7 @@ const components: Partial<Record<ChartKind, (chart: Chart) => React.ReactElement
 
 const createWrapper = (id: number, charts: ChartElement[]): React.ReactElement => {
     const wrapper = charts.find(({ id: i }) => i === id) as ChartWrapper;
-    const child = charts.find(({ id: i }) => i === wrapper.children[0]) as Chart;
+    const child = charts.find(({ parent }) => parent === wrapper.id) as Chart;
 
     const xAxis = {
         style: axisStyle,
@@ -59,11 +59,11 @@ const createWrapper = (id: number, charts: ChartElement[]): React.ReactElement =
                         dependentAxis
                         {...yAxis}
                     />
-                    { components[child.kind](child) }
+                    { child && components[child.kind](child) }
                 </VictoryChart>
             );
         } else {
-            return components[child.kind]({
+            return child && components[child.kind]({
                 ...child,
                 props: {
                     ...wrapper.props,
