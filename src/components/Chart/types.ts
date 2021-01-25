@@ -39,13 +39,23 @@ export interface Chart extends ChartBase {
 }
 
 /* Chart Group Wrapper Types */
-export interface ChartGroupWrapper extends ChartBase {
+interface GroupProps {
+    offset?: number
+}
+
+export interface ChartGroup extends ChartBase {
     kind: ChartKind.group,
+    props: GroupProps
 }
 
 /* Chart Stack Wrapper Types */
-export interface ChartStackWrapper extends ChartBase {
+interface StackProps {
+    colorScale?: string[]
+}
+
+export interface ChartStack extends ChartBase {
     kind: ChartKind.stack,
+    props: StackProps
 }
 
 /* Chart Wrapper Types */
@@ -70,4 +80,4 @@ export interface ChartWrapper extends ChartBase {
     hidden?: boolean
 }
 
-export type ChartElement = Chart | ChartWrapper;
+export type ChartElement = Chart | ChartWrapper | ChartGroup | ChartStack;

@@ -1,9 +1,7 @@
 import React, { FunctionComponent } from 'react';
 import {
-    ChartKind,
     ChartElement
 } from './types';
-import createChart from './createChart'
 import createWrapper from './createWrapper';
 
 interface Props {
@@ -25,15 +23,7 @@ const ChartRenderer: FunctionComponent<Props> = ({
 
     return (
         <React.Fragment>
-            {
-                getCharts() && getCharts().map(el => {
-                    if (el.kind === ChartKind.wrapper) {
-                        return createWrapper(el.id, charts);
-                    } else {
-                        return createChart(el);
-                    }
-                })
-            }
+            { getCharts() && getCharts().map(el => createWrapper(el.id, charts)) }
         </React.Fragment>
     );
 }

@@ -105,6 +105,16 @@ const DataExplorer: FunctionComponent<Props> = ({
             >
                 New Chart
             </Button>
+            { loaded && editorChartId &&
+                <Button
+                    onClick={() => {
+                        setEditorChartId(null)
+                    }}
+                >
+                    Close Editor
+                </Button>
+
+            }
             { loaded && editorChartId && <Form wrapperId={editorChartId} /> }
             { schema === [] && 'No schema provided' }
             { loaded && charts.length > 0 &&

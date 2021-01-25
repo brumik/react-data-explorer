@@ -7,11 +7,11 @@ import {
 import {
     ChartWrapper,
     ChartKind,
-    ChartElement,
-    Chart
+    ChartElement
 } from './types';
-import createChart from './createChart'
-// import createGroup from './createGroup'
+import createChart from './createChart';
+import createGroup from './createGroup';
+import createStack from './createStack';
 
 const axisStyle = {
     axisLabel: { fontSize: 7, padding: 22 },
@@ -19,15 +19,19 @@ const axisStyle = {
     tickLabels: { fontSize: 5, padding: 2 }
 };
 
-const components: Partial<Record<ChartKind, (chart: Chart) => React.ReactElement>> = {
-    // [ChartKind.group]: createGroup,
-    // [ChartKind.stack]: VChartStack,
+const components: Partial<Record<ChartKind, (
+    id: number,
+    charts: ChartElement[],
+    props: any
+) => React.ReactElement>> = {
+    [ChartKind.group]: createGroup,
+    [ChartKind.stack]: createStack,
     [ChartKind.simple]: createChart
 };
 
 const createWrapper = (id: number, charts: ChartElement[]): React.ReactElement => {
     const wrapper = charts.find(({ id: i }) => i === id) as ChartWrapper;
-    const child = charts.find(({ parent }) => parent === wrapper.id) as Chart;
+    const child = charts.find(({ parent }) => parent === wrapper.id);
 
     const xAxis = {
         style: axisStyle,
@@ -59,17 +63,11 @@ const createWrapper = (id: number, charts: ChartElement[]): React.ReactElement =
                         dependentAxis
                         {...yAxis}
                     />
-                    { child && components[child.kind](child) }
+                    { child && components[child.kind](child.id, charts, {}) }
                 </VictoryChart>
             );
         } else {
-            return child && components[child.kind]({
-                ...child,
-                props: {
-                    ...wrapper.props,
-                    ...child.props
-                }
-            });
+            return child && components[child.kind](child.id, charts, wrapper.props);
         }
     }
 
