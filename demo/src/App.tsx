@@ -149,7 +149,7 @@ const schema: ChartElement[] = [
             url: 'https://prod.foo.redhat.com:1337/api/tower-analytics/v1/job_explorer/',
             optionUrl: '/demo/api/jobExplorerOptions.json'
         },
-        type: ChartType.bar,
+        type: ChartType.area,
     },
     {
         id: 13,
@@ -164,7 +164,7 @@ const schema: ChartElement[] = [
             url: 'https://prod.foo.redhat.com:1337/api/tower-analytics/v1/job_explorer/',
             optionUrl: '/demo/api/jobExplorerOptions.json'
         },
-        type: ChartType.bar,
+        type: ChartType.area,
     },
     // Stacked and grouped example
     {

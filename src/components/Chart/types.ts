@@ -21,7 +21,10 @@ export interface ChartBase {
 export enum ChartType {
     bar = 'bar',
     line = 'line',
-    pie = 'pie'
+    pie = 'pie',
+    area = 'area',
+    scatter = 'scatter',
+    histogram = 'histogram'
 }
 
 export interface ChartProps {

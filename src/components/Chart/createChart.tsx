@@ -2,7 +2,10 @@ import React from 'react';
 import {
     VictoryBar,
     VictoryLine,
-    VictoryPie
+    VictoryPie,
+    VictoryArea,
+    VictoryScatter,
+    VictoryHistogram
 } from 'victory';
 import {
     ChartType,
@@ -13,7 +16,10 @@ import {
 const components: Partial<Record<ChartType, React.ReactType>> = {
     [ChartType.bar]: VictoryBar,
     [ChartType.line]: VictoryLine,
-    [ChartType.pie]: VictoryPie
+    [ChartType.pie]: VictoryPie,
+    [ChartType.area]: VictoryArea,
+    [ChartType.scatter]: VictoryScatter,
+    [ChartType.histogram]: VictoryHistogram
 };
 
 const createChart = (
