@@ -21,8 +21,7 @@ const axisStyle = {
 
 const components: Partial<Record<ChartKind, (
     id: number,
-    charts: ChartElement[],
-    props: any
+    charts: ChartElement[]
 ) => React.ReactElement>> = {
     [ChartKind.group]: createGroup,
     [ChartKind.stack]: createStack,
@@ -48,30 +47,26 @@ const createWrapper = (id: number, charts: ChartElement[]): React.ReactElement =
         ...wrapper.yAxis
     };
 
-    const render = () => {
-        if (!wrapper.hidden) {
-            return (
-                <VictoryChart
-                    key={id}
-                    theme={VictoryTheme.material}
-                    height={wrapper.props.height}
-                    // Apply this logic only on bar charts
-                    // domainPadding={{ x: [10, 10] }}
-                >
-                    <VictoryAxis {...xAxis} />
-                    <VictoryAxis
-                        dependentAxis
-                        {...yAxis}
-                    />
-                    { child && components[child.kind](child.id, charts, {}) }
-                </VictoryChart>
-            );
-        } else {
-            return child && components[child.kind](child.id, charts, wrapper.props);
-        }
-    }
-
-    return render();
+    return (
+        <VictoryChart
+            key={id}
+            theme={VictoryTheme.material}
+            height={wrapper.props.height}
+            // Apply this logic only on bar charts
+            // domainPadding={{ x: [10, 10] }}
+        >
+            { wrapper.hidden &&
+                <VictoryAxis style={{
+                    axis: {stroke: 'transparent'},
+                    ticks: {stroke: 'transparent'},
+                    tickLabels: { fill:'transparent'}
+                }} />
+            }
+            { !wrapper.hidden && <VictoryAxis {...xAxis} /> }
+            { !wrapper.hidden && <VictoryAxis dependentAxis {...yAxis} />}
+            { child && components[child.kind](child.id, charts) }
+        </VictoryChart>
+    );
 };
 
 export default createWrapper;

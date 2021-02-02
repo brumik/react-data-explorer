@@ -10,16 +10,14 @@ import createChart from './createChart';
 
 const components: Partial<Record<ChartKind, (
     id: number,
-    charts: ChartElement[],
-    props: any
+    charts: ChartElement[]
 ) => React.ReactElement>> = {
     [ChartKind.simple]: createChart
 };
 
 const createStack = (
     id: number,
-    charts: ChartElement[],
-    props = {}
+    charts: ChartElement[]
 ): React.ReactElement => {
     const stack = charts.find(({ id: i }) => i === id) as ChartStack;
     const children = charts.filter(({ parent }) => parent === id) as Chart[];
@@ -27,10 +25,9 @@ const createStack = (
     return (
         <VictoryStack
             key={stack.id}
-            {...props}
             {...stack.props}
         >
-            { children.map(child => components[child.kind](child.id, charts, props)) }
+            { children.map(child => components[child.kind](child.id, charts)) }
         </VictoryStack>
     );
 };

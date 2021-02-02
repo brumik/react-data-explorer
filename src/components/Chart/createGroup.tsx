@@ -10,8 +10,7 @@ import createStack from './createStack';
 
 const components: Partial<Record<ChartKind, (
     id: number,
-    charts: ChartElement[],
-    props: any
+    charts: ChartElement[]
 ) => React.ReactElement>> = {
     [ChartKind.stack]: createStack,
     [ChartKind.simple]: createChart
@@ -19,8 +18,7 @@ const components: Partial<Record<ChartKind, (
 
 const createGroup = (
     id: number,
-    charts: ChartElement[],
-    props = {}
+    charts: ChartElement[]
 ): React.ReactElement => {
     const group = charts.find(({ id: i }) => i === id) as ChartGroup;
     const children = charts.filter(({ parent }) => parent === id);
@@ -28,10 +26,9 @@ const createGroup = (
     return (
         <VictoryGroup
             offset={20}
-            {...props}
             {...group.props}
         >
-            { children.map(child => components[child.kind](child.id, charts, props)) }
+            { children.map(child => components[child.kind](child.id, charts)) }
         </VictoryGroup>
     );
 };
