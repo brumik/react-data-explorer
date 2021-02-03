@@ -33,10 +33,12 @@ const schema: ChartElement[] = [
             height: 200
         },
         xAxis: {
-            label: 'Days in the month'
+            label: 'Days in the month',
+            tickFormat: 'formatDateAsDays'
         },
         yAxis: {
-            label: 'Host Count'
+            label: 'Host Count',
+            tickFormat: 'formatNumberAsK'
         }
     },
     {

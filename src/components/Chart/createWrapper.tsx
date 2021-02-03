@@ -10,6 +10,7 @@ import {
     ChartKind,
     ChartElement
 } from './types';
+import { getFunction } from '../functions';
 import createChart from './createChart';
 import createGroup from './createGroup';
 import createStack from './createStack';
@@ -36,16 +37,14 @@ const createWrapper = (id: number, charts: ChartElement[]): React.ReactElement =
     const xAxis = {
         style: axisStyle,
         fixLabelOverlap: true,
-        // TODO: Apply this logic when?
-        // tickFormat: (i: string) => (i && i.split('-')[2]),
-        ...wrapper.xAxis
+        ...wrapper.xAxis,
+        tickFormat: getFunction(wrapper.xAxis.tickFormat ?? '')
     };
 
     const yAxis = {
         style: axisStyle,
-        // TODO: Apply this logic when?
-        // tickFormat: (i: number) => (i && i >= 1000 ? `${i / 1000}k` : i),
-        ...wrapper.yAxis
+        ...wrapper.yAxis,
+        tickFormat: getFunction(wrapper.yAxis.tickFormat ?? '')
     };
 
     const childIsBarChart = () =>
