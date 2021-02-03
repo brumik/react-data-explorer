@@ -48,13 +48,19 @@ const createWrapper = (id: number, charts: ChartElement[]): React.ReactElement =
         ...wrapper.yAxis
     };
 
+    const childIsBarChart = () =>
+        child.kind === ChartKind.simple && child.type === 'bar';
+
+    const props = {
+        theme: VictoryTheme.material,
+        domainPadding: childIsBarChart() ? 20 : 0,
+        ...wrapper.props
+    }
+
     return (
         <VictoryChart
             key={id}
-            theme={VictoryTheme.material}
-            height={wrapper.props.height}
-            // Apply this logic only on bar charts
-            // domainPadding={{ x: [10, 10] }}
+            {...props}
         >
             { wrapper.hidden &&
                 <VictoryAxis style={{

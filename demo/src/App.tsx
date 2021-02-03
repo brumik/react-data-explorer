@@ -52,7 +52,7 @@ const schema: ChartElement[] = [
             url: 'https://prod.foo.redhat.com:1337/api/tower-analytics/v1/job_explorer/',
             optionUrl: '/demo/api/jobExplorerOptions.json'
         },
-        type: ChartType.line,
+        type: ChartType.bar,
     },
     // Pie example
     {

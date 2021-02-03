@@ -1,3 +1,4 @@
 ## TODO
-* Legend
-* Wrapper functions for axes
+* Implement domain functions
+    Map function names to concrete functions, export the names
+*
