@@ -15,9 +15,9 @@ const ChartRenderer: FunctionComponent<Props> = ({
 }) => {
     const getCharts = () => {
         if (ids.length !== null) {
-            return charts.filter(({ id }) => ids.includes(id));
+            return charts.filter(({ id }) => ids.includes(id)).sort((a,b) => a.id - b.id);
         } else {
-            return charts.filter(({ parent }) => parent === null);
+            return charts.filter(({ parent }) => parent === null).sort((a,b) => a.id - b.id);
         }
     }
 
