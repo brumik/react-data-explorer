@@ -2,7 +2,8 @@ import React from 'react';
 import {
     VictoryChart,
     VictoryTheme,
-    VictoryAxis
+    VictoryAxis,
+    VictoryLegend
 } from 'victory';
 import {
     ChartWrapper,
@@ -64,6 +65,7 @@ const createWrapper = (id: number, charts: ChartElement[]): React.ReactElement =
             }
             { !wrapper.hidden && <VictoryAxis {...xAxis} /> }
             { !wrapper.hidden && <VictoryAxis dependentAxis {...yAxis} />}
+            { wrapper.legend && <VictoryLegend {...wrapper.legend} />}
             { child && components[child.kind](child.id, charts) }
         </VictoryChart>
     );

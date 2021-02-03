@@ -1,3 +1,5 @@
+import { VictoryLegendProps } from 'victory';
+
 export enum ChartKind {
     simple = 'simple',
     group = 'group',
@@ -80,7 +82,9 @@ export interface ChartWrapper extends ChartBase {
     props: WrapperProps,
     xAxis: AxisProps,
     yAxis: AxisProps,
-    hidden?: boolean
+    legend?: VictoryLegendProps,
+    hidden?: boolean,
+    style?: any
 }
 
 export type ChartElement = Chart | ChartWrapper | ChartGroup | ChartStack;

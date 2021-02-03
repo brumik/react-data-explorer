@@ -1,6 +1,27 @@
 import '@patternfly/react-core/dist/styles/base.css';
 import * as React from 'react';
+import { VictoryLegendProps } from 'victory';
 import DataExplorer, { ChartKind, ChartElement, ChartType } from '../../src/';
+
+const legend = (ori = 'horizontal') => ({
+    x: 0,
+    y: 0,
+    title: 'Legend',
+    gutter: 20,
+    orientation: ori,
+    data: [
+        { name: 'Chart 1' },
+        { name: 'Chart 2' },
+        { name: 'Chart 3' },
+        { name: 'Chart 4' },
+    ],
+    style: {
+        border: { stroke: "black" },
+        title: { fontSize: 10 },
+        labels: { fontSize: 7 },
+    },
+    centerTitle: true
+}) as VictoryLegendProps;
 
 const schema: ChartElement[] = [
     // Line example
@@ -43,7 +64,8 @@ const schema: ChartElement[] = [
         },
         xAxis: {},
         yAxis: {},
-        hidden: true
+        hidden: true,
+        legend: legend('vertical')
     },
     {
         id: 4,
@@ -180,7 +202,8 @@ const schema: ChartElement[] = [
         yAxis: {
             label: 'Host Count'
         },
-        hidden: false
+        hidden: false,
+        legend: legend()
     },
     {
         id: 101,
@@ -269,10 +292,14 @@ const App = () => {
         console.debug(json);
     }
 
-    return <DataExplorer
-        schema={schema}
-        onSchemaChange={logger}
-    />;
+    return (
+        <div style={{ width: '900px', margin: 'auto', fontSize: 10 }}>
+            <DataExplorer
+                schema={schema}
+                onSchemaChange={logger}
+            />
+        </div>
+    );
 };
 
 export default App;
