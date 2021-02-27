@@ -12,8 +12,9 @@ import {
     Chart,
     ChartElement
 } from './types';
+import legendMapper from './Tooltips';
 
-const components: Partial<Record<ChartType, React.ReactType>> = {
+const components: Partial<Record<ChartType, React.ElementType>> = {
     [ChartType.bar]: VictoryBar,
     [ChartType.line]: VictoryLine,
     [ChartType.pie]: VictoryPie,
@@ -29,8 +30,20 @@ const createChart = (
     const chart = charts.find(({ id: i }) => i === id) as Chart;
     const SelectedChart = components[chart.type];
 
+    let props = {...chart.props};
+    if (chart.legend) {
+        const LegendComponent = legendMapper[chart.legend.type];
+        props = {
+            ...props,
+            labelComponent: <LegendComponent {...chart.legend.props} />
+        }
+    }
+
     return (
-        <SelectedChart key={chart.id} {...chart.props} />
+        <SelectedChart
+            key={chart.id}
+            {...props}
+        />
     );
 };
 

@@ -1,4 +1,9 @@
-import { VictoryLegendProps } from 'victory';
+import {
+    VictoryLegendProps,
+    VictoryBarProps,
+    VictoryChartProps,
+    VictoryTooltipProps
+} from 'victory';
 
 export enum ChartKind {
     simple = 'simple',
@@ -7,8 +12,12 @@ export enum ChartKind {
     wrapper = 'wrapper'
 }
 
+export enum TooltipType {
+    default = 'default'
+}
+
 export interface ApiProps {
-    params: Record<string, string>,
+    params: Record<string, any>,
     url: string,
     optionUrl: string
 }
@@ -29,18 +38,17 @@ export enum ChartType {
     histogram = 'histogram'
 }
 
-export interface ChartProps {
-    data?: Record<string, unknown>[],
-    height?: number,
-    x?: string,
-    y?: string
+export interface LegendProps {
+    type: TooltipType,
+    props: VictoryTooltipProps
 }
 
 export interface Chart extends ChartBase {
     kind: ChartKind.simple,
-    props: ChartProps,
+    props: VictoryBarProps,
     type: ChartType,
-    api: ApiProps
+    api: ApiProps,
+    legend?: LegendProps
 }
 
 /* Chart Group Wrapper Types */
@@ -50,7 +58,7 @@ interface GroupProps {
 
 export interface ChartGroup extends ChartBase {
     kind: ChartKind.group,
-    props: GroupProps
+    props?: GroupProps
 }
 
 /* Chart Stack Wrapper Types */
@@ -72,7 +80,7 @@ interface AxisProps {
     style?: any
 }
 
-interface WrapperProps {
+interface WrapperProps extends VictoryChartProps {
     height?: number
 }
 

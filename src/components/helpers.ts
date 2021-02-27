@@ -2,6 +2,8 @@ import { ApiProps } from './Chart/types';
 
 export const fetchApi = (api: ApiProps): Promise<unknown> => {
     const url = new URL(api.url);
-    Object.keys(api.params).forEach(key => url.searchParams.append(key, api.params[key]));
-    return fetch(url.toString()).then(r => r.json()) as Promise<unknown>;
+    return fetch(url.toString(), {
+        method: 'POST',
+        body: JSON.stringify(api.params)
+    }).then(r => r.json()) as Promise<unknown>;
 }
