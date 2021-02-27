@@ -2,7 +2,8 @@ import {
     VictoryLegendProps,
     VictoryBarProps,
     VictoryChartProps,
-    VictoryTooltipProps
+    VictoryTooltipProps,
+    VictoryStackProps
 } from 'victory';
 
 export enum ChartKind {
@@ -19,7 +20,8 @@ export enum TooltipType {
 export interface ApiProps {
     params: Record<string, any>,
     url: string,
-    optionUrl: string
+    optionUrl: string,
+    data?: Record<string, unknown>[]
 }
 
 export interface ChartBase {
@@ -47,7 +49,7 @@ export interface Chart extends ChartBase {
     kind: ChartKind.simple,
     props: VictoryBarProps,
     type: ChartType,
-    api: ApiProps,
+    api?: ApiProps,
     legend?: LegendProps
 }
 
@@ -58,17 +60,15 @@ interface GroupProps {
 
 export interface ChartGroup extends ChartBase {
     kind: ChartKind.group,
-    props?: GroupProps
+    props: GroupProps
+    api?: ApiProps
 }
 
 /* Chart Stack Wrapper Types */
-interface StackProps {
-    colorScale?: string[]
-}
-
 export interface ChartStack extends ChartBase {
     kind: ChartKind.stack,
-    props: StackProps
+    props: VictoryStackProps,
+    api?: ApiProps
 }
 
 /* Chart Wrapper Types */
@@ -87,6 +87,7 @@ interface WrapperProps extends VictoryChartProps {
 export interface ChartWrapper extends ChartBase {
     kind: ChartKind.wrapper,
     parent: null,
+    api?: ApiProps // Currently this SHOULD NOT BE USED. Is here because of stupid Tscript
     props: WrapperProps,
     xAxis: AxisProps,
     yAxis: AxisProps,

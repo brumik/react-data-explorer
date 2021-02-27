@@ -44,7 +44,22 @@ const schema: ChartElement[] = [
         id: 1100,
         kind: ChartKind.stack,
         parent: 1000,
-        props: {}
+        props: {},
+        api: {
+            params: {
+                status: ['successful', 'failed'],
+                quick_date_range: 'last_30_days',
+                job_type: ['workflowjob', 'job'],
+                group_by_time: true,
+                org_id: [],
+                cluster_id: [],
+                template_id: [],
+                only_root_workflows_and_standalone_jobs: false,
+                attributes: ['failed_count', 'successful_count']
+            },
+            url: 'https://prod.foo.redhat.com:1337/api/tower-analytics/v1/job_explorer/',
+            optionUrl: '/demo/api/jobExplorerOptions.json'
+        }
     },
     {
         id: 1002,
@@ -60,21 +75,6 @@ const schema: ChartElement[] = [
                 }
             },
             labels: ({ datum }: { datum: Record<string, string> }) => datum.failed_count
-        },
-        api: {
-            params: {
-                status: [ 'successful', 'failed' ],
-                quick_date_range: 'last_30_days',
-                job_type: [ 'workflowjob', 'job' ],
-                group_by_time: true,
-                org_id: [],
-                cluster_id: [],
-                template_id: [],
-                only_root_workflows_and_standalone_jobs: false,
-                attributes: [ 'failed_count' ]
-            },
-            url: 'https://prod.foo.redhat.com:1337/api/tower-analytics/v1/job_explorer/',
-            optionUrl: '/demo/api/jobExplorerOptions.json'
         },
         legend: {
             type: LegendType.default,
@@ -95,21 +95,6 @@ const schema: ChartElement[] = [
                 }
             },
             labels: ({ datum }: { datum: Record<string, string> }) => datum.successful_count
-        },
-        api: {
-            params: {
-                status: [ 'successful', 'failed' ],
-                quick_date_range: 'last_30_days',
-                job_type: [ 'workflowjob', 'job' ],
-                group_by_time: true,
-                org_id: [],
-                cluster_id: [],
-                template_id: [],
-                only_root_workflows_and_standalone_jobs: false,
-                attributes: [ 'successful_count' ]
-            },
-            url: 'https://prod.foo.redhat.com:1337/api/tower-analytics/v1/job_explorer/',
-            optionUrl: '/demo/api/jobExplorerOptions.json'
         },
         legend: {
             type: LegendType.default,

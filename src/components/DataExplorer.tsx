@@ -5,8 +5,7 @@ import ChartRenderer from './Chart/';
 import {
     ChartKind,
     ChartElement,
-    ApiProps,
-    Chart
+    ApiProps
 } from './Chart/types';
 import { useTypedSelector } from '../store/';
 import { set as setCharts } from '../store/charts/actions';
@@ -24,14 +23,14 @@ interface Props {
 }
 
 const initialFetch = async (schema: ChartElement[]): Promise<ChartElement[]> => {
-    const chartsToLoad = schema.filter(({ kind }) => kind === ChartKind.simple) as Chart[];
-    const staticSchema = schema.filter(({ kind }) => kind !== ChartKind.simple)
+    const chartsToLoad = schema.filter(el => el.api);
+    const staticSchema = schema.filter(el => !el.api)
 
     await Promise.all(
         chartsToLoad.map(el => fetchApi(el.api))
     ).then((results: Record<string, unknown>[]) => {
         for(let i = 0; i < chartsToLoad.length; i++) {
-            chartsToLoad[i].props.data = results[i].items as Record<string, unknown>[];
+            chartsToLoad[i].api.data = results[i].items as Record<string, unknown>[];
         }
     });
 

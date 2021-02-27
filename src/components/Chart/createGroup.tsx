@@ -7,6 +7,7 @@ import {
 } from './types';
 import createChart from './createChart';
 import createStack from './createStack';
+import { passDataToChildren } from './helpers';
 
 const components: Partial<Record<ChartKind, (
     id: number,
@@ -22,6 +23,14 @@ const createGroup = (
 ): React.ReactElement => {
     const group = charts.find(({ id: i }) => i === id) as ChartGroup;
     const children = charts.filter(({ parent }) => parent === id);
+
+    if (group.api) {
+        charts = passDataToChildren(
+            charts,
+            children.map(({ id: i }) => i),
+            group.api.data
+        );
+    }
 
     return (
         <VictoryGroup
