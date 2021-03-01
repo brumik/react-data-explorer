@@ -73,12 +73,13 @@ const schema: ChartElement[] = [
                 data: {
                     fill: '#A30000'
                 }
-            },
-            labels: ({ datum }: { datum: Record<string, string> }) => datum.failed_count
+            }
         },
         legend: {
             type: LegendType.default,
-            props: {}
+            props: {},
+            labelAttr: 'failed_count',
+            labelName: 'Failed'
         }
     },
     {
@@ -93,12 +94,12 @@ const schema: ChartElement[] = [
                 data: {
                     fill: '#6EC664'
                 }
-            },
-            labels: ({ datum }: { datum: Record<string, string> }) => datum.successful_count
+            }
         },
         legend: {
             type: LegendType.default,
-            props: {}
+            props: {},
+            labelAttr: 'successful_count'
         }
     }
 

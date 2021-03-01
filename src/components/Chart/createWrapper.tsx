@@ -14,12 +14,7 @@ import { getFunction } from '../functions';
 import createChart from './createChart';
 import createGroup from './createGroup';
 import createStack from './createStack';
-
-const axisStyle = {
-    axisLabel: { fontSize: 7, padding: 22 },
-    ticks: { size: 5 },
-    tickLabels: { fontSize: 5, padding: 2 }
-};
+import { axisStyle, disabledAxisProps } from './styling';
 
 const components: Partial<Record<ChartKind, (
     id: number,
@@ -62,11 +57,7 @@ const createWrapper = (id: number, charts: ChartElement[]): React.ReactElement =
             {...props}
         >
             { wrapper.hidden &&
-                <VictoryAxis style={{
-                    axis: {stroke: 'transparent'},
-                    ticks: {stroke: 'transparent'},
-                    tickLabels: { fill:'transparent'}
-                }} />
+                <VictoryAxis {...disabledAxisProps} />
             }
             { !wrapper.hidden && <VictoryAxis {...xAxis} /> }
             { !wrapper.hidden && <VictoryAxis dependentAxis {...yAxis} />}

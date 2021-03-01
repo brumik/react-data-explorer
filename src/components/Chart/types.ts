@@ -42,7 +42,9 @@ export enum ChartType {
 
 export interface LegendProps {
     type: TooltipType,
-    props: VictoryTooltipProps
+    props: VictoryTooltipProps,
+    labelAttr: string
+    labelName?: string
 }
 
 export interface Chart extends ChartBase {

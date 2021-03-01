@@ -10,9 +10,12 @@ import {
 import {
     ChartType,
     Chart,
-    ChartElement
+    ChartElement,
+    LegendProps
 } from './types';
 import legendMapper from './Tooltips';
+import { labelStylingProps } from './styling';
+import { snakeToSentence } from './helpers';
 
 const components: Partial<Record<ChartType, React.ElementType>> = {
     [ChartType.bar]: VictoryBar,
@@ -22,6 +25,10 @@ const components: Partial<Record<ChartType, React.ElementType>> = {
     [ChartType.scatter]: VictoryScatter,
     [ChartType.histogram]: VictoryHistogram
 };
+
+const getLabels = ({ labelAttr, labelName }: LegendProps) =>
+    ({ datum }: { datum: Record<string, string> }) =>
+        `${labelName ?? snakeToSentence(labelAttr)}: ${datum[labelAttr]}`;
 
 const createChart = (
     id: number,
@@ -35,7 +42,11 @@ const createChart = (
         const LegendComponent = legendMapper[chart.legend.type];
         props = {
             ...props,
-            labelComponent: <LegendComponent {...chart.legend.props} />
+            labels: getLabels(chart.legend),
+            labelComponent: <LegendComponent
+                {...labelStylingProps}
+                {...chart.legend.props}
+            />
         }
     }
 
