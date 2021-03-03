@@ -5,7 +5,8 @@ import ChartRenderer from './Chart/';
 import {
     ChartKind,
     ChartElement,
-    ApiProps
+    ApiProps,
+    PropFunctions
 } from './Chart/types';
 import { useTypedSelector } from '../store/';
 import { set as setCharts } from '../store/charts/actions';
@@ -19,6 +20,7 @@ import {
 interface Props {
     apis?: ApiProps[]
     schema?: ChartElement[],
+    functions?: PropFunctions,
     onSchemaChange?: (json: ChartElement[]) => void
 }
 
@@ -41,6 +43,7 @@ const initialFetch = async (schema: ChartElement[]): Promise<ChartElement[]> => 
 const DataExplorer: FunctionComponent<Props> = ({
     // apis = [], // for the form
     schema = [], // for the charts
+    functions = {},
     onSchemaChange = () => ([])
 }) => {
     const [ loaded, setLoaded ] = useState(false);
@@ -119,7 +122,10 @@ const DataExplorer: FunctionComponent<Props> = ({
             { schema === [] && 'No schema provided' }
             { loaded && charts.length > 0 &&
                 <ChartRenderer
-                    charts={charts}
+                    data={{
+                        charts,
+                        functions
+                    }}
                     ids={editorChartId ? [ editorChartId ] : chartsIdsToRender}
                 />
             }

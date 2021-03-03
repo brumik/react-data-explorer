@@ -1,18 +1,22 @@
 import React, { FunctionComponent } from 'react';
 import {
-    ChartElement
+    ChartElement, DataType, PropFunctions
 } from './types';
 import createWrapper from './createWrapper';
 
 interface Props {
     ids?: number[],
-    charts: ChartElement[]
+    data: DataType
 }
 
 const ChartRenderer: FunctionComponent<Props> = ({
     ids = null,
-    charts
+    data = {
+        charts: [] as ChartElement[],
+        functions: {} as PropFunctions
+    }
 }) => {
+    const { charts } = data;
     const getCharts = () => {
         if (ids.length !== null) {
             return charts.filter(({ id }) => ids.includes(id)).sort((a,b) => a.id - b.id);
@@ -23,7 +27,7 @@ const ChartRenderer: FunctionComponent<Props> = ({
 
     return (
         <React.Fragment>
-            { getCharts() && getCharts().map(el => createWrapper(el.id, charts)) }
+            { getCharts() && getCharts().map(el => createWrapper(el.id, data)) }
         </React.Fragment>
     );
 }

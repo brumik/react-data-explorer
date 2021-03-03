@@ -3,23 +3,24 @@ import { VictoryStack } from 'victory';
 import {
     ChartStack,
     ChartKind,
-    ChartElement,
-    Chart
+    Chart,
+    DataType
 } from './types';
 import createChart from './createChart';
 import { passDataToChildren } from './helpers';
 
 const components: Partial<Record<ChartKind, (
     id: number,
-    charts: ChartElement[]
+    data: DataType
 ) => React.ReactElement>> = {
     [ChartKind.simple]: createChart
 };
 
 const createStack = (
     id: number,
-    charts: ChartElement[]
+    data: DataType
 ): React.ReactElement => {
+    let { charts } = data;
     const stack = charts.find(({ id: i }) => i === id) as ChartStack;
     const children = charts.filter(({ parent }) => parent === id) as Chart[];
 
@@ -36,7 +37,7 @@ const createStack = (
             key={stack.id}
             {...stack.props}
         >
-            { children.map(child => components[child.kind](child.id, charts)) }
+            { children.map(child => components[child.kind](child.id, { ...data, charts })) }
         </VictoryStack>
     )
 };

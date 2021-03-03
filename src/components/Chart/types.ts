@@ -5,7 +5,6 @@ import {
     VictoryTooltipProps,
     VictoryStackProps
 } from 'victory';
-import { OnClickFunction } from './onClickFunctions';
 
 export enum ChartKind {
     simple = 'simple',
@@ -54,7 +53,7 @@ export interface Chart extends ChartBase {
     type: ChartType,
     api?: ApiProps,
     legend?: LegendProps
-    onClick?: OnClickFunction
+    onClick?: string
 }
 
 /* Chart Group Wrapper Types */
@@ -98,6 +97,16 @@ export interface ChartWrapper extends ChartBase {
     legend?: VictoryLegendProps,
     hidden?: boolean,
     style?: any
+}
+
+// Overal types
+export interface PropFunctions {
+    onClick?: Record<string, any>
+}
+
+export interface DataType {
+    charts: ChartElement[],
+    functions: PropFunctions
 }
 
 export type ChartElement = Chart | ChartWrapper | ChartGroup | ChartStack;

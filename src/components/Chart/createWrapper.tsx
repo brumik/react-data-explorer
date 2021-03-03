@@ -8,7 +8,7 @@ import {
 import {
     ChartWrapper,
     ChartKind,
-    ChartElement
+    DataType
 } from './types';
 import { getFunction } from '../functions';
 import createChart from './createChart';
@@ -18,14 +18,18 @@ import { axisStyle, disabledAxisProps } from './styling';
 
 const components: Partial<Record<ChartKind, (
     id: number,
-    charts: ChartElement[]
+    data: DataType
 ) => React.ReactElement>> = {
     [ChartKind.group]: createGroup,
     [ChartKind.stack]: createStack,
     [ChartKind.simple]: createChart
 };
 
-const createWrapper = (id: number, charts: ChartElement[]): React.ReactElement => {
+const createWrapper = (
+    id: number,
+    data: DataType
+): React.ReactElement => {
+    const { charts } = data;
     const wrapper = charts.find(({ id: i }) => i === id) as ChartWrapper;
     const child = charts.find(({ parent }) => parent === wrapper.id);
 
@@ -62,7 +66,7 @@ const createWrapper = (id: number, charts: ChartElement[]): React.ReactElement =
             { !wrapper.hidden && <VictoryAxis {...xAxis} /> }
             { !wrapper.hidden && <VictoryAxis dependentAxis {...yAxis} />}
             { wrapper.legend && <VictoryLegend {...wrapper.legend} />}
-            { child && components[child.kind](child.id, charts) }
+            { child && components[child.kind](child.id, data) }
         </VictoryChart>
     );
 };
