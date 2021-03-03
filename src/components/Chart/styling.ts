@@ -3,6 +3,9 @@ export const labelStylingProps = {
         fontSize: 4,
         fill: 'white'
     },
+    centerOffset: {
+        y: 5
+    },
     cornerRadius: 0,
     flyoutPadding: 4,
     flyoutStyle: {

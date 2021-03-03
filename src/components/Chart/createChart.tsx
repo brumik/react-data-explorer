@@ -16,6 +16,7 @@ import {
 import legendMapper from './Tooltips';
 import { labelStylingProps } from './styling';
 import { snakeToSentence } from './helpers';
+import { getOnClickFunction, OnClickFunction } from './onClickFunctions';
 
 const components: Partial<Record<ChartType, React.ElementType>> = {
     [ChartType.bar]: VictoryBar,
@@ -53,6 +54,12 @@ const createChart = (
     return (
         <SelectedChart
             key={chart.id}
+            events={[{
+                target: 'data',
+                eventHandlers: {
+                    onClick: getOnClickFunction(chart.onClick ?? OnClickFunction.default)
+                }
+            }]}
             {...props}
         />
     );

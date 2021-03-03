@@ -1,6 +1,7 @@
 import '@patternfly/react-core/dist/styles/base.css';
 import * as React from 'react';
 import DataExplorer, { ChartKind, ChartElement, ChartType, LegendType } from '../../src/';
+import { OnClickFunction } from '../../src/components/Chart/onClickFunctions';
 
 // const legend = (ori = 'horizontal') => ({
 //     x: 0,
@@ -80,7 +81,8 @@ const schema: ChartElement[] = [
             props: {},
             labelAttr: 'failed_count',
             labelName: 'Failed'
-        }
+        },
+        onClick: OnClickFunction.consoleLog
     },
     {
         id: 1001,

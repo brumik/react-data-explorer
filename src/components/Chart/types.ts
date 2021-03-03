@@ -5,6 +5,7 @@ import {
     VictoryTooltipProps,
     VictoryStackProps
 } from 'victory';
+import { OnClickFunction } from './onClickFunctions';
 
 export enum ChartKind {
     simple = 'simple',
@@ -44,7 +45,7 @@ export interface LegendProps {
     type: TooltipType,
     props: VictoryTooltipProps,
     labelAttr: string
-    labelName?: string
+    labelName?: string,
 }
 
 export interface Chart extends ChartBase {
@@ -53,6 +54,7 @@ export interface Chart extends ChartBase {
     type: ChartType,
     api?: ApiProps,
     legend?: LegendProps
+    onClick?: OnClickFunction
 }
 
 /* Chart Group Wrapper Types */

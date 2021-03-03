@@ -26,6 +26,7 @@ const initialFetch = async (schema: ChartElement[]): Promise<ChartElement[]> => 
     const chartsToLoad = schema.filter(el => el.api);
     const staticSchema = schema.filter(el => !el.api)
 
+
     await Promise.all(
         chartsToLoad.map(el => fetchApi(el.api))
     ).then((results: Record<string, unknown>[]) => {
