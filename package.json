@@ -1,10 +1,10 @@
 {
   "name": "react-data-explorer",
-  "version": "0.0.1",
+  "version": "0.0.5",
   "private": false,
   "description": "A data explorer component in react",
-  "main": "./lib/index.js",
-  "types": "./lib/index.d.ts",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "repository": {
     "type": "git",
     "url": "https://github.com/brumik/react-data-explorer.git"
@@ -17,21 +17,21 @@
   },
   "homepage": "https://github.com/brumik/react-data-explorer#readme",
   "files": [
-    "lib/**/*"
+    "dist"
   ],
   "scripts": {
     "start": "webpack serve --config demo/webpack.config.js --mode development",
     "test": "jest --config jest.config.json --coverage",
     "build": "tsc",
     "lint": "eslint ./src/**/*.{js,ts,tsx}",
-    "prepare": "npm run build",
-    "prepublishOnly": "npm test && npm run eslint",
+    "prepublishOnly": "npm run lint",
+    "prepare": "rm -rf dist && npm run build",
     "semantic-release": "semantic-release"
   },
   "dependencies": {
     "@patternfly/react-core": "^4.79.2",
-    "react": "^17.0.1",
-    "react-dom": "^17.0.1",
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0",
     "react-redux": "^7.2.2",
     "redux": "^4.0.5",
     "redux-promise-middleware": "^6.1.2",

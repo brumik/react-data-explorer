@@ -14,7 +14,7 @@
     "suppressImplicitAnyIndexErrors": true,
     "noUnusedLocals": true,
     "declaration": true,
-    "outDir": "lib/",
+    "outDir": "dist/",
     "allowSyntheticDefaultImports": true,
     "paths": {
       "@assets/*": ["./node_modules/@patternfly/react-core/dist/styles/assets/*"]
@@ -22,9 +22,10 @@
     "importHelpers": true,
     "skipLibCheck": true
   },
+  "include": ["src"],
   "exclude": [
     "node_modules",
     "src/tests",
-    "lib",
+    "dist"
   ]
 }

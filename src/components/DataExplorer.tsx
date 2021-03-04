@@ -37,7 +37,7 @@ const initialFetch = async (schema: ChartElement[]): Promise<ChartElement[]> => 
         }
     });
 
-    return [ ...staticSchema, ...chartsToLoad];
+    return [...staticSchema, ...chartsToLoad];
 };
 
 const DataExplorer: FunctionComponent<Props> = ({
