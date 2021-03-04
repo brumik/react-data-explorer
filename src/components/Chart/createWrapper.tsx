@@ -10,7 +10,6 @@ import {
     ChartKind,
     DataType
 } from './types';
-import { getFunction } from '../functions';
 import createChart from './createChart';
 import createGroup from './createGroup';
 import createStack from './createStack';
@@ -29,7 +28,7 @@ const createWrapper = (
     id: number,
     data: DataType
 ): React.ReactElement => {
-    const { charts } = data;
+    const { charts, functions } = data;
     const wrapper = charts.find(({ id: i }) => i === id) as ChartWrapper;
     const child = charts.find(({ parent }) => parent === wrapper.id);
 
@@ -37,13 +36,15 @@ const createWrapper = (
         style: axisStyle,
         fixLabelOverlap: true,
         ...wrapper.xAxis,
-        tickFormat: getFunction(wrapper.xAxis.tickFormat ?? '')
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+        ...wrapper.xAxis.tickFormat && { tickFormat: functions.axisFormat[wrapper.xAxis.tickFormat] }
     };
 
     const yAxis = {
         style: axisStyle,
         ...wrapper.yAxis,
-        tickFormat: getFunction(wrapper.yAxis.tickFormat ?? '')
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+        tickFormat: functions.axisFormat[wrapper.yAxis.tickFormat]
     };
 
     const childIsBarChart = () =>

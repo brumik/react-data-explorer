@@ -1,5 +1,10 @@
 import { VictoryLegendProps } from 'victory';
-import { ChartKind, ChartElement, ChartType, LegendType } from '../../src/';
+import {
+    ChartKind,
+    ChartElement,
+    ChartType,
+    TooltipType
+} from '../../src/';
 
 const legend = (ori = 'horizontal') => ({
     x: 0,
@@ -75,7 +80,7 @@ export const dashboard: ChartElement[] = [
             }
         },
         legend: {
-            type: LegendType.default,
+            type: TooltipType.default,
             props: {},
             labelAttr: 'failed_count',
             labelName: 'Failed'
@@ -97,7 +102,7 @@ export const dashboard: ChartElement[] = [
             }
         },
         legend: {
-            type: LegendType.default,
+            type: TooltipType.default,
             props: {},
             labelAttr: 'successful_count'
         }

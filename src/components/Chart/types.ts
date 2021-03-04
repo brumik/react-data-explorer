@@ -18,7 +18,7 @@ export enum TooltipType {
 }
 
 export interface ApiProps {
-    params: Record<string, any>,
+    params: Record<string, unknown>,
     url: string,
     optionUrl: string,
     data?: Record<string, unknown>[]
@@ -57,7 +57,7 @@ export interface Chart extends ChartBase {
 }
 
 /* Chart Group Wrapper Types */
-interface GroupProps {
+export interface GroupProps {
     offset?: number
 }
 
@@ -75,33 +75,29 @@ export interface ChartStack extends ChartBase {
 }
 
 /* Chart Wrapper Types */
-interface AxisProps {
+export interface AxisProps {
     label?: string,
-    tickFormat?: any,
+    tickFormat?: string,
     fixLabelOverlap?: boolean,
     domain?: any,
     style?: any
-}
-
-interface WrapperProps extends VictoryChartProps {
-    height?: number
 }
 
 export interface ChartWrapper extends ChartBase {
     kind: ChartKind.wrapper,
     parent: null,
     api?: ApiProps // Currently this SHOULD NOT BE USED. Is here because of stupid Tscript
-    props: WrapperProps,
+    props: VictoryChartProps,
     xAxis: AxisProps,
     yAxis: AxisProps,
     legend?: VictoryLegendProps,
-    hidden?: boolean,
-    style?: any
+    hidden?: boolean
 }
 
 // Overal types
 export interface PropFunctions {
     onClick?: Record<string, any>
+    axisFormat?: Record<string, any>
 }
 
 export interface DataType {
