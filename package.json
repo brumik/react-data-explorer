@@ -1,6 +1,6 @@
 {
   "name": "react-data-explorer",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "private": false,
   "description": "A data explorer component in react",
   "main": "dist/index.js",
@@ -63,8 +63,7 @@
     "style-loader": "^2.0.0",
     "ts-jest": "^26.4.4",
     "ts-loader": "^8.0.11",
-    "tslib": "^2.1.0",
-    "typescript": "^4.1.2",
+    "typescript": "^3.8.3",
     "webpack": "^5.8.0",
     "webpack-cli": "^4.2.0",
     "webpack-dev-server": "^3.11.0"
