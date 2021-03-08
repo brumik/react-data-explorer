@@ -1,10 +1,9 @@
-import React from 'react';
+import React, { FunctionComponent, useEffect, useRef, useState } from 'react';
 import {
-    VictoryChart,
-    VictoryTheme,
-    VictoryAxis,
-    VictoryLegend
-} from 'victory';
+    Chart,
+    ChartAxis,
+    ChartVoronoiContainer
+} from '@patternfly/react-charts';
 import {
     ChartWrapper,
     ChartKind,
@@ -24,10 +23,15 @@ const components: Partial<Record<ChartKind, (
     [ChartKind.simple]: createChart
 };
 
-const createWrapper = (
+interface Props {
     id: number,
     data: DataType
-): React.ReactElement => {
+}
+
+const CreateWrapper: FunctionComponent<Props> = ({
+    id,
+    data
+}) => {
     const { charts, functions } = data;
     const wrapper = charts.find(({ id: i }) => i === id) as ChartWrapper;
     const child = charts.find(({ parent }) => parent === wrapper.id);
@@ -50,26 +54,61 @@ const createWrapper = (
     const childIsBarChart = () =>
         child.kind === ChartKind.simple && child.type === 'bar';
 
+
     const props = {
-        theme: VictoryTheme.material,
+        // theme: VictoryTheme.material,
         domainPadding: childIsBarChart() ? 20 : 0,
         ...wrapper.props
     }
 
+    const containerRef = useRef(null);
+    const [ width, setWidth ] = useState(0);
+    const handleResize = () => {
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+        if (containerRef.current && containerRef.current.clientWidth) {
+            // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+            setWidth(containerRef.current.clientWidth);
+        }
+    };
+
+    useEffect(() => {
+        handleResize();
+        window.addEventListener('resize', handleResize);
+
+        return () => {
+            window.removeEventListener('resize', handleResize);
+        }
+    }, [])
+
     return (
-        <VictoryChart
-            key={id}
-            {...props}
-        >
-            { wrapper.hidden &&
-                <VictoryAxis {...disabledAxisProps} />
-            }
-            { !wrapper.hidden && <VictoryAxis {...xAxis} /> }
-            { !wrapper.hidden && <VictoryAxis dependentAxis {...yAxis} />}
-            { wrapper.legend && <VictoryLegend {...wrapper.legend} />}
-            { child && components[child.kind](child.id, data) }
-        </VictoryChart>
+        <div ref={containerRef}>
+            <div style={{ height: props.height }}>
+                <Chart
+                    key={id}
+                    {...props}
+                    width={width}
+                    containerComponent={<ChartVoronoiContainer
+                        labels={({ datum }) => `${datum.xName}: ${datum._y}`}
+                        constrainToVisibleArea
+                    />}
+                    padding={{
+                        bottom: 70,
+                        left: 70,
+                        right: 50,
+                        top: 50
+                    }}
+                >
+                    { wrapper.hidden &&
+                        <ChartAxis {...disabledAxisProps} />
+                    }
+                    {!wrapper.hidden && <ChartAxis {...xAxis} /> }
+                    {!wrapper.hidden && <ChartAxis dependentAxis {...yAxis} />}
+                    { /* wrapper.legend && <VictoryLegend {...wrapper.legend} /> */ }
+                    { child && components[child.kind](child.id, data) }
+                </Chart>
+            </div>
+        </div>
     );
 };
 
-export default createWrapper;
+export default CreateWrapper;

@@ -1,7 +1,7 @@
 import React from 'react';
-import { VictoryGroup } from 'victory';
+import { ChartGroup } from '@patternfly/react-charts';
 import {
-    ChartGroup,
+    ChartGroup as ChartGroupType,
     ChartKind,
     DataType
 } from './types';
@@ -22,7 +22,7 @@ const createGroup = (
     data: DataType
 ): React.ReactElement => {
     let { charts } =  data;
-    const group = charts.find(({ id: i }) => i === id) as ChartGroup;
+    const group = charts.find(({ id: i }) => i === id) as ChartGroupType;
     const children = charts.filter(({ parent }) => parent === id);
 
     if (group.api) {
@@ -34,12 +34,12 @@ const createGroup = (
     }
 
     return (
-        <VictoryGroup
+        <ChartGroup
             offset={20}
             {...group.props}
         >
             { children.map(child => components[child.kind](child.id, { ...data, charts })) }
-        </VictoryGroup>
+        </ChartGroup>
     );
 };
 

@@ -1,7 +1,8 @@
 import React from 'react';
-import { VictoryStack } from 'victory';
+
+import { ChartStack } from '@patternfly/react-charts';
 import {
-    ChartStack,
+    ChartStack as ChartStackType,
     ChartKind,
     Chart,
     DataType
@@ -21,7 +22,7 @@ const createStack = (
     data: DataType
 ): React.ReactElement => {
     let { charts } = data;
-    const stack = charts.find(({ id: i }) => i === id) as ChartStack;
+    const stack = charts.find(({ id: i }) => i === id) as ChartStackType;
     const children = charts.filter(({ parent }) => parent === id) as Chart[];
 
     if (stack.api) {
@@ -33,12 +34,12 @@ const createStack = (
     }
 
     return (
-        <VictoryStack
+        <ChartStack
             key={stack.id}
             {...stack.props}
         >
             { children.map(child => components[child.kind](child.id, { ...data, charts })) }
-        </VictoryStack>
+        </ChartStack>
     )
 };
 

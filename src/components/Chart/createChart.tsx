@@ -1,34 +1,32 @@
 import React from 'react';
 import {
-    VictoryBar,
-    VictoryLine,
-    VictoryPie,
-    VictoryArea,
-    VictoryScatter,
-    VictoryHistogram
-} from 'victory';
+    ChartBar,
+    ChartLine,
+    ChartPie,
+    ChartArea,
+    ChartScatter
+} from '@patternfly/react-charts';
 import {
     ChartType,
     Chart,
-    LegendProps,
+    // LegendProps,
     DataType
 } from './types';
-import legendMapper from './Tooltips';
-import { labelStylingProps } from './styling';
-import { snakeToSentence } from './helpers';
+// import legendMapper from './Tooltips';
+// import { labelStylingProps } from './styling';
+// import { snakeToSentence } from './helpers';
 
 const components: Partial<Record<ChartType, React.ElementType>> = {
-    [ChartType.bar]: VictoryBar,
-    [ChartType.line]: VictoryLine,
-    [ChartType.pie]: VictoryPie,
-    [ChartType.area]: VictoryArea,
-    [ChartType.scatter]: VictoryScatter,
-    [ChartType.histogram]: VictoryHistogram
+    [ChartType.bar]: ChartBar,
+    [ChartType.line]: ChartLine,
+    [ChartType.pie]: ChartPie,
+    [ChartType.area]: ChartArea,
+    [ChartType.scatter]: ChartScatter
 };
 
-const getLabels = ({ labelAttr, labelName }: LegendProps) =>
-    ({ datum }: { datum: Record<string, string> }) =>
-        `${labelName ?? snakeToSentence(labelAttr)}: ${datum[labelAttr]}`;
+// const getLabels = ({ labelAttr, labelName }: LegendProps) =>
+//     ({ datum }: { datum: Record<string, string> }) =>
+//         `${labelName ?? snakeToSentence(labelAttr)}: ${datum[labelAttr]}`;
 
 const createChart = (
     id: number,
@@ -39,17 +37,17 @@ const createChart = (
     const SelectedChart = components[chart.type];
 
     let props = {...chart.props};
-    if (chart.legend) {
-        const LegendComponent = legendMapper[chart.legend.type];
-        props = {
-            ...props,
-            labels: getLabels(chart.legend),
-            labelComponent: <LegendComponent
-                {...labelStylingProps}
-                {...chart.legend.props}
-            />
-        }
-    }
+    // if (chart.legend) {
+    //     // const LegendComponent = legendMapper[chart.legend.type];
+    //     props = {
+    //         ...props,
+    //         labels: getLabels(chart.legend)
+    //         // labelComponent: <LegendComponent
+    //         //     // {...labelStylingProps}
+    //         //     // {...chart.legend.props}
+    //         // />
+    //     }
+    // }
 
     if (chart.onClick) {
         props = {

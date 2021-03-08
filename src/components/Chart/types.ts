@@ -1,10 +1,9 @@
 import {
-    VictoryLegendProps,
-    VictoryBarProps,
-    VictoryChartProps,
-    VictoryTooltipProps,
-    VictoryStackProps
-} from 'victory';
+    ChartBarProps,
+    ChartProps,
+    ChartTooltipProps,
+    ChartStackProps
+} from '@patternfly/react-charts';
 
 export enum ChartKind {
     simple = 'simple',
@@ -42,14 +41,14 @@ export enum ChartType {
 
 export interface LegendProps {
     type: TooltipType,
-    props: VictoryTooltipProps,
+    props: ChartTooltipProps,
     labelAttr: string
     labelName?: string,
 }
 
 export interface Chart extends ChartBase {
     kind: ChartKind.simple,
-    props: VictoryBarProps,
+    props: ChartBarProps,
     type: ChartType,
     api?: ApiProps,
     legend?: LegendProps
@@ -70,7 +69,7 @@ export interface ChartGroup extends ChartBase {
 /* Chart Stack Wrapper Types */
 export interface ChartStack extends ChartBase {
     kind: ChartKind.stack,
-    props: VictoryStackProps,
+    props: ChartStackProps,
     api?: ApiProps
 }
 
@@ -87,10 +86,10 @@ export interface ChartWrapper extends ChartBase {
     kind: ChartKind.wrapper,
     parent: null,
     api?: ApiProps // Currently this SHOULD NOT BE USED. Is here because of stupid Tscript
-    props: VictoryChartProps,
+    props: ChartProps,
     xAxis: AxisProps,
     yAxis: AxisProps,
-    legend?: VictoryLegendProps,
+    legend?: LegendProps,
     hidden?: boolean
 }
 

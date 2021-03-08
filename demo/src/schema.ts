@@ -1,9 +1,9 @@
-import { VictoryLegendProps } from 'victory';
 import {
     ChartKind,
     ChartElement,
     ChartType,
-    TooltipType
+    TooltipType,
+    LegendProps
 } from '../../src/';
 
 const legend = (ori = 'horizontal') => ({
@@ -24,7 +24,7 @@ const legend = (ori = 'horizontal') => ({
         labels: { fontSize: 7 }
     },
     centerTitle: true
-}) as VictoryLegendProps;
+}) as unknown as LegendProps;
 
 export const dashboard: ChartElement[] = [
     // Cluster page bar chart
@@ -33,7 +33,7 @@ export const dashboard: ChartElement[] = [
         kind: ChartKind.wrapper,
         parent: null,
         props: {
-            height: 220,
+            height: 300,
             domainPadding: 20
         },
         xAxis: {

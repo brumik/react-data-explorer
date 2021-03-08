@@ -2,7 +2,7 @@ import React, { FunctionComponent, useEffect, useState } from 'react';
 import {
     ChartElement, DataType, PropFunctions
 } from './types';
-import createWrapper from './createWrapper';
+import CreateWrapper from './createWrapper';
 import { fetchApi } from '../helpers';
 
 interface Props {
@@ -55,7 +55,11 @@ const ChartRenderer: FunctionComponent<Props> = ({
     return (
         <React.Fragment>
             { loaded && getCharts(fetched).map(el =>
-                createWrapper(el.id, { ...data, charts: fetched })
+                (<CreateWrapper
+                    id={el.id}
+                    key={el.id}
+                    data={{ ...data, charts: fetched }}
+                />)
             )}
         </React.Fragment>
     );
