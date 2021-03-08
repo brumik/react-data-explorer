@@ -80,6 +80,11 @@ const CreateWrapper: FunctionComponent<Props> = ({
         }
     }, [])
 
+    interface Datum {
+        xName: string,
+        _y: number
+    }
+
     return (
         <div ref={containerRef}>
             <div style={{ height: props.height }}>
@@ -88,7 +93,8 @@ const CreateWrapper: FunctionComponent<Props> = ({
                     {...props}
                     width={width}
                     containerComponent={<ChartVoronoiContainer
-                        labels={({ datum }) => `${datum.xName}: ${datum._y}`}
+                        // eslint-disable-next-line no-underscore-dangle
+                        labels={({ datum }: Record<string, Datum>) => `${datum.xName}: ${datum._y}`}
                         constrainToVisibleArea
                     />}
                     padding={{
