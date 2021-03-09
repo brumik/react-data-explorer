@@ -12,7 +12,7 @@ import {
 import createChart from './createChart';
 import createGroup from './createGroup';
 import createStack from './createStack';
-import { axisStyle, disabledAxisProps } from './styling';
+import { disabledAxisProps } from './styling';
 
 const components: Partial<Record<ChartKind, (
     id: number,
@@ -37,7 +37,6 @@ const CreateWrapper: FunctionComponent<Props> = ({
     const child = charts.find(({ parent }) => parent === wrapper.id);
 
     const xAxis = {
-        style: axisStyle,
         fixLabelOverlap: true,
         ...wrapper.xAxis,
         // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
@@ -45,7 +44,6 @@ const CreateWrapper: FunctionComponent<Props> = ({
     };
 
     const yAxis = {
-        style: axisStyle,
         ...wrapper.yAxis,
         // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
         tickFormat: functions.axisFormat[wrapper.yAxis.tickFormat]
@@ -61,12 +59,10 @@ const CreateWrapper: FunctionComponent<Props> = ({
         ...wrapper.props
     }
 
-    const containerRef = useRef(null);
+    const containerRef = useRef<HTMLDivElement>(null);
     const [ width, setWidth ] = useState(0);
     const handleResize = () => {
-        // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
         if (containerRef.current && containerRef.current.clientWidth) {
-            // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
             setWidth(containerRef.current.clientWidth);
         }
     };
@@ -84,8 +80,8 @@ const CreateWrapper: FunctionComponent<Props> = ({
         <div ref={containerRef}>
             <div style={{ height: props.height }}>
                 <Chart
-                    key={id}
                     {...props}
+                    key={id}
                     width={width}
                     containerComponent={<ChartVoronoiContainer constrainToVisibleArea />}
                     padding={{
@@ -95,13 +91,13 @@ const CreateWrapper: FunctionComponent<Props> = ({
                         top: 50
                     }}
                 >
-                    { wrapper.hidden &&
+                    {wrapper.hidden &&
                         <ChartAxis {...disabledAxisProps} />
                     }
-                    {!wrapper.hidden && <ChartAxis {...xAxis} /> }
+                    {!wrapper.hidden && <ChartAxis {...xAxis} />}
                     {!wrapper.hidden && <ChartAxis dependentAxis {...yAxis} />}
-                    { /* wrapper.legend && <VictoryLegend {...wrapper.legend} /> */ }
-                    { child && components[child.kind](child.id, data) }
+                    {/* wrapper.legend && <VictoryLegend {...wrapper.legend} /> */}
+                    {child && components[child.kind](child.id, data)}
                 </Chart>
             </div>
         </div>

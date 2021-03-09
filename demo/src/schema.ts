@@ -119,8 +119,8 @@ export const showcase: ChartElement[] = [
             height: 200
         },
         xAxis: {
-            label: 'Days in the month',
-            tickFormat: 'formatDateAsDays'
+            label: 'Days in the month'
+            // tickFormat: 'formatDateAsDays'
         },
         yAxis: {
             label: 'Host Count',
@@ -140,49 +140,51 @@ export const showcase: ChartElement[] = [
             url: 'https://prod.foo.redhat.com:1337/api/tower-analytics/v1/job_explorer/',
             optionUrl: '/demo/api/jobExplorerOptions.json'
         },
-        type: ChartType.bar
+        type: ChartType.line
     },
     // Pie example
-    {
-        id: 3,
-        kind: ChartKind.wrapper,
-        parent: null,
-        props: {
-            height: 200
-        },
-        xAxis: {},
-        yAxis: {},
-        hidden: true,
-        legend: legend('vertical')
-    },
-    {
-        id: 4,
-        kind: ChartKind.simple,
-        parent: 3,
-        props: {
-            x: '',
-            y: 'host_count'
-        },
-        api: {
-            params: { 'group_by_time': 'false', 'limit': '5' },
-            url: 'https://prod.foo.redhat.com:1337/api/tower-analytics/v1/job_explorer/',
-            optionUrl: '/demo/api/jobExplorerOptions.json'
-        },
-        type: ChartType.pie
-    },
+    // {
+    //     id: 3,
+    //     kind: ChartKind.wrapper,
+    //     parent: null,
+    //     props: {
+    //         height: 500
+    //     },
+    //     xAxis: {},
+    //     yAxis: {},
+    //     hidden: true,
+    //     legend: legend('vertical')
+    // },
+    // {
+    //     id: 4,
+    //     kind: ChartKind.simple,
+    //     parent: 3,
+    //     props: {
+    //         x: '',
+    //         y: 'host_count'
+    //     },
+    //     api: {
+    //         params: { 'group_by_time': 'false', 'limit': '5' },
+    //         url: 'https://prod.foo.redhat.com:1337/api/tower-analytics/v1/job_explorer/',
+    //         optionUrl: '/demo/api/jobExplorerOptions.json'
+    //     },
+    //     type: ChartType.pie
+    // },
     // Grouped example
     {
         id: 5,
         kind: ChartKind.wrapper,
         parent: null,
         props: {
-            height: 200
+            domainPadding: 11,
+            height: 200,
         },
         xAxis: {
             label: 'Days in the month'
         },
         yAxis: {
-            label: 'Host Count'
+            label: 'Host Count',
+            tickFormat: 'formatNumberAsK'
         },
         hidden: false
     },
@@ -191,7 +193,12 @@ export const showcase: ChartElement[] = [
         kind: ChartKind.group,
         parent: 5,
         props: {
-            offset: 3
+            offset: 10
+        },
+        api: {
+            params: { 'group_by_time': 'true' },
+            url: 'https://prod.foo.redhat.com:1337/api/tower-analytics/v1/job_explorer/',
+            optionUrl: '/demo/api/jobExplorerOptions.json'
         }
     },
     {
@@ -202,11 +209,6 @@ export const showcase: ChartElement[] = [
             x: 'created_date',
             y: 'host_count'
         },
-        api: {
-            params: { 'group_by_time': 'true' },
-            url: 'https://prod.foo.redhat.com:1337/api/tower-analytics/v1/job_explorer/',
-            optionUrl: '/demo/api/jobExplorerOptions.json'
-        },
         type: ChartType.bar
     },
     {
@@ -216,11 +218,6 @@ export const showcase: ChartElement[] = [
         props: {
             x: 'created_date',
             y: 'host_count'
-        },
-        api: {
-            params: { 'group_by_time': 'true' },
-            url: 'https://prod.foo.redhat.com:1337/api/tower-analytics/v1/job_explorer/',
-            optionUrl: '/demo/api/jobExplorerOptions.json'
         },
         type: ChartType.bar
     },
@@ -244,7 +241,12 @@ export const showcase: ChartElement[] = [
         id: 11,
         kind: ChartKind.stack,
         parent: 10,
-        props: {}
+        props: {},
+        api: {
+            params: { 'group_by_time': 'true' },
+            url: 'https://prod.foo.redhat.com:1337/api/tower-analytics/v1/job_explorer/',
+            optionUrl: '/demo/api/jobExplorerOptions.json'
+        }
     },
     {
         id: 12,
@@ -253,11 +255,6 @@ export const showcase: ChartElement[] = [
         props: {
             x: 'created_date',
             y: 'host_count'
-        },
-        api: {
-            params: { 'group_by_time': 'true' },
-            url: 'https://prod.foo.redhat.com:1337/api/tower-analytics/v1/job_explorer/',
-            optionUrl: '/demo/api/jobExplorerOptions.json'
         },
         type: ChartType.area
     },
@@ -269,11 +266,6 @@ export const showcase: ChartElement[] = [
             x: 'created_date',
             y: 'host_count'
         },
-        api: {
-            params: { 'group_by_time': 'true' },
-            url: 'https://prod.foo.redhat.com:1337/api/tower-analytics/v1/job_explorer/',
-            optionUrl: '/demo/api/jobExplorerOptions.json'
-        },
         type: ChartType.area
     },
     // Stacked and grouped example
@@ -282,6 +274,7 @@ export const showcase: ChartElement[] = [
         kind: ChartKind.wrapper,
         parent: null,
         props: {
+            domainPadding: 11,
             height: 200
         },
         xAxis: {
@@ -297,8 +290,11 @@ export const showcase: ChartElement[] = [
         id: 101,
         kind: ChartKind.group,
         parent: 100,
-        props: {
-            offset: 5
+        props: {},
+        api: {
+            params: { 'group_by_time': 'true' },
+            url: 'https://prod.foo.redhat.com:1337/api/tower-analytics/v1/job_explorer/',
+            optionUrl: '/demo/api/jobExplorerOptions.json'
         }
     },
     {
@@ -315,11 +311,6 @@ export const showcase: ChartElement[] = [
             x: 'created_date',
             y: 'host_count'
         },
-        api: {
-            params: { 'group_by_time': 'true' },
-            url: 'https://prod.foo.redhat.com:1337/api/tower-analytics/v1/job_explorer/',
-            optionUrl: '/demo/api/jobExplorerOptions.json'
-        },
         type: ChartType.bar
     },
     {
@@ -329,11 +320,6 @@ export const showcase: ChartElement[] = [
         props: {
             x: 'created_date',
             y: 'host_count'
-        },
-        api: {
-            params: { 'group_by_time': 'true' },
-            url: 'https://prod.foo.redhat.com:1337/api/tower-analytics/v1/job_explorer/',
-            optionUrl: '/demo/api/jobExplorerOptions.json'
         },
         type: ChartType.bar
     },
@@ -351,11 +337,6 @@ export const showcase: ChartElement[] = [
             x: 'created_date',
             y: 'host_count'
         },
-        api: {
-            params: { 'group_by_time': 'true' },
-            url: 'https://prod.foo.redhat.com:1337/api/tower-analytics/v1/job_explorer/',
-            optionUrl: '/demo/api/jobExplorerOptions.json'
-        },
         type: ChartType.bar
     },
     {
@@ -365,11 +346,6 @@ export const showcase: ChartElement[] = [
         props: {
             x: 'created_date',
             y: 'host_count'
-        },
-        api: {
-            params: { 'group_by_time': 'true' },
-            url: 'https://prod.foo.redhat.com:1337/api/tower-analytics/v1/job_explorer/',
-            optionUrl: '/demo/api/jobExplorerOptions.json'
         },
         type: ChartType.bar
     }

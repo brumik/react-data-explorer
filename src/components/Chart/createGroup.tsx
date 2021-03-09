@@ -35,7 +35,7 @@ const createGroup = (
 
     return (
         <ChartGroup
-            offset={20}
+            offset={11}
             {...group.props}
         >
             { children.map(child => components[child.kind](child.id, { ...data, charts })) }

@@ -5,7 +5,7 @@ import /* DataExplorer, */ {
     functions,
     ChartRenderer
 } from '../../src/';
-import { dashboard as schema } from './schema';
+import { showcase as schema } from './schema';
 
 const App: React.FunctionComponent<Record<string, never>> = () => {
     // const logger = (json: ChartElement[]) => {

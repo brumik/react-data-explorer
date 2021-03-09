@@ -2,7 +2,8 @@ import {
     ChartBarProps,
     ChartProps,
     ChartTooltipProps,
-    ChartStackProps
+    ChartStackProps,
+    ChartGroupProps
 } from '@patternfly/react-charts';
 
 export enum ChartKind {
@@ -56,7 +57,7 @@ export interface Chart extends ChartBase {
 }
 
 /* Chart Group Wrapper Types */
-export interface GroupProps {
+export interface GroupProps extends ChartGroupProps {
     offset?: number
 }
 

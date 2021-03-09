@@ -60,6 +60,13 @@ const createChart = (
         }
     }
 
+    if (chart.api && chart.api.data) {
+        props = {
+            ...props,
+            data: chart.api.data
+        };
+    }
+
     return (
         <SelectedChart
             key={chart.id}
