@@ -106,7 +106,10 @@ const CreateWrapper: FunctionComponent<Props> = ({
     let labelProps = {};
     if (wrapper.label) {
         labelProps = {
-            labels: getLabels(wrapper.label)
+            containerComponent: <ChartVoronoiContainer
+                constrainToVisibleArea
+                labels={getLabels(wrapper.label)}
+            />
         }
     }
 
@@ -136,10 +139,7 @@ const CreateWrapper: FunctionComponent<Props> = ({
                     {...props}
                     key={id}
                     width={width}
-                    containerComponent={<ChartVoronoiContainer
-                        constrainToVisibleArea
-                        {...labelProps}
-                    />}
+                    {...labelProps}
                 >
                     {wrapper.hidden &&
                         <ChartAxis {...disabledAxisProps} />

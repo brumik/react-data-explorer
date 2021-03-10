@@ -17,11 +17,20 @@ export enum TooltipType {
     default = 'default'
 }
 
+export enum DataKind {
+    simple = 'simple',
+    grouped = 'grouped'
+}
+
+export type SimpleApiDataFormat = Record<string, unknown>[]
+export type GroupedApiDataFormat = SimpleApiDataFormat[]
+
 export interface ApiProps {
     params: Record<string, unknown>,
     url: string,
     optionUrl: string,
-    data?: Record<string, unknown>[]
+    data?: SimpleApiDataFormat | GroupedApiDataFormat,
+    dataKind?: DataKind
 }
 
 export interface ChartBase {
@@ -64,7 +73,8 @@ export interface GroupProps extends ChartGroupProps {
 export interface ChartGroup extends ChartBase {
     kind: ChartKind.group,
     props: GroupProps
-    api?: ApiProps
+    api?: ApiProps,
+    template?: Chart
 }
 
 /* Chart Stack Wrapper Types */

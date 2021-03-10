@@ -44,6 +44,7 @@ const createChart = (
             labels: getLabels(chart.legend),
             labelComponent: <LegendComponent
                 {...chart.legend.props}
+                dy={0}
             />
         }
     }

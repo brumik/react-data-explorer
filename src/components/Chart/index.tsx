@@ -1,13 +1,30 @@
 import React, { FunctionComponent, useEffect, useState } from 'react';
 import {
-    ChartElement, DataType, PropFunctions
+    ChartElement, DataKind, DataType, GroupedApiDataFormat, PropFunctions
 } from './types';
 import CreateWrapper from './createWrapper';
-import { fetchApi } from '../helpers';
+import { ApiReturnType, ApiType, fetchApi, GroupedApi } from '../helpers';
 
 interface Props {
     ids?: number[],
     data: DataType
+}
+
+const convertGroupedByData = (data: GroupedApi): GroupedApiDataFormat => {
+    const { dates } = data;
+    const items: GroupedApiDataFormat = [];
+    dates.forEach((el) => {
+        el.items.forEach((item, idx) => {
+            if (!items[idx]) {
+                items[idx] = [];
+            }
+            items[idx].push({
+                created_date: el.date,
+                ...item
+            });
+        })
+    });
+    return items;
 }
 
 const initialFetch = async (schema: ChartElement[]): Promise<ChartElement[]> => {
@@ -17,10 +34,26 @@ const initialFetch = async (schema: ChartElement[]): Promise<ChartElement[]> => 
 
     await Promise.all(
         chartsToLoad.map(el => fetchApi(el.api))
-    ).then((results: Record<string, unknown>[]) => {
-        for (let i = 0; i < chartsToLoad.length; i++) {
-            chartsToLoad[i].api.data = results[i].items as Record<string, unknown>[];
-        }
+    ).then((results: ApiReturnType[]) => {
+        results.forEach((result, idx) => {
+            // eslint-disable-next-line @typescript-eslint/dot-notation
+            if(result['dates']) {
+                result.type = ApiType.grouped
+            } else {
+                result.type = ApiType.nonGrouped
+            }
+
+            switch(result.type) {
+                case ApiType.grouped:
+                    chartsToLoad[idx].api.data = convertGroupedByData(result);
+                    chartsToLoad[idx].api.dataKind = DataKind.grouped
+                    break;
+                case ApiType.nonGrouped:
+                    chartsToLoad[idx].api.data = result.items;
+                    chartsToLoad[idx].api.dataKind = DataKind.simple
+                    break;
+            }
+        });
     });
 
     return [...staticSchema, ...chartsToLoad];

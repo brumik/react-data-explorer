@@ -1,9 +1,14 @@
 import React from 'react';
 import { ChartGroup } from '@patternfly/react-charts';
 import {
+    ChartElement,
     ChartGroup as ChartGroupType,
     ChartKind,
-    DataType
+    Chart,
+    DataKind,
+    DataType,
+    GroupedApiDataFormat,
+    SimpleApiDataFormat
 } from './types';
 import createChart from './createChart';
 import createStack from './createStack';
@@ -17,20 +22,51 @@ const components: Partial<Record<ChartKind, (
     [ChartKind.simple]: createChart
 };
 
+const createDynamicChildren = (
+    charts: ChartElement[],
+    template: Chart,
+    parent: number,
+    data: GroupedApiDataFormat
+): ChartElement[] => ([
+    ...charts,
+    ...data.map((d, idx) => ({
+        ...template,
+        id: idx,
+        parent,
+        props: {
+            ...template.props,
+            data: d
+        }
+    }))
+]);
+
 const createGroup = (
     id: number,
     data: DataType
 ): React.ReactElement => {
     let { charts } =  data;
     const group = charts.find(({ id: i }) => i === id) as ChartGroupType;
-    const children = charts.filter(({ parent }) => parent === id);
+    let children = charts.filter(({ parent }) => parent === id);
 
     if (group.api) {
-        charts = passDataToChildren(
-            charts,
-            children.map(({ id: i }) => i),
-            group.api.data
-        );
+        switch(group.api.dataKind) {
+            case DataKind.simple:
+                charts = passDataToChildren(
+                    charts,
+                    children.map(({ id: i }) => i),
+                    group.api.data as SimpleApiDataFormat
+                );
+                break;
+            case DataKind.grouped:
+                charts = createDynamicChildren(
+                    charts,
+                    group.template,
+                    group.id,
+                    group.api.data as GroupedApiDataFormat
+                );
+                children = charts.filter(({ parent }) => parent === id);
+                break;
+        }
     }
 
     return (

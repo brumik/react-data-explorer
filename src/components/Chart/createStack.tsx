@@ -29,7 +29,7 @@ const createStack = (
         charts = passDataToChildren(
             charts,
             children.map(({ id: i }) => i),
-            stack.api.data
+            stack.api.data as Record<string, unknown>[]
         );
     }
 
