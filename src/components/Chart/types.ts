@@ -89,6 +89,11 @@ export interface LegendProps {
     orientation: string
 }
 
+export interface WrapperTooltipProps {
+    labelAttr: string,
+    labelName?: string
+}
+
 export interface ChartWrapper extends ChartBase {
     kind: ChartKind.wrapper,
     parent: null,
@@ -97,6 +102,7 @@ export interface ChartWrapper extends ChartBase {
     xAxis: AxisProps,
     yAxis: AxisProps,
     legend?: LegendProps,
+    label?: WrapperTooltipProps[],
     hidden?: boolean
 }
 

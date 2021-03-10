@@ -7,12 +7,14 @@ import {
 import {
     ChartWrapper,
     ChartKind,
-    DataType
+    DataType,
+    WrapperTooltipProps
 } from './types';
 import createChart from './createChart';
 import createGroup from './createGroup';
 import createStack from './createStack';
 import { disabledAxisProps } from './styling';
+import { snakeToSentence } from './helpers';
 
 const components: Partial<Record<ChartKind, (
     id: number,
@@ -54,7 +56,6 @@ const CreateWrapper: FunctionComponent<Props> = ({
 
 
     const props = {
-        // theme: VictoryTheme.material,
         domainPadding: childIsBarChart() ? 20 : 0,
         height: 200,
         ...wrapper.props
@@ -88,6 +89,28 @@ const CreateWrapper: FunctionComponent<Props> = ({
         }
     }
 
+    const getLabels = (tooltips: WrapperTooltipProps[]) =>
+        ({ datum }: { datum: Record<string, string> }) => {
+            let result = '';
+            tooltips.forEach(({ labelAttr, labelName }, idx) => {
+                if (idx > 0) {
+                    result += '\n';
+                }
+                // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+                result += `${labelName ?? snakeToSentence(labelAttr)}: ${datum[labelAttr]}`;
+
+            });
+            return result;
+        }
+
+    let labelProps = {};
+    if (wrapper.label) {
+        labelProps = {
+            labels: getLabels(wrapper.label)
+        }
+    }
+
+
     const containerRef = useRef<HTMLDivElement>(null);
     const [ width, setWidth ] = useState(0);
     const handleResize = () => {
@@ -113,7 +136,10 @@ const CreateWrapper: FunctionComponent<Props> = ({
                     {...props}
                     key={id}
                     width={width}
-                    containerComponent={<ChartVoronoiContainer constrainToVisibleArea />}
+                    containerComponent={<ChartVoronoiContainer
+                        constrainToVisibleArea
+                        {...labelProps}
+                    />}
                 >
                     {wrapper.hidden &&
                         <ChartAxis {...disabledAxisProps} />

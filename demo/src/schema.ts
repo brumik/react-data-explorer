@@ -97,6 +97,82 @@ export const dashboard: ChartElement[] = [
             props: {},
             labelAttr: 'successful_count'
         }
+    },
+    {
+        id: 2000,
+        kind: ChartKind.wrapper,
+        parent: null,
+        props: {
+            height: 300
+        },
+        xAxis: {
+            label: 'Date',
+            tickFormat: 'formatDateAsDayMonth'
+        },
+        yAxis: {
+            label: 'Job runs'
+        },
+        label: [
+            {
+                labelAttr: 'failed_count',
+                labelName: 'Failed'
+            },
+            {
+                labelAttr: 'successful_count'
+            }
+        ]
+    },
+    {
+        id: 2100,
+        kind: ChartKind.group,
+        parent: 2000,
+        props: {},
+        api: {
+            params: {
+                status: ['successful', 'failed'],
+                quick_date_range: 'last_30_days',
+                job_type: ['workflowjob', 'job'],
+                group_by_time: true,
+                org_id: [],
+                cluster_id: [],
+                template_id: [],
+                only_root_workflows_and_standalone_jobs: false,
+                attributes: ['failed_count', 'successful_count']
+            },
+            url: 'https://prod.foo.redhat.com:1337/api/tower-analytics/v1/job_explorer/',
+            optionUrl: '/demo/api/jobExplorerOptions.json'
+        }
+    },
+    {
+        id: 2002,
+        kind: ChartKind.simple,
+        type: ChartType.line,
+        parent: 2100,
+        props: {
+            x: 'created_date',
+            y: 'failed_count',
+            style: {
+                data: {
+                    stroke: '#A30000'
+                }
+            }
+        },
+        onClick: 'consoleLog'
+    },
+    {
+        id: 2001,
+        kind: ChartKind.simple,
+        type: ChartType.line,
+        parent: 2100,
+        props: {
+            x: 'created_date',
+            y: 'successful_count',
+            style: {
+                data: {
+                    stroke: '#6EC664'
+                }
+            }
+        },
     }
 ];
 

@@ -25,6 +25,7 @@ const components: Partial<Record<ChartType, React.ElementType>> = {
 
 const getLabels = ({ labelAttr, labelName }: TooltipProps) =>
     ({ datum }: { datum: Record<string, string> }) =>
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
         `${labelName ?? snakeToSentence(labelAttr)}: ${datum[labelAttr]}`;
 
 const createChart = (
