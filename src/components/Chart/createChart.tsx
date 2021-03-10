@@ -9,7 +9,7 @@ import {
 import {
     ChartType,
     Chart,
-    LegendProps,
+    TooltipProps,
     DataType
 } from './types';
 import legendMapper from './Tooltips';
@@ -23,7 +23,7 @@ const components: Partial<Record<ChartType, React.ElementType>> = {
     [ChartType.scatter]: ChartScatter
 };
 
-const getLabels = ({ labelAttr, labelName }: LegendProps) =>
+const getLabels = ({ labelAttr, labelName }: TooltipProps) =>
     ({ datum }: { datum: Record<string, string> }) =>
         `${labelName ?? snakeToSentence(labelAttr)}: ${datum[labelAttr]}`;
 

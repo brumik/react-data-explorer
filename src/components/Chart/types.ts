@@ -40,7 +40,7 @@ export enum ChartType {
     histogram = 'histogram'
 }
 
-export interface LegendProps {
+export interface TooltipProps {
     type: TooltipType,
     props: ChartTooltipProps,
     labelAttr: string
@@ -52,7 +52,7 @@ export interface Chart extends ChartBase {
     props: ChartBarProps,
     type: ChartType,
     api?: ApiProps,
-    legend?: LegendProps
+    legend?: TooltipProps
     onClick?: string
 }
 
@@ -81,6 +81,12 @@ export interface AxisProps {
     fixLabelOverlap?: boolean,
     domain?: any,
     style?: any
+}
+
+export interface LegendProps {
+    data: { name: string }[],
+    position: string,
+    orientation: string
 }
 
 export interface ChartWrapper extends ChartBase {

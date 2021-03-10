@@ -7,23 +7,14 @@ import {
 } from '../../src/';
 
 const legend = (ori = 'horizontal') => ({
-    x: 0,
-    y: 0,
-    title: 'Legend',
-    gutter: 20,
-    orientation: ori,
     data: [
         { name: 'Chart 1' },
         { name: 'Chart 2' },
         { name: 'Chart 3' },
         { name: 'Chart 4' }
     ],
-    style: {
-        border: { stroke: 'black' },
-        title: { fontSize: 10 },
-        labels: { fontSize: 7 }
-    },
-    centerTitle: true
+    orientation: ori,
+    position: ori === 'horizontal' ? 'bottom' : 'right'
 }) as unknown as LegendProps;
 
 export const dashboard: ChartElement[] = [
