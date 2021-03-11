@@ -1,7 +1,9 @@
 import { TooltipType } from '../types';
 import { ChartTooltip as DefaultLegend } from '@patternfly/react-charts';
 
-const tooltips: Partial<Record<TooltipType, React.ElementType>> = {
+type LegendType = typeof DefaultLegend;
+
+const tooltips: Partial<Record<TooltipType, LegendType>> = {
     [TooltipType.default]: DefaultLegend
 };
 

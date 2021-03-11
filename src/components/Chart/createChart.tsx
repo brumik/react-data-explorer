@@ -10,7 +10,8 @@ import {
     ChartType,
     Chart,
     TooltipProps,
-    DataType
+    DataType,
+    ResolvedApi
 } from './types';
 import legendMapper from './Tooltips';
 import { snakeToSentence } from './helpers';
@@ -30,20 +31,21 @@ const getLabels = ({ labelAttr, labelName }: TooltipProps) =>
 
 const createChart = (
     id: number,
-    data: DataType
+    data: DataType,
+    resolvedApi: ResolvedApi
 ): React.ReactElement => {
     const { charts, functions } = data;
     const chart = charts.find(({ id: i }) => i === id) as Chart;
     const SelectedChart = components[chart.type];
 
     let props = {...chart.props};
-    if (chart.legend) {
-        const LegendComponent = legendMapper[chart.legend.type];
+    if (chart.tooltip) {
+        const LegendComponent = legendMapper[chart.tooltip.type];
         props = {
             ...props,
-            labels: getLabels(chart.legend),
+            labels: getLabels(chart.tooltip),
             labelComponent: <LegendComponent
-                {...chart.legend.props}
+                {...chart.tooltip.props}
                 dy={0}
             />
         }
@@ -62,17 +64,11 @@ const createChart = (
         }
     }
 
-    if (chart.api && chart.api.data) {
-        props = {
-            ...props,
-            data: chart.api.data
-        };
-    }
-
     return (
         <SelectedChart
             key={chart.id}
             {...props}
+            data={resolvedApi.data}
         />
     );
 };

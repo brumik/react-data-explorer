@@ -5,20 +5,19 @@ import {
     ChartGroup as ChartGroupType,
     ChartKind,
     Chart,
-    DataKind,
     DataType,
     GroupedApiDataFormat,
-    SimpleApiDataFormat
+    ResolvedApi,
+    ApiDataKind,
+    ApiDataFormat
 } from './types';
 import createChart from './createChart';
-import createStack from './createStack';
-import { passDataToChildren } from './helpers';
 
 const components: Partial<Record<ChartKind, (
     id: number,
-    data: DataType
+    data: DataType,
+    resolvedApi: ResolvedApi
 ) => React.ReactElement>> = {
-    [ChartKind.stack]: createStack,
     [ChartKind.simple]: createChart
 };
 
@@ -29,51 +28,48 @@ const createDynamicChildren = (
     data: GroupedApiDataFormat
 ): ChartElement[] => ([
     ...charts,
-    ...data.map((d, idx) => ({
+    ...data.map((_d, idx) => ({
         ...template,
         id: idx,
-        parent,
-        props: {
-            ...template.props,
-            data: d
-        }
+        parent
     }))
 ]);
 
 const createGroup = (
     id: number,
-    data: DataType
+    data: DataType,
+    resolvedApi: ResolvedApi
 ): React.ReactElement => {
     let { charts } =  data;
     const group = charts.find(({ id: i }) => i === id) as ChartGroupType;
     let children = charts.filter(({ parent }) => parent === id);
 
-    if (group.api) {
-        switch(group.api.dataKind) {
-            case DataKind.simple:
-                charts = passDataToChildren(
-                    charts,
-                    children.map(({ id: i }) => i),
-                    group.api.data as SimpleApiDataFormat
-                );
-                break;
-            case DataKind.grouped:
-                charts = createDynamicChildren(
-                    charts,
-                    group.template,
-                    group.id,
-                    group.api.data as GroupedApiDataFormat
-                );
-                children = charts.filter(({ parent }) => parent === id);
-                break;
-        }
+    let renderedChildren: React.ReactElement[] = [];
+
+    if (resolvedApi.kind === ApiDataKind.grouped) {
+        charts = createDynamicChildren(
+            charts,
+            group.template,
+            group.id,
+            resolvedApi.data as GroupedApiDataFormat
+        );
+        children = charts.filter(({ parent }) => parent === id);
+        renderedChildren = children.map((child, idx) => {
+            const calculatedApi = {
+                data: resolvedApi.data[idx] as ApiDataFormat,
+                kind: ApiDataKind.simple
+            }
+            return components[child.kind](child.id, { ...data, charts }, calculatedApi)
+        });
+    } else {
+        renderedChildren = children.map(child => components[child.kind](child.id, data, resolvedApi));
     }
 
     return (
         <ChartGroup
             {...group.props}
         >
-            { children.map(child => components[child.kind](child.id, { ...data, charts })) }
+            { renderedChildren }
         </ChartGroup>
     );
 };

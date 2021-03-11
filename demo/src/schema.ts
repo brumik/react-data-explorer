@@ -3,19 +3,21 @@ import {
     ChartElement,
     ChartType,
     TooltipType,
-    LegendProps
+    LegendOrientation,
+    LegendPosition,
+    // LegendProps
 } from '../../src/';
 
-const legend = (ori = 'horizontal') => ({
-    data: [
-        { name: 'Chart 1' },
-        { name: 'Chart 2' },
-        { name: 'Chart 3' },
-        { name: 'Chart 4' }
-    ],
-    orientation: ori,
-    position: ori === 'horizontal' ? 'bottom' : 'right'
-}) as unknown as LegendProps;
+// const legend = (ori = 'horizontal') => ({
+//     data: [
+//         { name: 'Chart 1' },
+//         { name: 'Chart 2' },
+//         { name: 'Chart 3' },
+//         { name: 'Chart 4' }
+//     ],
+//     orientation: ori,
+//     position: ori === 'horizontal' ? 'bottom' : 'right'
+// }) as unknown as LegendProps;
 
 export const dashboard: ChartElement[] = [
     // Cluster page bar chart
@@ -33,13 +35,7 @@ export const dashboard: ChartElement[] = [
         },
         yAxis: {
             label: 'Jobs across all clusters'
-        }
-    },
-    {
-        id: 1100,
-        kind: ChartKind.stack,
-        parent: 1000,
-        props: {},
+        },
         api: {
             params: {
                 status: ['successful', 'failed'],
@@ -57,6 +53,12 @@ export const dashboard: ChartElement[] = [
         }
     },
     {
+        id: 1100,
+        kind: ChartKind.stack,
+        parent: 1000,
+        props: {}
+    },
+    {
         id: 1002,
         kind: ChartKind.simple,
         type: ChartType.bar,
@@ -70,7 +72,7 @@ export const dashboard: ChartElement[] = [
                 }
             }
         },
-        legend: {
+        tooltip: {
             type: TooltipType.default,
             props: {},
             labelAttr: 'failed_count',
@@ -92,7 +94,7 @@ export const dashboard: ChartElement[] = [
                 }
             }
         },
-        legend: {
+        tooltip: {
             type: TooltipType.default,
             props: {},
             labelAttr: 'successful_count'
@@ -112,7 +114,7 @@ export const dashboard: ChartElement[] = [
         yAxis: {
             label: 'Job runs'
         },
-        label: [
+        tooltip: [
             {
                 labelAttr: 'failed_count',
                 labelName: 'Failed'
@@ -120,13 +122,7 @@ export const dashboard: ChartElement[] = [
             {
                 labelAttr: 'successful_count'
             }
-        ]
-    },
-    {
-        id: 2100,
-        kind: ChartKind.group,
-        parent: 2000,
-        props: {},
+        ],
         api: {
             params: {
                 status: ['successful', 'failed'],
@@ -142,6 +138,12 @@ export const dashboard: ChartElement[] = [
             url: 'https://prod.foo.redhat.com:1337/api/tower-analytics/v1/job_explorer/',
             optionUrl: '/demo/api/jobExplorerOptions.json'
         }
+    },
+    {
+        id: 2100,
+        kind: ChartKind.group,
+        parent: 2000,
+        props: {}
     },
     {
         id: 2002,
@@ -189,14 +191,6 @@ export const dashboard: ChartElement[] = [
         yAxis: {
             label: 'Jobs across organizations'
         },
-    },
-    {
-        id: 3100,
-        kind: ChartKind.group,
-        parent: 3000,
-        props: {
-            offset: 11
-        },
         api: {
             params: {
                 status: [],
@@ -215,6 +209,18 @@ export const dashboard: ChartElement[] = [
             url: 'https://prod.foo.redhat.com:1337/api/tower-analytics/v1/job_explorer/?limit=5',
             optionUrl: '/demo/api/jobExplorerOptions.json'
         },
+        legend: {
+            orientation: LegendOrientation.vertical,
+            position: LegendPosition.right
+        }
+    },
+    {
+        id: 3100,
+        kind: ChartKind.group,
+        parent: 3000,
+        props: {
+            offset: 11
+        },
         template: {
             id: 0,
             kind: ChartKind.simple,
@@ -224,7 +230,7 @@ export const dashboard: ChartElement[] = [
                 x: 'created_date',
                 y: 'total_count'
             },
-            legend: {
+            tooltip: {
                 type: TooltipType.default,
                 props: {},
                 labelAttr: 'total_count'
@@ -233,244 +239,244 @@ export const dashboard: ChartElement[] = [
     }
 ];
 
-export const showcase: ChartElement[] = [
-    // Line example
-    {
-        id: 1,
-        kind: ChartKind.wrapper,
-        parent: null,
-        props: {
-            height: 200
-        },
-        xAxis: {
-            label: 'Days in the month'
-            // tickFormat: 'formatDateAsDays'
-        },
-        yAxis: {
-            label: 'Host Count',
-            tickFormat: 'formatNumberAsK'
-        }
-    },
-    {
-        id: 2,
-        kind: ChartKind.simple,
-        parent: 1,
-        props: {
-            x: 'created_date',
-            y: 'host_count'
-        },
-        api: {
-            params: { 'group_by_time': 'true' },
-            url: 'https://prod.foo.redhat.com:1337/api/tower-analytics/v1/job_explorer/',
-            optionUrl: '/demo/api/jobExplorerOptions.json'
-        },
-        type: ChartType.line
-    },
-    // Pie example
-    // {
-    //     id: 3,
-    //     kind: ChartKind.wrapper,
-    //     parent: null,
-    //     props: {
-    //         height: 500
-    //     },
-    //     xAxis: {},
-    //     yAxis: {},
-    //     hidden: true,
-    //     legend: legend('vertical')
-    // },
-    // {
-    //     id: 4,
-    //     kind: ChartKind.simple,
-    //     parent: 3,
-    //     props: {
-    //         x: '',
-    //         y: 'host_count'
-    //     },
-    //     api: {
-    //         params: { 'group_by_time': 'false', 'limit': '5' },
-    //         url: 'https://prod.foo.redhat.com:1337/api/tower-analytics/v1/job_explorer/',
-    //         optionUrl: '/demo/api/jobExplorerOptions.json'
-    //     },
-    //     type: ChartType.pie
-    // },
-    // Grouped example
-    {
-        id: 5,
-        kind: ChartKind.wrapper,
-        parent: null,
-        props: {
-            domainPadding: 11,
-            height: 200,
-        },
-        xAxis: {
-            label: 'Days in the month'
-        },
-        yAxis: {
-            label: 'Host Count',
-            tickFormat: 'formatNumberAsK'
-        },
-        hidden: false
-    },
-    {
-        id: 6,
-        kind: ChartKind.group,
-        parent: 5,
-        props: {
-            offset: 10
-        },
-        api: {
-            params: { 'group_by_time': 'true' },
-            url: 'https://prod.foo.redhat.com:1337/api/tower-analytics/v1/job_explorer/',
-            optionUrl: '/demo/api/jobExplorerOptions.json'
-        }
-    },
-    {
-        id: 7,
-        kind: ChartKind.simple,
-        parent: 6,
-        props: {
-            x: 'created_date',
-            y: 'host_count'
-        },
-        type: ChartType.bar
-    },
-    {
-        id: 8,
-        kind: ChartKind.simple,
-        parent: 6,
-        props: {
-            x: 'created_date',
-            y: 'host_count'
-        },
-        type: ChartType.bar
-    },
-    // Stacked example
-    {
-        id: 10,
-        kind: ChartKind.wrapper,
-        parent: null,
-        props: {
-            height: 200
-        },
-        xAxis: {
-            label: 'Days in the month'
-        },
-        yAxis: {
-            label: 'Host Count'
-        },
-        hidden: false
-    },
-    {
-        id: 11,
-        kind: ChartKind.stack,
-        parent: 10,
-        props: {},
-        api: {
-            params: { 'group_by_time': 'true' },
-            url: 'https://prod.foo.redhat.com:1337/api/tower-analytics/v1/job_explorer/',
-            optionUrl: '/demo/api/jobExplorerOptions.json'
-        }
-    },
-    {
-        id: 12,
-        kind: ChartKind.simple,
-        parent: 11,
-        props: {
-            x: 'created_date',
-            y: 'host_count'
-        },
-        type: ChartType.area
-    },
-    {
-        id: 13,
-        kind: ChartKind.simple,
-        parent: 11,
-        props: {
-            x: 'created_date',
-            y: 'host_count'
-        },
-        type: ChartType.area
-    },
-    // Stacked and grouped example
-    {
-        id: 100,
-        kind: ChartKind.wrapper,
-        parent: null,
-        props: {
-            domainPadding: 11,
-            height: 200
-        },
-        xAxis: {
-            label: 'Days in the month'
-        },
-        yAxis: {
-            label: 'Host Count'
-        },
-        hidden: false,
-        legend: legend()
-    },
-    {
-        id: 101,
-        kind: ChartKind.group,
-        parent: 100,
-        props: {},
-        api: {
-            params: { 'group_by_time': 'true' },
-            url: 'https://prod.foo.redhat.com:1337/api/tower-analytics/v1/job_explorer/',
-            optionUrl: '/demo/api/jobExplorerOptions.json'
-        }
-    },
-    {
-        id: 111,
-        kind: ChartKind.stack,
-        parent: 101,
-        props: {}
-    },
-    {
-        id: 112,
-        kind: ChartKind.simple,
-        parent: 111,
-        props: {
-            x: 'created_date',
-            y: 'host_count'
-        },
-        type: ChartType.bar
-    },
-    {
-        id: 113,
-        kind: ChartKind.simple,
-        parent: 111,
-        props: {
-            x: 'created_date',
-            y: 'host_count'
-        },
-        type: ChartType.bar
-    },
-    {
-        id: 211,
-        kind: ChartKind.stack,
-        parent: 101,
-        props: {}
-    },
-    {
-        id: 212,
-        kind: ChartKind.simple,
-        parent: 211,
-        props: {
-            x: 'created_date',
-            y: 'host_count'
-        },
-        type: ChartType.bar
-    },
-    {
-        id: 213,
-        kind: ChartKind.simple,
-        parent: 211,
-        props: {
-            x: 'created_date',
-            y: 'host_count'
-        },
-        type: ChartType.bar
-    }
-];
+// export const showcase: ChartElement[] = [
+//     // Line example
+//     {
+//         id: 1,
+//         kind: ChartKind.wrapper,
+//         parent: null,
+//         props: {
+//             height: 200
+//         },
+//         xAxis: {
+//             label: 'Days in the month'
+//             // tickFormat: 'formatDateAsDays'
+//         },
+//         yAxis: {
+//             label: 'Host Count',
+//             tickFormat: 'formatNumberAsK'
+//         }
+//     },
+//     {
+//         id: 2,
+//         kind: ChartKind.simple,
+//         parent: 1,
+//         props: {
+//             x: 'created_date',
+//             y: 'host_count'
+//         },
+//         api: {
+//             params: { 'group_by_time': 'true' },
+//             url: 'https://prod.foo.redhat.com:1337/api/tower-analytics/v1/job_explorer/',
+//             optionUrl: '/demo/api/jobExplorerOptions.json'
+//         },
+//         type: ChartType.line
+//     },
+//     // Pie example
+//     // {
+//     //     id: 3,
+//     //     kind: ChartKind.wrapper,
+//     //     parent: null,
+//     //     props: {
+//     //         height: 500
+//     //     },
+//     //     xAxis: {},
+//     //     yAxis: {},
+//     //     hidden: true,
+//     //     legend: legend('vertical')
+//     // },
+//     // {
+//     //     id: 4,
+//     //     kind: ChartKind.simple,
+//     //     parent: 3,
+//     //     props: {
+//     //         x: '',
+//     //         y: 'host_count'
+//     //     },
+//     //     api: {
+//     //         params: { 'group_by_time': 'false', 'limit': '5' },
+//     //         url: 'https://prod.foo.redhat.com:1337/api/tower-analytics/v1/job_explorer/',
+//     //         optionUrl: '/demo/api/jobExplorerOptions.json'
+//     //     },
+//     //     type: ChartType.pie
+//     // },
+//     // Grouped example
+//     {
+//         id: 5,
+//         kind: ChartKind.wrapper,
+//         parent: null,
+//         props: {
+//             domainPadding: 11,
+//             height: 200,
+//         },
+//         xAxis: {
+//             label: 'Days in the month'
+//         },
+//         yAxis: {
+//             label: 'Host Count',
+//             tickFormat: 'formatNumberAsK'
+//         },
+//         hidden: false
+//     },
+//     {
+//         id: 6,
+//         kind: ChartKind.group,
+//         parent: 5,
+//         props: {
+//             offset: 10
+//         },
+//         api: {
+//             params: { 'group_by_time': 'true' },
+//             url: 'https://prod.foo.redhat.com:1337/api/tower-analytics/v1/job_explorer/',
+//             optionUrl: '/demo/api/jobExplorerOptions.json'
+//         }
+//     },
+//     {
+//         id: 7,
+//         kind: ChartKind.simple,
+//         parent: 6,
+//         props: {
+//             x: 'created_date',
+//             y: 'host_count'
+//         },
+//         type: ChartType.bar
+//     },
+//     {
+//         id: 8,
+//         kind: ChartKind.simple,
+//         parent: 6,
+//         props: {
+//             x: 'created_date',
+//             y: 'host_count'
+//         },
+//         type: ChartType.bar
+//     },
+//     // Stacked example
+//     {
+//         id: 10,
+//         kind: ChartKind.wrapper,
+//         parent: null,
+//         props: {
+//             height: 200
+//         },
+//         xAxis: {
+//             label: 'Days in the month'
+//         },
+//         yAxis: {
+//             label: 'Host Count'
+//         },
+//         hidden: false
+//     },
+//     {
+//         id: 11,
+//         kind: ChartKind.stack,
+//         parent: 10,
+//         props: {},
+//         api: {
+//             params: { 'group_by_time': 'true' },
+//             url: 'https://prod.foo.redhat.com:1337/api/tower-analytics/v1/job_explorer/',
+//             optionUrl: '/demo/api/jobExplorerOptions.json'
+//         }
+//     },
+//     {
+//         id: 12,
+//         kind: ChartKind.simple,
+//         parent: 11,
+//         props: {
+//             x: 'created_date',
+//             y: 'host_count'
+//         },
+//         type: ChartType.area
+//     },
+//     {
+//         id: 13,
+//         kind: ChartKind.simple,
+//         parent: 11,
+//         props: {
+//             x: 'created_date',
+//             y: 'host_count'
+//         },
+//         type: ChartType.area
+//     },
+//     // Stacked and grouped example
+//     {
+//         id: 100,
+//         kind: ChartKind.wrapper,
+//         parent: null,
+//         props: {
+//             domainPadding: 11,
+//             height: 200
+//         },
+//         xAxis: {
+//             label: 'Days in the month'
+//         },
+//         yAxis: {
+//             label: 'Host Count'
+//         },
+//         hidden: false,
+//         legend: legend()
+//     },
+//     {
+//         id: 101,
+//         kind: ChartKind.group,
+//         parent: 100,
+//         props: {},
+//         api: {
+//             params: { 'group_by_time': 'true' },
+//             url: 'https://prod.foo.redhat.com:1337/api/tower-analytics/v1/job_explorer/',
+//             optionUrl: '/demo/api/jobExplorerOptions.json'
+//         }
+//     },
+//     {
+//         id: 111,
+//         kind: ChartKind.stack,
+//         parent: 101,
+//         props: {}
+//     },
+//     {
+//         id: 112,
+//         kind: ChartKind.simple,
+//         parent: 111,
+//         props: {
+//             x: 'created_date',
+//             y: 'host_count'
+//         },
+//         type: ChartType.bar
+//     },
+//     {
+//         id: 113,
+//         kind: ChartKind.simple,
+//         parent: 111,
+//         props: {
+//             x: 'created_date',
+//             y: 'host_count'
+//         },
+//         type: ChartType.bar
+//     },
+//     {
+//         id: 211,
+//         kind: ChartKind.stack,
+//         parent: 101,
+//         props: {}
+//     },
+//     {
+//         id: 212,
+//         kind: ChartKind.simple,
+//         parent: 211,
+//         props: {
+//             x: 'created_date',
+//             y: 'host_count'
+//         },
+//         type: ChartType.bar
+//     },
+//     {
+//         id: 213,
+//         kind: ChartKind.simple,
+//         parent: 211,
+//         props: {
+//             x: 'created_date',
+//             y: 'host_count'
+//         },
+//         type: ChartType.bar
+//     }
+// ];

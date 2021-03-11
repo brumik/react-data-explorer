@@ -3,7 +3,9 @@ import {
     ChartProps,
     ChartTooltipProps,
     ChartStackProps,
-    ChartGroupProps
+    ChartGroupProps,
+    ChartLegendPosition as LegendPosition,
+    ChartLegendOrientation as LegendOrientation
 } from '@patternfly/react-charts';
 
 export enum ChartKind {
@@ -17,20 +19,24 @@ export enum TooltipType {
     default = 'default'
 }
 
-export enum DataKind {
+export enum ApiDataKind {
     simple = 'simple',
     grouped = 'grouped'
 }
 
 export type SimpleApiDataFormat = Record<string, unknown>[]
 export type GroupedApiDataFormat = SimpleApiDataFormat[]
+export type ApiDataFormat = SimpleApiDataFormat | GroupedApiDataFormat
+
+export interface ResolvedApi {
+    data: ApiDataFormat,
+    kind: ApiDataKind
+}
 
 export interface ApiProps {
     params: Record<string, unknown>,
     url: string,
-    optionUrl: string,
-    data?: SimpleApiDataFormat | GroupedApiDataFormat,
-    dataKind?: DataKind
+    optionUrl: string
 }
 
 export interface ChartBase {
@@ -60,8 +66,7 @@ export interface Chart extends ChartBase {
     kind: ChartKind.simple,
     props: ChartBarProps,
     type: ChartType,
-    api?: ApiProps,
-    legend?: TooltipProps
+    tooltip?: TooltipProps
     onClick?: string
 }
 
@@ -73,7 +78,6 @@ export interface GroupProps extends ChartGroupProps {
 export interface ChartGroup extends ChartBase {
     kind: ChartKind.group,
     props: GroupProps
-    api?: ApiProps,
     template?: Chart
 }
 
@@ -81,7 +85,6 @@ export interface ChartGroup extends ChartBase {
 export interface ChartStack extends ChartBase {
     kind: ChartKind.stack,
     props: ChartStackProps,
-    api?: ApiProps
 }
 
 /* Chart Wrapper Types */
@@ -93,10 +96,13 @@ export interface AxisProps {
     style?: any
 }
 
+export { LegendPosition, LegendOrientation };
+export type LegendData = { name: string }[]
+
 export interface LegendProps {
-    data: { name: string }[],
-    position: string,
-    orientation: string
+    data?: LegendData,
+    position: LegendPosition,
+    orientation: LegendOrientation
 }
 
 export interface WrapperTooltipProps {
@@ -107,12 +113,12 @@ export interface WrapperTooltipProps {
 export interface ChartWrapper extends ChartBase {
     kind: ChartKind.wrapper,
     parent: null,
-    api?: ApiProps // Currently this SHOULD NOT BE USED. Is here because of stupid Tscript
+    api?: ApiProps
     props: ChartProps,
     xAxis: AxisProps,
     yAxis: AxisProps,
     legend?: LegendProps,
-    label?: WrapperTooltipProps[],
+    tooltip?: WrapperTooltipProps[],
     hidden?: boolean
 }
 
