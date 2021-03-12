@@ -5,14 +5,17 @@ import {
     ChartStackProps,
     ChartGroupProps,
     ChartLegendPosition as LegendPosition,
-    ChartLegendOrientation as LegendOrientation
+    ChartLegendOrientation as LegendOrientation,
+    ChartPieProps,
+    ChartPieLegendPosition as PieLegendPosition
 } from '@patternfly/react-charts';
 
 export enum ChartKind {
     simple = 'simple',
     group = 'group',
     stack = 'stack',
-    wrapper = 'wrapper'
+    wrapper = 'wrapper',
+    pie = 'pie'
 }
 
 export enum TooltipType {
@@ -49,7 +52,6 @@ export interface ChartBase {
 export enum ChartType {
     bar = 'bar',
     line = 'line',
-    pie = 'pie',
     area = 'area',
     scatter = 'scatter',
     histogram = 'histogram'
@@ -122,6 +124,22 @@ export interface ChartWrapper extends ChartBase {
     hidden?: boolean
 }
 
+export { PieLegendPosition };
+export interface PieLegendProps {
+    data?: LegendData,
+    position: PieLegendPosition,
+    orientation: LegendOrientation
+}
+
+export interface ChartPie extends ChartBase {
+    kind: ChartKind.pie,
+    parent: null,
+    api?: ApiProps,
+    props: ChartPieProps,
+    legend?: PieLegendProps,
+    tooltip?: TooltipProps
+}
+
 // Overal types
 export interface PropFunctions {
     onClick?: Record<string, any>
@@ -133,4 +151,4 @@ export interface DataType {
     functions: PropFunctions
 }
 
-export type ChartElement = Chart | ChartWrapper | ChartGroup | ChartStack;
+export type ChartElement = Chart | ChartPie | ChartWrapper | ChartGroup | ChartStack;

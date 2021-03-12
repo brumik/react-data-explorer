@@ -1,8 +1,9 @@
 import React, { FunctionComponent } from 'react';
 import {
-    ChartElement, DataType, PropFunctions
+    ChartElement, ChartKind, DataType, PropFunctions
 } from './types';
 import CreateWrapper from './createWrapper';
+import CreatePieChart from './createPieChart';
 
 interface Props {
     ids?: number[],
@@ -26,13 +27,15 @@ const ChartRenderer: FunctionComponent<Props> = ({
 
     return (
         <React.Fragment>
-            { getCharts(data.charts).map(el =>
-                (<CreateWrapper
-                    id={el.id}
-                    key={el.id}
-                    data={data}
-                />)
-            )}
+            {getCharts(data.charts).map(el => {
+                if(el.kind === ChartKind.wrapper) {
+                    return (<CreateWrapper key={el.id} id={el.id} data={data} />);
+                } else if (el.kind === ChartKind.pie) {
+                    return (<CreatePieChart key={el.id} id={el.id} data={data} />);
+                } else {
+                    return null;
+                }
+            })}
         </React.Fragment>
     );
 }

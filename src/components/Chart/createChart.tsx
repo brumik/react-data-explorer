@@ -2,7 +2,6 @@ import React from 'react';
 import {
     ChartBar,
     ChartLine,
-    ChartPie,
     ChartArea,
     ChartScatter
 } from '@patternfly/react-charts';
@@ -19,7 +18,6 @@ import { snakeToSentence } from './helpers';
 const components: Partial<Record<ChartType, React.ElementType>> = {
     [ChartType.bar]: ChartBar,
     [ChartType.line]: ChartLine,
-    [ChartType.pie]: ChartPie,
     [ChartType.area]: ChartArea,
     [ChartType.scatter]: ChartScatter
 };
