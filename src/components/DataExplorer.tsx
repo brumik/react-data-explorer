@@ -97,7 +97,7 @@
 //                             setEditorChartId(id);
 //                         }}
 //                     >
-//                         Edit the { id } chart.
+//                         Edit the { id } Chart
 //                     </Button>
 //                 ))
 //             }

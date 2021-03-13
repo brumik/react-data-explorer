@@ -5,13 +5,7 @@ import {
     ChartArea,
     ChartScatter
 } from '@patternfly/react-charts';
-import {
-    ChartType,
-    Chart,
-    TooltipProps,
-    DataType,
-    ResolvedApi
-} from './types';
+import { ChartData, ChartSchema, ChartSimple, ChartTooltipProps, ChartType } from './types';
 import legendMapper from './Tooltips';
 import { snakeToSentence } from './helpers';
 
@@ -22,18 +16,18 @@ const components: Partial<Record<ChartType, React.ElementType>> = {
     [ChartType.scatter]: ChartScatter
 };
 
-const getLabels = ({ labelAttr, labelName }: TooltipProps) =>
+const getLabels = ({ labelAttr, labelName }: ChartTooltipProps) =>
     ({ datum }: { datum: Record<string, string> }) =>
         // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
         `${labelName ?? snakeToSentence(labelAttr)}: ${datum[labelAttr]}`;
 
 const createChart = (
     id: number,
-    data: DataType,
-    resolvedApi: ResolvedApi
+    data: ChartSchema,
+    resolvedApi: ChartData
 ): React.ReactElement => {
     const { charts, functions } = data;
-    const chart = charts.find(({ id: i }) => i === id) as Chart;
+    const chart = charts.find(({ id: i }) => i === id) as ChartSimple;
     const SelectedChart = components[chart.type];
 
     let props = {...chart.props};
@@ -55,7 +49,6 @@ const createChart = (
             events: [{
                 target: 'data',
                 eventHandlers: {
-                    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
                     onClick: functions.onClick[chart.onClick]
                 }
             }]

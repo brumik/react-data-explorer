@@ -1,10 +1,10 @@
-import { TooltipType } from '../types';
+import { ChartTooltipType } from '../types';
 import { ChartTooltip as DefaultLegend } from '@patternfly/react-charts';
 
 type LegendType = typeof DefaultLegend;
 
-const tooltips: Partial<Record<TooltipType, LegendType>> = {
-    [TooltipType.default]: DefaultLegend
+const mapper: Partial<Record<ChartTooltipType, LegendType>> = {
+    [ChartTooltipType.default]: DefaultLegend
 };
 
-export default tooltips
+export default mapper

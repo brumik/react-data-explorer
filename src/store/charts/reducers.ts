@@ -4,13 +4,10 @@ import {
     ReducerTypes
 } from './types';
 
-import {
-    ChartElement,
-    ChartWrapper
-} from '../../components/Chart/types';
+import { ChartSchemaElement, ChartWrapper } from '../../components/Chart/types';
 
 const nextId = (state: State): number =>
-    Math.max(...state.map((el: ChartElement) => el.id)) + 1;
+    Math.max(...state.map((el: ChartSchemaElement) => el.id)) + 1;
 
 const initialState: State = [];
 const reducer = (
@@ -39,10 +36,7 @@ const reducer = (
                 id === action.payload.id) as ChartWrapper;
             return [
                 ...state.filter(({ id }) => id !== action.payload.id),
-                {
-                    ...wrapper,
-                    hidden: action.payload.hidden
-                }
+                {...wrapper}
             ]
         case ReducerTypes.reset:
             return initialState;

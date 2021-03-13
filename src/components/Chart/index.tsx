@@ -1,23 +1,21 @@
 import React, { FunctionComponent } from 'react';
-import {
-    ChartElement, ChartKind, DataType, PropFunctions
-} from './types';
-import CreateWrapper from './createWrapper';
-import CreatePieChart from './createPieChart';
+import { ChartKind, ChartFunctions, ChartSchema, ChartSchemaElement } from './types';
+import CreateWrapper from './CreateWrapper';
+import CreatePieChart from './CreatePieChart';
 
 interface Props {
     ids?: number[],
-    data: DataType
+    data: ChartSchema
 }
 
 const ChartRenderer: FunctionComponent<Props> = ({
     ids = [] as number[],
     data = {
-        charts: [] as ChartElement[],
-        functions: {} as PropFunctions
+        charts: [] as ChartSchemaElement[],
+        functions: {} as ChartFunctions
     }
 }) => {
-    const getCharts = (c: ChartElement[]) => {
+    const getCharts = (c: ChartSchemaElement[]) => {
         if (ids.length > 0) {
             return c.filter(({ id }) => ids.includes(id)).sort((a,b) => a.id - b.id);
         } else {

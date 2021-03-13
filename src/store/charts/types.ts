@@ -1,10 +1,6 @@
-import {
-    ChartElement,
-    Chart,
-    ChartWrapper
-} from '../../components/Chart/types';
+import { ChartSchemaElement, ChartSimple, ChartWrapper } from '../../components/Chart/types';
 
-export type State = ChartElement[];
+export type State = ChartSchemaElement[];
 
 export enum ReducerTypes {
     set = 'CHARTS_SET',
@@ -19,7 +15,7 @@ export enum ReducerTypes {
 
 interface SetAction {
     type: ReducerTypes.set,
-    payload: ChartElement[]
+    payload: ChartSchemaElement[]
 }
 
 interface ResetAction {
@@ -28,7 +24,7 @@ interface ResetAction {
 
 interface UpdateChartAction {
     type: ReducerTypes.updateChart,
-    payload: Chart
+    payload: ChartSimple
 }
 
 interface DeleteElementsAction {
@@ -51,7 +47,7 @@ interface UpdateWrapperHiddenAction {
 
 interface AddChartElementAction {
     type: ReducerTypes.addChartElement,
-    payload: Chart
+    payload: ChartSimple
 }
 
 interface UpdateWrapperAction {

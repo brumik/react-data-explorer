@@ -1,14 +1,14 @@
 import {
     ChartKind,
-    ChartElement,
-    ChartType,
-    TooltipType,
-    LegendOrientation,
-    LegendPosition,
-    PieLegendPosition,
+    ChartLegendOrientation,
+    ChartLegendPosition,
+    ChartPieLegendPosition,
+    ChartSchemaElement,
+    ChartTooltipType,
+    ChartType
 } from '../../src/';
 
-export const dashboard: ChartElement[] = [
+export const dashboard: ChartSchemaElement[] = [
     // Cluster page bar chart
     {
         id: 1000,
@@ -62,7 +62,7 @@ export const dashboard: ChartElement[] = [
             }
         },
         tooltip: {
-            type: TooltipType.default,
+            type: ChartTooltipType.default,
             props: {},
             labelAttr: 'failed_count',
             labelName: 'Failed'
@@ -84,7 +84,7 @@ export const dashboard: ChartElement[] = [
             }
         },
         tooltip: {
-            type: TooltipType.default,
+            type: ChartTooltipType.default,
             props: {},
             labelAttr: 'successful_count'
         }
@@ -199,8 +199,8 @@ export const dashboard: ChartElement[] = [
             optionUrl: '/demo/api/jobExplorerOptions.json'
         },
         legend: {
-            orientation: LegendOrientation.vertical,
-            position: LegendPosition.right
+            orientation: ChartLegendOrientation.vertical,
+            position: ChartLegendPosition.right
         }
     },
     {
@@ -220,7 +220,7 @@ export const dashboard: ChartElement[] = [
                 y: 'total_count'
             },
             tooltip: {
-                type: TooltipType.default,
+                type: ChartTooltipType.default,
                 props: {},
                 labelAttr: 'total_count'
             }
@@ -246,8 +246,8 @@ export const dashboard: ChartElement[] = [
             optionUrl: '/demo/api/jobExplorerOptions.json'
         },
         legend: {
-            orientation: LegendOrientation.vertical,
-            position: PieLegendPosition.right
+            orientation: ChartLegendOrientation.vertical,
+            position: ChartPieLegendPosition.right
         }
     }
 ];

@@ -1,32 +1,32 @@
 import React from 'react';
-import { ChartGroup } from '@patternfly/react-charts';
+import { ChartGroup as PFChartGroup } from '@patternfly/react-charts';
 import {
-    ChartElement,
-    ChartGroup as ChartGroupType,
+    ChartData,
+    ChartDataKind,
+    ChartGroup,
+    ChartGroupedData,
     ChartKind,
-    Chart,
-    DataType,
-    GroupedApiDataFormat,
-    ResolvedApi,
-    ApiDataKind,
-    ApiDataFormat
+    ChartSchema,
+    ChartSchemaElement,
+    ChartSimple,
+    ChartSimpleData
 } from './types';
 import createChart from './createChart';
 
 const components: Partial<Record<ChartKind, (
     id: number,
-    data: DataType,
-    resolvedApi: ResolvedApi
+    data: ChartSchema,
+    resolvedApi: ChartData
 ) => React.ReactElement>> = {
     [ChartKind.simple]: createChart
 };
 
 const createDynamicChildren = (
-    charts: ChartElement[],
-    template: Chart,
+    charts: ChartSchemaElement[],
+    template: ChartSimple,
     parent: number,
-    data: GroupedApiDataFormat
-): ChartElement[] => ([
+    data: ChartGroupedData
+): ChartSchemaElement[] => ([
     ...charts,
     ...data.map((_d, idx) => ({
         ...template,
@@ -37,27 +37,27 @@ const createDynamicChildren = (
 
 const createGroup = (
     id: number,
-    data: DataType,
-    resolvedApi: ResolvedApi
+    data: ChartSchema,
+    resolvedApi: ChartData
 ): React.ReactElement => {
     let { charts } =  data;
-    const group = charts.find(({ id: i }) => i === id) as ChartGroupType;
+    const group = charts.find(({ id: i }) => i === id) as ChartGroup;
     let children = charts.filter(({ parent }) => parent === id);
 
     let renderedChildren: React.ReactElement[] = [];
 
-    if (resolvedApi.kind === ApiDataKind.grouped) {
+    if (resolvedApi.kind === ChartDataKind.grouped) {
         charts = createDynamicChildren(
             charts,
             group.template,
             group.id,
-            resolvedApi.data as GroupedApiDataFormat
+            resolvedApi.data as ChartGroupedData
         );
         children = charts.filter(({ parent }) => parent === id);
         renderedChildren = children.map((child, idx) => {
             const calculatedApi = {
-                data: resolvedApi.data[idx] as ApiDataFormat,
-                kind: ApiDataKind.simple
+                data: resolvedApi.data[idx] as ChartSimpleData,
+                kind: ChartDataKind.simple
             }
             return components[child.kind](child.id, { ...data, charts }, calculatedApi)
         });
@@ -66,11 +66,11 @@ const createGroup = (
     }
 
     return (
-        <ChartGroup
+        <PFChartGroup
             {...group.props}
         >
             { renderedChildren }
-        </ChartGroup>
+        </PFChartGroup>
     );
 };
 

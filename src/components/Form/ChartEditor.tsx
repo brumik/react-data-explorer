@@ -38,7 +38,7 @@
 //         dispatch(updateChart({
 //             ...chart,
 //             props: {
-//                 ...chart.props,
+//                 ...Chartprops,
 //                 y: getField('attributes').value
 //             }
 //         } as Chart));
@@ -49,7 +49,7 @@
 //         const newValue = getField('chartTypes').value;
 
 //         dispatch(updateWrapperHidden(
-//             chart.parent,
+//             Chartparent,
 //             newValue === ChartType.pie
 //         ));
 
@@ -65,19 +65,19 @@
 //         const newValue = getField('groupByTime').value;
 //         const newChart = { ...chart };
 
-//         newChart.api.params = {
-//             ...newChart.api.params,
+//         newChartapi.params = {
+//             ...newChartapi.params,
 //             'group_by_time': newValue,
 //             'limit': newValue === 'true' ? '20' : '4'
 //         };
 
 //         let didCancel = false;
-//         fetchApi(newChart.api)
+//         fetchApi(newChartapi)
 //             .then(({ items }: Record<string, unknown>) => {
 //                 if (didCancel) return;
 
-//                 newChart.props = {
-//                     ...newChart.props,
+//                 newChartprops = {
+//                     ...newChartprops,
 //                     data: items as Record<string, unknown>[],
 //                     x: newValue === 'true' ? 'created_date' : ''
 //                 }
