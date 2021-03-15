@@ -1,81 +1,91 @@
 import {
-    VictoryLegendProps,
-    VictoryBarProps,
-    VictoryChartProps,
-    VictoryTooltipProps,
-    VictoryStackProps
-} from 'victory';
+    ChartBarProps,
+    ChartProps,
+    ChartTooltipProps as PFChartTooltipProps,
+    ChartStackProps,
+    ChartGroupProps,
+    ChartLegendPosition as ChartLegendPosition,
+    ChartLegendOrientation as ChartLegendOrientation,
+    ChartPieProps,
+    ChartPieLegendPosition as ChartPieLegendPosition,
+    ChartLineProps,
+    ChartAreaProps,
+    ChartScatterProps
+} from '@patternfly/react-charts';
+import { ChartAxisFormatFunction, ChartFunctions, ChartOnClickFunction } from './Functions/types';
 
 export enum ChartKind {
     simple = 'simple',
     group = 'group',
     stack = 'stack',
-    wrapper = 'wrapper'
+    wrapper = 'wrapper',
+    pie = 'pie'
 }
 
-export enum TooltipType {
+export enum ChartType {
+    bar = 'bar',
+    line = 'line',
+    area = 'area',
+    scatter = 'scatter'
+}
+
+export enum ChartTooltipType {
     default = 'default'
 }
 
-export interface ApiProps {
-    params: Record<string, unknown>,
-    url: string,
-    optionUrl: string,
-    data?: Record<string, unknown>[]
+export interface ChartDataSerie {
+    serie: Record<string, string | number>[],
+    hidden: boolean,
+    name: string
+}
+export type ChartData = ChartDataSerie[]
+
+export interface ChartApiData {
+    data: ChartData,
+    legend?: ChartLegendData
 }
 
-export interface ChartBase {
+export interface ChartApiProps {
+    params: Record<string, unknown>,
+    url: string,
+    optionUrl: string
+}
+
+interface ChartBase {
     id: number
     kind: ChartKind,
     parent: number // Id of the parent wrapper Element
 }
 
-/* Chart Types */
-export enum ChartType {
-    bar = 'bar',
-    line = 'line',
-    pie = 'pie',
-    area = 'area',
-    scatter = 'scatter',
-    histogram = 'histogram'
-}
-
-export interface LegendProps {
-    type: TooltipType,
-    props: VictoryTooltipProps,
+export interface ChartTooltipProps {
+    type: ChartTooltipType,
+    props: PFChartTooltipProps,
     labelAttr: string
     labelName?: string,
 }
 
-export interface Chart extends ChartBase {
-    kind: ChartKind.simple,
-    props: VictoryBarProps,
-    type: ChartType,
-    api?: ApiProps,
-    legend?: LegendProps
-    onClick?: string
-}
+export type ChartSimpleProps = ChartBarProps | ChartLineProps | ChartAreaProps | ChartScatterProps;
 
-/* Chart Group Wrapper Types */
-export interface GroupProps {
-    offset?: number
+export interface ChartSimple extends ChartBase {
+    kind: ChartKind.simple,
+    props: ChartSimpleProps
+    type: ChartType,
+    tooltip?: ChartTooltipProps
+    onClick?: string
 }
 
 export interface ChartGroup extends ChartBase {
     kind: ChartKind.group,
-    props: GroupProps
-    api?: ApiProps
+    props: ChartGroupProps
+    template?: ChartSimple
 }
 
-/* Chart Stack Wrapper Types */
 export interface ChartStack extends ChartBase {
     kind: ChartKind.stack,
-    props: VictoryStackProps,
-    api?: ApiProps
+    props: ChartStackProps,
 }
 
-/* Chart Wrapper Types */
-export interface AxisProps {
+export interface ChartAxisProps {
     label?: string,
     tickFormat?: string,
     fixLabelOverlap?: boolean,
@@ -83,26 +93,56 @@ export interface AxisProps {
     style?: any
 }
 
+export { ChartLegendPosition, ChartLegendOrientation };
+export type ChartLegendData = { name: string }[]
+
+export interface ChartLegendProps {
+    data?: ChartLegendData,
+    position: ChartLegendPosition,
+    orientation: ChartLegendOrientation
+}
+
+export interface ChartWrapperTooltipProps {
+    labelAttr: string,
+    labelName?: string
+}
+
 export interface ChartWrapper extends ChartBase {
     kind: ChartKind.wrapper,
     parent: null,
-    api?: ApiProps // Currently this SHOULD NOT BE USED. Is here because of stupid Tscript
-    props: VictoryChartProps,
-    xAxis: AxisProps,
-    yAxis: AxisProps,
-    legend?: VictoryLegendProps,
-    hidden?: boolean
+    api?: ChartApiProps
+    props: ChartProps,
+    xAxis: ChartAxisProps,
+    yAxis: ChartAxisProps,
+    legend?: ChartLegendProps,
+    tooltip?: ChartWrapperTooltipProps[]
 }
 
-// Overal types
-export interface PropFunctions {
-    onClick?: Record<string, any>
-    axisFormat?: Record<string, any>
+export { ChartPieLegendPosition };
+export interface ChartPieLegendProps {
+    data?: ChartLegendData,
+    position: ChartPieLegendPosition,
+    orientation: ChartLegendOrientation
 }
 
-export interface DataType {
-    charts: ChartElement[],
-    functions: PropFunctions
+export interface ChartPie extends ChartBase {
+    kind: ChartKind.pie,
+    parent: null,
+    api?: ChartApiProps,
+    props: ChartPieProps,
+    legend?: ChartPieLegendProps,
+    tooltip?: PFChartTooltipProps
 }
 
-export type ChartElement = Chart | ChartWrapper | ChartGroup | ChartStack;
+// Reexport chart functions
+export {
+    ChartOnClickFunction,
+    ChartAxisFormatFunction,
+    ChartFunctions
+}
+
+export type ChartSchemaElement = ChartSimple | ChartPie | ChartWrapper | ChartGroup | ChartStack;
+export interface ChartSchema {
+    charts: ChartSchemaElement[],
+    functions: ChartFunctions
+}

@@ -1,45 +1,74 @@
 import React from 'react';
-import { VictoryGroup } from 'victory';
+import { ChartGroup as PFChartGroup } from '@patternfly/react-charts';
 import {
+    ChartApiData,
+    ChartData,
     ChartGroup,
     ChartKind,
-    DataType
+    ChartSchema,
+    ChartSchemaElement,
+    ChartSimple
 } from './types';
 import createChart from './createChart';
-import createStack from './createStack';
-import { passDataToChildren } from './helpers';
 
 const components: Partial<Record<ChartKind, (
     id: number,
-    data: DataType
+    data: ChartSchema,
+    resolvedApi: ChartApiData
 ) => React.ReactElement>> = {
-    [ChartKind.stack]: createStack,
     [ChartKind.simple]: createChart
 };
 
+const createDynamicChildren = (
+    charts: ChartSchemaElement[],
+    template: ChartSimple,
+    parent: number,
+    data: ChartData
+): ChartSchemaElement[] => ([
+    ...charts,
+    ...data.map((_d, idx) => ({
+        ...template,
+        id: idx,
+        parent
+    }))
+]);
+
 const createGroup = (
     id: number,
-    data: DataType
+    data: ChartSchema,
+    resolvedApi: ChartApiData
 ): React.ReactElement => {
     let { charts } =  data;
     const group = charts.find(({ id: i }) => i === id) as ChartGroup;
-    const children = charts.filter(({ parent }) => parent === id);
+    let children = charts.filter(({ parent }) => parent === id);
 
-    if (group.api) {
-        charts = passDataToChildren(
+    let renderedChildren: React.ReactElement[] = [];
+
+    if (group.template) {
+        charts = createDynamicChildren(
             charts,
-            children.map(({ id: i }) => i),
-            group.api.data
+            group.template,
+            group.id,
+            resolvedApi.data
         );
+        children = charts.filter(({ parent }) => parent === id);
+        renderedChildren = children.map((child, idx) => {
+            const calculatedApi = {
+                // Pass only the data which needs the child
+                data: [resolvedApi.data[idx]]
+            }
+            return components[child.kind](child.id, { ...data, charts }, calculatedApi)
+        });
+    } else {
+        renderedChildren = children.map(child => components[child.kind](child.id, data, resolvedApi));
     }
 
     return (
-        <VictoryGroup
-            offset={20}
+        <PFChartGroup
             {...group.props}
         >
-            { children.map(child => components[child.kind](child.id, { ...data, charts })) }
-        </VictoryGroup>
+            { renderedChildren }
+        </PFChartGroup>
     );
 };
 

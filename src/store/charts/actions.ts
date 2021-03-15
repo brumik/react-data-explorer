@@ -1,20 +1,16 @@
-import {
-    ChartElement,
-    Chart,
-    ChartWrapper
-} from '../../components/Chart/types';
+import { ChartSchemaElement, ChartSimple, ChartWrapper } from '../../components/Chart/types';
 
 import {
     ReducerTypes,
     ActionTypes
 } from './types';
 
-export const set = (charts: ChartElement[]): ActionTypes => ({
+export const set = (charts: ChartSchemaElement[]): ActionTypes => ({
     type: ReducerTypes.set,
     payload: charts
 })
 
-export const updateChart = (chart: Chart): ActionTypes => ({
+export const updateChart = (chart: ChartSimple): ActionTypes => ({
     type: ReducerTypes.updateChart,
     payload: chart
 })
@@ -24,7 +20,7 @@ export const updateChart = (chart: Chart): ActionTypes => ({
 //     ids
 // })
 
-export const addChartElement = (chart: Chart): ActionTypes => ({
+export const addChartElement = (chart: ChartSimple): ActionTypes => ({
     type: ReducerTypes.addChartElement,
     payload: chart
 });

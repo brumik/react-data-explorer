@@ -1,105 +1,105 @@
-import React, { FunctionComponent, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
-import {
-    ChartKind,
-    ChartType,
-    Chart
-} from '../Chart/types';
-import {
-    updateChart,
-    updateWrapperHidden
-} from '../../store/charts/actions';
-import { setOptionValue } from '../../store/form/actions';
-import { useTypedSelector } from '../../store/';
-import { fetchApi } from '../helpers';
-import Select from './Select';
+// import React, { FunctionComponent, useEffect } from 'react';
+// import { useDispatch } from 'react-redux';
+// import {
+//     ChartKind,
+//     ChartType,
+//     Chart
+// } from '../Chart/types';
+// import {
+//     updateChart,
+//     updateWrapperHidden
+// } from '../../store/charts/actions';
+// import { setOptionValue } from '../../store/form/actions';
+// import { useTypedSelector } from '../../store/';
+// import { fetchApi } from '../helpers';
+// import Select from './Select';
 
 
-interface Props {
-    chartId: number
-}
+// interface Props {
+//     chartId: number
+// }
 
-const WrapperEditor: FunctionComponent<Props> = ({ chartId }) => {
-    const dispatch = useDispatch();
-    const state = useTypedSelector(store => store.form);
+// const WrapperEditor: FunctionComponent<Props> = ({ chartId }) => {
+//     const dispatch = useDispatch();
+//     const state = useTypedSelector(store => store.form);
 
-    const getField = (n: string) =>
-        state.length > 0
-            ? state.find(({ name }) => name === n)
-            : { value: '' };
+//     const getField = (n: string) =>
+//         state.length > 0
+//             ? state.find(({ name }) => name === n)
+//             : { value: '' };
 
-    const chart = useTypedSelector(store => store.charts.find(
-        ({ id, kind }) => id === chartId && kind === ChartKind.simple
-    ) as Chart);
+//     const chart = useTypedSelector(store => store.charts.find(
+//         ({ id, kind }) => id === chartId && kind === ChartKind.simple
+//     ) as Chart);
 
-    useEffect(() => {
-        if (state.length <= 0 || !chart) return;
+//     useEffect(() => {
+//         if (state.length <= 0 || !chart) return;
 
-        dispatch(updateChart({
-            ...chart,
-            props: {
-                ...chart.props,
-                y: getField('attributes').value
-            }
-        } as Chart));
-    }, [ getField('attributes').value ]);
+//         dispatch(updateChart({
+//             ...chart,
+//             props: {
+//                 ...Chartprops,
+//                 y: getField('attributes').value
+//             }
+//         } as Chart));
+//     }, [ getField('attributes').value ]);
 
-    useEffect(() => {
-        if (state.length <= 0 || !chart) return;
-        const newValue = getField('chartTypes').value;
+//     useEffect(() => {
+//         if (state.length <= 0 || !chart) return;
+//         const newValue = getField('chartTypes').value;
 
-        dispatch(updateWrapperHidden(
-            chart.parent,
-            newValue === ChartType.pie
-        ));
+//         dispatch(updateWrapperHidden(
+//             Chartparent,
+//             newValue === ChartType.pie
+//         ));
 
-        dispatch(updateChart({
-            ...chart,
-            type: newValue
-        } as Chart));
+//         dispatch(updateChart({
+//             ...chart,
+//             type: newValue
+//         } as Chart));
 
-    }, [ getField('chartTypes').value ]);
+//     }, [ getField('chartTypes').value ]);
 
-    useEffect(() => {
-        if (state.length <= 0 || !chart) return () => ({});
-        const newValue = getField('groupByTime').value;
-        const newChart = { ...chart };
+//     useEffect(() => {
+//         if (state.length <= 0 || !chart) return () => ({});
+//         const newValue = getField('groupByTime').value;
+//         const newChart = { ...chart };
 
-        newChart.api.params = {
-            ...newChart.api.params,
-            'group_by_time': newValue,
-            'limit': newValue === 'true' ? '20' : '4'
-        };
+//         newChartapi.params = {
+//             ...newChartapi.params,
+//             'group_by_time': newValue,
+//             'limit': newValue === 'true' ? '20' : '4'
+//         };
 
-        let didCancel = false;
-        fetchApi(newChart.api)
-            .then(({ items }: Record<string, unknown>) => {
-                if (didCancel) return;
+//         let didCancel = false;
+//         fetchApi(newChartapi)
+//             .then(({ items }: Record<string, unknown>) => {
+//                 if (didCancel) return;
 
-                newChart.props = {
-                    ...newChart.props,
-                    data: items as Record<string, unknown>[],
-                    x: newValue === 'true' ? 'created_date' : ''
-                }
-                dispatch(updateChart(newChart));
-                dispatch(setOptionValue(
-                    'chartTypes',
-                    newValue === 'true' ? 'line' : 'pie'
-                ))
-            })
-            .catch(() => ({}));
+//                 newChartprops = {
+//                     ...newChartprops,
+//                     data: items as Record<string, unknown>[],
+//                     x: newValue === 'true' ? 'created_date' : ''
+//                 }
+//                 dispatch(updateChart(newChart));
+//                 dispatch(setOptionValue(
+//                     'chartTypes',
+//                     newValue === 'true' ? 'line' : 'pie'
+//                 ))
+//             })
+//             .catch(() => ({}));
 
-        return () => {
-            didCancel = true
-        };
-    }, [ getField('groupByTime').value ])
+//         return () => {
+//             didCancel = true
+//         };
+//     }, [ getField('groupByTime').value ])
 
-    return (
-        <React.Fragment>
-            <h3>Chart options</h3>
-            { state.map((item, idx) => <Select key={idx} {...item} />) }
-        </React.Fragment>
-    );
-};
+//     return (
+//         <React.Fragment>
+//             <h3>Chart options</h3>
+//             { state.map((item, idx) => <Select key={idx} {...item} />) }
+//         </React.Fragment>
+//     );
+// };
 
-export default WrapperEditor;
+// export default WrapperEditor;

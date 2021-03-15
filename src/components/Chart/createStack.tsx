@@ -1,44 +1,32 @@
 import React from 'react';
-import { VictoryStack } from 'victory';
-import {
-    ChartStack,
-    ChartKind,
-    Chart,
-    DataType
-} from './types';
+import { ChartStack as PFChartStack } from '@patternfly/react-charts';
+import { ChartApiData, ChartKind, ChartSchema, ChartSimple, ChartStack } from './types';
 import createChart from './createChart';
-import { passDataToChildren } from './helpers';
 
 const components: Partial<Record<ChartKind, (
     id: number,
-    data: DataType
+    data: ChartSchema,
+    resolvedApi: ChartApiData
 ) => React.ReactElement>> = {
     [ChartKind.simple]: createChart
 };
 
 const createStack = (
     id: number,
-    data: DataType
+    data: ChartSchema,
+    resolvedApi: ChartApiData
 ): React.ReactElement => {
-    let { charts } = data;
+    const { charts } = data;
     const stack = charts.find(({ id: i }) => i === id) as ChartStack;
-    const children = charts.filter(({ parent }) => parent === id) as Chart[];
-
-    if (stack.api) {
-        charts = passDataToChildren(
-            charts,
-            children.map(({ id: i }) => i),
-            stack.api.data
-        );
-    }
+    const children = charts.filter(({ parent }) => parent === id) as ChartSimple[];
 
     return (
-        <VictoryStack
+        <PFChartStack
             key={stack.id}
             {...stack.props}
         >
-            { children.map(child => components[child.kind](child.id, { ...data, charts })) }
-        </VictoryStack>
+            { children.map(child => components[child.kind](child.id, data, resolvedApi)) }
+        </PFChartStack>
     )
 };
 

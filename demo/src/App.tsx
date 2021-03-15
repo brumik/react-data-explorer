@@ -14,7 +14,7 @@ const App: React.FunctionComponent<Record<string, never>> = () => {
     // }
 
     return (
-        <div style={{ width: '1100px', margin: 'auto', fontSize: 10 }}>
+        <div style={{ maxWidth: '1100px', margin: 'auto' }}>
             { /* <DataExplorer
                 schema={schema}
                 onSchemaChange={logger}
