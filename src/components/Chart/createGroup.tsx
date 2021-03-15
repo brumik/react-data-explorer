@@ -7,7 +7,7 @@ import {
     ChartKind,
     ChartSchema,
     ChartSchemaElement,
-    ChartSimple,
+    ChartSimple
 } from './types';
 import createChart from './createChart';
 
