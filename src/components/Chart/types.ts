@@ -33,17 +33,16 @@ export enum ChartTooltipType {
     default = 'default'
 }
 
-export enum ChartDataKind {
-    simple = 'simple',
-    grouped = 'grouped'
+export interface ChartDataSerie {
+    serie: Record<string, string | number>[],
+    hidden: boolean,
+    name: string
 }
+export type ChartData = ChartDataSerie[]
 
-export type ChartSimpleData = Record<string, string | number>[]
-export type ChartGroupedData = ChartSimpleData[]
-
-export interface ChartData {
-    data: ChartSimpleData | ChartGroupedData,
-    kind: ChartDataKind
+export interface ChartApiData {
+    data: ChartData,
+    legend?: ChartLegendData
 }
 
 export interface ChartApiProps {

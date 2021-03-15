@@ -1,4 +1,4 @@
-import { ChartApiProps, ChartData, ChartDataKind, ChartGroupedData, ChartLegendData, ChartSimpleData } from '../types';
+import { ChartApiProps, ChartApiData, ChartLegendData, ChartData } from '../types';
 import { ApiReturnType, ApiType, GroupedApi } from './types';
 export * from './types';
 
@@ -10,15 +10,20 @@ export const fetchApi = (api: ChartApiProps): Promise<ApiReturnType> => {
     }).then(r => r.json()) as Promise<ApiReturnType>;
 }
 
-export const convertGroupedByData = (data: GroupedApi): ChartGroupedData => {
+export const convertGroupedByData = (data: GroupedApi): ChartData => {
     const { dates } = data;
-    const items: ChartGroupedData = [];
+    const items: ChartData = [];
     dates.forEach((el) => {
+        // Add items to the correct serie
         el.items.forEach((item, idx) => {
             if (!items[idx]) {
-                items[idx] = [];
+                items[idx] = {
+                    serie: [],
+                    hidden: false,
+                    name: Date.now().toString()
+                };
             }
-            items[idx].push({
+            items[idx].serie.push({
                 created_date: el.date,
                 ...item
             });
@@ -27,11 +32,10 @@ export const convertGroupedByData = (data: GroupedApi): ChartGroupedData => {
     return items;
 }
 
-export const getApiData = async (api: ChartApiProps): Promise<ChartData> => {
-    const resolvedData: ChartData = {
-        data: [] as ChartSimpleData,
-        kind: ChartDataKind.simple
-    }
+export const getApiData = async (api: ChartApiProps): Promise<ChartApiData> => {
+    const resolvedData: ChartApiData = {
+        data: []
+    };
 
     await fetchApi(api).then((result: ApiReturnType) => {
         // eslint-disable-next-line @typescript-eslint/dot-notation
@@ -44,11 +48,13 @@ export const getApiData = async (api: ChartApiProps): Promise<ChartData> => {
         switch (result.type) {
             case ApiType.grouped:
                 resolvedData.data = convertGroupedByData(result);
-                resolvedData.kind = ChartDataKind.grouped
                 break;
             case ApiType.nonGrouped:
-                resolvedData.data = result.items;
-                resolvedData.kind = ChartDataKind.simple
+                resolvedData.data = [{
+                    serie: result.items,
+                    hidden: false,
+                    name: Date.now().toString()
+                }];
                 break;
         }
     });
@@ -56,15 +62,12 @@ export const getApiData = async (api: ChartApiProps): Promise<ChartData> => {
     return resolvedData;
 };
 
-export const getLegendData = (resolvedApi: ChartData): ChartLegendData => {
-    switch (resolvedApi.kind) {
-        case ChartDataKind.simple:
-            const datapoint = resolvedApi.data as ChartSimpleData;
-            return datapoint.map(({ name }) => ({ name: (name || 'No Name') as string }));
-        case ChartDataKind.grouped:
-            const datapoints = resolvedApi.data as ChartGroupedData;
-            return datapoints.map(line => ({
-                name: (line[0].name || 'No Name') as string
-            }));
-    }
+export const getLegendData = (resolvedApi: ChartApiData): ChartLegendData => {
+    return resolvedApi.data.length === 1
+        ? resolvedApi.data[0].serie.map(item => ({
+            name: (item.name || 'No Name') as string
+        }))
+        : resolvedApi.data.map(serie => ({
+            name: (serie.serie[0].name || 'No Name') as string
+        }));
 };

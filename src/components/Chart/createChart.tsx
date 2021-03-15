@@ -5,7 +5,14 @@ import {
     ChartArea,
     ChartScatter
 } from '@patternfly/react-charts';
-import { ChartData, ChartSchema, ChartSimple, ChartTooltipProps, ChartType } from './types';
+import {
+    ChartApiData,
+    ChartDataSerie,
+    ChartSchema,
+    ChartSimple,
+    ChartTooltipProps,
+    ChartType
+} from './types';
 import legendMapper from './Tooltips';
 import { snakeToSentence } from './helpers';
 
@@ -21,10 +28,18 @@ const getLabels = ({ labelAttr, labelName }: ChartTooltipProps) =>
         // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
         `${labelName ?? snakeToSentence(labelAttr)}: ${datum[labelAttr]}`;
 
+/**
+ * Calculate data points. The interactive label can hide chart components,
+ * if it is hidden we want to display null element so the color is staying
+ * the same for the other charts.
+ */
+const getData = (data: ChartDataSerie, y = 'y'): Record<string, string | number>[] =>
+    data.hidden ? [{ [y]: null }] : data.serie;
+
 const createChart = (
     id: number,
     data: ChartSchema,
-    resolvedApi: ChartData
+    chartData: ChartApiData
 ): React.ReactElement => {
     const { charts, functions } = data;
     const chart = charts.find(({ id: i }) => i === id) as ChartSimple;
@@ -57,9 +72,10 @@ const createChart = (
 
     return (
         <SelectedChart
-            key={chart.id}
             {...props}
-            data={resolvedApi.data}
+            key={chartData.data[0].name}
+            data={getData(chartData.data[0], props.y as string)}
+            name={chartData.data[0].name}
         />
     );
 };

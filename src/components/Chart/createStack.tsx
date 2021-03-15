@@ -1,12 +1,12 @@
 import React from 'react';
 import { ChartStack as PFChartStack } from '@patternfly/react-charts';
-import { ChartData, ChartKind, ChartSchema, ChartSimple, ChartStack } from './types';
+import { ChartApiData, ChartKind, ChartSchema, ChartSimple, ChartStack } from './types';
 import createChart from './createChart';
 
 const components: Partial<Record<ChartKind, (
     id: number,
     data: ChartSchema,
-    resolvedApi: ChartData
+    resolvedApi: ChartApiData
 ) => React.ReactElement>> = {
     [ChartKind.simple]: createChart
 };
@@ -14,7 +14,7 @@ const components: Partial<Record<ChartKind, (
 const createStack = (
     id: number,
     data: ChartSchema,
-    resolvedApi: ChartData
+    resolvedApi: ChartApiData
 ): React.ReactElement => {
     const { charts } = data;
     const stack = charts.find(({ id: i }) => i === id) as ChartStack;

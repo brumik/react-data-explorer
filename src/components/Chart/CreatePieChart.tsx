@@ -1,13 +1,11 @@
 import React, { FunctionComponent, useState } from 'react';
 import { ChartLegendOrientation, ChartPie as PFChartPie, ChartPieLegendPosition } from '@patternfly/react-charts';
 import {
-    ChartData,
-    ChartDataKind,
+    ChartApiData,
     ChartLegendData,
     ChartPie,
     ChartSchema
 } from './types';
-import { getLegendData } from './Api';
 import ResponsiveContainer from './ResponsiveContainer';
 
 interface Props {
@@ -30,9 +28,8 @@ const CreatePieChart: FunctionComponent<Props> = ({
     const wrapper = charts.find(({ id: i }) => i === id) as ChartPie;
     const [width, setWidth] = useState(0);
     const [resolvedApi, setResolvedApi] = useState({
-        data: [],
-        kind: ChartDataKind.simple
-    } as ChartData);
+        data: []
+    } as ChartApiData);
 
     const props = {
         height: 200,
@@ -63,10 +60,7 @@ const CreatePieChart: FunctionComponent<Props> = ({
             props.height += 100;
         }
 
-        const legendData: ChartLegendData = legend.data
-            ?? resolvedApi.data.length > 0
-            ? getLegendData(resolvedApi)
-            : [{ name: 'No Data Yet' }];
+        const legendData: ChartLegendData = legend.data ?? resolvedApi.legend
         otherProps = {
             ...otherProps,
             padding,
@@ -83,15 +77,15 @@ const CreatePieChart: FunctionComponent<Props> = ({
             api={wrapper.api}
             setData={setResolvedApi}
         >
-            <PFChartPie
+            { resolvedApi.data.length > 0 && <PFChartPie
                 {...otherProps}
                 {...props}
                 labels={() => 'TODO'}
-                data={resolvedApi.data}
+                data={resolvedApi.data[0].serie}
                 key={id}
                 width={width}
                 constrainToVisibleArea={true}
-            />
+            />}
         </ResponsiveContainer>
     );
 };

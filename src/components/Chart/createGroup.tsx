@@ -1,22 +1,20 @@
 import React from 'react';
 import { ChartGroup as PFChartGroup } from '@patternfly/react-charts';
 import {
+    ChartApiData,
     ChartData,
-    ChartDataKind,
     ChartGroup,
-    ChartGroupedData,
     ChartKind,
     ChartSchema,
     ChartSchemaElement,
     ChartSimple,
-    ChartSimpleData
 } from './types';
 import createChart from './createChart';
 
 const components: Partial<Record<ChartKind, (
     id: number,
     data: ChartSchema,
-    resolvedApi: ChartData
+    resolvedApi: ChartApiData
 ) => React.ReactElement>> = {
     [ChartKind.simple]: createChart
 };
@@ -25,7 +23,7 @@ const createDynamicChildren = (
     charts: ChartSchemaElement[],
     template: ChartSimple,
     parent: number,
-    data: ChartGroupedData
+    data: ChartData
 ): ChartSchemaElement[] => ([
     ...charts,
     ...data.map((_d, idx) => ({
@@ -38,7 +36,7 @@ const createDynamicChildren = (
 const createGroup = (
     id: number,
     data: ChartSchema,
-    resolvedApi: ChartData
+    resolvedApi: ChartApiData
 ): React.ReactElement => {
     let { charts } =  data;
     const group = charts.find(({ id: i }) => i === id) as ChartGroup;
@@ -46,18 +44,18 @@ const createGroup = (
 
     let renderedChildren: React.ReactElement[] = [];
 
-    if (resolvedApi.kind === ChartDataKind.grouped) {
+    if (group.template) {
         charts = createDynamicChildren(
             charts,
             group.template,
             group.id,
-            resolvedApi.data as ChartGroupedData
+            resolvedApi.data
         );
         children = charts.filter(({ parent }) => parent === id);
         renderedChildren = children.map((child, idx) => {
             const calculatedApi = {
-                data: resolvedApi.data[idx] as ChartSimpleData,
-                kind: ChartDataKind.simple
+                // Pass only the data which needs the child
+                data: [resolvedApi.data[idx]]
             }
             return components[child.kind](child.id, { ...data, charts }, calculatedApi)
         });

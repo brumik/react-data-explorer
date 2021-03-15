@@ -4,17 +4,17 @@ import React, {
     useRef,
     useState
 } from 'react';
-import { getApiData } from './Api';
+import { getApiData, getLegendData } from './Api';
 import {
     ChartApiProps,
-    ChartData
+    ChartApiData
 } from './types';
 
 interface Props {
     setWidth: (width: number) => void
     height: number,
     api: ChartApiProps,
-    setData: (data: ChartData) => void
+    setData: (data: ChartApiData) => void
 }
 
 const ResponsiveContainer: FunctionComponent<Props> = ({
@@ -46,7 +46,7 @@ const ResponsiveContainer: FunctionComponent<Props> = ({
         setLoading(true);
         getApiData(api)
             .then(results => {
-                setData(results);
+                setData({ ...results, legend: getLegendData(results)});
             })
             .catch(() => ({}))
             .finally(() => {

@@ -2,13 +2,15 @@ import React, { FunctionComponent, useState } from 'react';
 import {
     Chart as PFChart,
     ChartAxis,
+    ChartLegend,
     ChartLegendOrientation,
     ChartLegendPosition,
-    ChartVoronoiContainer
+    ChartVoronoiContainer,
+    getInteractiveLegendEvents,
+    getInteractiveLegendItemStyles
 } from '@patternfly/react-charts';
 import {
-    ChartData,
-    ChartDataKind,
+    ChartApiData,
     ChartKind,
     ChartLegendData,
     ChartSchema,
@@ -19,13 +21,12 @@ import createChart from './createChart';
 import createGroup from './createGroup';
 import createStack from './createStack';
 import { snakeToSentence } from './helpers';
-import { getLegendData } from './Api';
 import ResponsiveContainer from './ResponsiveContainer';
 
 const components: Partial<Record<ChartKind, (
     id: number,
     data: ChartSchema,
-    resolvedApi: ChartData
+    resolvedApi: ChartApiData
 ) => React.ReactElement>> = {
     [ChartKind.group]: createGroup,
     [ChartKind.stack]: createStack,
@@ -41,7 +42,8 @@ interface OtherProps {
     padding?: { top: number, bottom: number, left: number, right: number },
     legendData?: ChartLegendData,
     legendPosition?: ChartLegendPosition,
-    legendOrientation?: ChartLegendOrientation
+    legendOrientation?: ChartLegendOrientation,
+    legendComponent?: any
 }
 
 const CreateWrapper: FunctionComponent<Props> = ({
@@ -53,9 +55,8 @@ const CreateWrapper: FunctionComponent<Props> = ({
     const child = charts.find(({ parent }) => parent === wrapper.id);
     const [width, setWidth] = useState(0);
     const [resolvedApi, setResolvedApi] = useState({
-        data: [],
-        kind: ChartDataKind.simple
-    } as ChartData);
+        data: []
+    } as ChartApiData);
 
     const xAxis = {
         fixLabelOverlap: true,
@@ -102,10 +103,7 @@ const CreateWrapper: FunctionComponent<Props> = ({
             props.height += 100;
         }
 
-        const legendData: ChartLegendData = legend.data
-            ?? resolvedApi.data.length > 0
-            ? getLegendData(resolvedApi)
-            : [{ name: 'No Data Yet' }];
+        const legendData: ChartLegendData = legend.data ?? resolvedApi.legend;
         otherProps = {
             ...otherProps,
             padding,
@@ -139,6 +137,56 @@ const CreateWrapper: FunctionComponent<Props> = ({
         }
     }
 
+    // Interactive legend
+    const [ hiddenSeries, setHiddenSeries ] = useState(new Set());
+    const handleLegendClick = ({ index }: {index: number}) => {
+        // Don't allow hiding ALL the series
+        if (
+            !hiddenSeries.has(index) &&
+            hiddenSeries.size + 1 === resolvedApi.data.length
+        ) {
+            return;
+        }
+
+        if (!hiddenSeries.delete(index)) {
+            hiddenSeries.add(index);
+        }
+        setHiddenSeries(new Set(hiddenSeries));
+
+        // Set the charts data in it too
+        const tempData = resolvedApi.data;
+        tempData[index].hidden = !tempData[index].hidden;
+        setResolvedApi({
+            ...resolvedApi,
+            data: tempData
+        })
+    };
+
+    const getEvents = () => getInteractiveLegendEvents({
+        chartNames: [resolvedApi.data.map(({ name }) => name)],
+        isHidden: (index: number) => hiddenSeries.has(index),
+        legendName: `legend-${id}`,
+        onLegendClick: handleLegendClick
+    });
+
+    if(wrapper.legend && resolvedApi.legend) {
+        otherProps = {
+            ...otherProps,
+            legendComponent: <ChartLegend
+                name={`legend-${id}`}
+                data={
+                    otherProps.legendData.map((el, index) => ({
+                        childName: el.name, // Sync tooltip legend with the series associated with given chart name
+                        ...el, // The original legend data
+                        ...getInteractiveLegendItemStyles(hiddenSeries.has(index)) // hidden styles
+                    }))
+                }
+            />
+        };
+    }
+
+
+    // End of Interactive legend
     return (
         <ResponsiveContainer
             setWidth={setWidth}
@@ -146,17 +194,18 @@ const CreateWrapper: FunctionComponent<Props> = ({
             api={wrapper.api}
             setData={setResolvedApi}
         >
-            <PFChart
+            {resolvedApi.data.length > 0 && <PFChart
                 {...otherProps}
                 {...props}
                 key={id}
                 width={width}
                 {...labelProps}
+                events={getEvents()}
             >
                 <ChartAxis {...xAxis} />
                 <ChartAxis dependentAxis {...yAxis} />
                 {child && components[child.kind](child.id, data, resolvedApi)}
-            </PFChart>
+            </PFChart>}
         </ResponsiveContainer>
     );
 };
