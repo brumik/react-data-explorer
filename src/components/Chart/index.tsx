@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from 'react';
 import { ChartKind, ChartFunctions, ChartSchema, ChartSchemaElement } from './types';
-import CreateWrapper from './CreateWrapper';
-import CreatePieChart from './CreatePieChart';
+import CreateWrapper from './Renderers/CreateWrapper';
+import CreatePieChart from './Renderers/CreatePieChart';
 
 interface Props {
     ids?: number[],

@@ -8,7 +8,7 @@ import {
     ChartSchema,
     ChartSchemaElement,
     ChartSimple
-} from './types';
+} from '../types';
 import createChart from './createChart';
 
 const components: Partial<Record<ChartKind, (

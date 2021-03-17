@@ -12,9 +12,9 @@ import {
     ChartSimple,
     ChartTooltipProps,
     ChartType
-} from './types';
-import legendMapper from './Tooltips';
-import { snakeToSentence } from './helpers';
+} from '../types';
+import legendMapper from '../Tooltips';
+import { snakeToSentence } from '../Common/helpers';
 
 const components: Partial<Record<ChartType, React.ElementType>> = {
     [ChartType.bar]: ChartBar,

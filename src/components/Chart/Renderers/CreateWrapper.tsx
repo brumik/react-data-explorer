@@ -13,13 +13,13 @@ import {
     ChartSchema,
     ChartWrapper,
     ChartWrapperTooltipProps
-} from './types';
+} from '../types';
 import createChart from './createChart';
 import createGroup from './createGroup';
 import createStack from './createStack';
-import { snakeToSentence } from './helpers';
-import ResponsiveContainer from './ResponsiveContainer';
-import { getInteractiveLegend } from './getInteractiveLegend';
+import { snakeToSentence } from '../Common/helpers';
+import ResponsiveContainer from '../Common/ResponsiveContainer';
+import { getInteractiveLegend } from '../Common/getInteractiveLegend';
 
 const components: Partial<Record<ChartKind, (
     id: number,

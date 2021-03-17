@@ -1,6 +1,6 @@
 import React from 'react';
 import { ChartStack as PFChartStack } from '@patternfly/react-charts';
-import { ChartApiData, ChartKind, ChartSchema, ChartSimple, ChartStack } from './types';
+import { ChartApiData, ChartKind, ChartSchema, ChartSimple, ChartStack } from '../types';
 import createChart from './createChart';
 
 const components: Partial<Record<ChartKind, (

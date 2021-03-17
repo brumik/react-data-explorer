@@ -5,8 +5,8 @@ import {
     ChartLegendData,
     ChartPie,
     ChartSchema
-} from './types';
-import ResponsiveContainer from './ResponsiveContainer';
+} from '../types';
+import ResponsiveContainer from '../Common/ResponsiveContainer';
 
 interface Props {
     id: number,

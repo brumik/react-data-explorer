@@ -4,7 +4,7 @@ import {
     ChartLegend
 } from '@patternfly/react-charts';
 import React from 'react';
-import { ChartApiData, ChartTopSchemaElement } from './types';
+import { ChartApiData, ChartTopSchemaElement } from '../types';
 
 interface ReturnType {
     getEvents: () => any,
