@@ -21,8 +21,7 @@ The chart builder component todo entries
     * (usefull when we need postprocess the legend the API will send)
 
 ### Bug
-* the legend shows doubled when its applied to the chart and the values for multiple serues is the same
-* on disabling the bar chart the place remains empty instead of pulling it together
+* the legend shows doubled when its applied to the chart and the values for multiple series is the same
 
 ### Code organization
 * deep merge the objects with default values

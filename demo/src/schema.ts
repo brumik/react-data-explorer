@@ -63,8 +63,10 @@ export const dashboard: ChartSchemaElement[] = [
         tooltip: {
             type: ChartTooltipType.default,
             props: {},
-            labelAttr: 'failed_count',
-            labelName: 'Failed'
+            data: {
+                labelAttr: 'failed_count',
+                labelName: 'Failed'
+            }
         },
         onClick: 'consoleLog'
     },
@@ -85,7 +87,9 @@ export const dashboard: ChartSchemaElement[] = [
         tooltip: {
             type: ChartTooltipType.default,
             props: {},
-            labelAttr: 'successful_count'
+            data: {
+                labelAttr: 'successful_count'
+            }
         }
     },
     {
@@ -102,15 +106,18 @@ export const dashboard: ChartSchemaElement[] = [
         yAxis: {
             label: 'Job runs'
         },
-        tooltip: [
-            {
-                labelAttr: 'failed_count',
-                labelName: 'Failed'
-            },
-            {
-                labelAttr: 'successful_count'
-            }
-        ],
+        tooltip: {
+            data: [
+                {
+                    labelAttr: 'failed_count',
+                    labelName: 'Failed'
+                },
+                {
+                    labelAttr: 'successful_count'
+                }
+            ],
+            cursor: false,
+        },
         api: {
             params: {
                 status: ['successful', 'failed'],
@@ -221,7 +228,9 @@ export const dashboard: ChartSchemaElement[] = [
             tooltip: {
                 type: ChartTooltipType.default,
                 props: {},
-                labelAttr: 'total_count'
+                data: {
+                    labelAttr: 'total_count'
+                }
             }
         }
     },

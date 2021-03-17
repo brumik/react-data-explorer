@@ -4,20 +4,20 @@ import {
     ChartAxis,
     ChartLegendOrientation,
     ChartLegendPosition,
-    ChartVoronoiContainer
+    ChartVoronoiContainer,
+    createContainer
 } from '@patternfly/react-charts';
 import {
     ChartApiData,
     ChartKind,
     ChartLegendData,
     ChartSchema,
-    ChartWrapper,
-    ChartWrapperTooltipProps
+    ChartWrapper
 } from '../types';
 import createChart from './createChart';
 import createGroup from './createGroup';
 import createStack from './createStack';
-import { snakeToSentence } from '../Common/helpers';
+import { getLabels } from '../Common/helpers';
 import ResponsiveContainer from '../Common/ResponsiveContainer';
 import { getInteractiveLegend } from '../Common/getInteractiveLegend';
 
@@ -111,26 +111,18 @@ const CreateWrapper: FunctionComponent<Props> = ({
         }
     }
 
-    const getLabels = (tooltips: ChartWrapperTooltipProps[]) =>
-        ({ datum }: { datum: Record<string, string> }) => {
-            let result = '';
-            tooltips.forEach(({ labelAttr, labelName }, idx) => {
-                if (idx > 0) {
-                    result += '\n';
-                }
-                // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-                result += `${labelName ?? snakeToSentence(labelAttr)}: ${datum[labelAttr]}`;
-
-            });
-            return result;
-        }
-
     let labelProps = {};
     if (wrapper.tooltip) {
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+        const ContainerComponent = wrapper.tooltip.cursor
+            ? createContainer('voronoi', 'cursor')
+            : ChartVoronoiContainer;
+
         labelProps = {
-            containerComponent: <ChartVoronoiContainer
+            containerComponent: <ContainerComponent
+                cursorDimension='x'
                 constrainToVisibleArea
-                labels={getLabels(wrapper.tooltip)}
+                labels={getLabels(wrapper.tooltip.data, wrapper.tooltip.customFnc)}
             />
         }
     }

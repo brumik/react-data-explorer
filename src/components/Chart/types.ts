@@ -57,11 +57,16 @@ interface ChartBase {
     parent: number // Id of the parent wrapper Element
 }
 
+export type ChartTooltipCustomFunction = (datum: Record<string, any>) => string;
+export interface ChartTooltipPropsData {
+    labelAttr: string,
+    labelName?: string
+}
 export interface ChartTooltipProps {
     type: ChartTooltipType,
     props: PFChartTooltipProps,
-    labelAttr: string
-    labelName?: string,
+    data?: ChartTooltipPropsData,
+    customFnc?: ChartTooltipCustomFunction
 }
 
 export type ChartSimpleProps = ChartBarProps | ChartLineProps | ChartAreaProps | ChartScatterProps;
@@ -102,11 +107,6 @@ export interface ChartLegendProps {
     orientation: ChartLegendOrientation
 }
 
-export interface ChartWrapperTooltipProps {
-    labelAttr: string,
-    labelName?: string
-}
-
 export interface ChartWrapper extends ChartBase {
     kind: ChartKind.wrapper,
     parent: null,
@@ -115,7 +115,11 @@ export interface ChartWrapper extends ChartBase {
     xAxis: ChartAxisProps,
     yAxis: ChartAxisProps,
     legend?: ChartLegendProps,
-    tooltip?: ChartWrapperTooltipProps[]
+    tooltip?: {
+        cursor?: boolean,
+        customFnc?: ChartTooltipCustomFunction,
+        data?: ChartTooltipPropsData[],
+    }
 }
 
 export { ChartPieLegendPosition };

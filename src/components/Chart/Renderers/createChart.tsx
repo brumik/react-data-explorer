@@ -10,11 +10,10 @@ import {
     ChartDataSerie,
     ChartSchema,
     ChartSimple,
-    ChartTooltipProps,
     ChartType
 } from '../types';
 import legendMapper from '../Tooltips';
-import { snakeToSentence } from '../Common/helpers';
+import { getLabels } from '../Common/helpers';
 
 const components: Partial<Record<ChartType, React.ElementType>> = {
     [ChartType.bar]: ChartBar,
@@ -22,11 +21,6 @@ const components: Partial<Record<ChartType, React.ElementType>> = {
     [ChartType.area]: ChartArea,
     [ChartType.scatter]: ChartScatter
 };
-
-const getLabels = ({ labelAttr, labelName }: ChartTooltipProps) =>
-    ({ datum }: { datum: Record<string, string> }) =>
-        // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-        `${labelName ?? snakeToSentence(labelAttr)}: ${datum[labelAttr]}`;
 
 /**
  * Calculate data points. The interactive label can hide chart components,
@@ -50,7 +44,7 @@ const createChart = (
         const LegendComponent = legendMapper[chart.tooltip.type];
         props = {
             ...props,
-            labels: getLabels(chart.tooltip),
+            labels: getLabels(chart.tooltip.data, chart.tooltip.customFnc),
             labelComponent: <LegendComponent
                 {...chart.tooltip.props}
                 dy={0}
