@@ -9,7 +9,6 @@ import {
 } from '../../src/';
 
 export const dashboard: ChartSchemaElement[] = [
-    // Cluster page bar chart
     {
         id: 1000,
         kind: ChartKind.wrapper,

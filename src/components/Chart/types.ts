@@ -94,7 +94,7 @@ export interface ChartAxisProps {
 }
 
 export { ChartLegendPosition, ChartLegendOrientation };
-export type ChartLegendData = { name: string }[]
+export type ChartLegendData = { name: string, childName?: string }[]
 
 export interface ChartLegendProps {
     data?: ChartLegendData,
@@ -142,6 +142,7 @@ export {
 }
 
 export type ChartSchemaElement = ChartSimple | ChartPie | ChartWrapper | ChartGroup | ChartStack;
+export type ChartTopSchemaElement = ChartWrapper | ChartPie;
 export interface ChartSchema {
     charts: ChartSchemaElement[],
     functions: ChartFunctions
