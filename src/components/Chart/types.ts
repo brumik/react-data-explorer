@@ -10,7 +10,8 @@ import {
     ChartPieLegendPosition as ChartPieLegendPosition,
     ChartLineProps,
     ChartAreaProps,
-    ChartScatterProps
+    ChartScatterProps,
+    ChartThemeColor
 } from '@patternfly/react-charts';
 import { ChartAxisFormatFunction, ChartFunctions, ChartOnClickFunction } from './Functions/types';
 
@@ -151,6 +152,9 @@ export {
     ChartAxisFormatFunction,
     ChartFunctions
 }
+
+// Reexport theme color from PF
+export { ChartThemeColor };
 
 export type ChartSchemaElement = ChartSimple | ChartPie | ChartWrapper | ChartGroup | ChartStack;
 export type ChartTopSchemaElement = ChartWrapper | ChartPie;

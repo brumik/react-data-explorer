@@ -25,7 +25,6 @@ The chart builder component todo entries
 ### Feature
 * Legend type charts --> similar to pie chart, one component
     * Add a vertical legend/progress chart
-* custom color scheme to the chart wrapper
 * custom legend options
     * (usefull when we need postprocess the legend the API will send)
 

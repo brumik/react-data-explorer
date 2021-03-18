@@ -4,6 +4,7 @@ import {
     ChartLegendPosition,
     ChartPieLegendPosition,
     ChartSchemaElement,
+    ChartThemeColor,
     ChartTooltipType,
     ChartTopLevelType,
     ChartType
@@ -16,8 +17,7 @@ export const dashboard: ChartSchemaElement[] = [
         type: ChartTopLevelType.chart,
         parent: null,
         props: {
-            height: 300,
-            domainPadding: 20
+            height: 300
         },
         xAxis: {
             label: 'Date',
@@ -180,7 +180,8 @@ export const dashboard: ChartSchemaElement[] = [
         type: ChartTopLevelType.chart,
         parent: null,
         props: {
-            height: 300
+            height: 300,
+            themeColor: ChartThemeColor.green
         },
         xAxis: {
             label: 'Date',
