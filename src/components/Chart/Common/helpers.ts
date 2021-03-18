@@ -1,4 +1,8 @@
-import { ChartTooltipCustomFunction, ChartTooltipPropsData } from '../types';
+import {
+    ChartData,
+    ChartTooltipCustomFunction,
+    ChartTooltipPropsData
+} from '../types';
 
 type GetLabelReturnType = (d: any) => string;
 
@@ -42,4 +46,11 @@ export const getLabels = (
     } else {
         return () => '';
     }
+}
+
+export const getBarWidthFromData = (data: ChartData): number => {
+    const calculated = Math.floor(50 / data.length);
+    const min = 1;
+    const max = 20;
+    return Math.max(min, Math.min(max, calculated));
 }

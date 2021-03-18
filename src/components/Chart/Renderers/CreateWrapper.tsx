@@ -9,15 +9,18 @@ import {
 } from '@patternfly/react-charts';
 import {
     ChartApiData,
+    ChartData,
     ChartKind,
     ChartLegendData,
     ChartSchema,
+    ChartSchemaElement,
+    ChartType,
     ChartWrapper
 } from '../types';
 import createChart from './createChart';
 import createGroup from './createGroup';
 import createStack from './createStack';
-import { getLabels } from '../Common/helpers';
+import { getBarWidthFromData, getLabels } from '../Common/helpers';
 import ResponsiveContainer from '../Common/ResponsiveContainer';
 import { getInteractiveLegend } from '../Common/getInteractiveLegend';
 
@@ -41,7 +44,24 @@ interface OtherProps {
     legendData?: ChartLegendData,
     legendPosition?: ChartLegendPosition,
     legendOrientation?: ChartLegendOrientation,
-    legendComponent?: any
+    legendComponent?: any,
+    domainPadding?: number
+}
+
+const getDomainPadding = (
+    data: ChartData,
+    child: ChartSchemaElement
+): number => {
+    switch (child.kind) {
+        case ChartKind.simple:
+            return child.type === ChartType.bar ? 20 : 0;
+        case ChartKind.group:
+            return child.template && child.template.type === ChartType.bar
+                ? getBarWidthFromData(data) * data.length / 2
+                : 0
+        default:
+            return 0;
+    }
 }
 
 const CreateWrapper: FunctionComponent<Props> = ({
@@ -67,11 +87,7 @@ const CreateWrapper: FunctionComponent<Props> = ({
         tickFormat: functions.axisFormat[wrapper.yAxis.tickFormat]
     };
 
-    const childIsBarChart = () =>
-        child.kind === ChartKind.simple && child.type === 'bar';
-
     const props = {
-        domainPadding: childIsBarChart() ? 20 : 0,
         height: 200,
         ...wrapper.props
     }
@@ -125,6 +141,12 @@ const CreateWrapper: FunctionComponent<Props> = ({
                 labels={getLabels(wrapper.tooltip.data, wrapper.tooltip.customFnc)}
             />
         }
+    }
+
+    // Get the domain padding if it has a grouped bar chart from template or a bar chart
+    otherProps = {
+        domainPadding: getDomainPadding(resolvedApi.data, child),
+        ...otherProps
     }
 
     // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment

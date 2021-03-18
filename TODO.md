@@ -28,7 +28,6 @@ The chart builder component todo entries
 * custom color scheme to the chart wrapper
 * custom legend options
     * (usefull when we need postprocess the legend the API will send)
-* Dynamically calculate bar width and offset when generating bar charts
 
 ### Bug
 * the legend shows doubled when its applied to the chart and the values for multiple series is the same

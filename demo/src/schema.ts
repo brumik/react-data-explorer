@@ -180,8 +180,7 @@ export const dashboard: ChartSchemaElement[] = [
         type: ChartTopLevelType.chart,
         parent: null,
         props: {
-            height: 300,
-            domainPadding: 30
+            height: 300
         },
         xAxis: {
             label: 'Date',
@@ -217,9 +216,7 @@ export const dashboard: ChartSchemaElement[] = [
         id: 3100,
         kind: ChartKind.group,
         parent: 3000,
-        props: {
-            offset: 11
-        },
+        props: {},
         template: {
             id: 0,
             kind: ChartKind.simple,
