@@ -5,6 +5,7 @@ import {
     ChartPieLegendPosition,
     ChartSchemaElement,
     ChartTooltipType,
+    ChartTopLevelType,
     ChartType
 } from '../../src/';
 
@@ -12,6 +13,7 @@ export const dashboard: ChartSchemaElement[] = [
     {
         id: 1000,
         kind: ChartKind.wrapper,
+        type: ChartTopLevelType.chart,
         parent: null,
         props: {
             height: 300,
@@ -95,6 +97,7 @@ export const dashboard: ChartSchemaElement[] = [
     {
         id: 2000,
         kind: ChartKind.wrapper,
+        type: ChartTopLevelType.chart,
         parent: null,
         props: {
             height: 300
@@ -174,6 +177,7 @@ export const dashboard: ChartSchemaElement[] = [
     {
         id: 3000,
         kind: ChartKind.wrapper,
+        type: ChartTopLevelType.chart,
         parent: null,
         props: {
             height: 300,
@@ -236,7 +240,8 @@ export const dashboard: ChartSchemaElement[] = [
     },
     {
         id: 4000,
-        kind: ChartKind.pie,
+        kind: ChartKind.wrapper,
+        type: ChartTopLevelType.pie,
         parent: null,
         props: {
             height: 300,

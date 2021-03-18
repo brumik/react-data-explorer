@@ -18,8 +18,7 @@ export enum ChartKind {
     simple = 'simple',
     group = 'group',
     stack = 'stack',
-    wrapper = 'wrapper',
-    pie = 'pie'
+    wrapper = 'wrapper'
 }
 
 export enum ChartType {
@@ -107,10 +106,20 @@ export interface ChartLegendProps {
     orientation: ChartLegendOrientation
 }
 
-export interface ChartWrapper extends ChartBase {
+export enum ChartTopLevelType {
+    chart = 'chart',
+    pie = 'pie'
+}
+
+export interface ChartTopLevelElement extends ChartBase {
     kind: ChartKind.wrapper,
     parent: null,
-    api?: ChartApiProps
+    type: ChartTopLevelType,
+    api?: ChartApiProps,
+}
+
+export interface ChartWrapper extends ChartTopLevelElement {
+    type: ChartTopLevelType.chart,
     props: ChartProps,
     xAxis: ChartAxisProps,
     yAxis: ChartAxisProps,
@@ -129,10 +138,8 @@ export interface ChartPieLegendProps {
     orientation: ChartLegendOrientation
 }
 
-export interface ChartPie extends ChartBase {
-    kind: ChartKind.pie,
-    parent: null,
-    api?: ChartApiProps,
+export interface ChartPie extends ChartTopLevelElement {
+    type: ChartTopLevelType.pie,
     props: ChartPieProps,
     legend?: ChartPieLegendProps,
     tooltip?: PFChartTooltipProps

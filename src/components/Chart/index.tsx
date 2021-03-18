@@ -1,5 +1,12 @@
 import React, { FunctionComponent } from 'react';
-import { ChartKind, ChartFunctions, ChartSchema, ChartSchemaElement } from './types';
+import {
+    ChartKind,
+    ChartFunctions,
+    ChartSchema,
+    ChartSchemaElement,
+    ChartTopLevelType,
+    ChartTopSchemaElement
+} from './types';
 import CreateWrapper from './Renderers/CreateWrapper';
 import CreatePieChart from './Renderers/CreatePieChart';
 
@@ -15,20 +22,21 @@ const ChartRenderer: FunctionComponent<Props> = ({
         functions: {} as ChartFunctions
     }
 }) => {
-    const getCharts = (c: ChartSchemaElement[]) => {
+    const getCharts = (c: ChartSchemaElement[]): ChartTopSchemaElement[] => {
+        const top = c.filter(({ kind }) => kind === ChartKind.wrapper) as ChartTopSchemaElement[];
         if (ids.length > 0) {
-            return c.filter(({ id }) => ids.includes(id)).sort((a,b) => a.id - b.id);
+            return top.filter(({ id }) => ids.includes(id)).sort((a,b) => a.id - b.id);
         } else {
-            return c.filter(({ parent }) => parent === null).sort((a,b) => a.id - b.id);
+            return top.filter(({ parent }) => parent === null).sort((a,b) => a.id - b.id);
         }
     }
 
     return (
         <React.Fragment>
             {getCharts(data.charts).map(el => {
-                if(el.kind === ChartKind.wrapper) {
+                if(el.type === ChartTopLevelType.chart) {
                     return (<CreateWrapper key={el.id} id={el.id} data={data} />);
-                } else if (el.kind === ChartKind.pie) {
+                } else if (el.type === ChartTopLevelType.pie) {
                     return (<CreatePieChart key={el.id} id={el.id} data={data} />);
                 } else {
                     return null;
