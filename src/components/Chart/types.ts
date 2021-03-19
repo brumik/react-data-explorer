@@ -102,6 +102,7 @@ export { ChartLegendPosition, ChartLegendOrientation };
 export type ChartLegendData = { name: string, childName?: string }[]
 
 export interface ChartLegendProps {
+    interactive?: boolean,
     data?: ChartLegendData,
     position: ChartLegendPosition,
     orientation: ChartLegendOrientation
@@ -134,6 +135,7 @@ export interface ChartWrapper extends ChartTopLevelElement {
 
 export { ChartPieLegendPosition };
 export interface ChartPieLegendProps {
+    interactive?: boolean,
     data?: ChartLegendData,
     position: ChartPieLegendPosition,
     orientation: ChartLegendOrientation
