@@ -45,7 +45,8 @@ interface OtherProps {
     legendPosition?: ChartLegendPosition,
     legendOrientation?: ChartLegendOrientation,
     legendComponent?: any,
-    domainPadding?: number
+    domainPadding?: number,
+    events?: any
 }
 
 const getDomainPadding = (
@@ -125,6 +126,14 @@ const CreateWrapper: FunctionComponent<Props> = ({
             ...legend.orientation && { legendOrientation: legend.orientation },
             legendData
         }
+
+        if (wrapper.legend.interactive) {
+            otherProps = {
+                ...otherProps,
+                ...getInteractiveLegend(wrapper, resolvedApi, setResolvedApi)
+            }
+            delete otherProps.legendData;
+        }
     }
 
     let labelProps = {};
@@ -149,9 +158,6 @@ const CreateWrapper: FunctionComponent<Props> = ({
         ...otherProps
     }
 
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-    const { getEvents, legendComponent } = getInteractiveLegend(wrapper, resolvedApi, setResolvedApi);
-
     return (
         <ResponsiveContainer
             setWidth={setWidth}
@@ -165,10 +171,6 @@ const CreateWrapper: FunctionComponent<Props> = ({
                 key={id}
                 width={width}
                 {...labelProps}
-                /* eslint-disable-next-line */
-                events={getEvents()}
-                // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-                legendComponent={legendComponent}
             >
                 <ChartAxis {...xAxis} />
                 <ChartAxis dependentAxis {...yAxis} />

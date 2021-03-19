@@ -1,5 +1,12 @@
-import React, { FunctionComponent, useState } from 'react';
-import { ChartLegendOrientation, ChartPie as PFChartPie, ChartPieLegendPosition } from '@patternfly/react-charts';
+import React, { FunctionComponent, useEffect, useState } from 'react';
+import {
+    ChartLegend,
+    ChartLegendOrientation,
+    ChartPie as PFChartPie,
+    ChartPieLegendPosition,
+    getInteractiveLegendEvents,
+    getInteractiveLegendItemStyles
+} from '@patternfly/react-charts';
 import {
     ChartApiData,
     ChartLegendData,
@@ -20,6 +27,84 @@ interface OtherProps {
     legendOrientation?: ChartLegendOrientation
 }
 
+interface ReturnType {
+    events: any,
+    legendComponent: React.ReactElement<typeof ChartLegend>
+}
+
+const getInteractiveLegend = (
+    element: ChartPie,
+    serie: Record<string, string | number | boolean>[],
+    setSerie: (serie: Record<string, string | number | boolean>[]) => void,
+    chartData: ChartApiData
+): ReturnType => {
+    const handleLegendClick = ({ index }: { index: number }) => {
+        // Don't allow hiding ALL the series
+        const hiddenCount = serie.filter(({ hidden }) => hidden).length;
+        if (
+            !serie[index].hidden &&
+            serie.length === hiddenCount + 1
+        ) {
+            return;
+        }
+
+        // Set the charts data in it too
+        const tempData = [...serie];
+        tempData[index].hidden = !tempData[index].hidden;
+        setSerie(tempData);
+    };
+
+    const isHidden = (idx: number): boolean =>
+        !!serie[idx]?.hidden;
+
+    const getNames = (): [string | string[]] => [
+        chartData.data[0]?.name
+    ];
+
+    const getEvents = () => {
+        return getInteractiveLegendEvents({
+            chartNames: getNames(),
+            isHidden,
+            legendName: `legend-${element.id}`,
+            onLegendClick: handleLegendClick
+        });
+    }
+
+    let r = {
+        events: getEvents(),
+        legendComponent: null
+    } as ReturnType;
+
+    if (element.legend && chartData.legend) {
+        r = {
+            ...r,
+            legendComponent: <ChartLegend
+                name={`legend-${element.id}`}
+                data={chartData.legend.map((el, index) => ({
+                    ...el,
+                    ...getInteractiveLegendItemStyles(isHidden(index))
+                }))}
+                events={[{
+                    target: 'labels',
+                    eventHandlers: {
+                        onClick: () => [
+                            {
+                                target: 'data',
+                                mutation: (props) => {
+                                    handleLegendClick(props);
+                                    return null;
+                                }
+                            }
+                        ]
+                    }
+                }]}
+            />
+        };
+    }
+
+    return r;
+};
+
 const CreatePieChart: FunctionComponent<Props> = ({
     id,
     data
@@ -30,6 +115,20 @@ const CreatePieChart: FunctionComponent<Props> = ({
     const [resolvedApi, setResolvedApi] = useState({
         data: []
     } as ChartApiData);
+    const [serie, setSerie] = useState([
+        { hidden: true }
+    ] as Record<string, string | number | boolean>[])
+
+    useEffect(() => {
+        if (resolvedApi.data.length > 0) {
+            setSerie(
+                resolvedApi.data[0].serie.map(el => ({
+                    ...el,
+                    hidden: false
+                }))
+            );
+        }
+    }, [ resolvedApi ])
 
     const props = {
         height: 200,
@@ -68,6 +167,14 @@ const CreatePieChart: FunctionComponent<Props> = ({
             ...legend.orientation && { legendOrientation: legend.orientation },
             legendData
         }
+
+        if (wrapper.legend.interactive) {
+            otherProps = {
+                ...otherProps,
+                ...getInteractiveLegend(wrapper, serie, setSerie, resolvedApi)
+            };
+            delete otherProps.legendData;
+        }
     }
 
     return (
@@ -80,9 +187,9 @@ const CreatePieChart: FunctionComponent<Props> = ({
             { resolvedApi.data.length > 0 && <PFChartPie
                 {...otherProps}
                 {...props}
-                labels={() => 'TODO'}
-                data={resolvedApi.data[0].serie}
-                key={id}
+                data={serie.filter(({ hidden }) => !hidden)}
+                key={resolvedApi.data[0].name}
+                name={resolvedApi.data[0].name}
                 width={width}
                 constrainToVisibleArea={true}
             />}

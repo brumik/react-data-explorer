@@ -209,6 +209,7 @@ export const dashboard: ChartSchemaElement[] = [
             optionUrl: '/demo/api/jobExplorerOptions.json'
         },
         legend: {
+            interactive: true,
             orientation: ChartLegendOrientation.vertical,
             position: ChartLegendPosition.right
         }
@@ -257,6 +258,7 @@ export const dashboard: ChartSchemaElement[] = [
             optionUrl: '/demo/api/jobExplorerOptions.json'
         },
         legend: {
+            interactive: true,
             orientation: ChartLegendOrientation.vertical,
             position: ChartPieLegendPosition.right
         }

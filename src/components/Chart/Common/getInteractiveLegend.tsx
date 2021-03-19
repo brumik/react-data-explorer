@@ -7,7 +7,7 @@ import React from 'react';
 import { ChartApiData, ChartTopSchemaElement } from '../types';
 
 interface ReturnType {
-    getEvents: () => any,
+    events: any,
     legendComponent: React.ReactElement<typeof ChartLegend>
 }
 
@@ -27,7 +27,7 @@ export const getInteractiveLegend = (
         }
 
         // Set the charts data in it too
-        const tempData = data.data;
+        const tempData = [...data.data];
         tempData[index].hidden = !tempData[index].hidden;
         setData({
             ...data,
@@ -50,8 +50,8 @@ export const getInteractiveLegend = (
     });
 
     let r = {
-        getEvents,
-        legendComponent: <ChartLegend />
+        events: getEvents(),
+        legendComponent: null
     } as ReturnType;
 
     if (element.legend && data.legend) {
