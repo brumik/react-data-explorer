@@ -7,9 +7,6 @@ The chart builder component todo entries
 - ?
 
 ### Interactive legend TODO and bugs
-* Interactive legend for Pie Charts (And probably for BulletChart and Donut Chart too)
-    * The pie chart  is consisting of one series, but every object in that series represents a slice.
-    * The wrapper logic remains mostly the same but we should deal with filtering out the objects FROM the series
 * Interactive legend for multiple charts from one series
     * Eg.: line chart where we have one series and we are using two different attributes for each line
     * I think maybe we should sacrifice memory and just duplicate the data as if it were two series, so basically
