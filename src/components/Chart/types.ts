@@ -4,10 +4,9 @@ import {
     ChartTooltipProps as PFChartTooltipProps,
     ChartStackProps,
     ChartGroupProps,
-    ChartLegendPosition as ChartLegendPosition,
-    ChartLegendOrientation as ChartLegendOrientation,
     ChartPieProps,
-    ChartPieLegendPosition as ChartPieLegendPosition,
+    ChartLegendOrientation,
+    ChartPieLegendPosition as ChartLegendPosition,
     ChartLineProps,
     ChartAreaProps,
     ChartScatterProps,
@@ -99,7 +98,6 @@ export type ChartLegendData = { name: string, childName?: string }[]
 
 export interface ChartLegendProps {
     interactive?: boolean,
-    data?: ChartLegendData,
     position: ChartLegendPosition,
     orientation: ChartLegendOrientation
 }
@@ -128,11 +126,9 @@ export interface ChartWrapper extends ChartTopLevelElement {
     }
 }
 
-export { ChartPieLegendPosition };
 export interface ChartPieLegendProps {
     interactive?: boolean,
-    data?: ChartLegendData,
-    position: ChartPieLegendPosition,
+    position: ChartLegendPosition,
     orientation: ChartLegendOrientation
 }
 

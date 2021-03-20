@@ -2,7 +2,6 @@ import {
     ChartKind,
     ChartLegendOrientation,
     ChartLegendPosition,
-    ChartPieLegendPosition,
     ChartSchemaElement,
     ChartThemeColor,
     ChartTooltipType,
@@ -17,7 +16,8 @@ export const dashboard: ChartSchemaElement[] = [
         type: ChartTopLevelType.chart,
         parent: null,
         props: {
-            height: 300
+            height: 300,
+            domainPadding: 20
         },
         xAxis: {
             label: 'Date',
@@ -245,7 +245,7 @@ export const dashboard: ChartSchemaElement[] = [
         legend: {
             interactive: true,
             orientation: ChartLegendOrientation.vertical,
-            position: ChartPieLegendPosition.right
+            position: ChartLegendPosition.right
         }
     }
 ];

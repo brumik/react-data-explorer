@@ -4,7 +4,6 @@
 The chart builder component todo entries
 
 ### High Priority
-- ?
 
 ### Interactive legend TODO and bugs
 * Interactive legend for multiple charts from one series
@@ -30,8 +29,6 @@ The chart builder component todo entries
 ### Bug
 
 ### Code organization
-* deep merge the objects with default values
-* normalize the getInteractiveLegend for pie and Wrapper chart
 
 ### Low Priority & Todo
 * parent to children hierarchy (think about it)

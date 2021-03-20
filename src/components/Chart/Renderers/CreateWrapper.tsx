@@ -2,8 +2,6 @@ import React, { FunctionComponent, useState } from 'react';
 import {
     Chart as PFChart,
     ChartAxis,
-    ChartLegendOrientation,
-    ChartLegendPosition,
     ChartVoronoiContainer,
     createContainer
 } from '@patternfly/react-charts';
@@ -11,7 +9,6 @@ import {
     ChartApiData,
     ChartData,
     ChartKind,
-    ChartLegendData,
     ChartSchema,
     ChartSchemaElement,
     ChartType,
@@ -25,7 +22,9 @@ import {
     getLabels
 } from '../Common/helpers';
 import ResponsiveContainer from '../Common/ResponsiveContainer';
-import { getInteractiveLegend } from '../Common/getInteractiveLegend';
+import {
+    getInteractiveLegendForMultiSeries as getInteractiveLegend, getLegendProps
+} from '../Common/getLegendProps';
 
 const components: Partial<Record<ChartKind, (
     id: number,
@@ -40,16 +39,6 @@ const components: Partial<Record<ChartKind, (
 interface Props {
     id: number,
     data: ChartSchema
-}
-
-interface OtherProps {
-    padding?: { top: number, bottom: number, left: number, right: number },
-    legendData?: ChartLegendData,
-    legendPosition?: ChartLegendPosition,
-    legendOrientation?: ChartLegendOrientation,
-    legendComponent?: any,
-    domainPadding?: number,
-    events?: any
 }
 
 const getDomainPadding = (
@@ -96,47 +85,13 @@ const CreateWrapper: FunctionComponent<Props> = ({
         ...wrapper.props
     }
 
-    let otherProps: OtherProps = {
-        padding: {
-            bottom: 70,
-            left: 70,
-            right: 50,
-            top: 50
+    let legendProps = getLegendProps(wrapper, resolvedApi)
+    if (wrapper.legend?.interactive) {
+        legendProps = {
+            ...legendProps,
+            legendComponent: getInteractiveLegend(wrapper, resolvedApi, setResolvedApi)
         }
-    };
-    if (wrapper.legend) {
-        const { legend } = wrapper;
-        const { padding } = otherProps;
-        if (
-            legend.position === ChartLegendPosition.bottom ||
-            legend.position === ChartLegendPosition.right
-        ) {
-            padding[legend.position] += 100;
-        }
-
-        if (
-            legend.position === ChartLegendPosition.bottomLeft ||
-            legend.position === ChartLegendPosition.bottom
-        ) {
-            props.height += 100;
-        }
-
-        const legendData: ChartLegendData = legend.data ?? resolvedApi.legend;
-        otherProps = {
-            ...otherProps,
-            padding,
-            ...legend.position && { legendPosition: legend.position },
-            ...legend.orientation && { legendOrientation: legend.orientation },
-            legendData
-        }
-
-        if (wrapper.legend.interactive) {
-            otherProps = {
-                ...otherProps,
-                ...getInteractiveLegend(wrapper, resolvedApi, setResolvedApi)
-            }
-            delete otherProps.legendData;
-        }
+        delete legendProps.legendData;
     }
 
     let labelProps = {};
@@ -157,12 +112,6 @@ const CreateWrapper: FunctionComponent<Props> = ({
         }
     }
 
-    // Get the domain padding if it has a grouped bar chart from template or a bar chart
-    otherProps = {
-        domainPadding: getDomainPadding(resolvedApi.data, child),
-        ...otherProps
-    }
-
     return (
         <ResponsiveContainer
             setWidth={setWidth}
@@ -171,7 +120,9 @@ const CreateWrapper: FunctionComponent<Props> = ({
             setData={setResolvedApi}
         >
             {resolvedApi.data.length > 0 && <PFChart
-                {...otherProps}
+                {...legendProps}
+                // Get the domain padding if it has a grouped bar chart from template or a bar chart
+                domainPadding={getDomainPadding(resolvedApi.data, child)}
                 {...props}
                 key={id}
                 width={width}
