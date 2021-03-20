@@ -10,11 +10,13 @@ import {
     ChartDataSerie,
     ChartSchema,
     ChartSimple,
-    ChartTooltipProps,
     ChartType
-} from './types';
-import legendMapper from './Tooltips';
-import { snakeToSentence } from './helpers';
+} from '../types';
+import legendMapper from '../Tooltips';
+import {
+    getLabels,
+    snakeToSentence
+} from '../Common/helpers';
 
 const components: Partial<Record<ChartType, React.ElementType>> = {
     [ChartType.bar]: ChartBar,
@@ -23,18 +25,23 @@ const components: Partial<Record<ChartType, React.ElementType>> = {
     [ChartType.scatter]: ChartScatter
 };
 
-const getLabels = ({ labelAttr, labelName }: ChartTooltipProps) =>
-    ({ datum }: { datum: Record<string, string> }) =>
-        // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-        `${labelName ?? snakeToSentence(labelAttr)}: ${datum[labelAttr]}`;
-
 /**
  * Calculate data points. The interactive label can hide chart components,
  * if it is hidden we want to display null element so the color is staying
  * the same for the other charts.
  */
-const getData = (data: ChartDataSerie, y = 'y'): Record<string, string | number>[] =>
-    data.hidden ? [{ [y]: null }] : data.serie;
+const getData = (
+    data: ChartDataSerie,
+    y = 'y',
+    labelName = null as string
+): Record<string, string | number>[] =>
+    data.hidden
+        ? [{ [y]: null }]
+        : data.serie.map(el => ({
+            ...el,
+            y: el[y],
+            ...labelName && { labelName }
+        }));
 
 const createChart = (
     id: number,
@@ -46,11 +53,11 @@ const createChart = (
     const SelectedChart = components[chart.type];
 
     let props = {...chart.props};
-    if (chart.tooltip) {
+    if (chart.tooltip?.type) {
         const LegendComponent = legendMapper[chart.tooltip.type];
         props = {
             ...props,
-            labels: getLabels(chart.tooltip),
+            labels: getLabels(chart.tooltip.customFnc),
             labelComponent: <LegendComponent
                 {...chart.tooltip.props}
                 dy={0}
@@ -74,7 +81,11 @@ const createChart = (
         <SelectedChart
             {...props}
             key={chartData.data[0].name}
-            data={getData(chartData.data[0], props.y as string)}
+            data={getData(
+                chartData.data[0],
+                props.y as string,
+                chart.tooltip?.labelName ?? snakeToSentence(props.y as string)
+            )}
             name={chartData.data[0].name}
         />
     );

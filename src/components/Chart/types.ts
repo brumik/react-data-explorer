@@ -4,13 +4,13 @@ import {
     ChartTooltipProps as PFChartTooltipProps,
     ChartStackProps,
     ChartGroupProps,
-    ChartLegendPosition as ChartLegendPosition,
-    ChartLegendOrientation as ChartLegendOrientation,
     ChartPieProps,
-    ChartPieLegendPosition as ChartPieLegendPosition,
+    ChartLegendOrientation,
+    ChartPieLegendPosition as ChartLegendPosition,
     ChartLineProps,
     ChartAreaProps,
-    ChartScatterProps
+    ChartScatterProps,
+    ChartThemeColor
 } from '@patternfly/react-charts';
 import { ChartAxisFormatFunction, ChartFunctions, ChartOnClickFunction } from './Functions/types';
 
@@ -18,8 +18,7 @@ export enum ChartKind {
     simple = 'simple',
     group = 'group',
     stack = 'stack',
-    wrapper = 'wrapper',
-    pie = 'pie'
+    wrapper = 'wrapper'
 }
 
 export enum ChartType {
@@ -57,11 +56,12 @@ interface ChartBase {
     parent: number // Id of the parent wrapper Element
 }
 
+export type ChartTooltipCustomFunction = (datum: Record<string, any>) => string;
 export interface ChartTooltipProps {
-    type: ChartTooltipType,
-    props: PFChartTooltipProps,
-    labelAttr: string
+    type?: ChartTooltipType,
+    props?: PFChartTooltipProps,
     labelName?: string,
+    customFnc?: ChartTooltipCustomFunction
 }
 
 export type ChartSimpleProps = ChartBarProps | ChartLineProps | ChartAreaProps | ChartScatterProps;
@@ -94,41 +94,46 @@ export interface ChartAxisProps {
 }
 
 export { ChartLegendPosition, ChartLegendOrientation };
-export type ChartLegendData = { name: string }[]
+export type ChartLegendData = { name: string, childName?: string }[]
 
 export interface ChartLegendProps {
-    data?: ChartLegendData,
+    interactive?: boolean,
     position: ChartLegendPosition,
     orientation: ChartLegendOrientation
 }
 
-export interface ChartWrapperTooltipProps {
-    labelAttr: string,
-    labelName?: string
+export enum ChartTopLevelType {
+    chart = 'chart',
+    pie = 'pie'
 }
 
-export interface ChartWrapper extends ChartBase {
+export interface ChartTopLevelElement extends ChartBase {
     kind: ChartKind.wrapper,
     parent: null,
-    api?: ChartApiProps
+    type: ChartTopLevelType,
+    api?: ChartApiProps,
+}
+
+export interface ChartWrapper extends ChartTopLevelElement {
+    type: ChartTopLevelType.chart,
     props: ChartProps,
     xAxis: ChartAxisProps,
     yAxis: ChartAxisProps,
     legend?: ChartLegendProps,
-    tooltip?: ChartWrapperTooltipProps[]
+    tooltip?: {
+        cursor?: boolean,
+        customFnc?: ChartTooltipCustomFunction,
+    }
 }
 
-export { ChartPieLegendPosition };
 export interface ChartPieLegendProps {
-    data?: ChartLegendData,
-    position: ChartPieLegendPosition,
+    interactive?: boolean,
+    position: ChartLegendPosition,
     orientation: ChartLegendOrientation
 }
 
-export interface ChartPie extends ChartBase {
-    kind: ChartKind.pie,
-    parent: null,
-    api?: ChartApiProps,
+export interface ChartPie extends ChartTopLevelElement {
+    type: ChartTopLevelType.pie,
     props: ChartPieProps,
     legend?: ChartPieLegendProps,
     tooltip?: PFChartTooltipProps
@@ -141,7 +146,11 @@ export {
     ChartFunctions
 }
 
+// Reexport theme color from PF
+export { ChartThemeColor };
+
 export type ChartSchemaElement = ChartSimple | ChartPie | ChartWrapper | ChartGroup | ChartStack;
+export type ChartTopSchemaElement = ChartWrapper | ChartPie;
 export interface ChartSchema {
     charts: ChartSchemaElement[],
     functions: ChartFunctions

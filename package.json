@@ -1,6 +1,6 @@
 {
   "name": "react-data-explorer",
-  "version": "0.0.14",
+  "version": "0.0.16",
   "private": false,
   "description": "A data explorer component in react",
   "main": "dist/index.js",
@@ -31,11 +31,14 @@
   "dependencies": {
     "@patternfly/react-charts": "^6.14.2",
     "@patternfly/react-core": "^4.97.2",
+    "install": "^0.13.0",
+    "npm": "^6.14.11",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
     "react-redux": "^7.2.2",
     "redux": "^4.0.5",
-    "redux-promise-middleware": "^6.1.2"
+    "redux-promise-middleware": "^6.1.2",
+    "uuid": "^8.3.2"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",
@@ -46,6 +49,7 @@
     "@types/react": "^17.0.0",
     "@types/react-dom": "^17.0.0",
     "@types/react-redux": "^7.1.12",
+    "@types/uuid": "^8.3.0",
     "@typescript-eslint/eslint-plugin": "^4.8.2",
     "@typescript-eslint/parser": "^4.8.2",
     "babel-loader": "^8.2.2",

@@ -7,9 +7,11 @@ import {
     ChartKind,
     ChartSchema,
     ChartSchemaElement,
-    ChartSimple
-} from './types';
+    ChartSimple,
+    ChartType
+} from '../types';
 import createChart from './createChart';
+import { getBarWidthFromData } from '../Common/helpers';
 
 const components: Partial<Record<ChartKind, (
     id: number,
@@ -29,7 +31,11 @@ const createDynamicChildren = (
     ...data.map((_d, idx) => ({
         ...template,
         id: idx,
-        parent
+        parent,
+        props: {
+            ...template.props,
+            ...template.type === ChartType.bar && { barWidth: getBarWidthFromData(data) }
+        }
     }))
 ]);
 
@@ -65,6 +71,10 @@ const createGroup = (
 
     return (
         <PFChartGroup
+            {...group.template
+                && group.template.type === ChartType.bar
+                && { offset: getBarWidthFromData(resolvedApi.data) }
+            }
             {...group.props}
         >
             { renderedChildren }

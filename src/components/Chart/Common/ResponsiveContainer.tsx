@@ -4,11 +4,11 @@ import React, {
     useRef,
     useState
 } from 'react';
-import { getApiData, getLegendData } from './Api';
+import { getApiData, getLegendData } from '../Api';
 import {
     ChartApiProps,
     ChartApiData
-} from './types';
+} from '../types';
 
 interface Props {
     setWidth: (width: number) => void

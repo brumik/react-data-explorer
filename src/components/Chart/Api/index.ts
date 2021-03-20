@@ -1,3 +1,4 @@
+import { v4 as uuidv4 } from 'uuid';
 import { ChartApiProps, ChartApiData, ChartLegendData, ChartData } from '../types';
 import { ApiReturnType, ApiType, GroupedApi } from './types';
 export * from './types';
@@ -20,7 +21,7 @@ export const convertGroupedByData = (data: GroupedApi): ChartData => {
                 items[idx] = {
                     serie: [],
                     hidden: false,
-                    name: Date.now().toString()
+                    name: uuidv4()
                 };
             }
             items[idx].serie.push({
@@ -53,7 +54,7 @@ export const getApiData = async (api: ChartApiProps): Promise<ChartApiData> => {
                 resolvedData.data = [{
                     serie: result.items,
                     hidden: false,
-                    name: Date.now().toString()
+                    name: uuidv4()
                 }];
                 break;
         }
@@ -65,9 +66,11 @@ export const getApiData = async (api: ChartApiProps): Promise<ChartApiData> => {
 export const getLegendData = (resolvedApi: ChartApiData): ChartLegendData => {
     return resolvedApi.data.length === 1
         ? resolvedApi.data[0].serie.map(item => ({
-            name: (item.name || 'No Name') as string
+            name: (item.name || 'No Name') as string,
+            childName: resolvedApi.data[0].name
         }))
         : resolvedApi.data.map(serie => ({
-            name: (serie.serie[0].name || 'No Name') as string
+            name: (serie.serie[0].name || 'No Name') as string,
+            childName: serie.name
         }));
 };

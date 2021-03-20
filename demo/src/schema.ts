@@ -2,17 +2,18 @@ import {
     ChartKind,
     ChartLegendOrientation,
     ChartLegendPosition,
-    ChartPieLegendPosition,
     ChartSchemaElement,
+    ChartThemeColor,
     ChartTooltipType,
+    ChartTopLevelType,
     ChartType
 } from '../../src/';
 
 export const dashboard: ChartSchemaElement[] = [
-    // Cluster page bar chart
     {
         id: 1000,
         kind: ChartKind.wrapper,
+        type: ChartTopLevelType.chart,
         parent: null,
         props: {
             height: 300,
@@ -64,7 +65,6 @@ export const dashboard: ChartSchemaElement[] = [
         tooltip: {
             type: ChartTooltipType.default,
             props: {},
-            labelAttr: 'failed_count',
             labelName: 'Failed'
         },
         onClick: 'consoleLog'
@@ -85,13 +85,13 @@ export const dashboard: ChartSchemaElement[] = [
         },
         tooltip: {
             type: ChartTooltipType.default,
-            props: {},
-            labelAttr: 'successful_count'
+            props: {}
         }
     },
     {
         id: 2000,
         kind: ChartKind.wrapper,
+        type: ChartTopLevelType.chart,
         parent: null,
         props: {
             height: 300
@@ -103,15 +103,9 @@ export const dashboard: ChartSchemaElement[] = [
         yAxis: {
             label: 'Job runs'
         },
-        tooltip: [
-            {
-                labelAttr: 'failed_count',
-                labelName: 'Failed'
-            },
-            {
-                labelAttr: 'successful_count'
-            }
-        ],
+        tooltip: {
+            cursor: false
+        },
         api: {
             params: {
                 status: ['successful', 'failed'],
@@ -148,6 +142,9 @@ export const dashboard: ChartSchemaElement[] = [
                 }
             }
         },
+        tooltip: {
+            labelName: 'Failed'
+        },
         onClick: 'consoleLog'
     },
     {
@@ -163,15 +160,16 @@ export const dashboard: ChartSchemaElement[] = [
                     stroke: '#6EC664'
                 }
             }
-        },
+        }
     },
     {
         id: 3000,
         kind: ChartKind.wrapper,
+        type: ChartTopLevelType.chart,
         parent: null,
         props: {
             height: 300,
-            domainPadding: 30
+            themeColor: ChartThemeColor.green
         },
         xAxis: {
             label: 'Date',
@@ -199,6 +197,7 @@ export const dashboard: ChartSchemaElement[] = [
             optionUrl: '/demo/api/jobExplorerOptions.json'
         },
         legend: {
+            interactive: true,
             orientation: ChartLegendOrientation.vertical,
             position: ChartLegendPosition.right
         }
@@ -207,9 +206,7 @@ export const dashboard: ChartSchemaElement[] = [
         id: 3100,
         kind: ChartKind.group,
         parent: 3000,
-        props: {
-            offset: 11
-        },
+        props: {},
         template: {
             id: 0,
             kind: ChartKind.simple,
@@ -221,14 +218,14 @@ export const dashboard: ChartSchemaElement[] = [
             },
             tooltip: {
                 type: ChartTooltipType.default,
-                props: {},
-                labelAttr: 'total_count'
+                props: {}
             }
         }
     },
     {
         id: 4000,
-        kind: ChartKind.pie,
+        kind: ChartKind.wrapper,
+        type: ChartTopLevelType.pie,
         parent: null,
         props: {
             height: 300,
@@ -246,8 +243,9 @@ export const dashboard: ChartSchemaElement[] = [
             optionUrl: '/demo/api/jobExplorerOptions.json'
         },
         legend: {
+            interactive: true,
             orientation: ChartLegendOrientation.vertical,
-            position: ChartPieLegendPosition.right
+            position: ChartLegendPosition.right
         }
     }
 ];
