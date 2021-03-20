@@ -58,14 +58,10 @@ interface ChartBase {
 }
 
 export type ChartTooltipCustomFunction = (datum: Record<string, any>) => string;
-export interface ChartTooltipPropsData {
-    labelAttr: string,
-    labelName?: string
-}
 export interface ChartTooltipProps {
-    type: ChartTooltipType,
-    props: PFChartTooltipProps,
-    data?: ChartTooltipPropsData,
+    type?: ChartTooltipType,
+    props?: PFChartTooltipProps,
+    labelName?: string,
     customFnc?: ChartTooltipCustomFunction
 }
 
@@ -129,7 +125,6 @@ export interface ChartWrapper extends ChartTopLevelElement {
     tooltip?: {
         cursor?: boolean,
         customFnc?: ChartTooltipCustomFunction,
-        data?: ChartTooltipPropsData[],
     }
 }
 

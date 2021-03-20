@@ -65,10 +65,7 @@ export const dashboard: ChartSchemaElement[] = [
         tooltip: {
             type: ChartTooltipType.default,
             props: {},
-            data: {
-                labelAttr: 'failed_count',
-                labelName: 'Failed'
-            }
+            labelName: 'Failed'
         },
         onClick: 'consoleLog'
     },
@@ -88,10 +85,7 @@ export const dashboard: ChartSchemaElement[] = [
         },
         tooltip: {
             type: ChartTooltipType.default,
-            props: {},
-            data: {
-                labelAttr: 'successful_count'
-            }
+            props: {}
         }
     },
     {
@@ -110,16 +104,7 @@ export const dashboard: ChartSchemaElement[] = [
             label: 'Job runs'
         },
         tooltip: {
-            data: [
-                {
-                    labelAttr: 'failed_count',
-                    labelName: 'Failed'
-                },
-                {
-                    labelAttr: 'successful_count'
-                }
-            ],
-            cursor: false,
+            cursor: false
         },
         api: {
             params: {
@@ -157,6 +142,9 @@ export const dashboard: ChartSchemaElement[] = [
                 }
             }
         },
+        tooltip: {
+            labelName: 'Failed'
+        },
         onClick: 'consoleLog'
     },
     {
@@ -172,7 +160,7 @@ export const dashboard: ChartSchemaElement[] = [
                     stroke: '#6EC664'
                 }
             }
-        },
+        }
     },
     {
         id: 3000,
@@ -230,10 +218,7 @@ export const dashboard: ChartSchemaElement[] = [
             },
             tooltip: {
                 type: ChartTooltipType.default,
-                props: {},
-                data: {
-                    labelAttr: 'total_count'
-                }
+                props: {}
             }
         }
     },

@@ -20,7 +20,10 @@ import {
 import createChart from './createChart';
 import createGroup from './createGroup';
 import createStack from './createStack';
-import { getBarWidthFromData, getLabels } from '../Common/helpers';
+import {
+    getBarWidthFromData,
+    getLabels
+} from '../Common/helpers';
 import ResponsiveContainer from '../Common/ResponsiveContainer';
 import { getInteractiveLegend } from '../Common/getInteractiveLegend';
 
@@ -147,7 +150,9 @@ const CreateWrapper: FunctionComponent<Props> = ({
             containerComponent: <ContainerComponent
                 cursorDimension='x'
                 constrainToVisibleArea
-                labels={getLabels(wrapper.tooltip.data, wrapper.tooltip.customFnc)}
+                labels={getLabels(wrapper.tooltip.customFnc)}
+                mouseFollowTooltips
+                voronoiDimension="x"
             />
         }
     }

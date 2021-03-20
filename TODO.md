@@ -10,7 +10,9 @@ The chart builder component todo entries
 * Interactive legend for multiple charts from one series
     * Eg.: line chart where we have one series and we are using two different attributes for each line
     * I think maybe we should sacrifice memory and just duplicate the data as if it were two series, so basically
-    we will have a data set for each chart we are displaying, no matter if the data is duplicated
+    we will have a data set for each chart we are displaying, no matter if the data is duplicated --> this is not feasible from the recieved data
+        * It could be derived from the `attributes` field from the api
+        * This would mean that we create series like the following: if we have `attributes: [ 'a', 'b' ] then we duplicate the series we get in a way that one will contain everithing without 'a' and the other will contain everithing without 'b'
 * [NOHOPE] interactive legend - hover
     * the event props on the wrapper should have: `chartNames`
     * the LegendComponent should have `childName` for the corresponding data set (one from `chartNames`)
@@ -26,10 +28,10 @@ The chart builder component todo entries
     * (usefull when we need postprocess the legend the API will send)
 
 ### Bug
-* the legend shows doubled when its applied to the chart and the values for multiple series is the same
 
 ### Code organization
 * deep merge the objects with default values
+* normalize the getInteractiveLegend for pie and Wrapper chart
 
 ### Low Priority & Todo
 * parent to children hierarchy (think about it)
