@@ -67,7 +67,11 @@ const CreatePieChart: FunctionComponent<Props> = ({
             { resolvedApi.data.length > 0 && <PFChartPie
                 {...legendProps}
                 {...props}
-                data={serie.filter(({ hidden }) => !hidden)}
+                data={serie.map(el =>
+                    el.hidden
+                        ? ({...el, [props.y as string ?? 'y']: 0})
+                        : ({...el})
+                )}
                 key={resolvedApi.data[0].name}
                 name={resolvedApi.data[0].name}
                 width={width}
