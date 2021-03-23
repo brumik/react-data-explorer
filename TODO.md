@@ -1,5 +1,19 @@
 # TODO
 
+## UI Form for creating the schema
+
+### High Priority
+
+### Feature
+
+### Bug
+
+### Code organization
+
+### Low priority & Todo
+
+_______________________________________________________________________________
+
 ## Chart Builder 
 The chart builder component todo entries
 
