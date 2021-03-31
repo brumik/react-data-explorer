@@ -18,6 +18,9 @@ _______________________________________________________________________________
 The chart builder component todo entries
 
 ### High Priority
+* Conver the API calls to use POST with the cirrect attributes in the GET.
+* API getUser function before each request
+* Axis props from victory charts
 
 ### Interactive legend TODO and bugs
 * Interactive legend for multiple charts from one series
