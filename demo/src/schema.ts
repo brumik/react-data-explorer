@@ -103,7 +103,7 @@ export const dashboard: ChartSchemaElement[] = [
             label: 'Job runs'
         },
         tooltip: {
-            cursor: false
+            cursor: true
         },
         api: {
             params: {
