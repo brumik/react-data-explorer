@@ -15,6 +15,8 @@ const MainForm: FunctionComponent<Props> = ({
     id,
     apis
 }) => {
+    // eslint-disable-next-line no-console
+    console.log(schema, id, apis);
     return (
         <span>
             <span>Source: </span>
