@@ -76,6 +76,7 @@ const CreateWrapper: FunctionComponent<Props> = ({
     };
 
     const yAxis = {
+        domain: [0, 1],
         ...wrapper.yAxis,
         tickFormat: functions.axisFormat[wrapper.yAxis.tickFormat]
     };
