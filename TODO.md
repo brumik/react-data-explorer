@@ -1,8 +1,8 @@
 # TODO
 
-* TASK 1: Parse API, ability to change endpoint and on this changed endpoint display the options
+* Recreate the toolbar for filtering the API (maybe move to a package I can pull in?)
+* Parse API, ability to change endpoint and on this changed endpoint display the options
     * Refetch api on change
-* TASK 2: Recreate the toolbar for filtering the API (maybe move to a package I can pull in?)
 * Without restrictions allow to edit an existing chart
     * One component, no restrictions, one specific chart
 * Generalize the form for all the charts
