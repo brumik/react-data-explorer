@@ -9,11 +9,7 @@ import { functions } from '../../index';
 import { ApiParams, FormApiProps } from './types';
 import EditorDrawer from './EditorDrawer';
 import { fetchApi, ApiReturnType } from './api';
-import {
-    Select,
-    SelectOption,
-    SelectVariant
-} from '@patternfly/react-core';
+import CustomSelect from './CustomSelect';
 
 interface Props {
     schema: ChartSchemaElement[],
@@ -22,18 +18,19 @@ interface Props {
 }
 
 
-interface SelectOptionVariables {
-    isOpen: boolean,
-    selected: string | string[]
-}
-type SelectOptions = Record<string, SelectOptionVariables>;
+type SelectOptions = Record<string, string | string[]>;
 
-const getSchema = (selectedOptions: SelectOptions): ChartSchemaElement[] => {
+const getSchema = (selectedOptions: SelectOptions, apiParams: ApiParams): ChartSchemaElement[] => {
     if (
-        selectedOptions.attributes.selected.length < 1
+        selectedOptions.attributes.length < 1
     ) {
         return [];
     }
+
+    /*
+    Stacked/simple chart: x-axis je group by (time/org/template/etc...)
+    Grouped chart: group by time AND neco ine
+    */
 
     return [
         {
@@ -43,25 +40,18 @@ const getSchema = (selectedOptions: SelectOptions): ChartSchemaElement[] => {
             parent: null,
             props: {
                 height: 300,
-                domainPadding: selectedOptions.chartType?.selected === ChartType.bar ? 20 : 0
+                domainPadding: selectedOptions.chartType === ChartType.bar ? 20 : 0
             },
             xAxis: {
-                label: 'Date',
-                tickFormat: 'formatDateAsDayMonth'
+                label: 'Date'
+                // tickFormat: 'formatDateAsDayMonth'
             },
             yAxis: {
                 label: 'Jobs across all clusters'
             },
             api: {
-                params: {
-                    status: ['successful', 'failed'],
-                    quick_date_range: 'last_30_days',
-                    job_type: ['workflowjob', 'job'],
-                    group_by_time: true,
-                    only_root_workflows_and_standalone_jobs: false,
-                    attributes: selectedOptions.attributes.selected
-                },
-                url: 'https://prod.foo.redhat.com:1337/api/tower-analytics/v1/job_explorer/'
+                params: apiParams,
+                url: selectedOptions.source as string
             }
         },
         {
@@ -70,18 +60,31 @@ const getSchema = (selectedOptions: SelectOptions): ChartSchemaElement[] => {
             parent: 1000,
             props: {}
         },
-        ...(selectedOptions.attributes.selected as string[]).map((y, idx) => ({
+        ...(selectedOptions.attributes as string[]).map((y, idx) => ({
             id: 1100 + 1 + idx,
             kind: ChartKind.simple,
-            type: selectedOptions.chartType?.selected,
+            type: selectedOptions.chartType,
             parent: 1100,
             props: {
-                x: 'created_date',
+                x: selectedOptions.xAxis === 'created_date' ? 'created_date' : 'name',
                 y
             }
         } as ChartSchemaElement))
     ];
 }
+
+const chartTypeOptions = [
+    {key: ChartType.bar, value: 'Bar'},
+    {key: ChartType.line, value: 'Line'},
+    {key: ChartType.area, value: 'Area'}
+];
+
+const xAxisOptions = [
+    {key: 'created_date', value: 'Date'},
+    {key: 'org', value: 'Organizations'},
+    {key: 'template', value: 'Templates'},
+    {key: 'cluster', value: 'Clusters'}
+];
 
 const ChartEditor: FunctionComponent<Props> = ({
     id,
@@ -90,136 +93,75 @@ const ChartEditor: FunctionComponent<Props> = ({
 }) => {
     const [options, setOptions] = useState({} as ApiReturnType);
     const [selectOptions, setSelectoptions] = useState({
-        source: {
-            isOpen: false,
-            selected: 'https://prod.foo.redhat.com:1337/api/tower-analytics/v1/job_explorer/'
-        },
-        attributes: {
-            isOpen: false,
-            selected: ['successful_count', 'failed_count']
-        },
-        chartType: {
-            isOpen: false,
-            selected: ChartType.bar
-        }
-    } as SelectOptions);
+        source: 'https://prod.foo.redhat.com:1337/api/tower-analytics/v1/job_explorer/',
+        attributes: ['successful_count', 'failed_count'],
+        chartType: ChartType.bar,
+        xAxis: 'created_date'
+    });
 
-    const getApiParams = (api: FormApiProps): ApiParams => ({
-        ...api.params,
-        // Temp to match the stacked bar chart
-        status: ['successful', 'failed'],
-        quick_date_range: 'last_30_days',
-        job_type: ['workflowjob', 'job'],
-        group_by_time: true,
+    const getApiParams = (): ApiParams => ({
+        group_by_time: selectOptions.xAxis === 'created_date',
+        ...selectOptions.xAxis !== 'created_date' && {group_by: selectOptions.xAxis},
         only_root_workflows_and_standalone_jobs: false,
-        // The selected attr
-        attributes: selectOptions?.attributes?.selected
+        attributes: selectOptions?.attributes
     })
 
     useEffect(() => {
         fetchApi(
             apis[0].optionUrl,
-            getApiParams(apis[0])
+            getApiParams()
         ).then((data) => {
             setOptions(data);
         }).catch(() => ({}));
     }, []);
 
-    const toggleInArray = (arr: string[], item: string): string[] =>
-        arr.includes(item)
-            ? arr.filter(i => i !== item)
-            : [...arr, item];
-
     const form = () => (
         <React.Fragment>
-            <p>For grouped bar chart</p>
             <span>Sources (apis)</span>
-            <Select
-                variant={SelectVariant.single}
-                onToggle={() => setSelectoptions({
-                    ...selectOptions,
-                    source: {
-                        ...selectOptions.source,
-                        isOpen: !selectOptions.source.isOpen
-                    }
-                })}
-                onSelect={(_, selection) => {
+            <CustomSelect
+                selected={selectOptions.source}
+                onChange={(value) =>
                     setSelectoptions({
                         ...selectOptions,
-                        source: {
-                            ...selectOptions.source,
-                            selected: selection as string,
-                            isOpen: false
-                        }
-                    });
-                }}
-                selections={selectOptions.source.selected}
-                isOpen={selectOptions.source.isOpen}
-                direction={'down'}
-            >
-                {apis.map(({ url, label }) =>
-                    <SelectOption key={url} value={url}>{label}</SelectOption>
-                )}
-            </Select>
+                        source: value as string
+                    })
+                }
+                options={apis.map(({ url, label }) => ({ key: url, value: label }))}
+            />
+            <span>X-axis</span>
+            <CustomSelect
+                selected={selectOptions.xAxis}
+                onChange={(value) =>
+                    setSelectoptions({
+                        ...selectOptions,
+                        xAxis: value as string
+                    })
+                }
+                options={xAxisOptions}
+            />
             <span>Attribute (select multiple)</span>
-            <Select
-                variant={SelectVariant.checkbox}
-                onToggle={() => setSelectoptions({
-                    ...selectOptions,
-                    attributes: {
-                        ...selectOptions.attributes,
-                        isOpen: !selectOptions.attributes.isOpen
-                    }
-                })}
-                onSelect={(_, selection) => {
+            <CustomSelect
+                selected={selectOptions.attributes}
+                onChange={(value) =>
                     setSelectoptions({
                         ...selectOptions,
-                        attributes: {
-                            ...selectOptions.attributes,
-                            isOpen: false,
-                            selected: toggleInArray(
-                                selectOptions.attributes.selected as string[],
-                                selection as string
-                            )
-                        }
-                    });
-                }}
-                selections={selectOptions.attributes.selected}
-                isOpen={selectOptions.attributes.isOpen}
-                direction={'down'}
-            >
-                {options.attributes?.map(({key, value}) =>
-                    <SelectOption key={key} value={key}>{ value }</SelectOption>
-                )}
-            </Select>
+                        attributes: value as string[]
+                    })
+                }
+                options={options.attributes}
+                isSingle={false}
+            />
             <span>Chart Type</span>
-            <Select
-                variant={SelectVariant.single}
-                onToggle={() => setSelectoptions({
-                    ...selectOptions,
-                    chartType: {
-                        ...selectOptions.chartType,
-                        isOpen: !selectOptions.chartType.isOpen
-                    }
-                })}
-                onSelect={(_, selection) => {
+            <CustomSelect
+                selected={selectOptions.chartType}
+                onChange={(value) =>
                     setSelectoptions({
                         ...selectOptions,
-                        chartType: {
-                            ...selectOptions.chartType,
-                            selected: selection as string,
-                            isOpen: false
-                        }
-                    });
-                }}
-                selections={selectOptions.chartType.selected}
-                isOpen={selectOptions.chartType.isOpen}
-                direction={'down'}
-            >
-                <SelectOption value={ChartType.bar}>Bar</SelectOption>
-                <SelectOption value={ChartType.line}>Line</SelectOption>
-                <SelectOption value={ChartType.area}>Area</SelectOption>
-            </Select>
+                        chartType: value as ChartType
+                    })
+                }
+                options={chartTypeOptions}
+            />
         </React.Fragment>
     );
 
@@ -229,7 +171,7 @@ const ChartEditor: FunctionComponent<Props> = ({
             chart={
                 <ChartRenderer
                     data={{
-                        charts: getSchema(selectOptions),
+                        charts: getSchema(selectOptions, getApiParams()),
                         functions
                     }}
                     ids={[id]}
