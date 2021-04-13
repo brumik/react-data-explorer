@@ -19,20 +19,6 @@ interface Props {
     apis: FormApiProps[]
 }
 
-const viewByOptions = [
-    { key: '-', value: 'None' },
-    { key: 'org', value: 'Organizations' },
-    { key: 'template', value: 'Templates' },
-    { key: 'cluster', value: 'Clusters' }
-]
-
-const xAxisOptions = [
-    {key: 'created_date', value: 'Date'},
-    {key: 'org', value: 'Organizations'},
-    {key: 'template', value: 'Templates'},
-    {key: 'cluster', value: 'Clusters'}
-];
-
 const ChartEditor: FunctionComponent<Props> = ({
     id,
     schema: defaultSchema,
@@ -43,17 +29,22 @@ const ChartEditor: FunctionComponent<Props> = ({
         source: 'https://prod.foo.redhat.com:1337/api/tower-analytics/v1/job_explorer/',
         attributes: ['successful_count', 'failed_count'],
         chartType: FormChartTypes.bar,
-        xAxis: 'created_date',
+        xAxis: 'time',
         viewBy: '-',
         xAxisLabel: 'Date',
         yAxisLabel: 'Label'
     } as SelectOptions);
 
+    const grouppedByTime = () => selectOptions.xAxis === 'time';
+    const groupedByElse = () => selectOptions.viewBy !== '-';
+    const isGroupedChart = () => grouppedByTime() && groupedByElse();
+    const isPieChart = () => !grouppedByTime();
+
     const getApiParams = (): ApiParams => ({
-        group_by_time: selectOptions.xAxis === 'created_date',
-        ...selectOptions.xAxis !== 'created_date' ?
+        group_by_time: grouppedByTime(),
+        ...!grouppedByTime() ?
             {group_by: selectOptions.xAxis} :
-            {group_by: selectOptions.viewBy !== '-' ? selectOptions.viewBy : null},
+            {group_by: groupedByElse() ? selectOptions.viewBy : null},
         attributes: selectOptions?.attributes,
         quick_date_range: 'last_2_weeks'
     });
@@ -72,11 +63,6 @@ const ChartEditor: FunctionComponent<Props> = ({
             setOptions(data);
         }).catch(() => ({}));
     }, [ apis[0], selectOptions.xAxis, selectOptions.attributes, selectOptions.viewBy ]);
-
-    const grouppedByTime = () => selectOptions.xAxis === 'created_date';
-    const groupedByElse = () => selectOptions.viewBy !== '-';
-    const isGroupedChart = () => grouppedByTime() && groupedByElse();
-    const isPieChart = () => !grouppedByTime();
 
     const getChartFormOptions = () => {
         let chartTypeOptions = [];
@@ -138,6 +124,11 @@ const ChartEditor: FunctionComponent<Props> = ({
     }
 
     const getGroupByFormOptions = () => {
+        const viewByOptions = [
+            { key: '-', value: 'None' },
+            ...options.group_by
+        ];
+
         if (!grouppedByTime() && selectOptions.viewBy !== '-') {
             setSelectoptions({
                 ...selectOptions,
@@ -195,6 +186,11 @@ const ChartEditor: FunctionComponent<Props> = ({
     }
 
     const getViewByFormOptions = () => {
+        const xAxisOptions = [
+            { key: 'time', value: 'Time' },
+            ...options.group_by
+        ];
+
         const title = isPieChart
             ? 'View by'
             : 'View by (x-axis)';
@@ -248,8 +244,6 @@ const ChartEditor: FunctionComponent<Props> = ({
             {getGroupByFormOptions()}
             {getChartFormOptions()}
             {getAttributesFormOptions()}
-            <span>Customization</span>
-            <hr />
             {getLabelNameFormOptions()}
             <Button onClick={() => applySettings()}>Apply Settings</Button>
         </React.Fragment>

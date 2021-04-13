@@ -23,17 +23,7 @@ const mapChartType = (type: FormChartTypes): ChartType => {
     }
 }
 
-const getSchema = (selectedOptions: SelectOptions, apiParams: ApiParams): ChartSchemaElement[] => {
-    if (
-        Array.isArray(selectedOptions.attributes) &&
-        selectedOptions.attributes.length < 1
-    ) {
-        return [];
-    }
-
-    const isGroup = () => selectedOptions.xAxis === 'created_date'
-        && selectedOptions.viewBy !== '-';
-
+const getStackedSchema = (selectedOptions: SelectOptions, apiParams: ApiParams): ChartSchemaElement[] => {
     const getSimpleChart = () => {
         const generateChart = (y: string, idx = 0) => ({
             id: 1100 + 1 + idx,
@@ -41,24 +31,19 @@ const getSchema = (selectedOptions: SelectOptions, apiParams: ApiParams): ChartS
             type: mapChartType(selectedOptions.chartType),
             parent: 1100,
             props: {
-                x: selectedOptions.xAxis === 'created_date' ? 'created_date' : 'name',
+                x: 'created_date',
                 y
             },
             tooltip: {
                 type: ChartTooltipType.default,
                 props: {}
             }
-        } as ChartSchemaElement);
+        } as ChartSimple);
 
         return (selectedOptions.attributes).map(generateChart);
     };
 
-    /*
-    Stacked/simple chart: x-axis je group by (time/org/template/etc...)
-    Grouped chart: group by time AND neco ine
-    */
-
-    let baseArr: ChartSchemaElement[] = [
+    return [
         {
             id: 1000,
             kind: ChartKind.wrapper,
@@ -66,44 +51,122 @@ const getSchema = (selectedOptions: SelectOptions, apiParams: ApiParams): ChartS
             parent: null,
             props: {
                 height: 300,
-                ...!isGroup() && selectedOptions.chartType === FormChartTypes.bar && { domainPadding: 20 }
+                ...selectedOptions.chartType === FormChartTypes.bar && { domainPadding: 20 }
             },
             xAxis: {
                 label: selectedOptions.xAxisLabel
-                // tickFormat: 'formatDateAsDayMonth'
             },
             yAxis: {
                 label: selectedOptions.yAxisLabel
             },
             api: {
                 params: apiParams,
-                url: (selectedOptions.source) + (isGroup() ? '?limit=5' : '')
-            },
-            ...isGroup() && {
-                legend: {
-                    interactive: false,
-                    orientation: ChartLegendOrientation.vertical,
-                    position: ChartLegendPosition.right
-                }
+                url: selectedOptions.source
             }
         },
         {
             id: 1100,
             parent: 1000,
             props: {},
-            ...isGroup() && {
-                kind: ChartKind.group,
-                template: getSimpleChart()[0] as ChartSimple
+            kind: ChartKind.stack
+        },
+        ...getSimpleChart()
+    ];
+}
+
+const getGroupedSchema = (selectedOptions: SelectOptions, apiParams: ApiParams): ChartSchemaElement[] => {
+    const getSimpleChart = () => {
+        const generateChart = (y: string, idx = 0) => ({
+            id: 1100 + 1 + idx,
+            kind: ChartKind.simple,
+            type: ChartType.bar,
+            parent: 1100,
+            props: {
+                x: 'created_date',
+                y
             },
-            ...!isGroup() && { kind: ChartKind.stack }
+            tooltip: {
+                type: ChartTooltipType.default,
+                props: {}
+            }
+        } as ChartSimple);
+
+        return generateChart(selectedOptions.attributes[0], 0);
+    };
+
+    return [
+        {
+            id: 1000,
+            kind: ChartKind.wrapper,
+            type: ChartTopLevelType.chart,
+            parent: null,
+            props: {
+                height: 300
+            },
+            xAxis: {
+                label: selectedOptions.xAxisLabel
+            },
+            yAxis: {
+                label: selectedOptions.yAxisLabel
+            },
+            api: {
+                params: apiParams,
+                url: selectedOptions.source + '?limit=5'
+            },
+            legend: {
+                interactive: false,
+                orientation: ChartLegendOrientation.vertical,
+                position: ChartLegendPosition.right
+            }
+        },
+        {
+            id: 1100,
+            parent: 1000,
+            props: {},
+            kind: ChartKind.group,
+            template: getSimpleChart()
         }
     ];
+}
 
-    if (!isGroup()) {
-        baseArr = [...baseArr, ...getSimpleChart()];
+const getPieSchema = (selectedOptions: SelectOptions, apiParams: ApiParams): ChartSchemaElement[] => {
+    return [
+        {
+            id: 1000,
+            kind: ChartKind.wrapper,
+            type: ChartTopLevelType.pie,
+            parent: null,
+            props: {
+                height: 300,
+                x: '',
+                y: selectedOptions.attributes[0]
+            },
+            api: {
+                params: apiParams,
+                url: selectedOptions.source + '?limit=5'
+            },
+            legend: {
+                interactive: true,
+                orientation: ChartLegendOrientation.vertical,
+                position: ChartLegendPosition.right
+            }
+        }
+    ]
+}
+
+const getSchema = (selectedOptions: SelectOptions, apiParams: ApiParams): ChartSchemaElement[] => {
+    if (selectedOptions.attributes.length < 1) {
+        return [];
     }
 
-    return baseArr;
+    switch(selectedOptions.chartType) {
+        case FormChartTypes.grouped:
+            return getGroupedSchema(selectedOptions, apiParams);
+        case FormChartTypes.pie:
+            return getPieSchema(selectedOptions, apiParams);
+        default:
+            return getStackedSchema(selectedOptions, apiParams);
+    }
 }
 
 export default getSchema
