@@ -15,13 +15,15 @@ interface Props {
         value: string | number | boolean
     }[],
     isSingle?: boolean
+    disabled?: boolean
 }
 
 const CustomSelect: FunctionComponent<Props> = ({
     selected,
     onChange,
     options,
-    isSingle = true
+    isSingle = true,
+    disabled = false
 }) => {
     const [isOpen, setIsOpen] = useState(false);
 
@@ -50,6 +52,7 @@ const CustomSelect: FunctionComponent<Props> = ({
             selections={selected}
             isOpen={isOpen}
             direction={'down'}
+            isDisabled={disabled}
         >
             {options?.map(({ key, value }) =>
                 <SelectOption key={key} value={key}>{value}</SelectOption>

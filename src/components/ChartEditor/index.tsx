@@ -3,13 +3,15 @@ import React, {
     useEffect,
     useState
 } from 'react';
-import { ChartKind, ChartSchemaElement, ChartTopLevelType, ChartType } from '../Chart/types';
+import { ChartSchemaElement } from '../Chart/types';
 import ChartRenderer from '../Chart';
 import { functions } from '../../index';
-import { ApiParams, FormApiProps } from './types';
+import { ApiParams, FormApiProps, FormChartTypes, SelectOptions } from './types';
 import EditorDrawer from './EditorDrawer';
 import { fetchApi, ApiReturnType } from './api';
 import CustomSelect from './CustomSelect';
+import { Button, TextInput } from '@patternfly/react-core';
+import getSchema from './schemaGenerator';
 
 interface Props {
     schema: ChartSchemaElement[],
@@ -17,67 +19,12 @@ interface Props {
     apis: FormApiProps[]
 }
 
-
-type SelectOptions = Record<string, string | string[]>;
-
-const getSchema = (selectedOptions: SelectOptions, apiParams: ApiParams): ChartSchemaElement[] => {
-    if (
-        selectedOptions.attributes.length < 1
-    ) {
-        return [];
-    }
-
-    /*
-    Stacked/simple chart: x-axis je group by (time/org/template/etc...)
-    Grouped chart: group by time AND neco ine
-    */
-
-    return [
-        {
-            id: 1000,
-            kind: ChartKind.wrapper,
-            type: ChartTopLevelType.chart,
-            parent: null,
-            props: {
-                height: 300,
-                domainPadding: selectedOptions.chartType === ChartType.bar ? 20 : 0
-            },
-            xAxis: {
-                label: 'Date'
-                // tickFormat: 'formatDateAsDayMonth'
-            },
-            yAxis: {
-                label: 'Jobs across all clusters'
-            },
-            api: {
-                params: apiParams,
-                url: selectedOptions.source as string
-            }
-        },
-        {
-            id: 1100,
-            kind: ChartKind.stack,
-            parent: 1000,
-            props: {}
-        },
-        ...(selectedOptions.attributes as string[]).map((y, idx) => ({
-            id: 1100 + 1 + idx,
-            kind: ChartKind.simple,
-            type: selectedOptions.chartType,
-            parent: 1100,
-            props: {
-                x: selectedOptions.xAxis === 'created_date' ? 'created_date' : 'name',
-                y
-            }
-        } as ChartSchemaElement))
-    ];
-}
-
-const chartTypeOptions = [
-    {key: ChartType.bar, value: 'Bar'},
-    {key: ChartType.line, value: 'Line'},
-    {key: ChartType.area, value: 'Area'}
-];
+const viewByOptions = [
+    { key: '-', value: 'None' },
+    { key: 'org', value: 'Organizations' },
+    { key: 'template', value: 'Templates' },
+    { key: 'cluster', value: 'Clusters' }
+]
 
 const xAxisOptions = [
     {key: 'created_date', value: 'Date'},
@@ -88,23 +35,34 @@ const xAxisOptions = [
 
 const ChartEditor: FunctionComponent<Props> = ({
     id,
-    schema,
+    schema: defaultSchema,
     apis
 }) => {
     const [options, setOptions] = useState({} as ApiReturnType);
     const [selectOptions, setSelectoptions] = useState({
         source: 'https://prod.foo.redhat.com:1337/api/tower-analytics/v1/job_explorer/',
         attributes: ['successful_count', 'failed_count'],
-        chartType: ChartType.bar,
-        xAxis: 'created_date'
-    });
+        chartType: FormChartTypes.bar,
+        xAxis: 'created_date',
+        viewBy: '-',
+        xAxisLabel: 'Date',
+        yAxisLabel: 'Label'
+    } as SelectOptions);
 
     const getApiParams = (): ApiParams => ({
         group_by_time: selectOptions.xAxis === 'created_date',
-        ...selectOptions.xAxis !== 'created_date' && {group_by: selectOptions.xAxis},
-        only_root_workflows_and_standalone_jobs: false,
-        attributes: selectOptions?.attributes
-    })
+        ...selectOptions.xAxis !== 'created_date' ?
+            {group_by: selectOptions.xAxis} :
+            {group_by: selectOptions.viewBy !== '-' ? selectOptions.viewBy : null},
+        attributes: selectOptions?.attributes,
+        quick_date_range: 'last_2_weeks'
+    });
+
+    const [schema, setSchema] = useState(getSchema(selectOptions, getApiParams()));
+
+    const applySettings = () => {
+        setSchema(getSchema(selectOptions, getApiParams()));
+    }
 
     useEffect(() => {
         fetchApi(
@@ -113,11 +71,154 @@ const ChartEditor: FunctionComponent<Props> = ({
         ).then((data) => {
             setOptions(data);
         }).catch(() => ({}));
-    }, []);
+    }, [ apis[0], selectOptions.xAxis, selectOptions.attributes, selectOptions.viewBy ]);
 
-    const form = () => (
+    const grouppedByTime = () => selectOptions.xAxis === 'created_date';
+    const groupedByElse = () => selectOptions.viewBy !== '-';
+    const isGroupedChart = () => grouppedByTime() && groupedByElse();
+    const isPieChart = () => !grouppedByTime();
+
+    const getChartFormOptions = () => {
+        let chartTypeOptions = [];
+
+        if (isGroupedChart()) {
+            chartTypeOptions = [{ key: FormChartTypes.grouped, value: 'Grouped bar chart' }];
+        } else if (isPieChart()) {
+            chartTypeOptions = [{ key: FormChartTypes.pie, value: 'Pie chart' }];
+        } else {
+            chartTypeOptions = [
+                { key: FormChartTypes.bar, value: 'Bar chart' },
+                { key: FormChartTypes.line, value: 'Line chart' },
+                { key: FormChartTypes.area, value: 'Area chart' }
+            ];
+        }
+
+        if (!chartTypeOptions.map(({key}) => key).includes(selectOptions.chartType)) {
+            setSelectoptions({
+                ...selectOptions,
+                chartType: chartTypeOptions[0].key
+            });
+        }
+
+        return (
+            <React.Fragment>
+                <span>Chart Type</span>
+                <CustomSelect
+                    selected={selectOptions.chartType}
+                    onChange={(value) =>
+                        setSelectoptions({
+                            ...selectOptions,
+                            chartType: value as FormChartTypes
+                        })
+                    }
+                    options={chartTypeOptions}
+                />
+            </React.Fragment>
+        );
+    }
+
+    const getAttributesFormOptions = () => {
+        const isSingle = isGroupedChart() || isPieChart();
+        return (
+            <React.Fragment>
+                <span>{isSingle ? 'Attribute' : 'Attribues'}</span>
+                <CustomSelect
+                    selected={selectOptions.attributes}
+                    onChange={(value) =>
+                        setSelectoptions({
+                            ...selectOptions,
+                            attributes: Array.isArray(value) ? value : [value]
+                        })
+                    }
+                    options={options.attributes}
+                    isSingle={isSingle}
+                />
+            </React.Fragment>
+        )
+    }
+
+    const getGroupByFormOptions = () => {
+        if (!grouppedByTime() && selectOptions.viewBy !== '-') {
+            setSelectoptions({
+                ...selectOptions,
+                viewBy: '-'
+            });
+        }
+
+        return (
+            <React.Fragment>
+                <span>Group by</span>
+                <CustomSelect
+                    selected={selectOptions.viewBy}
+                    onChange={(value) =>
+                        setSelectoptions({
+                            ...selectOptions,
+                            viewBy: value as string
+                        })
+                    }
+                    options={viewByOptions}
+                    disabled={!grouppedByTime()}
+                />
+            </React.Fragment>
+        )
+    }
+
+    const getLabelNameFormOptions = () => {
+        return selectOptions.chartType !== FormChartTypes.pie && (
+            <React.Fragment>
+                <span>X axis label</span>
+                <TextInput
+                    value={selectOptions.xAxisLabel}
+                    type='text'
+                    onChange={(value) =>
+                        setSelectoptions({
+                            ...selectOptions,
+                            xAxisLabel: value
+                        })
+                    }
+                    aria-label={'X axis label'}
+                />
+                <span>Y axis label</span>
+                <TextInput
+                    value={selectOptions.yAxisLabel}
+                    type='text'
+                    onChange={(value) =>
+                        setSelectoptions({
+                            ...selectOptions,
+                            yAxisLabel: value
+                        })
+                    }
+                    aria-label={'Y axis label'}
+                />
+            </React.Fragment>
+        )
+    }
+
+    const getViewByFormOptions = () => {
+        const title = isPieChart
+            ? 'View by'
+            : 'View by (x-axis)';
+
+        return (
+            <React.Fragment>
+                <span>{title}</span>
+                <CustomSelect
+                    selected={selectOptions.xAxis}
+                    onChange={(value) =>
+                        setSelectoptions({
+                            ...selectOptions,
+                            xAxis: value as string
+                        })
+                    }
+                    options={xAxisOptions}
+                />
+            </React.Fragment>
+        )
+    }
+
+    const getSourcesFormOptions = () => (
         <React.Fragment>
-            <span>Sources (apis)</span>
+            <span>Sources</span>
             <CustomSelect
                 selected={selectOptions.source}
                 onChange={(value) =>
@@ -128,40 +229,29 @@ const ChartEditor: FunctionComponent<Props> = ({
                 }
                 options={apis.map(({ url, label }) => ({ key: url, value: label }))}
             />
-            <span>X-axis</span>
-            <CustomSelect
-                selected={selectOptions.xAxis}
-                onChange={(value) =>
-                    setSelectoptions({
-                        ...selectOptions,
-                        xAxis: value as string
-                    })
-                }
-                options={xAxisOptions}
-            />
-            <span>Attribute (select multiple)</span>
-            <CustomSelect
-                selected={selectOptions.attributes}
-                onChange={(value) =>
-                    setSelectoptions({
-                        ...selectOptions,
-                        attributes: value as string[]
-                    })
-                }
-                options={options.attributes}
-                isSingle={false}
-            />
-            <span>Chart Type</span>
-            <CustomSelect
-                selected={selectOptions.chartType}
-                onChange={(value) =>
-                    setSelectoptions({
-                        ...selectOptions,
-                        chartType: value as ChartType
-                    })
-                }
-                options={chartTypeOptions}
-            />
+        </React.Fragment>
+    );
+
+    const getApiParamsFormOptions = () => (
+        <React.Fragment>
+            <Button onClick={() => alert('This will bring up more options')}>
+                Edit API request Params
+            </Button>
+        </React.Fragment>
+    );
+
+    const form = () => (
+        <React.Fragment>
+            {getSourcesFormOptions()}
+            {getApiParamsFormOptions()}
+            {getViewByFormOptions()}
+            {getGroupByFormOptions()}
+            {getChartFormOptions()}
+            {getAttributesFormOptions()}
+            <span>Customization</span>
+            <hr />
+            {getLabelNameFormOptions()}
+            <Button onClick={() => applySettings()}>Apply Settings</Button>
         </React.Fragment>
     );
 
@@ -171,7 +261,7 @@ const ChartEditor: FunctionComponent<Props> = ({
             chart={
                 <ChartRenderer
                     data={{
-                        charts: getSchema(selectOptions, getApiParams()),
+                        charts: schema,
                         functions
                     }}
                     ids={[id]}
