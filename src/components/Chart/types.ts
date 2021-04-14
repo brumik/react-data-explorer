@@ -46,7 +46,8 @@ export interface ChartApiData {
 
 export interface ChartApiProps {
     params: Record<string, unknown>,
-    url: string
+    url: string,
+    method?: string
 }
 
 interface ChartBase {

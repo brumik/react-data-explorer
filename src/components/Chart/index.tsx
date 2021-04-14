@@ -1,7 +1,6 @@
 import React, { FunctionComponent } from 'react';
 import {
     ChartKind,
-    ChartFunctions,
     ChartSchema,
     ChartSchemaElement,
     ChartTopLevelType,
@@ -17,10 +16,7 @@ interface Props {
 
 const ChartRenderer: FunctionComponent<Props> = ({
     ids = [] as number[],
-    data = {
-        charts: [] as ChartSchemaElement[],
-        functions: {} as ChartFunctions
-    }
+    data
 }) => {
     const getCharts = (c: ChartSchemaElement[]): ChartTopSchemaElement[] => {
         const top = c.filter(({ kind }) => kind === ChartKind.wrapper) as ChartTopSchemaElement[];

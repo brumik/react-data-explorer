@@ -63,6 +63,7 @@ const CreatePieChart: FunctionComponent<Props> = ({
             height={props.height}
             api={wrapper.api}
             setData={setResolvedApi}
+            fetchFnc={data.functions.fetchFnc}
         >
             { resolvedApi.data.length > 0 && <PFChartPie
                 {...legendProps}

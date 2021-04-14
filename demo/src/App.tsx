@@ -1,15 +1,15 @@
 import '@patternfly/react-core/dist/styles/base.css';
 import * as React from 'react';
 import /* DataExplorer, */ {
-    // ChartElement,
-    // functions,
-    // ChartRenderer
-    ChartEditor
+    // ChartSchemaElement,
+    functions,
+    ChartRenderer,
+    // ChartEditor
 } from '../../src/';
 import { dashboard as schema } from './schema';
 
 const App: React.FunctionComponent<Record<string, never>> = () => {
-    // const logger = (json: ChartElement[]) => {
+    // const logger = (json: ChartSchemaElement[]) => {
     //     // eslint-disable-next-line no-console
     //     console.debug(json);
     // }
@@ -21,13 +21,13 @@ const App: React.FunctionComponent<Record<string, never>> = () => {
                 onSchemaChange={logger}
                 functions={functions}
             /> */ }
-            { /* <ChartRenderer
+            <ChartRenderer
                 data={{
                     charts: schema,
                     functions
                 }}
-            /> */ }
-            <ChartEditor
+            />
+            {/* <ChartEditor
                 schema={schema}
                 id={1000}
                 apis={[
@@ -38,7 +38,7 @@ const App: React.FunctionComponent<Record<string, never>> = () => {
                         label: 'Job Explorer'
                     }
                 ]}
-            />
+            /> */}
         </div>
     );
 };
