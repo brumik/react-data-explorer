@@ -21,7 +21,7 @@ const mapChartType = (type: FormChartTypes): ChartType => {
         case FormChartTypes.line: return ChartType.line;
         default: return ChartType.bar;
     }
-}
+};
 
 const getStackedSchema = (selectedOptions: SelectOptions, apiParams: ApiParams): ChartSchemaElement[] => {
     const getSimpleChart = () => {

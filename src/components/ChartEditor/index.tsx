@@ -6,12 +6,13 @@ import React, {
 import { ChartSchemaElement } from '../Chart/types';
 import ChartRenderer from '../Chart';
 import { functions } from '../../index';
-import { ApiParams, FormApiProps, FormChartTypes, SelectOptions } from './types';
+import { ApiParams, FormApiProps, FormChartTypes } from './types';
 import EditorDrawer from './EditorDrawer';
 import { fetchApi, ApiReturnType } from './api';
 import CustomSelect from './CustomSelect';
 import { Button, TextInput } from '@patternfly/react-core';
 import getSchema from './schemaGenerator';
+import schemaToDefaultOptions from './schemaToDefaultOptions';
 
 interface Props {
     schema: ChartSchemaElement[],
@@ -25,15 +26,9 @@ const ChartEditor: FunctionComponent<Props> = ({
     apis
 }) => {
     const [options, setOptions] = useState({} as ApiReturnType);
-    const [selectOptions, setSelectoptions] = useState({
-        source: 'https://prod.foo.redhat.com:1337/api/tower-analytics/v1/job_explorer/',
-        attributes: ['successful_count', 'failed_count'],
-        chartType: FormChartTypes.bar,
-        xAxis: 'time',
-        viewBy: '-',
-        xAxisLabel: 'Date',
-        yAxisLabel: 'Label'
-    } as SelectOptions);
+    const [selectOptions, setSelectoptions] = useState(
+        schemaToDefaultOptions(defaultSchema, apis, id)
+    );
 
     const grouppedByTime = () => selectOptions.xAxis === 'time';
     const groupedByElse = () => selectOptions.viewBy !== '-';
