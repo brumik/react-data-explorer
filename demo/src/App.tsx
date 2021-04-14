@@ -33,7 +33,9 @@ const App: React.FunctionComponent<Record<string, never>> = () => {
                 apis={[
                     {
                         url: 'https://prod.foo.redhat.com:1337/api/tower-analytics/v1/job_explorer/',
-                        optionUrl: 'https://prod.foo.redhat.com:1337/api/tower-analytics/v1/job_explorer_options/'
+                        optionUrl: 'https://prod.foo.redhat.com:1337/api/tower-analytics/v1/job_explorer_options/',
+                        params: {},
+                        label: 'Job Explorer'
                     }
                 ]}
             />
