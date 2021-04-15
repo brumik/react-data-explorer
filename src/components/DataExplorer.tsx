@@ -29,6 +29,7 @@ const DataExplorer: FunctionComponent<Props> = ({
     schema: defaultSchema,
     functions,
     onSchemaChange = (d) => {
+        /* eslint-disable-next-line */
         console.log(JSON.stringify(d));
     }
 }) => {
@@ -43,7 +44,6 @@ const DataExplorer: FunctionComponent<Props> = ({
                 ...temp
             ] as ChartSchemaElement[]);
             setTemp([]);
-            console.log('saved');
         }
     }, [editorOpen]);
 
