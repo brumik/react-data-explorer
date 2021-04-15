@@ -13,6 +13,7 @@ import {
     ChartApiProps,
     ChartApiData
 } from '../types';
+import ErrorState from './ErrorState';
 
 interface Props {
     setWidth: (width: number) => void
@@ -32,6 +33,7 @@ const ResponsiveContainer: FunctionComponent<Props> = ({
 }) => {
     const containerRef = useRef<HTMLDivElement>(null);
     const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(false);
 
     const handleResize = () => {
         if (containerRef.current && containerRef.current.clientWidth) {
@@ -55,10 +57,15 @@ const ResponsiveContainer: FunctionComponent<Props> = ({
         getApiData(api, fetchFnc)
             .then(results => {
                 if (!didCancel) {
+                    setError(false);
                     setData({ ...results, legend: getLegendData(results)});
                 }
             })
-            .catch(() => ({}))
+            .catch(() => {
+                if (!didCancel) {
+                    setError(true);
+                }
+            })
             .finally(() => {
                 if (!didCancel) {
                     setLoading(false);
@@ -73,7 +80,8 @@ const ResponsiveContainer: FunctionComponent<Props> = ({
     return (
         <div ref={containerRef}>
             <div style={{ height }}>
-                { !loading && children }
+                { !loading && !error && children }
+                { !loading && error && <ErrorState />}
             </div>
         </div>
     );
