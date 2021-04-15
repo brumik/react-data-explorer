@@ -11,7 +11,7 @@ import {
 import {
     ApiParams,
     FormChartTypes,
-    SelectOptions
+    FormSelectOptions
 } from './types';
 
 const mapChartType = (type: FormChartTypes): ChartType => {
@@ -23,7 +23,7 @@ const mapChartType = (type: FormChartTypes): ChartType => {
     }
 };
 
-const getStackedSchema = (selectedOptions: SelectOptions, apiParams: ApiParams): ChartSchemaElement[] => {
+const getStackedSchema = (selectedOptions: FormSelectOptions, apiParams: ApiParams): ChartSchemaElement[] => {
     const getSimpleChart = () => {
         const generateChart = (y: string, idx = 0) => ({
             id: 1100 + 1 + idx,
@@ -74,7 +74,7 @@ const getStackedSchema = (selectedOptions: SelectOptions, apiParams: ApiParams):
     ];
 }
 
-const getGroupedSchema = (selectedOptions: SelectOptions, apiParams: ApiParams): ChartSchemaElement[] => {
+const getGroupedSchema = (selectedOptions: FormSelectOptions, apiParams: ApiParams): ChartSchemaElement[] => {
     const getSimpleChart = () => {
         const generateChart = (y: string, idx = 0) => ({
             id: 1100 + 1 + idx,
@@ -129,7 +129,7 @@ const getGroupedSchema = (selectedOptions: SelectOptions, apiParams: ApiParams):
     ];
 }
 
-const getPieSchema = (selectedOptions: SelectOptions, apiParams: ApiParams): ChartSchemaElement[] => {
+const getPieSchema = (selectedOptions: FormSelectOptions, apiParams: ApiParams): ChartSchemaElement[] => {
     return [
         {
             id: 1000,
@@ -154,7 +154,7 @@ const getPieSchema = (selectedOptions: SelectOptions, apiParams: ApiParams): Cha
     ]
 }
 
-const getSchema = (selectedOptions: SelectOptions, apiParams: ApiParams): ChartSchemaElement[] => {
+const getSchema = (selectedOptions: FormSelectOptions, apiParams: ApiParams): ChartSchemaElement[] => {
     if (selectedOptions.attributes.length < 1) {
         return [];
     }
