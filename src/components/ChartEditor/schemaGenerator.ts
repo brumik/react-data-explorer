@@ -174,14 +174,10 @@ const getSchema = (
     selectedOptions: FormSelectOptions,
     apiParams: ApiParams,
     lastId: number,
-    topLevelId = lastId + 1
+    topLevelId: number
 ): ChartSchemaElement[] => {
     if (selectedOptions.attributes.length < 1) {
         return [];
-    }
-
-    if (lastId <= topLevelId) {
-        lastId += 1;
     }
 
     switch(selectedOptions.chartType) {

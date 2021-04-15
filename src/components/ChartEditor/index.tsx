@@ -27,7 +27,6 @@ const ChartEditor: FunctionComponent<Props> = ({
     apis,
     onSchemaChange
 }) => {
-    const lastIdInSchema = Math.max(...defaultSchema.map(({ id: c }) => c));
     const [options, setOptions] = useState({} as ApiReturnType);
     const [selectOptions, setSelectoptions] = useState(
         schemaToDefaultOptions(defaultSchema, apis, id)
@@ -47,6 +46,13 @@ const ChartEditor: FunctionComponent<Props> = ({
         quick_date_range: 'last_2_weeks'
     });
 
+    // Get the last id and give the top level id a number if not passed down.
+    let lastIdInSchema = Math.max(...defaultSchema.map(({ id: c }) => c));
+    if (!id) {
+        id = lastIdInSchema + 1;
+        lastIdInSchema += 1;
+    }
+
     const [schema, setSchema] = useState(
         getSchema(selectOptions, getApiParams(), lastIdInSchema, id)
     );
@@ -54,8 +60,11 @@ const ChartEditor: FunctionComponent<Props> = ({
     const applySettings = () => {
         const newSchema = getSchema(selectOptions, getApiParams(), lastIdInSchema, id);
         setSchema(newSchema);
-        onSchemaChange(newSchema);
     }
+
+    useEffect(() => {
+        onSchemaChange(schema);
+    }, [schema])
 
     useEffect(() => {
         fetchApi(

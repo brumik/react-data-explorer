@@ -28,7 +28,8 @@ const mapChartType = (type: ChartType): FormChartTypes => {
 
 const defaultOptions = (url: string): FormSelectOptions => ({
     source: url,
-    attributes: [] as string[],
+    // TODO: The total count may not supported in all APIs
+    attributes: ['total_count'] as string[],
     chartType: FormChartTypes.bar,
     xAxis: 'time',
     viewBy: '-',
