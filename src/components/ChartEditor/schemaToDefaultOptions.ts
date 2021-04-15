@@ -14,7 +14,7 @@ import {
 import {
     FormApiProps,
     FormChartTypes,
-    SelectOptions
+    FormSelectOptions
 } from './types';
 
 const mapChartType = (type: ChartType): FormChartTypes => {
@@ -26,9 +26,10 @@ const mapChartType = (type: ChartType): FormChartTypes => {
     }
 };
 
-const defaultOptions = (url: string): SelectOptions => ({
+const defaultOptions = (url: string): FormSelectOptions => ({
     source: url,
-    attributes: [] as string[],
+    // TODO: The total count may not supported in all APIs
+    attributes: ['total_count'] as string[],
     chartType: FormChartTypes.bar,
     xAxis: 'time',
     viewBy: '-',
@@ -36,7 +37,7 @@ const defaultOptions = (url: string): SelectOptions => ({
     yAxisLabel: 'Label Y'
 });
 
-const pieChartOptions = (element: ChartPie): SelectOptions => ({
+const pieChartOptions = (element: ChartPie): FormSelectOptions => ({
     ...defaultOptions(element.api.url),
     attributes: [element.props.x as string],
     xAxis: element.api.params.group_by as string
@@ -45,7 +46,7 @@ const pieChartOptions = (element: ChartPie): SelectOptions => ({
 const groupedChartOptions = (
     topElement: ChartWrapper,
     groupElement: ChartGroup
-): SelectOptions => {
+): FormSelectOptions => {
     if (!groupElement.template) {
         console.error('Edit chart: Groupped charts are supported only with the template option.');
         return defaultOptions(topElement.api.url);
@@ -66,7 +67,7 @@ const stackedChartOptions = (
     topElement: ChartWrapper,
     stackElement: ChartStack,
     schema: ChartSchemaElement[]
-): SelectOptions => {
+): FormSelectOptions => {
     const simpleCharts = schema.filter(({ parent }) => parent === stackElement.id) as ChartSimple[];
 
     const chartType = simpleCharts.length > 0
@@ -87,7 +88,7 @@ const stackedChartOptions = (
 const stackOrGroupedChartOptions = (
     schema: ChartSchemaElement[],
     topLevelElement: ChartWrapper
-): SelectOptions => {
+): FormSelectOptions => {
     const groupElement = schema.find(({ parent }) => parent === topLevelElement.id);
 
     if (groupElement.kind === ChartKind.group) {
@@ -102,8 +103,12 @@ const stackOrGroupedChartOptions = (
     return defaultOptions(topLevelElement.api.url);
 }
 
-const schemaToDefaultOptions = (schema: ChartSchemaElement[], apis: FormApiProps[], id: number): SelectOptions => {
-    if (!schema || schema.length < 1) {
+const schemaToDefaultOptions = (
+    schema: ChartSchemaElement[],
+    apis: FormApiProps[],
+    id: number
+): FormSelectOptions => {
+    if (!schema || schema.length < 1 || !id) {
         return defaultOptions(apis[0].url);
     }
 

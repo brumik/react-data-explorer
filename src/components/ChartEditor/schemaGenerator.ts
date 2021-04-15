@@ -11,7 +11,7 @@ import {
 import {
     ApiParams,
     FormChartTypes,
-    SelectOptions
+    FormSelectOptions
 } from './types';
 
 const mapChartType = (type: FormChartTypes): ChartType => {
@@ -23,13 +23,20 @@ const mapChartType = (type: FormChartTypes): ChartType => {
     }
 };
 
-const getStackedSchema = (selectedOptions: SelectOptions, apiParams: ApiParams): ChartSchemaElement[] => {
+const getStackedSchema = (
+    selectedOptions: FormSelectOptions,
+    apiParams: ApiParams,
+    lastId: number,
+    topLevelId: number
+): ChartSchemaElement[] => {
+    const stackId = lastId + 1;
+
     const getSimpleChart = () => {
         const generateChart = (y: string, idx = 0) => ({
-            id: 1100 + 1 + idx,
+            id: stackId + 1 + idx,
             kind: ChartKind.simple,
             type: mapChartType(selectedOptions.chartType),
-            parent: 1100,
+            parent: stackId,
             props: {
                 x: 'created_date',
                 y
@@ -45,7 +52,7 @@ const getStackedSchema = (selectedOptions: SelectOptions, apiParams: ApiParams):
 
     return [
         {
-            id: 1000,
+            id: topLevelId,
             kind: ChartKind.wrapper,
             type: ChartTopLevelType.chart,
             parent: null,
@@ -65,8 +72,8 @@ const getStackedSchema = (selectedOptions: SelectOptions, apiParams: ApiParams):
             }
         },
         {
-            id: 1100,
-            parent: 1000,
+            id: stackId,
+            parent: topLevelId,
             props: {},
             kind: ChartKind.stack
         },
@@ -74,13 +81,18 @@ const getStackedSchema = (selectedOptions: SelectOptions, apiParams: ApiParams):
     ];
 }
 
-const getGroupedSchema = (selectedOptions: SelectOptions, apiParams: ApiParams): ChartSchemaElement[] => {
+const getGroupedSchema = (
+    selectedOptions: FormSelectOptions,
+    apiParams: ApiParams,
+    lastId: number,
+    topLevelId: number
+): ChartSchemaElement[] => {
     const getSimpleChart = () => {
         const generateChart = (y: string, idx = 0) => ({
-            id: 1100 + 1 + idx,
+            id: lastId + 2 + idx, // Last Id + group adds 1 + the curretn increase
             kind: ChartKind.simple,
             type: ChartType.bar,
-            parent: 1100,
+            parent: lastId + 1,
             props: {
                 x: 'created_date',
                 y
@@ -96,7 +108,7 @@ const getGroupedSchema = (selectedOptions: SelectOptions, apiParams: ApiParams):
 
     return [
         {
-            id: 1000,
+            id: topLevelId,
             kind: ChartKind.wrapper,
             type: ChartTopLevelType.chart,
             parent: null,
@@ -120,8 +132,8 @@ const getGroupedSchema = (selectedOptions: SelectOptions, apiParams: ApiParams):
             }
         },
         {
-            id: 1100,
-            parent: 1000,
+            id: lastId + 1,
+            parent: topLevelId,
             props: {},
             kind: ChartKind.group,
             template: getSimpleChart()
@@ -129,10 +141,14 @@ const getGroupedSchema = (selectedOptions: SelectOptions, apiParams: ApiParams):
     ];
 }
 
-const getPieSchema = (selectedOptions: SelectOptions, apiParams: ApiParams): ChartSchemaElement[] => {
+const getPieSchema = (
+    selectedOptions: FormSelectOptions,
+    apiParams: ApiParams,
+    id: number
+): ChartSchemaElement[] => {
     return [
         {
-            id: 1000,
+            id,
             kind: ChartKind.wrapper,
             type: ChartTopLevelType.pie,
             parent: null,
@@ -154,18 +170,23 @@ const getPieSchema = (selectedOptions: SelectOptions, apiParams: ApiParams): Cha
     ]
 }
 
-const getSchema = (selectedOptions: SelectOptions, apiParams: ApiParams): ChartSchemaElement[] => {
+const getSchema = (
+    selectedOptions: FormSelectOptions,
+    apiParams: ApiParams,
+    lastId: number,
+    topLevelId: number
+): ChartSchemaElement[] => {
     if (selectedOptions.attributes.length < 1) {
         return [];
     }
 
     switch(selectedOptions.chartType) {
         case FormChartTypes.grouped:
-            return getGroupedSchema(selectedOptions, apiParams);
+            return getGroupedSchema(selectedOptions, apiParams, lastId, topLevelId);
         case FormChartTypes.pie:
-            return getPieSchema(selectedOptions, apiParams);
+            return getPieSchema(selectedOptions, apiParams, topLevelId);
         default:
-            return getStackedSchema(selectedOptions, apiParams);
+            return getStackedSchema(selectedOptions, apiParams, lastId, topLevelId);
     }
 }
 

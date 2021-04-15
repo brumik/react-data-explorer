@@ -3,14 +3,6 @@ import { ChartApiProps, ChartApiData, ChartLegendData, ChartData } from '../type
 import { ApiReturnType, ApiType, GroupedApi } from './types';
 export * from './types';
 
-export const fetchApi = (api: ChartApiProps): Promise<ApiReturnType> => {
-    const url = new URL(api.url);
-    return fetch(url.toString(), {
-        method: 'POST',
-        body: JSON.stringify(api.params)
-    }).then(r => r.json()) as Promise<ApiReturnType>;
-}
-
 export const convertGroupedByData = (data: GroupedApi): ChartData => {
     const { dates } = data;
     const items: ChartData = [];
@@ -33,7 +25,10 @@ export const convertGroupedByData = (data: GroupedApi): ChartData => {
     return items;
 }
 
-export const getApiData = async (api: ChartApiProps): Promise<ChartApiData> => {
+export const getApiData = async (
+    api: ChartApiProps,
+    fetchApi: (api: ChartApiProps) => Promise<ApiReturnType>
+): Promise<ChartApiData> => {
     const resolvedData: ChartApiData = {
         data: []
     };
@@ -59,7 +54,6 @@ export const getApiData = async (api: ChartApiProps): Promise<ChartApiData> => {
                 break;
         }
     });
-
     return resolvedData;
 };
 

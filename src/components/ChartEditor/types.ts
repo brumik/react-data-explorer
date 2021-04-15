@@ -6,7 +6,7 @@ export interface FormApiProps {
     label: string
 }
 
-export interface SelectOptions {
+export interface FormSelectOptions {
     source: string,
     attributes: string[],
     chartType: FormChartTypes,

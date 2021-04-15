@@ -119,6 +119,7 @@ const CreateWrapper: FunctionComponent<Props> = ({
             height={props.height}
             api={wrapper.api}
             setData={setResolvedApi}
+            fetchFnc={functions.fetchFnc}
         >
             {resolvedApi.data.length > 0 && <PFChart
                 {...legendProps}

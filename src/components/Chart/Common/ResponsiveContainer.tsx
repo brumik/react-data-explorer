@@ -4,17 +4,23 @@ import React, {
     useRef,
     useState
 } from 'react';
-import { getApiData, getLegendData } from '../Api';
+import {
+    ApiReturnType,
+    getApiData,
+    getLegendData
+} from '../Api';
 import {
     ChartApiProps,
     ChartApiData
 } from '../types';
+import ErrorState from './ErrorState';
 
 interface Props {
     setWidth: (width: number) => void
     height: number,
     api: ChartApiProps,
-    setData: (data: ChartApiData) => void
+    setData: (data: ChartApiData) => void,
+    fetchFnc: (api: ChartApiProps) => Promise<ApiReturnType>
 }
 
 const ResponsiveContainer: FunctionComponent<Props> = ({
@@ -22,10 +28,12 @@ const ResponsiveContainer: FunctionComponent<Props> = ({
     height,
     api,
     setData,
-    children
+    children,
+    fetchFnc
 }) => {
     const containerRef = useRef<HTMLDivElement>(null);
     const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(false);
 
     const handleResize = () => {
         if (containerRef.current && containerRef.current.clientWidth) {
@@ -43,21 +51,37 @@ const ResponsiveContainer: FunctionComponent<Props> = ({
     }, []);
 
     useEffect(() => {
+        let didCancel = false;
+
         setLoading(true);
-        getApiData(api)
+        getApiData(api, fetchFnc)
             .then(results => {
-                setData({ ...results, legend: getLegendData(results)});
+                if (!didCancel) {
+                    setError(false);
+                    setData({ ...results, legend: getLegendData(results)});
+                }
             })
-            .catch(() => ({}))
+            .catch(() => {
+                if (!didCancel) {
+                    setError(true);
+                }
+            })
             .finally(() => {
-                setLoading(false);
+                if (!didCancel) {
+                    setLoading(false);
+                }
             });
+
+        return () => {
+            didCancel = true;
+        };
     }, [api])
 
     return (
         <div ref={containerRef}>
             <div style={{ height }}>
-                { !loading && children }
+                { !loading && !error && children }
+                { !loading && error && <ErrorState />}
             </div>
         </div>
     );

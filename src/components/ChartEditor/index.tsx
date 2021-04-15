@@ -16,14 +16,16 @@ import schemaToDefaultOptions from './schemaToDefaultOptions';
 
 interface Props {
     schema: ChartSchemaElement[],
-    id: number,
-    apis: FormApiProps[]
+    id?: number,
+    apis: FormApiProps[],
+    onSchemaChange: (schema: ChartSchemaElement[]) => void
 }
 
 const ChartEditor: FunctionComponent<Props> = ({
-    id,
+    id = null as number,
     schema: defaultSchema,
-    apis
+    apis,
+    onSchemaChange
 }) => {
     const [options, setOptions] = useState({} as ApiReturnType);
     const [selectOptions, setSelectoptions] = useState(
@@ -44,11 +46,25 @@ const ChartEditor: FunctionComponent<Props> = ({
         quick_date_range: 'last_2_weeks'
     });
 
-    const [schema, setSchema] = useState(getSchema(selectOptions, getApiParams()));
+    // Get the last id and give the top level id a number if not passed down.
+    let lastIdInSchema = Math.max(...defaultSchema.map(({ id: c }) => c));
+    if (!id) {
+        id = lastIdInSchema + 1;
+        lastIdInSchema += 1;
+    }
+
+    const [schema, setSchema] = useState(
+        getSchema(selectOptions, getApiParams(), lastIdInSchema, id)
+    );
 
     const applySettings = () => {
-        setSchema(getSchema(selectOptions, getApiParams()));
+        const newSchema = getSchema(selectOptions, getApiParams(), lastIdInSchema, id);
+        setSchema(newSchema);
     }
+
+    useEffect(() => {
+        onSchemaChange(schema);
+    }, [schema])
 
     useEffect(() => {
         fetchApi(
