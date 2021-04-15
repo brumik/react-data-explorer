@@ -49,15 +49,25 @@ const ResponsiveContainer: FunctionComponent<Props> = ({
     }, []);
 
     useEffect(() => {
+        let didCancel = false;
+
         setLoading(true);
         getApiData(api, fetchFnc)
             .then(results => {
-                setData({ ...results, legend: getLegendData(results)});
+                if (!didCancel) {
+                    setData({ ...results, legend: getLegendData(results)});
+                }
             })
             .catch(() => ({}))
             .finally(() => {
-                setLoading(false);
+                if (!didCancel) {
+                    setLoading(false);
+                }
             });
+
+        return () => {
+            didCancel = true;
+        };
     }, [api])
 
     return (
