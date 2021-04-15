@@ -102,8 +102,12 @@ const stackOrGroupedChartOptions = (
     return defaultOptions(topLevelElement.api.url);
 }
 
-const schemaToDefaultOptions = (schema: ChartSchemaElement[], apis: FormApiProps[], id: number): FormSelectOptions => {
-    if (!schema || schema.length < 1) {
+const schemaToDefaultOptions = (
+    schema: ChartSchemaElement[],
+    apis: FormApiProps[],
+    id: number
+): FormSelectOptions => {
+    if (!schema || schema.length < 1 || !id) {
         return defaultOptions(apis[0].url);
     }
 
