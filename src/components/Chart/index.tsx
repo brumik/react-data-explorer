@@ -2,7 +2,6 @@ import React, { FunctionComponent } from 'react';
 import {
     ChartKind,
     ChartSchema,
-    ChartSchemaElement,
     ChartTopLevelType,
     ChartTopSchemaElement
 } from './types';
@@ -18,8 +17,8 @@ const ChartRenderer: FunctionComponent<Props> = ({
     ids = [] as number[],
     data
 }) => {
-    const getCharts = (c: ChartSchemaElement[]): ChartTopSchemaElement[] => {
-        const top = c.filter(({ kind }) => kind === ChartKind.wrapper) as ChartTopSchemaElement[];
+    const charts = (): ChartTopSchemaElement[] => {
+        const top = data.charts.filter(({ kind }) => kind === ChartKind.wrapper) as ChartTopSchemaElement[];
         if (ids.length > 0) {
             return top.filter(({ id }) => ids.includes(id)).sort((a,b) => a.id - b.id);
         } else {
@@ -29,7 +28,7 @@ const ChartRenderer: FunctionComponent<Props> = ({
 
     return (
         <React.Fragment>
-            {getCharts(data.charts).map(el => {
+            {charts().map(el => {
                 if(el.type === ChartTopLevelType.chart) {
                     return (<CreateWrapper key={el.id} id={el.id} data={data} />);
                 } else if (el.type === ChartTopLevelType.pie) {

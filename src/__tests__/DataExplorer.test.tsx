@@ -1,79 +1,74 @@
 import React from 'react'
 import fetchMock from 'fetch-mock-jest';
-import { act, render } from '@testing-library/react';
+import { render, waitFor } from '@testing-library/react';
 import DataExplorer from '../components/DataExplorer';
 import {
     ChartSchemaElement,
     ChartKind,
-    ChartLegendOrientation,
-    ChartLegendPosition,
     ChartTopLevelType,
-    functions
+    functions,
+    ChartType
 } from '../index';
+import { stackedChartResponse } from './assets/fetchResponses';
 
-const pieChartResponse = {
-    "items": [
-        { "host_count": 4655, "total_count": 578, "id": 2, "name": "organization_0" },
-        { "host_count": 96225, "total_count": 456, "id": -2, "name": "" },
-        { "host_count": 2995, "total_count": 411, "id": 4, "name": "organization_3" },
-        { "host_count": 2975, "total_count": 410, "id": 3, "name": "organization_1" },
-        { "host_count": 2975, "total_count": 410, "id": 1, "name": "organization_2" },
-        { "host_count": 70720, "id": -1, "name": "26 Others" }
-    ]
-};
-
-const pieChartSchema: ChartSchemaElement[] = [
+const charts: ChartSchemaElement[] = [
     {
-        id: 4000,
+        id: 1000,
         kind: ChartKind.wrapper,
-        type: ChartTopLevelType.pie,
+        type: ChartTopLevelType.chart,
         parent: null,
         props: {
-            height: 300,
-            x: '',
-            y: 'host_count'
+            height: 300
+        },
+        xAxis: {
+            label: 'Date',
+        },
+        yAxis: {
+            label: 'Jobs across all clusters'
         },
         api: {
-            params: {
-                group_by: 'org',
-                include_others: true,
-                attributes: ['host_count'],
-                sort_by: `total_count:desc`
-            },
-            url: 'http://piechart.url',
-            method: 'GET'
-        },
-        legend: {
-            interactive: true,
-            orientation: ChartLegendOrientation.vertical,
-            position: ChartLegendPosition.right
+            params: {},
+            url: 'http://chart1.url'
+        }
+    },
+    {
+        id: 1001,
+        kind: ChartKind.simple,
+        type: ChartType.line,
+        parent: 1000,
+        props: {
+            x: 'created_date',
+            y: 'success_count'
         }
     }
 ];
 
 describe('Data Explorer', () => {
-    test('should render empty DataExplorer', () => {
+    test('should render empty DataExplorer', async () => {
         const { container } = render(<DataExplorer
             apis={[]}
             schema={[]}
             onSchemaChange={() => ({})}
             functions={functions}
         />)
+        await waitFor(() => container.querySelector('svg'));
+        expect(container).toMatchSnapshot();
+    });
+
+    test('should render pie chart in DataExplorer', async () => {
+        fetchMock.post({ url: 'http://chart1.url' }, stackedChartResponse);
+        const { container } = render(<DataExplorer
+            apis={[]}
+            schema={charts}
+            onSchemaChange={() => ({})}
+            functions={functions}
+        />);
+        await waitFor(() => container.querySelector('svg'));
+
         expect(container).toMatchSnapshot()
     });
 
-    test('should render pie chart DataExplorer', async () => {
-        fetchMock.get({ url: 'http://piechart.url' }, pieChartResponse);
-        let container = null;
-        await act(async () => {
-            container = render(<DataExplorer
-                apis={[]}
-                schema={pieChartSchema}
-                onSchemaChange={() => ({})}
-                functions={functions}
-            />).container;
-        });
-
-        expect(container).toMatchSnapshot()
-    });
+    xtest('should render toggle button', () => { });
+    xtest('should open editor when clicked on the toogle button', () => { });
+    xtest('should open close editor when clicked on the toggle button', () => {});
 });

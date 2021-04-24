@@ -34,7 +34,7 @@ exports[`Data Explorer should render empty DataExplorer 1`] = `
 </div>
 `;
 
-exports[`Data Explorer should render pie chart DataExplorer 1`] = `
+exports[`Data Explorer should render pie chart in DataExplorer 1`] = `
 <div>
   <article
     class="pf-c-card"
@@ -69,7 +69,7 @@ exports[`Data Explorer should render pie chart DataExplorer 1`] = `
         >
           <div
             class="pf-c-chart"
-            style="pointer-events: none; position: relative; width: 100%; height: 100%;"
+            style="height: 100%; width: 100%; user-select: none; pointer-events: none; position: relative;"
           >
             <svg
               height="300"
@@ -78,223 +78,216 @@ exports[`Data Explorer should render pie chart DataExplorer 1`] = `
               viewBox="0 0 0 300"
               width="0"
             >
-              <g>
-                <path
-                  d="M0,0Z"
+              <g
+                role="presentation"
+              >
+                <line
                   role="presentation"
                   shape-rendering="auto"
-                  style="fill: #06c; padding: 8px; stroke: transparent; stroke-width: 1;"
-                  transform="translate(-40, 140)"
-                />
-                <path
-                  d="M0,0Z"
-                  role="presentation"
-                  shape-rendering="auto"
-                  style="fill: #8bc1f7; padding: 8px; stroke: transparent; stroke-width: 1;"
-                  transform="translate(-40, 140)"
-                />
-                <path
-                  d="M0,0Z"
-                  role="presentation"
-                  shape-rendering="auto"
-                  style="fill: #002f5d; padding: 8px; stroke: transparent; stroke-width: 1;"
-                  transform="translate(-40, 140)"
-                />
-                <path
-                  d="M0,0Z"
-                  role="presentation"
-                  shape-rendering="auto"
-                  style="fill: #519de9; padding: 8px; stroke: transparent; stroke-width: 1;"
-                  transform="translate(-40, 140)"
-                />
-                <path
-                  d="M0,0Z"
-                  role="presentation"
-                  shape-rendering="auto"
-                  style="fill: #004b95; padding: 8px; stroke: transparent; stroke-width: 1;"
-                  transform="translate(-40, 140)"
-                />
-                <path
-                  d="M0,0Z"
-                  role="presentation"
-                  shape-rendering="auto"
-                  style="fill: #06c; padding: 8px; stroke: transparent; stroke-width: 1;"
-                  transform="translate(-40, 140)"
-                />
-              </g>
-              <g>
-                <rect
-                  height="185.42999999999998"
-                  role="presentation"
-                  shape-rendering="auto"
-                  style="fill: none;"
+                  style="stroke: #d2d2d2; fill: transparent; stroke-width: 1; stroke-linecap: round; stroke-linejoin: round;"
                   vector-effect="non-scaling-stroke"
-                  width="132.896875"
-                  x="0"
-                  y="49.28500000000001"
-                />
-                <path
-                  d="M 9.128, 68.15700000000001
-      h9.744
-      v-9.744
-      h-9.744
-      z"
-                  role="presentation"
-                  shape-rendering="auto"
-                  style="fill: #06c;"
-                />
-                <path
-                  d="M 9.128, 99.06200000000001
-      h9.744
-      v-9.744
-      h-9.744
-      z"
-                  role="presentation"
-                  shape-rendering="auto"
-                  style="fill: #8bc1f7;"
-                />
-                <path
-                  d="M 9.128, 129.96699999999998
-      h9.744
-      v-9.744
-      h-9.744
-      z"
-                  role="presentation"
-                  shape-rendering="auto"
-                  style="fill: #002f5d;"
-                />
-                <path
-                  d="M 9.128, 160.872
-      h9.744
-      v-9.744
-      h-9.744
-      z"
-                  role="presentation"
-                  shape-rendering="auto"
-                  style="fill: #519de9;"
-                />
-                <path
-                  d="M 9.128, 191.777
-      h9.744
-      v-9.744
-      h-9.744
-      z"
-                  role="presentation"
-                  shape-rendering="auto"
-                  style="fill: #004b95;"
-                />
-                <path
-                  d="M 9.128, 222.68200000000002
-      h9.744
-      v-9.744
-      h-9.744
-      z"
-                  role="presentation"
-                  shape-rendering="auto"
-                  style="fill: #06c;"
+                  x1="70"
+                  x2="-50"
+                  y1="230"
+                  y2="230"
                 />
                 <text
                   direction="inherit"
                   dx="0"
-                  id="legend-4000-labels-0"
-                  x="30.8"
-                  y="68.25500000000001"
+                  id="chart-axis-0-axisLabel-0"
+                  x="10"
+                  y="281.97"
                 >
                   <tspan
                     dx="0"
                     dy="0"
-                    style="cursor: pointer; font-family: \\"RedHatText\\",\\"Overpass\\",overpass,helvetica,arial,sans-serif; font-size: 14px; letter-spacing: normal; padding: 10px; stroke: transparent; fill: #252525;"
-                    text-anchor="start"
-                    x="30.8"
+                    style="font-family: \\"RedHatText\\",\\"Overpass\\",overpass,helvetica,arial,sans-serif; font-size: 14px; letter-spacing: normal; padding: 40px; stroke: transparent; text-anchor: middle; fill: #252525;"
+                    text-anchor="middle"
+                    x="10"
                   >
-                    organization_0
+                    Date
                   </tspan>
                 </text>
+                <g
+                  role="presentation"
+                >
+                  <line
+                    role="presentation"
+                    shape-rendering="auto"
+                    style="stroke: #d2d2d2; fill: transparent; size: 5px; stroke-linecap: round; stroke-linejoin: round; stroke-width: 1;"
+                    vector-effect="non-scaling-stroke"
+                    x1="-50"
+                    x2="-50"
+                    y1="230"
+                    y2="235"
+                  />
+                  <text
+                    direction="inherit"
+                    dx="0"
+                    id="chart-axis-0-tickLabels-5"
+                    x="-50"
+                    y="256.97"
+                  >
+                    <tspan
+                      dx="0"
+                      dy="0"
+                      style="font-family: \\"RedHatText\\",\\"Overpass\\",overpass,helvetica,arial,sans-serif; font-size: 14px; letter-spacing: normal; padding: 10px; stroke: transparent; fill: #4f5255;"
+                      text-anchor="middle"
+                      x="-50"
+                    >
+                      2020-11-05
+                    </tspan>
+                  </text>
+                </g>
+              </g>
+              <g
+                role="presentation"
+              >
+                <line
+                  role="presentation"
+                  shape-rendering="auto"
+                  style="stroke: #d2d2d2; fill: transparent; stroke-width: 1; stroke-linecap: round; stroke-linejoin: round;"
+                  vector-effect="non-scaling-stroke"
+                  x1="70"
+                  x2="70"
+                  y1="50"
+                  y2="230"
+                />
                 <text
                   direction="inherit"
                   dx="0"
-                  id="legend-4000-labels-1"
-                  x="30.8"
-                  y="99.16000000000001"
+                  id="chart-axis-1-axisLabel-0"
+                  transform="rotate(-90,30,140)"
+                  x="30"
+                  y="137.97"
                 >
                   <tspan
                     dx="0"
                     dy="0"
-                    style="cursor: pointer; font-family: \\"RedHatText\\",\\"Overpass\\",overpass,helvetica,arial,sans-serif; font-size: 14px; letter-spacing: normal; padding: 10px; stroke: transparent; fill: #252525;"
-                    text-anchor="start"
-                    x="30.8"
+                    style="font-family: \\"RedHatText\\",\\"Overpass\\",overpass,helvetica,arial,sans-serif; font-size: 14px; letter-spacing: normal; padding: 40px; stroke: transparent; text-anchor: middle; fill: #252525;"
+                    text-anchor="middle"
+                    x="30"
                   >
-                    No Name
+                    Jobs across all clusters
                   </tspan>
                 </text>
-                <text
-                  direction="inherit"
-                  dx="0"
-                  id="legend-4000-labels-2"
-                  x="30.8"
-                  y="130.065"
+                <g
+                  role="presentation"
                 >
-                  <tspan
+                  <line
+                    role="presentation"
+                    shape-rendering="auto"
+                    style="stroke: #d2d2d2; fill: transparent; size: 5px; stroke-linecap: round; stroke-linejoin: round; stroke-width: 1;"
+                    vector-effect="non-scaling-stroke"
+                    x1="70"
+                    x2="65"
+                    y1="183.24675324675323"
+                    y2="183.24675324675323"
+                  />
+                  <text
+                    direction="inherit"
                     dx="0"
-                    dy="0"
-                    style="cursor: pointer; font-family: \\"RedHatText\\",\\"Overpass\\",overpass,helvetica,arial,sans-serif; font-size: 14px; letter-spacing: normal; padding: 10px; stroke: transparent; fill: #252525;"
-                    text-anchor="start"
-                    x="30.8"
+                    id="chart-axis-1-tickLabels-0"
+                    x="55"
+                    y="188.21675324675323"
                   >
-                    organization_3
-                  </tspan>
-                </text>
-                <text
-                  direction="inherit"
-                  dx="0"
-                  id="legend-4000-labels-3"
-                  x="30.8"
-                  y="160.97"
+                    <tspan
+                      dx="0"
+                      dy="0"
+                      style="font-family: \\"RedHatText\\",\\"Overpass\\",overpass,helvetica,arial,sans-serif; font-size: 14px; letter-spacing: normal; padding: 10px; stroke: transparent; fill: #4f5255;"
+                      text-anchor="end"
+                      x="55"
+                    >
+                      20
+                    </tspan>
+                  </text>
+                </g>
+                <g
+                  role="presentation"
                 >
-                  <tspan
+                  <line
+                    role="presentation"
+                    shape-rendering="auto"
+                    style="stroke: #d2d2d2; fill: transparent; size: 5px; stroke-linecap: round; stroke-linejoin: round; stroke-width: 1;"
+                    vector-effect="non-scaling-stroke"
+                    x1="70"
+                    x2="65"
+                    y1="136.4935064935065"
+                    y2="136.4935064935065"
+                  />
+                  <text
+                    direction="inherit"
                     dx="0"
-                    dy="0"
-                    style="cursor: pointer; font-family: \\"RedHatText\\",\\"Overpass\\",overpass,helvetica,arial,sans-serif; font-size: 14px; letter-spacing: normal; padding: 10px; stroke: transparent; fill: #252525;"
-                    text-anchor="start"
-                    x="30.8"
+                    id="chart-axis-1-tickLabels-1"
+                    x="55"
+                    y="141.4635064935065"
                   >
-                    organization_1
-                  </tspan>
-                </text>
-                <text
-                  direction="inherit"
-                  dx="0"
-                  id="legend-4000-labels-4"
-                  x="30.8"
-                  y="191.875"
+                    <tspan
+                      dx="0"
+                      dy="0"
+                      style="font-family: \\"RedHatText\\",\\"Overpass\\",overpass,helvetica,arial,sans-serif; font-size: 14px; letter-spacing: normal; padding: 10px; stroke: transparent; fill: #4f5255;"
+                      text-anchor="end"
+                      x="55"
+                    >
+                      40
+                    </tspan>
+                  </text>
+                </g>
+                <g
+                  role="presentation"
                 >
-                  <tspan
+                  <line
+                    role="presentation"
+                    shape-rendering="auto"
+                    style="stroke: #d2d2d2; fill: transparent; size: 5px; stroke-linecap: round; stroke-linejoin: round; stroke-width: 1;"
+                    vector-effect="non-scaling-stroke"
+                    x1="70"
+                    x2="65"
+                    y1="89.74025974025975"
+                    y2="89.74025974025975"
+                  />
+                  <text
+                    direction="inherit"
                     dx="0"
-                    dy="0"
-                    style="cursor: pointer; font-family: \\"RedHatText\\",\\"Overpass\\",overpass,helvetica,arial,sans-serif; font-size: 14px; letter-spacing: normal; padding: 10px; stroke: transparent; fill: #252525;"
-                    text-anchor="start"
-                    x="30.8"
+                    id="chart-axis-1-tickLabels-2"
+                    x="55"
+                    y="94.71025974025974"
                   >
-                    organization_2
-                  </tspan>
-                </text>
-                <text
-                  direction="inherit"
-                  dx="0"
-                  id="legend-4000-labels-5"
-                  x="30.8"
-                  y="222.78"
-                >
-                  <tspan
-                    dx="0"
-                    dy="0"
-                    style="cursor: pointer; font-family: \\"RedHatText\\",\\"Overpass\\",overpass,helvetica,arial,sans-serif; font-size: 14px; letter-spacing: normal; padding: 10px; stroke: transparent; fill: #252525;"
-                    text-anchor="start"
-                    x="30.8"
+                    <tspan
+                      dx="0"
+                      dy="0"
+                      style="font-family: \\"RedHatText\\",\\"Overpass\\",overpass,helvetica,arial,sans-serif; font-size: 14px; letter-spacing: normal; padding: 10px; stroke: transparent; fill: #4f5255;"
+                      text-anchor="end"
+                      x="55"
+                    >
+                      60
+                    </tspan>
+                  </text>
+                </g>
+              </g>
+              <g
+                clip-path="url(#victory-clip-2)"
+                style="height: 100%; width: 100%; user-select: none;"
+              >
+                <defs>
+                  <clippath
+                    id="victory-clip-2"
                   >
-                    26 Others
-                  </tspan>
-                </text>
+                    <rect
+                      height="180"
+                      vector-effect="non-scaling-stroke"
+                      width="120"
+                      x="-50"
+                      y="50"
+                    />
+                  </clippath>
+                </defs>
+                <path
+                  d="M70,185.58441558441558L46,169.22077922077924L22,124.80519480519482L-2,185.58441558441558L-26.000000000000004,50L-50,230"
+                  role="presentation"
+                  shape-rendering="auto"
+                  style="fill: transparent; stroke: #06c; opacity: 1; stroke-width: 2;"
+                />
               </g>
             </svg>
             <div
