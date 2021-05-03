@@ -5,10 +5,10 @@ import React, {
     useState
 } from 'react';
 import {
-    ApiReturnType,
     getApiData,
     getLegendData
 } from '../Api';
+import { ChartFetchFunction } from '../Functions/types';
 import {
     ChartApiProps,
     ChartApiData
@@ -20,7 +20,7 @@ interface Props {
     height: number,
     api: ChartApiProps,
     setData: (data: ChartApiData) => void,
-    fetchFnc: (api: ChartApiProps) => Promise<ApiReturnType>
+    fetchFnc: ChartFetchFunction
 }
 
 const ResponsiveContainer: FunctionComponent<Props> = ({

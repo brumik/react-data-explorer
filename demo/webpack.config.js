@@ -8,7 +8,7 @@ module.exports = {
     },
     devtool: 'source-map',
     output: {
-        path: resolve(__dirname, './lib'),
+        path: resolve(__dirname, './dist'),
         filename: '[name].js'
     },
     plugins: [

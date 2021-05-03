@@ -19,9 +19,7 @@
         "eslint-plugin-react",
         "@typescript-eslint"
     ],
-    "globals": {
-        "React": true
-    },
+    "globals": {},
     "rules": {
         "@typescript-eslint/adjacent-overload-signatures": "error",
         "@typescript-eslint/array-type": [

@@ -1,4 +1,5 @@
 import { v4 as uuidv4 } from 'uuid';
+import { ChartFetchFunction } from '../Functions/types';
 import { ChartApiProps, ChartApiData, ChartLegendData, ChartData } from '../types';
 import { ApiReturnType, ApiType, GroupedApi } from './types';
 export * from './types';
@@ -27,7 +28,7 @@ export const convertGroupedByData = (data: GroupedApi): ChartData => {
 
 export const getApiData = async (
     api: ChartApiProps,
-    fetchApi: (api: ChartApiProps) => Promise<ApiReturnType>
+    fetchApi: ChartFetchFunction
 ): Promise<ChartApiData> => {
     const resolvedData: ChartApiData = {
         data: []

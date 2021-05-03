@@ -33,7 +33,7 @@ const components: Partial<Record<ChartType, React.ElementType>> = {
 const getData = (
     data: ChartDataSerie,
     y = 'y',
-    labelName = null as string
+    labelName: string
 ): Record<string, string | number>[] =>
     data.hidden
         ? [{ [y]: null }]
