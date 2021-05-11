@@ -14,14 +14,19 @@ The default graphite width of 10mm is always used for performance reasons.`
 
 ### Setup
 * `npm i` - install the packages
-* Run the AAA full stack (proxy + backend)
-    * This step is needed, since the demo app is set up to work with the AAA API
+* (only if want to try out the editor too):
+    * Run the AAA full stack (proxy + backend) - This step is needed, since the editor in the demo app is set up to work with the AAA API
+    * backend: https://gitlab.cee.redhat.com/automation-analytics/automation-analytics-backend (vpn needed)
+    * proxy: https://github.com/RedHatInsights/insights-proxy
 * `npm start` - start the local web server
 * go to `localhost:8080`
+
+### Currently accepted API format
+To see what data format is accepted from the API in the chart builder the `/demo/api/` folder contains API response mockups.
 
 ### Testing
 * `npm i` if not done before
 * `npm test`
 
 ## Examples (docs)
-For seeing the components in work there are extensive examples in the `demo` folder. The schema contains most of the basic usage. A proper documentation is coming when hitting the magic v1.0.0.
+For seeing the components in work there are examples in the `demo` folder. The schema contains most of the basic usage. A proper documentation is coming when hitting the magic v1.0.0.

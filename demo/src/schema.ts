@@ -99,7 +99,9 @@ export const dashboard: ChartSchemaElement[] = [
                 only_root_workflows_and_standalone_jobs: false,
                 attributes: ['failed_count', 'successful_count']
             },
-            url: 'https://prod.foo.redhat.com:1337/api/tower-analytics/v1/job_explorer/'
+            // url: 'https://prod.foo.redhat.com:1337/api/tower-analytics/v1/job_explorer/'
+            url: '/demo/api/demo.byTime.stacked.json',
+            method: 'GET'
         }
     },
     {
@@ -178,7 +180,9 @@ export const dashboard: ChartSchemaElement[] = [
                 only_root_workflows_and_standalone_jobs: false,
                 attributes: ['failed_count', 'successful_count']
             },
-            url: 'https://prod.foo.redhat.com:1337/api/tower-analytics/v1/job_explorer/'
+            // url: 'https://prod.foo.redhat.com:1337/api/tower-analytics/v1/job_explorer/'
+            url: '/demo/api/demo.byTime.stacked.json',
+            method: 'GET'
         }
     },
     {
@@ -252,7 +256,9 @@ export const dashboard: ChartSchemaElement[] = [
                 group_by: 'org',
                 sort_by: `total_count:desc`
             },
-            url: 'https://prod.foo.redhat.com:1337/api/tower-analytics/v1/job_explorer/?limit=5'
+            // url: 'https://prod.foo.redhat.com:1337/api/tower-analytics/v1/job_explorer/?limit=5'
+            url: '/demo/api/demo.byTime.grouped.json',
+            method: 'GET'
         },
         legend: {
             interactive: true,
@@ -297,7 +303,9 @@ export const dashboard: ChartSchemaElement[] = [
                 attributes: ['host_count'],
                 sort_by: `total_count:desc`
             },
-            url: 'https://prod.foo.redhat.com:1337/api/tower-analytics/v1/job_explorer/?limit=5'
+            // url: 'https://prod.foo.redhat.com:1337/api/tower-analytics/v1/job_explorer/?limit=5'
+            url: '/demo/api/demo.byOrg.pie.json',
+            method: 'GET'
         },
         legend: {
             interactive: true,
