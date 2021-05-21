@@ -11,6 +11,7 @@ import {
     ChartType
 } from '../types';
 import createChart from './createChart';
+import createStack from './createStack';
 import { getBarWidthFromData } from '../Common/helpers';
 
 const components: Partial<Record<ChartKind, (
@@ -18,7 +19,8 @@ const components: Partial<Record<ChartKind, (
     data: ChartSchema,
     resolvedApi: ChartApiData
 ) => React.ReactElement>> = {
-    [ChartKind.simple]: createChart
+    [ChartKind.simple]: createChart,
+    [ChartKind.stack]: createStack
 };
 
 const createDynamicChildren = (
