@@ -91,6 +91,7 @@ export interface ChartAxisProps {
     fixLabelOverlap?: boolean,
     domain?: any,
     style?: any
+    domainPadding?: any
 }
 
 export { ChartLegendPosition, ChartLegendOrientation };
