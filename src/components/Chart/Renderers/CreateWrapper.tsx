@@ -63,7 +63,7 @@ const CreateWrapper: FunctionComponent<Props> = ({
 }) => {
     const { charts, functions } = data;
     const wrapper = charts.find(({ id: i }) => i === id) as ChartWrapper;
-    const child = charts.find(({ parent }) => parent === wrapper.id);
+    const children = charts.filter(({ parent }) => parent === wrapper.id);
     const [width, setWidth] = useState(0);
     const [resolvedApi, setResolvedApi] = useState({
         data: []
@@ -124,7 +124,7 @@ const CreateWrapper: FunctionComponent<Props> = ({
             {resolvedApi.data.length > 0 && <PFChart
                 {...legendProps}
                 // Get the domain padding if it has a grouped bar chart from template or a bar chart
-                domainPadding={getDomainPadding(resolvedApi.data, child)}
+                domainPadding={children.length === 1 ? getDomainPadding(resolvedApi.data, children[0]) : 0}
                 {...props}
                 key={id}
                 width={width}
@@ -132,7 +132,7 @@ const CreateWrapper: FunctionComponent<Props> = ({
             >
                 <ChartAxis {...xAxis} />
                 <ChartAxis dependentAxis {...yAxis} />
-                {child && components[child.kind](child.id, data, resolvedApi)}
+                {children && children.map(child => components[child.kind](child.id, data, resolvedApi))}
             </PFChart>}
         </ResponsiveContainer>
     );
