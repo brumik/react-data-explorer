@@ -33,14 +33,14 @@ export const dashboard: ChartSchemaElement[] = [
             cursor: true
         },
         xAxis: {
-            label: 'Time',
+            label: 'Time'
         },
         yAxis: {
             label: 'Money Saved',
             tickFormat: 'formatNumberAsK',
             style: {
-                grid: { stroke: '#D2D2D2' },
-            },
+                grid: { stroke: '#D2D2D2' }
+            }
         },
         api: {
             params: {},
@@ -52,7 +52,7 @@ export const dashboard: ChartSchemaElement[] = [
         id: 2,
         kind: ChartKind.stack,
         parent: 1,
-        props: {},
+        props: {}
     },
     {
         id: 3,
@@ -67,10 +67,10 @@ export const dashboard: ChartSchemaElement[] = [
             style: {
                 data: {
                     fill: '#8B8D8F',
-                    width: 120,
-                },
-            },
-        },
+                    width: 120
+                }
+            }
+        }
     },
     {
         id: 4,
@@ -85,10 +85,10 @@ export const dashboard: ChartSchemaElement[] = [
             style: {
                 data: {
                     fill: '#81C46B',
-                    width: 120,
-                },
-            },
-        },
+                    width: 120
+                }
+            }
+        }
     },
     {
         id: 5,
@@ -102,9 +102,9 @@ export const dashboard: ChartSchemaElement[] = [
                 data: {
                     stroke: '#EE7A00',
                     strokeWidth: 5
-                },
-            },
-        },
+                }
+            }
+        }
     },
     {
         id: 100,
@@ -163,7 +163,7 @@ export const dashboard: ChartSchemaElement[] = [
             y: 'failed_anomaly',
             size: 7,
             style: {
-                data: { fill: "#c43a31" }
+                data: { fill: '#c43a31' }
             }
         }
     },
@@ -350,7 +350,7 @@ export const dashboard: ChartSchemaElement[] = [
                 attributes: ['total_count'],
                 group_by_time: true,
                 group_by: 'org',
-                sort_by: `total_count:desc`
+                sort_by: 'total_count:desc'
             },
             // url: 'https://prod.foo.redhat.com:1337/api/tower-analytics/v1/job_explorer/?limit=5'
             url: '/demo/api/demo.byTime.grouped.json',
@@ -397,7 +397,7 @@ export const dashboard: ChartSchemaElement[] = [
                 group_by: 'org',
                 include_others: true,
                 attributes: ['host_count'],
-                sort_by: `total_count:desc`
+                sort_by: 'total_count:desc'
             },
             // url: 'https://prod.foo.redhat.com:1337/api/tower-analytics/v1/job_explorer/?limit=5'
             url: '/demo/api/demo.byOrg.pie.json',
