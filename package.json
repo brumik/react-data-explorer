@@ -21,7 +21,7 @@
   ],
   "scripts": {
     "predeploy": "webpack --config demo/webpack.config.js --mode production",
-    "deploy": "gh-pages -d build",
+    "deploy": "gh-pages -d demo/dist",
     "start": "webpack serve --config demo/webpack.config.js --mode development",
     "test": "jest --config jest.config.json --coverage",
     "test:watch": "jest --config jest.config.json --watch",
