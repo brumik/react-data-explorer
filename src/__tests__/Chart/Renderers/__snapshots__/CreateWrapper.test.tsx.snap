@@ -14,8 +14,8 @@ exports[`Chart/Renderers/CreateWrapper should re-render a grouped bar after lege
           height="300"
           role="img"
           style="pointer-events: all; width: 100%; height: 100%;"
-          viewBox="0 0 0 300"
-          width="0"
+          viewBox="0 0 500 300"
+          width="500"
         >
           <g
             role="presentation"
@@ -26,7 +26,7 @@ exports[`Chart/Renderers/CreateWrapper should re-render a grouped bar after lege
               style="stroke: #d2d2d2; fill: transparent; stroke-width: 1; stroke-linecap: round; stroke-linejoin: round;"
               vector-effect="non-scaling-stroke"
               x1="70"
-              x2="-150"
+              x2="350"
               y1="230"
               y2="230"
             />
@@ -34,7 +34,7 @@ exports[`Chart/Renderers/CreateWrapper should re-render a grouped bar after lege
               direction="inherit"
               dx="0"
               id="chart-axis-0-axisLabel-0"
-              x="-40"
+              x="210"
               y="281.97"
             >
               <tspan
@@ -42,7 +42,7 @@ exports[`Chart/Renderers/CreateWrapper should re-render a grouped bar after lege
                 dy="0"
                 style="font-family: \\"RedHatText\\",\\"Overpass\\",overpass,helvetica,arial,sans-serif; font-size: 14px; letter-spacing: normal; padding: 40px; stroke: transparent; text-anchor: middle; fill: #252525;"
                 text-anchor="middle"
-                x="-40"
+                x="210"
               >
                 Date
               </tspan>
@@ -55,16 +55,16 @@ exports[`Chart/Renderers/CreateWrapper should re-render a grouped bar after lege
                 shape-rendering="auto"
                 style="stroke: #d2d2d2; fill: transparent; size: 5px; stroke-linecap: round; stroke-linejoin: round; stroke-width: 1;"
                 vector-effect="non-scaling-stroke"
-                x1="-126.90258553147035"
-                x2="-126.90258553147035"
+                x1="93.41264445955133"
+                x2="93.41264445955133"
                 y1="230"
                 y2="235"
               />
               <text
                 direction="inherit"
                 dx="0"
-                id="chart-axis-0-tickLabels-2"
-                x="-126.90258553147035"
+                id="chart-axis-0-tickLabels-0"
+                x="93.41264445955133"
                 y="256.97"
               >
                 <tspan
@@ -72,7 +72,69 @@ exports[`Chart/Renderers/CreateWrapper should re-render a grouped bar after lege
                   dy="0"
                   style="font-family: \\"RedHatText\\",\\"Overpass\\",overpass,helvetica,arial,sans-serif; font-size: 14px; letter-spacing: normal; padding: 10px; stroke: transparent; fill: #4f5255;"
                   text-anchor="middle"
-                  x="-126.90258553147035"
+                  x="93.41264445955133"
+                >
+                  2021-04-11
+                </tspan>
+              </text>
+            </g>
+            <g
+              role="presentation"
+            >
+              <line
+                role="presentation"
+                shape-rendering="auto"
+                style="stroke: #d2d2d2; fill: transparent; size: 5px; stroke-linecap: round; stroke-linejoin: round; stroke-width: 1;"
+                vector-effect="non-scaling-stroke"
+                x1="210.00000000000003"
+                x2="210.00000000000003"
+                y1="230"
+                y2="235"
+              />
+              <text
+                direction="inherit"
+                dx="0"
+                id="chart-axis-0-tickLabels-1"
+                x="210.00000000000003"
+                y="256.97"
+              >
+                <tspan
+                  dx="0"
+                  dy="0"
+                  style="font-family: \\"RedHatText\\",\\"Overpass\\",overpass,helvetica,arial,sans-serif; font-size: 14px; letter-spacing: normal; padding: 10px; stroke: transparent; fill: #4f5255;"
+                  text-anchor="middle"
+                  x="210.00000000000003"
+                >
+                  2021-04-12
+                </tspan>
+              </text>
+            </g>
+            <g
+              role="presentation"
+            >
+              <line
+                role="presentation"
+                shape-rendering="auto"
+                style="stroke: #d2d2d2; fill: transparent; size: 5px; stroke-linecap: round; stroke-linejoin: round; stroke-width: 1;"
+                vector-effect="non-scaling-stroke"
+                x1="326.5873555404487"
+                x2="326.5873555404487"
+                y1="230"
+                y2="235"
+              />
+              <text
+                direction="inherit"
+                dx="0"
+                id="chart-axis-0-tickLabels-2"
+                x="326.5873555404487"
+                y="256.97"
+              >
+                <tspan
+                  dx="0"
+                  dy="0"
+                  style="font-family: \\"RedHatText\\",\\"Overpass\\",overpass,helvetica,arial,sans-serif; font-size: 14px; letter-spacing: normal; padding: 10px; stroke: transparent; fill: #4f5255;"
+                  text-anchor="middle"
+                  x="326.5873555404487"
                 >
                   2021-04-13
                 </tspan>
@@ -271,147 +333,147 @@ exports[`Chart/Renderers/CreateWrapper should re-render a grouped bar after lege
               role="presentation"
             >
               <path
-                d="M 54.90258553147036, 230 
-A 0 0 0 0 1, 54.90258553147036, 230 
-L 54.90258553147036, 162.0127580997146 
-A 0 0 0 0 1, 54.90258553147036, 162.0127580997146 
-L 70.90258553147035, 162.0127580997146 
-A 0 0 0 0 1, 70.90258553147035, 162.0127580997146 
-L 70.90258553147035, 230 
-A 0 0 0 0 1, 70.90258553147035, 230 
+                d="M 69.41264445955133, 230 
+A 0 0 0 0 1, 69.41264445955133, 230 
+L 69.41264445955133, 162.0127580997146 
+A 0 0 0 0 1, 69.41264445955133, 162.0127580997146 
+L 85.41264445955133, 162.0127580997146 
+A 0 0 0 0 1, 85.41264445955133, 162.0127580997146 
+L 85.41264445955133, 230 
+A 0 0 0 0 1, 85.41264445955133, 230 
  z"
                 index="0"
                 role="presentation"
                 shape-rendering="auto"
-                style="fill: #4cb140; stroke: none; width: 10px; padding: 8px; stroke-width: 0;"
+                style="fill: #4cb140; stroke: none; width: 13px; padding: 8px; stroke-width: 0;"
               />
               <path
-                d="M -32, 230 
-A 0 0 0 0 1, -32, 230 
-L -32, 162.0127580997146 
-A 0 0 0 0 1, -32, 162.0127580997146 
-L -16, 162.0127580997146 
-A 0 0 0 0 1, -16, 162.0127580997146 
-L -16, 230 
-A 0 0 0 0 1, -16, 230 
+                d="M 186.00000000000003, 230 
+A 0 0 0 0 1, 186.00000000000003, 230 
+L 186.00000000000003, 162.0127580997146 
+A 0 0 0 0 1, 186.00000000000003, 162.0127580997146 
+L 202.00000000000003, 162.0127580997146 
+A 0 0 0 0 1, 202.00000000000003, 162.0127580997146 
+L 202.00000000000003, 230 
+A 0 0 0 0 1, 202.00000000000003, 230 
  z"
                 index="1"
                 role="presentation"
                 shape-rendering="auto"
-                style="fill: #4cb140; stroke: none; width: 10px; padding: 8px; stroke-width: 0;"
+                style="fill: #4cb140; stroke: none; width: 13px; padding: 8px; stroke-width: 0;"
               />
               <path
-                d="M -118.90258553147038, 230 
-A 0 0 0 0 1, -118.90258553147038, 230 
-L -118.90258553147038, 155.2140339096861 
-A 0 0 0 0 1, -118.90258553147038, 155.2140339096861 
-L -102.90258553147038, 155.2140339096861 
-A 0 0 0 0 1, -102.90258553147038, 155.2140339096861 
-L -102.90258553147038, 230 
-A 0 0 0 0 1, -102.90258553147038, 230 
+                d="M 302.58735554044875, 230 
+A 0 0 0 0 1, 302.58735554044875, 230 
+L 302.58735554044875, 155.2140339096861 
+A 0 0 0 0 1, 302.58735554044875, 155.2140339096861 
+L 318.58735554044875, 155.2140339096861 
+A 0 0 0 0 1, 318.58735554044875, 155.2140339096861 
+L 318.58735554044875, 230 
+A 0 0 0 0 1, 318.58735554044875, 230 
  z"
                 index="2"
                 role="presentation"
                 shape-rendering="auto"
-                style="fill: #4cb140; stroke: none; width: 10px; padding: 8px; stroke-width: 0;"
+                style="fill: #4cb140; stroke: none; width: 13px; padding: 8px; stroke-width: 0;"
               />
             </g>
             <g
               role="presentation"
             >
               <path
-                d="M 38.90258553147035, 230 
-A 0 0 0 0 1, 38.90258553147035, 230 
-L 38.90258553147035, 73.62934362934362 
-A 0 0 0 0 1, 38.90258553147035, 73.62934362934362 
-L 54.90258553147035, 73.62934362934362 
-A 0 0 0 0 1, 54.90258553147035, 73.62934362934362 
-L 54.90258553147035, 230 
-A 0 0 0 0 1, 54.90258553147035, 230 
+                d="M 85.41264445955133, 230 
+A 0 0 0 0 1, 85.41264445955133, 230 
+L 85.41264445955133, 73.62934362934362 
+A 0 0 0 0 1, 85.41264445955133, 73.62934362934362 
+L 101.41264445955133, 73.62934362934362 
+A 0 0 0 0 1, 101.41264445955133, 73.62934362934362 
+L 101.41264445955133, 230 
+A 0 0 0 0 1, 101.41264445955133, 230 
  z"
                 index="0"
                 role="presentation"
                 shape-rendering="auto"
-                style="fill: #bde2b9; stroke: none; width: 10px; padding: 8px; stroke-width: 0;"
+                style="fill: #bde2b9; stroke: none; width: 13px; padding: 8px; stroke-width: 0;"
               />
               <path
-                d="M -48, 230 
-A 0 0 0 0 1, -48, 230 
-L -48, 73.62934362934362 
-A 0 0 0 0 1, -48, 73.62934362934362 
-L -32, 73.62934362934362 
-A 0 0 0 0 1, -32, 73.62934362934362 
-L -32, 230 
-A 0 0 0 0 1, -32, 230 
+                d="M 202.00000000000003, 230 
+A 0 0 0 0 1, 202.00000000000003, 230 
+L 202.00000000000003, 73.62934362934362 
+A 0 0 0 0 1, 202.00000000000003, 73.62934362934362 
+L 218.00000000000003, 73.62934362934362 
+A 0 0 0 0 1, 218.00000000000003, 73.62934362934362 
+L 218.00000000000003, 230 
+A 0 0 0 0 1, 218.00000000000003, 230 
  z"
                 index="1"
                 role="presentation"
                 shape-rendering="auto"
-                style="fill: #bde2b9; stroke: none; width: 10px; padding: 8px; stroke-width: 0;"
+                style="fill: #bde2b9; stroke: none; width: 13px; padding: 8px; stroke-width: 0;"
               />
               <path
-                d="M -134.90258553147035, 230 
-A 0 0 0 0 1, -134.90258553147035, 230 
-L -134.90258553147035, 80.42806781937216 
-A 0 0 0 0 1, -134.90258553147035, 80.42806781937216 
-L -118.90258553147035, 80.42806781937216 
-A 0 0 0 0 1, -118.90258553147035, 80.42806781937216 
-L -118.90258553147035, 230 
-A 0 0 0 0 1, -118.90258553147035, 230 
+                d="M 318.5873555404487, 230 
+A 0 0 0 0 1, 318.5873555404487, 230 
+L 318.5873555404487, 80.42806781937216 
+A 0 0 0 0 1, 318.5873555404487, 80.42806781937216 
+L 334.5873555404487, 80.42806781937216 
+A 0 0 0 0 1, 334.5873555404487, 80.42806781937216 
+L 334.5873555404487, 230 
+A 0 0 0 0 1, 334.5873555404487, 230 
  z"
                 index="2"
                 role="presentation"
                 shape-rendering="auto"
-                style="fill: #bde2b9; stroke: none; width: 10px; padding: 8px; stroke-width: 0;"
+                style="fill: #bde2b9; stroke: none; width: 13px; padding: 8px; stroke-width: 0;"
               />
             </g>
             <g
               role="presentation"
             >
               <path
-                d="M 22.902585531470354, 230 
-A 0 0 0 0 1, 22.902585531470354, 230 
-L 22.902585531470354, 114.42168876951484 
-A 0 0 0 0 1, 22.902585531470354, 114.42168876951484 
-L 38.90258553147035, 114.42168876951484 
-A 0 0 0 0 1, 38.90258553147035, 114.42168876951484 
-L 38.90258553147035, 230 
-A 0 0 0 0 1, 38.90258553147035, 230 
+                d="M 101.41264445955133, 230 
+A 0 0 0 0 1, 101.41264445955133, 230 
+L 101.41264445955133, 114.42168876951484 
+A 0 0 0 0 1, 101.41264445955133, 114.42168876951484 
+L 117.41264445955133, 114.42168876951484 
+A 0 0 0 0 1, 117.41264445955133, 114.42168876951484 
+L 117.41264445955133, 230 
+A 0 0 0 0 1, 117.41264445955133, 230 
  z"
                 index="0"
                 role="presentation"
                 shape-rendering="auto"
-                style="fill: #23511e; stroke: none; width: 10px; padding: 8px; stroke-width: 0;"
+                style="fill: #23511e; stroke: none; width: 13px; padding: 8px; stroke-width: 0;"
               />
               <path
-                d="M -63.99999999999998, 230 
-A 0 0 0 0 1, -63.99999999999998, 230 
-L -63.99999999999998, 114.42168876951484 
-A 0 0 0 0 1, -63.99999999999998, 114.42168876951484 
-L -47.99999999999998, 114.42168876951484 
-A 0 0 0 0 1, -47.99999999999998, 114.42168876951484 
-L -47.99999999999998, 230 
-A 0 0 0 0 1, -47.99999999999998, 230 
+                d="M 218, 230 
+A 0 0 0 0 1, 218, 230 
+L 218, 114.42168876951484 
+A 0 0 0 0 1, 218, 114.42168876951484 
+L 234, 114.42168876951484 
+A 0 0 0 0 1, 234, 114.42168876951484 
+L 234, 230 
+A 0 0 0 0 1, 234, 230 
  z"
                 index="1"
                 role="presentation"
                 shape-rendering="auto"
-                style="fill: #23511e; stroke: none; width: 10px; padding: 8px; stroke-width: 0;"
+                style="fill: #23511e; stroke: none; width: 13px; padding: 8px; stroke-width: 0;"
               />
               <path
-                d="M -150.90258553147035, 230 
-A 0 0 0 0 1, -150.90258553147035, 230 
-L -150.90258553147035, 121.2204129595434 
-A 0 0 0 0 1, -150.90258553147035, 121.2204129595434 
-L -134.90258553147035, 121.2204129595434 
-A 0 0 0 0 1, -134.90258553147035, 121.2204129595434 
-L -134.90258553147035, 230 
-A 0 0 0 0 1, -134.90258553147035, 230 
+                d="M 334.5873555404487, 230 
+A 0 0 0 0 1, 334.5873555404487, 230 
+L 334.5873555404487, 121.2204129595434 
+A 0 0 0 0 1, 334.5873555404487, 121.2204129595434 
+L 350.5873555404487, 121.2204129595434 
+A 0 0 0 0 1, 350.5873555404487, 121.2204129595434 
+L 350.5873555404487, 230 
+A 0 0 0 0 1, 350.5873555404487, 230 
  z"
                 index="2"
                 role="presentation"
                 shape-rendering="auto"
-                style="fill: #23511e; stroke: none; width: 10px; padding: 8px; stroke-width: 0;"
+                style="fill: #23511e; stroke: none; width: 13px; padding: 8px; stroke-width: 0;"
               />
             </g>
           </g>
@@ -423,11 +485,11 @@ A 0 0 0 0 1, -134.90258553147035, 230
               style="fill: none;"
               vector-effect="non-scaling-stroke"
               width="132.896875"
-              x="306"
+              x="366"
               y="95.64250000000001"
             />
             <path
-              d="M 315.128, 114.51450000000001
+              d="M 375.128, 114.51450000000001
       h9.744000000000028
       v-9.744000000000028
       h-9.744000000000028
@@ -437,7 +499,7 @@ A 0 0 0 0 1, -134.90258553147035, 230
               style="fill: #4cb140;"
             />
             <path
-              d="M 315.128, 145.41950000000003
+              d="M 375.128, 145.41950000000003
       h9.744000000000028
       v-9.744000000000028
       h-9.744000000000028
@@ -447,7 +509,7 @@ A 0 0 0 0 1, -134.90258553147035, 230
               style="fill: #bde2b9;"
             />
             <path
-              d="M 315.128, 176.3245
+              d="M 375.128, 176.3245
       h9.744000000000028
       v-9.744000000000028
       h-9.744000000000028
@@ -460,7 +522,7 @@ A 0 0 0 0 1, -134.90258553147035, 230
               direction="inherit"
               dx="0"
               id="legend-3000-labels-0"
-              x="336.8"
+              x="396.8"
               y="114.61250000000001"
             >
               <tspan
@@ -468,7 +530,7 @@ A 0 0 0 0 1, -134.90258553147035, 230
                 dy="0"
                 style="cursor: pointer; font-family: \\"RedHatText\\",\\"Overpass\\",overpass,helvetica,arial,sans-serif; font-size: 14px; letter-spacing: normal; padding: 10px; stroke: transparent; fill: #252525;"
                 text-anchor="start"
-                x="336.8"
+                x="396.8"
               >
                 No Name
               </tspan>
@@ -477,7 +539,7 @@ A 0 0 0 0 1, -134.90258553147035, 230
               direction="inherit"
               dx="0"
               id="legend-3000-labels-1"
-              x="336.8"
+              x="396.8"
               y="145.5175"
             >
               <tspan
@@ -485,7 +547,7 @@ A 0 0 0 0 1, -134.90258553147035, 230
                 dy="0"
                 style="cursor: pointer; font-family: \\"RedHatText\\",\\"Overpass\\",overpass,helvetica,arial,sans-serif; font-size: 14px; letter-spacing: normal; padding: 10px; stroke: transparent; fill: #252525;"
                 text-anchor="start"
-                x="336.8"
+                x="396.8"
               >
                 organization_0
               </tspan>
@@ -494,7 +556,7 @@ A 0 0 0 0 1, -134.90258553147035, 230
               direction="inherit"
               dx="0"
               id="legend-3000-labels-2"
-              x="336.8"
+              x="396.8"
               y="176.4225"
             >
               <tspan
@@ -502,7 +564,7 @@ A 0 0 0 0 1, -134.90258553147035, 230
                 dy="0"
                 style="cursor: pointer; font-family: \\"RedHatText\\",\\"Overpass\\",overpass,helvetica,arial,sans-serif; font-size: 14px; letter-spacing: normal; padding: 10px; stroke: transparent; fill: #252525;"
                 text-anchor="start"
-                x="336.8"
+                x="396.8"
               >
                 organization_1
               </tspan>
@@ -515,8 +577,8 @@ A 0 0 0 0 1, -134.90258553147035, 230
           <svg
             height="300"
             style="overflow: visible; width: 100%; height: 100%;"
-            viewBox="0 0 0 300"
-            width="0"
+            viewBox="0 0 500 300"
+            width="500"
           />
         </div>
       </div>
@@ -539,8 +601,8 @@ exports[`Chart/Renderers/CreateWrapper should re-render a grouped bar after lege
           height="300"
           role="img"
           style="pointer-events: all; width: 100%; height: 100%;"
-          viewBox="0 0 0 300"
-          width="0"
+          viewBox="0 0 500 300"
+          width="500"
         >
           <g
             role="presentation"
@@ -551,7 +613,7 @@ exports[`Chart/Renderers/CreateWrapper should re-render a grouped bar after lege
               style="stroke: #d2d2d2; fill: transparent; stroke-width: 1; stroke-linecap: round; stroke-linejoin: round;"
               vector-effect="non-scaling-stroke"
               x1="70"
-              x2="-150"
+              x2="350"
               y1="230"
               y2="230"
             />
@@ -559,7 +621,7 @@ exports[`Chart/Renderers/CreateWrapper should re-render a grouped bar after lege
               direction="inherit"
               dx="0"
               id="chart-axis-0-axisLabel-0"
-              x="-40"
+              x="210"
               y="281.97"
             >
               <tspan
@@ -567,7 +629,7 @@ exports[`Chart/Renderers/CreateWrapper should re-render a grouped bar after lege
                 dy="0"
                 style="font-family: \\"RedHatText\\",\\"Overpass\\",overpass,helvetica,arial,sans-serif; font-size: 14px; letter-spacing: normal; padding: 40px; stroke: transparent; text-anchor: middle; fill: #252525;"
                 text-anchor="middle"
-                x="-40"
+                x="210"
               >
                 Date
               </tspan>
@@ -580,16 +642,16 @@ exports[`Chart/Renderers/CreateWrapper should re-render a grouped bar after lege
                 shape-rendering="auto"
                 style="stroke: #d2d2d2; fill: transparent; size: 5px; stroke-linecap: round; stroke-linejoin: round; stroke-width: 1;"
                 vector-effect="non-scaling-stroke"
-                x1="-126.90258553147035"
-                x2="-126.90258553147035"
+                x1="93.41264445955133"
+                x2="93.41264445955133"
                 y1="230"
                 y2="235"
               />
               <text
                 direction="inherit"
                 dx="0"
-                id="chart-axis-0-tickLabels-2"
-                x="-126.90258553147035"
+                id="chart-axis-0-tickLabels-0"
+                x="93.41264445955133"
                 y="256.97"
               >
                 <tspan
@@ -597,7 +659,69 @@ exports[`Chart/Renderers/CreateWrapper should re-render a grouped bar after lege
                   dy="0"
                   style="font-family: \\"RedHatText\\",\\"Overpass\\",overpass,helvetica,arial,sans-serif; font-size: 14px; letter-spacing: normal; padding: 10px; stroke: transparent; fill: #4f5255;"
                   text-anchor="middle"
-                  x="-126.90258553147035"
+                  x="93.41264445955133"
+                >
+                  2021-04-11
+                </tspan>
+              </text>
+            </g>
+            <g
+              role="presentation"
+            >
+              <line
+                role="presentation"
+                shape-rendering="auto"
+                style="stroke: #d2d2d2; fill: transparent; size: 5px; stroke-linecap: round; stroke-linejoin: round; stroke-width: 1;"
+                vector-effect="non-scaling-stroke"
+                x1="210.00000000000003"
+                x2="210.00000000000003"
+                y1="230"
+                y2="235"
+              />
+              <text
+                direction="inherit"
+                dx="0"
+                id="chart-axis-0-tickLabels-1"
+                x="210.00000000000003"
+                y="256.97"
+              >
+                <tspan
+                  dx="0"
+                  dy="0"
+                  style="font-family: \\"RedHatText\\",\\"Overpass\\",overpass,helvetica,arial,sans-serif; font-size: 14px; letter-spacing: normal; padding: 10px; stroke: transparent; fill: #4f5255;"
+                  text-anchor="middle"
+                  x="210.00000000000003"
+                >
+                  2021-04-12
+                </tspan>
+              </text>
+            </g>
+            <g
+              role="presentation"
+            >
+              <line
+                role="presentation"
+                shape-rendering="auto"
+                style="stroke: #d2d2d2; fill: transparent; size: 5px; stroke-linecap: round; stroke-linejoin: round; stroke-width: 1;"
+                vector-effect="non-scaling-stroke"
+                x1="326.5873555404487"
+                x2="326.5873555404487"
+                y1="230"
+                y2="235"
+              />
+              <text
+                direction="inherit"
+                dx="0"
+                id="chart-axis-0-tickLabels-2"
+                x="326.5873555404487"
+                y="256.97"
+              >
+                <tspan
+                  dx="0"
+                  dy="0"
+                  style="font-family: \\"RedHatText\\",\\"Overpass\\",overpass,helvetica,arial,sans-serif; font-size: 14px; letter-spacing: normal; padding: 10px; stroke: transparent; fill: #4f5255;"
+                  text-anchor="middle"
+                  x="326.5873555404487"
                 >
                   2021-04-13
                 </tspan>
@@ -734,49 +858,49 @@ exports[`Chart/Renderers/CreateWrapper should re-render a grouped bar after lege
               role="presentation"
             >
               <path
-                d="M 54.90258553147036, 230 
-A 0 0 0 0 1, 54.90258553147036, 230 
-L 54.90258553147036, 138.01726095843745 
-A 0 0 0 0 1, 54.90258553147036, 138.01726095843745 
-L 70.90258553147035, 138.01726095843745 
-A 0 0 0 0 1, 70.90258553147035, 138.01726095843745 
-L 70.90258553147035, 230 
-A 0 0 0 0 1, 70.90258553147035, 230 
+                d="M 69.41264445955133, 230 
+A 0 0 0 0 1, 69.41264445955133, 230 
+L 69.41264445955133, 138.01726095843745 
+A 0 0 0 0 1, 69.41264445955133, 138.01726095843745 
+L 85.41264445955133, 138.01726095843745 
+A 0 0 0 0 1, 85.41264445955133, 138.01726095843745 
+L 85.41264445955133, 230 
+A 0 0 0 0 1, 85.41264445955133, 230 
  z"
                 index="0"
                 role="presentation"
                 shape-rendering="auto"
-                style="fill: #4cb140; stroke: none; width: 10px; padding: 8px; stroke-width: 0;"
+                style="fill: #4cb140; stroke: none; width: 13px; padding: 8px; stroke-width: 0;"
               />
               <path
-                d="M -32, 230 
-A 0 0 0 0 1, -32, 230 
-L -32, 138.01726095843745 
-A 0 0 0 0 1, -32, 138.01726095843745 
-L -16, 138.01726095843745 
-A 0 0 0 0 1, -16, 138.01726095843745 
-L -16, 230 
-A 0 0 0 0 1, -16, 230 
+                d="M 186.00000000000003, 230 
+A 0 0 0 0 1, 186.00000000000003, 230 
+L 186.00000000000003, 138.01726095843745 
+A 0 0 0 0 1, 186.00000000000003, 138.01726095843745 
+L 202.00000000000003, 138.01726095843745 
+A 0 0 0 0 1, 202.00000000000003, 138.01726095843745 
+L 202.00000000000003, 230 
+A 0 0 0 0 1, 202.00000000000003, 230 
  z"
                 index="1"
                 role="presentation"
                 shape-rendering="auto"
-                style="fill: #4cb140; stroke: none; width: 10px; padding: 8px; stroke-width: 0;"
+                style="fill: #4cb140; stroke: none; width: 13px; padding: 8px; stroke-width: 0;"
               />
               <path
-                d="M -118.90258553147038, 230 
-A 0 0 0 0 1, -118.90258553147038, 230 
-L -118.90258553147038, 128.81898705428117 
-A 0 0 0 0 1, -118.90258553147038, 128.81898705428117 
-L -102.90258553147038, 128.81898705428117 
-A 0 0 0 0 1, -102.90258553147038, 128.81898705428117 
-L -102.90258553147038, 230 
-A 0 0 0 0 1, -102.90258553147038, 230 
+                d="M 302.58735554044875, 230 
+A 0 0 0 0 1, 302.58735554044875, 230 
+L 302.58735554044875, 128.81898705428117 
+A 0 0 0 0 1, 302.58735554044875, 128.81898705428117 
+L 318.58735554044875, 128.81898705428117 
+A 0 0 0 0 1, 318.58735554044875, 128.81898705428117 
+L 318.58735554044875, 230 
+A 0 0 0 0 1, 318.58735554044875, 230 
  z"
                 index="2"
                 role="presentation"
                 shape-rendering="auto"
-                style="fill: #4cb140; stroke: none; width: 10px; padding: 8px; stroke-width: 0;"
+                style="fill: #4cb140; stroke: none; width: 13px; padding: 8px; stroke-width: 0;"
               />
             </g>
             <g
@@ -786,49 +910,49 @@ A 0 0 0 0 1, -102.90258553147038, 230
               role="presentation"
             >
               <path
-                d="M 22.902585531470354, 230 
-A 0 0 0 0 1, 22.902585531470354, 230 
-L 22.902585531470354, 73.62934362934362 
-A 0 0 0 0 1, 22.902585531470354, 73.62934362934362 
-L 38.90258553147035, 73.62934362934362 
-A 0 0 0 0 1, 38.90258553147035, 73.62934362934362 
-L 38.90258553147035, 230 
-A 0 0 0 0 1, 38.90258553147035, 230 
+                d="M 101.41264445955133, 230 
+A 0 0 0 0 1, 101.41264445955133, 230 
+L 101.41264445955133, 73.62934362934362 
+A 0 0 0 0 1, 101.41264445955133, 73.62934362934362 
+L 117.41264445955133, 73.62934362934362 
+A 0 0 0 0 1, 117.41264445955133, 73.62934362934362 
+L 117.41264445955133, 230 
+A 0 0 0 0 1, 117.41264445955133, 230 
  z"
                 index="0"
                 role="presentation"
                 shape-rendering="auto"
-                style="fill: #23511e; stroke: none; width: 10px; padding: 8px; stroke-width: 0;"
+                style="fill: #23511e; stroke: none; width: 13px; padding: 8px; stroke-width: 0;"
               />
               <path
-                d="M -63.99999999999998, 230 
-A 0 0 0 0 1, -63.99999999999998, 230 
-L -63.99999999999998, 73.62934362934362 
-A 0 0 0 0 1, -63.99999999999998, 73.62934362934362 
-L -47.99999999999998, 73.62934362934362 
-A 0 0 0 0 1, -47.99999999999998, 73.62934362934362 
-L -47.99999999999998, 230 
-A 0 0 0 0 1, -47.99999999999998, 230 
+                d="M 218, 230 
+A 0 0 0 0 1, 218, 230 
+L 218, 73.62934362934362 
+A 0 0 0 0 1, 218, 73.62934362934362 
+L 234, 73.62934362934362 
+A 0 0 0 0 1, 234, 73.62934362934362 
+L 234, 230 
+A 0 0 0 0 1, 234, 230 
  z"
                 index="1"
                 role="presentation"
                 shape-rendering="auto"
-                style="fill: #23511e; stroke: none; width: 10px; padding: 8px; stroke-width: 0;"
+                style="fill: #23511e; stroke: none; width: 13px; padding: 8px; stroke-width: 0;"
               />
               <path
-                d="M -150.90258553147035, 230 
-A 0 0 0 0 1, -150.90258553147035, 230 
-L -150.90258553147035, 82.82761753349988 
-A 0 0 0 0 1, -150.90258553147035, 82.82761753349988 
-L -134.90258553147035, 82.82761753349988 
-A 0 0 0 0 1, -134.90258553147035, 82.82761753349988 
-L -134.90258553147035, 230 
-A 0 0 0 0 1, -134.90258553147035, 230 
+                d="M 334.5873555404487, 230 
+A 0 0 0 0 1, 334.5873555404487, 230 
+L 334.5873555404487, 82.82761753349988 
+A 0 0 0 0 1, 334.5873555404487, 82.82761753349988 
+L 350.5873555404487, 82.82761753349988 
+A 0 0 0 0 1, 350.5873555404487, 82.82761753349988 
+L 350.5873555404487, 230 
+A 0 0 0 0 1, 350.5873555404487, 230 
  z"
                 index="2"
                 role="presentation"
                 shape-rendering="auto"
-                style="fill: #23511e; stroke: none; width: 10px; padding: 8px; stroke-width: 0;"
+                style="fill: #23511e; stroke: none; width: 13px; padding: 8px; stroke-width: 0;"
               />
             </g>
           </g>
@@ -840,11 +964,11 @@ A 0 0 0 0 1, -134.90258553147035, 230
               style="fill: none;"
               vector-effect="non-scaling-stroke"
               width="132.896875"
-              x="306"
+              x="366"
               y="95.64250000000001"
             />
             <path
-              d="M 315.128, 114.51450000000001
+              d="M 375.128, 114.51450000000001
       h9.744000000000028
       v-9.744000000000028
       h-9.744000000000028
@@ -854,13 +978,13 @@ A 0 0 0 0 1, -134.90258553147035, 230
               style="fill: #4cb140;"
             />
             <path
-              d="m315.128, 133.5475 .013 .013 0 0 2.179 2.219c.7-.204 1.418-.307 2.152-.307 2.859 0 5.464 1.551 7.814 4.654.243 .321.268 .753.073 1.097l-.073.111-.236.305c-.632.801-1.282 1.491-1.951 2.071l1.773 1.806c.382.389 .382 1.012 0 1.401l-.058.059c-.387.394-1.02.4-1.414.013l-.013-.013-11.732-11.956c-.382-.389-.382-1.012 0-1.401l.058-.059c.387-.394 1.02-.4 1.414-.013zm-.674 3.71 1.407 1.436c-.329.604-.516 1.298-.516 2.038 0 2.323 1.848 4.206 4.127 4.206.726 0 1.408-.191 2-.526l.966.984c-.956.396-1.945.593-2.966.593-2.859 0-5.464-1.551-7.814-4.654-.243-.321-.268-.753-.073-1.097l.073-.111.236-.305c.823-1.042 1.676-1.897 2.56-2.565zm2.177 2.22 4.072 4.149c-.377.167-.793.259-1.23.259-1.71 0-3.096-1.412-3.096-3.155 0-.445.091-.869.254-1.253zm2.842-2.953c-.43 0-.845.067-1.234.191l.865.882c.121-.015.244-.022.369-.022 1.71 0 3.096 1.412 3.096 3.155 0 .127-.007.252-.022.375l.866.882c.122-.397.187-.819.187-1.257 0-2.323-1.848-4.206-4.127-4.206z"
+              d="m375.128, 133.5475 .013 .013 0 0 2.179 2.219c.7-.204 1.418-.307 2.152-.307 2.859 0 5.464 1.551 7.814 4.654.243 .321.268 .753.073 1.097l-.073.111-.236.305c-.632.801-1.282 1.491-1.951 2.071l1.773 1.806c.382.389 .382 1.012 0 1.401l-.058.059c-.387.394-1.02.4-1.414.013l-.013-.013-11.732-11.956c-.382-.389-.382-1.012 0-1.401l.058-.059c.387-.394 1.02-.4 1.414-.013zm-.674 3.71 1.407 1.436c-.329.604-.516 1.298-.516 2.038 0 2.323 1.848 4.206 4.127 4.206.726 0 1.408-.191 2-.526l.966.984c-.956.396-1.945.593-2.966.593-2.859 0-5.464-1.551-7.814-4.654-.243-.321-.268-.753-.073-1.097l.073-.111.236-.305c.823-1.042 1.676-1.897 2.56-2.565zm2.177 2.22 4.072 4.149c-.377.167-.793.259-1.23.259-1.71 0-3.096-1.412-3.096-3.155 0-.445.091-.869.254-1.253zm2.842-2.953c-.43 0-.845.067-1.234.191l.865.882c.121-.015.244-.022.369-.022 1.71 0 3.096 1.412 3.096 3.155 0 .127-.007.252-.022.375l.866.882c.122-.397.187-.819.187-1.257 0-2.323-1.848-4.206-4.127-4.206z"
               role="presentation"
               shape-rendering="auto"
               style="fill: #6a6e73;"
             />
             <path
-              d="M 315.128, 176.3245
+              d="M 375.128, 176.3245
       h9.744000000000028
       v-9.744000000000028
       h-9.744000000000028
@@ -873,7 +997,7 @@ A 0 0 0 0 1, -134.90258553147035, 230
               direction="inherit"
               dx="0"
               id="legend-3000-labels-0"
-              x="336.8"
+              x="396.8"
               y="114.61250000000001"
             >
               <tspan
@@ -881,7 +1005,7 @@ A 0 0 0 0 1, -134.90258553147035, 230
                 dy="0"
                 style="cursor: pointer; font-family: \\"RedHatText\\",\\"Overpass\\",overpass,helvetica,arial,sans-serif; font-size: 14px; letter-spacing: normal; padding: 10px; stroke: transparent; fill: #252525;"
                 text-anchor="start"
-                x="336.8"
+                x="396.8"
               >
                 No Name
               </tspan>
@@ -890,7 +1014,7 @@ A 0 0 0 0 1, -134.90258553147035, 230
               direction="inherit"
               dx="0"
               id="legend-3000-labels-1"
-              x="336.8"
+              x="396.8"
               y="145.5175"
             >
               <tspan
@@ -898,7 +1022,7 @@ A 0 0 0 0 1, -134.90258553147035, 230
                 dy="0"
                 style="cursor: pointer; font-family: \\"RedHatText\\",\\"Overpass\\",overpass,helvetica,arial,sans-serif; font-size: 14px; letter-spacing: normal; padding: 10px; stroke: transparent; fill: #6a6e73;"
                 text-anchor="start"
-                x="336.8"
+                x="396.8"
               >
                 organization_0
               </tspan>
@@ -907,7 +1031,7 @@ A 0 0 0 0 1, -134.90258553147035, 230
               direction="inherit"
               dx="0"
               id="legend-3000-labels-2"
-              x="336.8"
+              x="396.8"
               y="176.4225"
             >
               <tspan
@@ -915,7 +1039,7 @@ A 0 0 0 0 1, -134.90258553147035, 230
                 dy="0"
                 style="cursor: pointer; font-family: \\"RedHatText\\",\\"Overpass\\",overpass,helvetica,arial,sans-serif; font-size: 14px; letter-spacing: normal; padding: 10px; stroke: transparent; fill: #252525;"
                 text-anchor="start"
-                x="336.8"
+                x="396.8"
               >
                 organization_1
               </tspan>
@@ -928,8 +1052,8 @@ A 0 0 0 0 1, -134.90258553147035, 230
           <svg
             height="300"
             style="overflow: visible; width: 100%; height: 100%;"
-            viewBox="0 0 0 300"
-            width="0"
+            viewBox="0 0 500 300"
+            width="500"
           />
         </div>
       </div>
@@ -952,8 +1076,8 @@ exports[`Chart/Renderers/CreateWrapper should render "y" attr when not specified
           height="300"
           role="img"
           style="pointer-events: all; width: 100%; height: 100%;"
-          viewBox="0 0 0 300"
-          width="0"
+          viewBox="0 0 500 300"
+          width="500"
         >
           <g
             role="presentation"
@@ -964,7 +1088,7 @@ exports[`Chart/Renderers/CreateWrapper should render "y" attr when not specified
               style="stroke: #d2d2d2; fill: transparent; stroke-width: 1; stroke-linecap: round; stroke-linejoin: round;"
               vector-effect="non-scaling-stroke"
               x1="70"
-              x2="-50"
+              x2="450"
               y1="230"
               y2="230"
             />
@@ -972,7 +1096,7 @@ exports[`Chart/Renderers/CreateWrapper should render "y" attr when not specified
               direction="inherit"
               dx="0"
               id="chart-axis-0-axisLabel-0"
-              x="10"
+              x="260"
               y="281.97"
             >
               <tspan
@@ -980,7 +1104,7 @@ exports[`Chart/Renderers/CreateWrapper should render "y" attr when not specified
                 dy="0"
                 style="font-family: \\"RedHatText\\",\\"Overpass\\",overpass,helvetica,arial,sans-serif; font-size: 14px; letter-spacing: normal; padding: 40px; stroke: transparent; text-anchor: middle; fill: #252525;"
                 text-anchor="middle"
-                x="10"
+                x="260"
               >
                 Date
               </tspan>
@@ -993,16 +1117,16 @@ exports[`Chart/Renderers/CreateWrapper should render "y" attr when not specified
                 shape-rendering="auto"
                 style="stroke: #d2d2d2; fill: transparent; size: 5px; stroke-linecap: round; stroke-linejoin: round; stroke-width: 1;"
                 vector-effect="non-scaling-stroke"
-                x1="-50"
-                x2="-50"
+                x1="70"
+                x2="70"
                 y1="230"
                 y2="235"
               />
               <text
                 direction="inherit"
                 dx="0"
-                id="chart-axis-0-tickLabels-5"
-                x="-50"
+                id="chart-axis-0-tickLabels-0"
+                x="70"
                 y="256.97"
               >
                 <tspan
@@ -1010,7 +1134,162 @@ exports[`Chart/Renderers/CreateWrapper should render "y" attr when not specified
                   dy="0"
                   style="font-family: \\"RedHatText\\",\\"Overpass\\",overpass,helvetica,arial,sans-serif; font-size: 14px; letter-spacing: normal; padding: 10px; stroke: transparent; fill: #4f5255;"
                   text-anchor="middle"
-                  x="-50"
+                  x="70"
+                >
+                  10/31
+                </tspan>
+              </text>
+            </g>
+            <g
+              role="presentation"
+            >
+              <line
+                role="presentation"
+                shape-rendering="auto"
+                style="stroke: #d2d2d2; fill: transparent; size: 5px; stroke-linecap: round; stroke-linejoin: round; stroke-width: 1;"
+                vector-effect="non-scaling-stroke"
+                x1="146"
+                x2="146"
+                y1="230"
+                y2="235"
+              />
+              <text
+                direction="inherit"
+                dx="0"
+                id="chart-axis-0-tickLabels-1"
+                x="146"
+                y="256.97"
+              >
+                <tspan
+                  dx="0"
+                  dy="0"
+                  style="font-family: \\"RedHatText\\",\\"Overpass\\",overpass,helvetica,arial,sans-serif; font-size: 14px; letter-spacing: normal; padding: 10px; stroke: transparent; fill: #4f5255;"
+                  text-anchor="middle"
+                  x="146"
+                >
+                  11/01
+                </tspan>
+              </text>
+            </g>
+            <g
+              role="presentation"
+            >
+              <line
+                role="presentation"
+                shape-rendering="auto"
+                style="stroke: #d2d2d2; fill: transparent; size: 5px; stroke-linecap: round; stroke-linejoin: round; stroke-width: 1;"
+                vector-effect="non-scaling-stroke"
+                x1="222"
+                x2="222"
+                y1="230"
+                y2="235"
+              />
+              <text
+                direction="inherit"
+                dx="0"
+                id="chart-axis-0-tickLabels-2"
+                x="222"
+                y="256.97"
+              >
+                <tspan
+                  dx="0"
+                  dy="0"
+                  style="font-family: \\"RedHatText\\",\\"Overpass\\",overpass,helvetica,arial,sans-serif; font-size: 14px; letter-spacing: normal; padding: 10px; stroke: transparent; fill: #4f5255;"
+                  text-anchor="middle"
+                  x="222"
+                >
+                  11/02
+                </tspan>
+              </text>
+            </g>
+            <g
+              role="presentation"
+            >
+              <line
+                role="presentation"
+                shape-rendering="auto"
+                style="stroke: #d2d2d2; fill: transparent; size: 5px; stroke-linecap: round; stroke-linejoin: round; stroke-width: 1;"
+                vector-effect="non-scaling-stroke"
+                x1="298"
+                x2="298"
+                y1="230"
+                y2="235"
+              />
+              <text
+                direction="inherit"
+                dx="0"
+                id="chart-axis-0-tickLabels-3"
+                x="298"
+                y="256.97"
+              >
+                <tspan
+                  dx="0"
+                  dy="0"
+                  style="font-family: \\"RedHatText\\",\\"Overpass\\",overpass,helvetica,arial,sans-serif; font-size: 14px; letter-spacing: normal; padding: 10px; stroke: transparent; fill: #4f5255;"
+                  text-anchor="middle"
+                  x="298"
+                >
+                  11/03
+                </tspan>
+              </text>
+            </g>
+            <g
+              role="presentation"
+            >
+              <line
+                role="presentation"
+                shape-rendering="auto"
+                style="stroke: #d2d2d2; fill: transparent; size: 5px; stroke-linecap: round; stroke-linejoin: round; stroke-width: 1;"
+                vector-effect="non-scaling-stroke"
+                x1="374"
+                x2="374"
+                y1="230"
+                y2="235"
+              />
+              <text
+                direction="inherit"
+                dx="0"
+                id="chart-axis-0-tickLabels-4"
+                x="374"
+                y="256.97"
+              >
+                <tspan
+                  dx="0"
+                  dy="0"
+                  style="font-family: \\"RedHatText\\",\\"Overpass\\",overpass,helvetica,arial,sans-serif; font-size: 14px; letter-spacing: normal; padding: 10px; stroke: transparent; fill: #4f5255;"
+                  text-anchor="middle"
+                  x="374"
+                >
+                  11/04
+                </tspan>
+              </text>
+            </g>
+            <g
+              role="presentation"
+            >
+              <line
+                role="presentation"
+                shape-rendering="auto"
+                style="stroke: #d2d2d2; fill: transparent; size: 5px; stroke-linecap: round; stroke-linejoin: round; stroke-width: 1;"
+                vector-effect="non-scaling-stroke"
+                x1="450"
+                x2="450"
+                y1="230"
+                y2="235"
+              />
+              <text
+                direction="inherit"
+                dx="0"
+                id="chart-axis-0-tickLabels-5"
+                x="450"
+                y="256.97"
+              >
+                <tspan
+                  dx="0"
+                  dy="0"
+                  style="font-family: \\"RedHatText\\",\\"Overpass\\",overpass,helvetica,arial,sans-serif; font-size: 14px; letter-spacing: normal; padding: 10px; stroke: transparent; fill: #4f5255;"
+                  text-anchor="middle"
+                  x="450"
                 >
                   11/05
                 </tspan>
@@ -1184,14 +1463,14 @@ exports[`Chart/Renderers/CreateWrapper should render "y" attr when not specified
                 <rect
                   height="180"
                   vector-effect="non-scaling-stroke"
-                  width="120"
-                  x="-50"
+                  width="380"
+                  x="70"
                   y="50"
                 />
               </clippath>
             </defs>
             <path
-              d="M70,198.23529411764704L46,230L22,177.05882352941177L-2,206.7058823529412L-26.000000000000004,191.88235294117646L-50,50L-50,230L-26.000000000000004,230L-2,230L22,230L46,230L70,230Z"
+              d="M70,198.23529411764704L146,230L222,177.05882352941177L298,206.7058823529412L374,191.88235294117646L450,50L450,230L374,230L298,230L222,230L146,230L70,230Z"
               role="presentation"
               shape-rendering="auto"
               style="fill: #06c; fill-opacity: 0.3; stroke-width: 2; stroke: #06c;"
@@ -1204,8 +1483,8 @@ exports[`Chart/Renderers/CreateWrapper should render "y" attr when not specified
           <svg
             height="300"
             style="overflow: visible; width: 100%; height: 100%;"
-            viewBox="0 0 0 300"
-            width="0"
+            viewBox="0 0 500 300"
+            width="500"
           />
         </div>
       </div>
@@ -1228,8 +1507,8 @@ exports[`Chart/Renderers/CreateWrapper should render a area chart 1`] = `
           height="300"
           role="img"
           style="pointer-events: all; width: 100%; height: 100%;"
-          viewBox="0 0 0 300"
-          width="0"
+          viewBox="0 0 500 300"
+          width="500"
         >
           <g
             role="presentation"
@@ -1240,7 +1519,7 @@ exports[`Chart/Renderers/CreateWrapper should render a area chart 1`] = `
               style="stroke: #d2d2d2; fill: transparent; stroke-width: 1; stroke-linecap: round; stroke-linejoin: round;"
               vector-effect="non-scaling-stroke"
               x1="70"
-              x2="-50"
+              x2="450"
               y1="230"
               y2="230"
             />
@@ -1248,7 +1527,7 @@ exports[`Chart/Renderers/CreateWrapper should render a area chart 1`] = `
               direction="inherit"
               dx="0"
               id="chart-axis-0-axisLabel-0"
-              x="10"
+              x="260"
               y="281.97"
             >
               <tspan
@@ -1256,7 +1535,7 @@ exports[`Chart/Renderers/CreateWrapper should render a area chart 1`] = `
                 dy="0"
                 style="font-family: \\"RedHatText\\",\\"Overpass\\",overpass,helvetica,arial,sans-serif; font-size: 14px; letter-spacing: normal; padding: 40px; stroke: transparent; text-anchor: middle; fill: #252525;"
                 text-anchor="middle"
-                x="10"
+                x="260"
               >
                 Date
               </tspan>
@@ -1269,16 +1548,16 @@ exports[`Chart/Renderers/CreateWrapper should render a area chart 1`] = `
                 shape-rendering="auto"
                 style="stroke: #d2d2d2; fill: transparent; size: 5px; stroke-linecap: round; stroke-linejoin: round; stroke-width: 1;"
                 vector-effect="non-scaling-stroke"
-                x1="-50"
-                x2="-50"
+                x1="70"
+                x2="70"
                 y1="230"
                 y2="235"
               />
               <text
                 direction="inherit"
                 dx="0"
-                id="chart-axis-0-tickLabels-5"
-                x="-50"
+                id="chart-axis-0-tickLabels-0"
+                x="70"
                 y="256.97"
               >
                 <tspan
@@ -1286,7 +1565,162 @@ exports[`Chart/Renderers/CreateWrapper should render a area chart 1`] = `
                   dy="0"
                   style="font-family: \\"RedHatText\\",\\"Overpass\\",overpass,helvetica,arial,sans-serif; font-size: 14px; letter-spacing: normal; padding: 10px; stroke: transparent; fill: #4f5255;"
                   text-anchor="middle"
-                  x="-50"
+                  x="70"
+                >
+                  10/31
+                </tspan>
+              </text>
+            </g>
+            <g
+              role="presentation"
+            >
+              <line
+                role="presentation"
+                shape-rendering="auto"
+                style="stroke: #d2d2d2; fill: transparent; size: 5px; stroke-linecap: round; stroke-linejoin: round; stroke-width: 1;"
+                vector-effect="non-scaling-stroke"
+                x1="146"
+                x2="146"
+                y1="230"
+                y2="235"
+              />
+              <text
+                direction="inherit"
+                dx="0"
+                id="chart-axis-0-tickLabels-1"
+                x="146"
+                y="256.97"
+              >
+                <tspan
+                  dx="0"
+                  dy="0"
+                  style="font-family: \\"RedHatText\\",\\"Overpass\\",overpass,helvetica,arial,sans-serif; font-size: 14px; letter-spacing: normal; padding: 10px; stroke: transparent; fill: #4f5255;"
+                  text-anchor="middle"
+                  x="146"
+                >
+                  11/01
+                </tspan>
+              </text>
+            </g>
+            <g
+              role="presentation"
+            >
+              <line
+                role="presentation"
+                shape-rendering="auto"
+                style="stroke: #d2d2d2; fill: transparent; size: 5px; stroke-linecap: round; stroke-linejoin: round; stroke-width: 1;"
+                vector-effect="non-scaling-stroke"
+                x1="222"
+                x2="222"
+                y1="230"
+                y2="235"
+              />
+              <text
+                direction="inherit"
+                dx="0"
+                id="chart-axis-0-tickLabels-2"
+                x="222"
+                y="256.97"
+              >
+                <tspan
+                  dx="0"
+                  dy="0"
+                  style="font-family: \\"RedHatText\\",\\"Overpass\\",overpass,helvetica,arial,sans-serif; font-size: 14px; letter-spacing: normal; padding: 10px; stroke: transparent; fill: #4f5255;"
+                  text-anchor="middle"
+                  x="222"
+                >
+                  11/02
+                </tspan>
+              </text>
+            </g>
+            <g
+              role="presentation"
+            >
+              <line
+                role="presentation"
+                shape-rendering="auto"
+                style="stroke: #d2d2d2; fill: transparent; size: 5px; stroke-linecap: round; stroke-linejoin: round; stroke-width: 1;"
+                vector-effect="non-scaling-stroke"
+                x1="298"
+                x2="298"
+                y1="230"
+                y2="235"
+              />
+              <text
+                direction="inherit"
+                dx="0"
+                id="chart-axis-0-tickLabels-3"
+                x="298"
+                y="256.97"
+              >
+                <tspan
+                  dx="0"
+                  dy="0"
+                  style="font-family: \\"RedHatText\\",\\"Overpass\\",overpass,helvetica,arial,sans-serif; font-size: 14px; letter-spacing: normal; padding: 10px; stroke: transparent; fill: #4f5255;"
+                  text-anchor="middle"
+                  x="298"
+                >
+                  11/03
+                </tspan>
+              </text>
+            </g>
+            <g
+              role="presentation"
+            >
+              <line
+                role="presentation"
+                shape-rendering="auto"
+                style="stroke: #d2d2d2; fill: transparent; size: 5px; stroke-linecap: round; stroke-linejoin: round; stroke-width: 1;"
+                vector-effect="non-scaling-stroke"
+                x1="374"
+                x2="374"
+                y1="230"
+                y2="235"
+              />
+              <text
+                direction="inherit"
+                dx="0"
+                id="chart-axis-0-tickLabels-4"
+                x="374"
+                y="256.97"
+              >
+                <tspan
+                  dx="0"
+                  dy="0"
+                  style="font-family: \\"RedHatText\\",\\"Overpass\\",overpass,helvetica,arial,sans-serif; font-size: 14px; letter-spacing: normal; padding: 10px; stroke: transparent; fill: #4f5255;"
+                  text-anchor="middle"
+                  x="374"
+                >
+                  11/04
+                </tspan>
+              </text>
+            </g>
+            <g
+              role="presentation"
+            >
+              <line
+                role="presentation"
+                shape-rendering="auto"
+                style="stroke: #d2d2d2; fill: transparent; size: 5px; stroke-linecap: round; stroke-linejoin: round; stroke-width: 1;"
+                vector-effect="non-scaling-stroke"
+                x1="450"
+                x2="450"
+                y1="230"
+                y2="235"
+              />
+              <text
+                direction="inherit"
+                dx="0"
+                id="chart-axis-0-tickLabels-5"
+                x="450"
+                y="256.97"
+              >
+                <tspan
+                  dx="0"
+                  dy="0"
+                  style="font-family: \\"RedHatText\\",\\"Overpass\\",overpass,helvetica,arial,sans-serif; font-size: 14px; letter-spacing: normal; padding: 10px; stroke: transparent; fill: #4f5255;"
+                  text-anchor="middle"
+                  x="450"
                 >
                   11/05
                 </tspan>
@@ -1522,14 +1956,14 @@ exports[`Chart/Renderers/CreateWrapper should render a area chart 1`] = `
                 <rect
                   height="180"
                   vector-effect="non-scaling-stroke"
-                  width="120"
-                  x="-50"
+                  width="380"
+                  x="70"
                   y="50"
                 />
               </clippath>
             </defs>
             <path
-              d="M70,95L46,95L22,50L-2,95L-26.000000000000004,95L-50,95L-50,230L-26.000000000000004,230L-2,230L22,230L46,230L70,230Z"
+              d="M70,95L146,95L222,50L298,95L374,95L450,95L450,230L374,230L298,230L222,230L146,230L70,230Z"
               role="presentation"
               shape-rendering="auto"
               style="fill: #06c; fill-opacity: 0.3; stroke-width: 2; stroke: #06c;"
@@ -1542,8 +1976,8 @@ exports[`Chart/Renderers/CreateWrapper should render a area chart 1`] = `
           <svg
             height="300"
             style="overflow: visible; width: 100%; height: 100%;"
-            viewBox="0 0 0 300"
-            width="0"
+            viewBox="0 0 500 300"
+            width="500"
           />
         </div>
       </div>
@@ -1566,8 +2000,8 @@ exports[`Chart/Renderers/CreateWrapper should render a bar chart 1`] = `
           height="300"
           role="img"
           style="pointer-events: all; width: 100%; height: 100%;"
-          viewBox="0 0 0 300"
-          width="0"
+          viewBox="0 0 500 300"
+          width="500"
         >
           <g
             role="presentation"
@@ -1578,7 +2012,7 @@ exports[`Chart/Renderers/CreateWrapper should render a bar chart 1`] = `
               style="stroke: #d2d2d2; fill: transparent; stroke-width: 1; stroke-linecap: round; stroke-linejoin: round;"
               vector-effect="non-scaling-stroke"
               x1="70"
-              x2="-50"
+              x2="450"
               y1="230"
               y2="230"
             />
@@ -1586,7 +2020,7 @@ exports[`Chart/Renderers/CreateWrapper should render a bar chart 1`] = `
               direction="inherit"
               dx="0"
               id="chart-axis-0-axisLabel-0"
-              x="10"
+              x="260"
               y="281.97"
             >
               <tspan
@@ -1594,7 +2028,7 @@ exports[`Chart/Renderers/CreateWrapper should render a bar chart 1`] = `
                 dy="0"
                 style="font-family: \\"RedHatText\\",\\"Overpass\\",overpass,helvetica,arial,sans-serif; font-size: 14px; letter-spacing: normal; padding: 40px; stroke: transparent; text-anchor: middle; fill: #252525;"
                 text-anchor="middle"
-                x="10"
+                x="260"
               >
                 Date
               </tspan>
@@ -1607,16 +2041,16 @@ exports[`Chart/Renderers/CreateWrapper should render a bar chart 1`] = `
                 shape-rendering="auto"
                 style="stroke: #d2d2d2; fill: transparent; size: 5px; stroke-linecap: round; stroke-linejoin: round; stroke-width: 1;"
                 vector-effect="non-scaling-stroke"
-                x1="-31.25"
-                x2="-31.25"
+                x1="89.80148883374692"
+                x2="89.80148883374692"
                 y1="230"
                 y2="235"
               />
               <text
                 direction="inherit"
                 dx="0"
-                id="chart-axis-0-tickLabels-5"
-                x="-31.25"
+                id="chart-axis-0-tickLabels-0"
+                x="89.80148883374692"
                 y="256.97"
               >
                 <tspan
@@ -1624,7 +2058,162 @@ exports[`Chart/Renderers/CreateWrapper should render a bar chart 1`] = `
                   dy="0"
                   style="font-family: \\"RedHatText\\",\\"Overpass\\",overpass,helvetica,arial,sans-serif; font-size: 14px; letter-spacing: normal; padding: 10px; stroke: transparent; fill: #4f5255;"
                   text-anchor="middle"
-                  x="-31.25"
+                  x="89.80148883374692"
+                >
+                  10/31
+                </tspan>
+              </text>
+            </g>
+            <g
+              role="presentation"
+            >
+              <line
+                role="presentation"
+                shape-rendering="auto"
+                style="stroke: #d2d2d2; fill: transparent; size: 5px; stroke-linecap: round; stroke-linejoin: round; stroke-width: 1;"
+                vector-effect="non-scaling-stroke"
+                x1="157.88089330024815"
+                x2="157.88089330024815"
+                y1="230"
+                y2="235"
+              />
+              <text
+                direction="inherit"
+                dx="0"
+                id="chart-axis-0-tickLabels-1"
+                x="157.88089330024815"
+                y="256.97"
+              >
+                <tspan
+                  dx="0"
+                  dy="0"
+                  style="font-family: \\"RedHatText\\",\\"Overpass\\",overpass,helvetica,arial,sans-serif; font-size: 14px; letter-spacing: normal; padding: 10px; stroke: transparent; fill: #4f5255;"
+                  text-anchor="middle"
+                  x="157.88089330024815"
+                >
+                  11/01
+                </tspan>
+              </text>
+            </g>
+            <g
+              role="presentation"
+            >
+              <line
+                role="presentation"
+                shape-rendering="auto"
+                style="stroke: #d2d2d2; fill: transparent; size: 5px; stroke-linecap: round; stroke-linejoin: round; stroke-width: 1;"
+                vector-effect="non-scaling-stroke"
+                x1="225.96029776674942"
+                x2="225.96029776674942"
+                y1="230"
+                y2="235"
+              />
+              <text
+                direction="inherit"
+                dx="0"
+                id="chart-axis-0-tickLabels-2"
+                x="225.96029776674942"
+                y="256.97"
+              >
+                <tspan
+                  dx="0"
+                  dy="0"
+                  style="font-family: \\"RedHatText\\",\\"Overpass\\",overpass,helvetica,arial,sans-serif; font-size: 14px; letter-spacing: normal; padding: 10px; stroke: transparent; fill: #4f5255;"
+                  text-anchor="middle"
+                  x="225.96029776674942"
+                >
+                  11/02
+                </tspan>
+              </text>
+            </g>
+            <g
+              role="presentation"
+            >
+              <line
+                role="presentation"
+                shape-rendering="auto"
+                style="stroke: #d2d2d2; fill: transparent; size: 5px; stroke-linecap: round; stroke-linejoin: round; stroke-width: 1;"
+                vector-effect="non-scaling-stroke"
+                x1="294.03970223325064"
+                x2="294.03970223325064"
+                y1="230"
+                y2="235"
+              />
+              <text
+                direction="inherit"
+                dx="0"
+                id="chart-axis-0-tickLabels-3"
+                x="294.03970223325064"
+                y="256.97"
+              >
+                <tspan
+                  dx="0"
+                  dy="0"
+                  style="font-family: \\"RedHatText\\",\\"Overpass\\",overpass,helvetica,arial,sans-serif; font-size: 14px; letter-spacing: normal; padding: 10px; stroke: transparent; fill: #4f5255;"
+                  text-anchor="middle"
+                  x="294.03970223325064"
+                >
+                  11/03
+                </tspan>
+              </text>
+            </g>
+            <g
+              role="presentation"
+            >
+              <line
+                role="presentation"
+                shape-rendering="auto"
+                style="stroke: #d2d2d2; fill: transparent; size: 5px; stroke-linecap: round; stroke-linejoin: round; stroke-width: 1;"
+                vector-effect="non-scaling-stroke"
+                x1="362.1191066997519"
+                x2="362.1191066997519"
+                y1="230"
+                y2="235"
+              />
+              <text
+                direction="inherit"
+                dx="0"
+                id="chart-axis-0-tickLabels-4"
+                x="362.1191066997519"
+                y="256.97"
+              >
+                <tspan
+                  dx="0"
+                  dy="0"
+                  style="font-family: \\"RedHatText\\",\\"Overpass\\",overpass,helvetica,arial,sans-serif; font-size: 14px; letter-spacing: normal; padding: 10px; stroke: transparent; fill: #4f5255;"
+                  text-anchor="middle"
+                  x="362.1191066997519"
+                >
+                  11/04
+                </tspan>
+              </text>
+            </g>
+            <g
+              role="presentation"
+            >
+              <line
+                role="presentation"
+                shape-rendering="auto"
+                style="stroke: #d2d2d2; fill: transparent; size: 5px; stroke-linecap: round; stroke-linejoin: round; stroke-width: 1;"
+                vector-effect="non-scaling-stroke"
+                x1="430.1985111662531"
+                x2="430.1985111662531"
+                y1="230"
+                y2="235"
+              />
+              <text
+                direction="inherit"
+                dx="0"
+                id="chart-axis-0-tickLabels-5"
+                x="430.1985111662531"
+                y="256.97"
+              >
+                <tspan
+                  dx="0"
+                  dy="0"
+                  style="font-family: \\"RedHatText\\",\\"Overpass\\",overpass,helvetica,arial,sans-serif; font-size: 14px; letter-spacing: normal; padding: 10px; stroke: transparent; fill: #4f5255;"
+                  text-anchor="middle"
+                  x="430.1985111662531"
                 >
                   11/05
                 </tspan>
@@ -1760,14 +2349,14 @@ exports[`Chart/Renderers/CreateWrapper should render a bar chart 1`] = `
             role="presentation"
           >
             <path
-              d="M 48.125, 230 
-A 0 0 0 0 1, 48.125, 230 
-L 48.125, 109.83516483516485 
-A 0 0 0 0 1, 48.125, 109.83516483516485 
-L 58.125, 109.83516483516485 
-A 0 0 0 0 1, 58.125, 109.83516483516485 
-L 58.125, 230 
-A 0 0 0 0 1, 58.125, 230 
+              d="M 84.80148883374692, 230 
+A 0 0 0 0 1, 84.80148883374692, 230 
+L 84.80148883374692, 109.83516483516485 
+A 0 0 0 0 1, 84.80148883374692, 109.83516483516485 
+L 94.80148883374692, 109.83516483516485 
+A 0 0 0 0 1, 94.80148883374692, 109.83516483516485 
+L 94.80148883374692, 230 
+A 0 0 0 0 1, 94.80148883374692, 230 
  z"
               index="0"
               role="presentation"
@@ -1775,14 +2364,14 @@ A 0 0 0 0 1, 58.125, 230
               style="fill: #06c; stroke: none; padding: 8px; stroke-width: 0;"
             />
             <path
-              d="M 31.25, 230 
-A 0 0 0 0 1, 31.25, 230 
-L 31.25, 109.83516483516485 
-A 0 0 0 0 1, 31.25, 109.83516483516485 
-L 41.25, 109.83516483516485 
-A 0 0 0 0 1, 41.25, 109.83516483516485 
-L 41.25, 230 
-A 0 0 0 0 1, 41.25, 230 
+              d="M 152.88089330024815, 230 
+A 0 0 0 0 1, 152.88089330024815, 230 
+L 152.88089330024815, 109.83516483516485 
+A 0 0 0 0 1, 152.88089330024815, 109.83516483516485 
+L 162.88089330024815, 109.83516483516485 
+A 0 0 0 0 1, 162.88089330024815, 109.83516483516485 
+L 162.88089330024815, 230 
+A 0 0 0 0 1, 162.88089330024815, 230 
  z"
               index="1"
               role="presentation"
@@ -1790,14 +2379,14 @@ A 0 0 0 0 1, 41.25, 230
               style="fill: #06c; stroke: none; padding: 8px; stroke-width: 0;"
             />
             <path
-              d="M 14.375, 230 
-A 0 0 0 0 1, 14.375, 230 
-L 14.375, 69.7802197802198 
-A 0 0 0 0 1, 14.375, 69.7802197802198 
-L 24.375, 69.7802197802198 
-A 0 0 0 0 1, 24.375, 69.7802197802198 
-L 24.375, 230 
-A 0 0 0 0 1, 24.375, 230 
+              d="M 220.96029776674942, 230 
+A 0 0 0 0 1, 220.96029776674942, 230 
+L 220.96029776674942, 69.7802197802198 
+A 0 0 0 0 1, 220.96029776674942, 69.7802197802198 
+L 230.96029776674942, 69.7802197802198 
+A 0 0 0 0 1, 230.96029776674942, 69.7802197802198 
+L 230.96029776674942, 230 
+A 0 0 0 0 1, 230.96029776674942, 230 
  z"
               index="2"
               role="presentation"
@@ -1805,14 +2394,14 @@ A 0 0 0 0 1, 24.375, 230
               style="fill: #06c; stroke: none; padding: 8px; stroke-width: 0;"
             />
             <path
-              d="M -2.5, 230 
-A 0 0 0 0 1, -2.5, 230 
-L -2.5, 109.83516483516485 
-A 0 0 0 0 1, -2.5, 109.83516483516485 
-L 7.5, 109.83516483516485 
-A 0 0 0 0 1, 7.5, 109.83516483516485 
-L 7.5, 230 
-A 0 0 0 0 1, 7.5, 230 
+              d="M 289.03970223325064, 230 
+A 0 0 0 0 1, 289.03970223325064, 230 
+L 289.03970223325064, 109.83516483516485 
+A 0 0 0 0 1, 289.03970223325064, 109.83516483516485 
+L 299.03970223325064, 109.83516483516485 
+A 0 0 0 0 1, 299.03970223325064, 109.83516483516485 
+L 299.03970223325064, 230 
+A 0 0 0 0 1, 299.03970223325064, 230 
  z"
               index="3"
               role="presentation"
@@ -1820,14 +2409,14 @@ A 0 0 0 0 1, 7.5, 230
               style="fill: #06c; stroke: none; padding: 8px; stroke-width: 0;"
             />
             <path
-              d="M -19.375, 230 
-A 0 0 0 0 1, -19.375, 230 
-L -19.375, 109.83516483516485 
-A 0 0 0 0 1, -19.375, 109.83516483516485 
-L -9.375, 109.83516483516485 
-A 0 0 0 0 1, -9.375, 109.83516483516485 
-L -9.375, 230 
-A 0 0 0 0 1, -9.375, 230 
+              d="M 357.1191066997519, 230 
+A 0 0 0 0 1, 357.1191066997519, 230 
+L 357.1191066997519, 109.83516483516485 
+A 0 0 0 0 1, 357.1191066997519, 109.83516483516485 
+L 367.1191066997519, 109.83516483516485 
+A 0 0 0 0 1, 367.1191066997519, 109.83516483516485 
+L 367.1191066997519, 230 
+A 0 0 0 0 1, 367.1191066997519, 230 
  z"
               index="4"
               role="presentation"
@@ -1835,14 +2424,14 @@ A 0 0 0 0 1, -9.375, 230
               style="fill: #06c; stroke: none; padding: 8px; stroke-width: 0;"
             />
             <path
-              d="M -36.25, 230 
-A 0 0 0 0 1, -36.25, 230 
-L -36.25, 109.83516483516485 
-A 0 0 0 0 1, -36.25, 109.83516483516485 
-L -26.25, 109.83516483516485 
-A 0 0 0 0 1, -26.25, 109.83516483516485 
-L -26.25, 230 
-A 0 0 0 0 1, -26.25, 230 
+              d="M 425.1985111662531, 230 
+A 0 0 0 0 1, 425.1985111662531, 230 
+L 425.1985111662531, 109.83516483516485 
+A 0 0 0 0 1, 425.1985111662531, 109.83516483516485 
+L 435.1985111662531, 109.83516483516485 
+A 0 0 0 0 1, 435.1985111662531, 109.83516483516485 
+L 435.1985111662531, 230 
+A 0 0 0 0 1, 435.1985111662531, 230 
  z"
               index="5"
               role="presentation"
@@ -1857,8 +2446,8 @@ A 0 0 0 0 1, -26.25, 230
           <svg
             height="300"
             style="overflow: visible; width: 100%; height: 100%;"
-            viewBox="0 0 0 300"
-            width="0"
+            viewBox="0 0 500 300"
+            width="500"
           />
         </div>
       </div>
@@ -1881,8 +2470,8 @@ exports[`Chart/Renderers/CreateWrapper should render a grouped bar with legend 1
           height="300"
           role="img"
           style="pointer-events: all; width: 100%; height: 100%;"
-          viewBox="0 0 0 300"
-          width="0"
+          viewBox="0 0 500 300"
+          width="500"
         >
           <g
             role="presentation"
@@ -1893,7 +2482,7 @@ exports[`Chart/Renderers/CreateWrapper should render a grouped bar with legend 1
               style="stroke: #d2d2d2; fill: transparent; stroke-width: 1; stroke-linecap: round; stroke-linejoin: round;"
               vector-effect="non-scaling-stroke"
               x1="70"
-              x2="-150"
+              x2="350"
               y1="230"
               y2="230"
             />
@@ -1901,7 +2490,7 @@ exports[`Chart/Renderers/CreateWrapper should render a grouped bar with legend 1
               direction="inherit"
               dx="0"
               id="chart-axis-0-axisLabel-0"
-              x="-40"
+              x="210"
               y="281.97"
             >
               <tspan
@@ -1909,7 +2498,7 @@ exports[`Chart/Renderers/CreateWrapper should render a grouped bar with legend 1
                 dy="0"
                 style="font-family: \\"RedHatText\\",\\"Overpass\\",overpass,helvetica,arial,sans-serif; font-size: 14px; letter-spacing: normal; padding: 40px; stroke: transparent; text-anchor: middle; fill: #252525;"
                 text-anchor="middle"
-                x="-40"
+                x="210"
               >
                 Date
               </tspan>
@@ -1922,16 +2511,16 @@ exports[`Chart/Renderers/CreateWrapper should render a grouped bar with legend 1
                 shape-rendering="auto"
                 style="stroke: #d2d2d2; fill: transparent; size: 5px; stroke-linecap: round; stroke-linejoin: round; stroke-width: 1;"
                 vector-effect="non-scaling-stroke"
-                x1="-126.90258553147035"
-                x2="-126.90258553147035"
+                x1="93.41264445955133"
+                x2="93.41264445955133"
                 y1="230"
                 y2="235"
               />
               <text
                 direction="inherit"
                 dx="0"
-                id="chart-axis-0-tickLabels-2"
-                x="-126.90258553147035"
+                id="chart-axis-0-tickLabels-0"
+                x="93.41264445955133"
                 y="256.97"
               >
                 <tspan
@@ -1939,7 +2528,69 @@ exports[`Chart/Renderers/CreateWrapper should render a grouped bar with legend 1
                   dy="0"
                   style="font-family: \\"RedHatText\\",\\"Overpass\\",overpass,helvetica,arial,sans-serif; font-size: 14px; letter-spacing: normal; padding: 10px; stroke: transparent; fill: #4f5255;"
                   text-anchor="middle"
-                  x="-126.90258553147035"
+                  x="93.41264445955133"
+                >
+                  2021-04-11
+                </tspan>
+              </text>
+            </g>
+            <g
+              role="presentation"
+            >
+              <line
+                role="presentation"
+                shape-rendering="auto"
+                style="stroke: #d2d2d2; fill: transparent; size: 5px; stroke-linecap: round; stroke-linejoin: round; stroke-width: 1;"
+                vector-effect="non-scaling-stroke"
+                x1="210.00000000000003"
+                x2="210.00000000000003"
+                y1="230"
+                y2="235"
+              />
+              <text
+                direction="inherit"
+                dx="0"
+                id="chart-axis-0-tickLabels-1"
+                x="210.00000000000003"
+                y="256.97"
+              >
+                <tspan
+                  dx="0"
+                  dy="0"
+                  style="font-family: \\"RedHatText\\",\\"Overpass\\",overpass,helvetica,arial,sans-serif; font-size: 14px; letter-spacing: normal; padding: 10px; stroke: transparent; fill: #4f5255;"
+                  text-anchor="middle"
+                  x="210.00000000000003"
+                >
+                  2021-04-12
+                </tspan>
+              </text>
+            </g>
+            <g
+              role="presentation"
+            >
+              <line
+                role="presentation"
+                shape-rendering="auto"
+                style="stroke: #d2d2d2; fill: transparent; size: 5px; stroke-linecap: round; stroke-linejoin: round; stroke-width: 1;"
+                vector-effect="non-scaling-stroke"
+                x1="326.5873555404487"
+                x2="326.5873555404487"
+                y1="230"
+                y2="235"
+              />
+              <text
+                direction="inherit"
+                dx="0"
+                id="chart-axis-0-tickLabels-2"
+                x="326.5873555404487"
+                y="256.97"
+              >
+                <tspan
+                  dx="0"
+                  dy="0"
+                  style="font-family: \\"RedHatText\\",\\"Overpass\\",overpass,helvetica,arial,sans-serif; font-size: 14px; letter-spacing: normal; padding: 10px; stroke: transparent; fill: #4f5255;"
+                  text-anchor="middle"
+                  x="326.5873555404487"
                 >
                   2021-04-13
                 </tspan>
@@ -2138,147 +2789,147 @@ exports[`Chart/Renderers/CreateWrapper should render a grouped bar with legend 1
               role="presentation"
             >
               <path
-                d="M 54.90258553147036, 230 
-A 0 0 0 0 1, 54.90258553147036, 230 
-L 54.90258553147036, 162.0127580997146 
-A 0 0 0 0 1, 54.90258553147036, 162.0127580997146 
-L 70.90258553147035, 162.0127580997146 
-A 0 0 0 0 1, 70.90258553147035, 162.0127580997146 
-L 70.90258553147035, 230 
-A 0 0 0 0 1, 70.90258553147035, 230 
+                d="M 69.41264445955133, 230 
+A 0 0 0 0 1, 69.41264445955133, 230 
+L 69.41264445955133, 162.0127580997146 
+A 0 0 0 0 1, 69.41264445955133, 162.0127580997146 
+L 85.41264445955133, 162.0127580997146 
+A 0 0 0 0 1, 85.41264445955133, 162.0127580997146 
+L 85.41264445955133, 230 
+A 0 0 0 0 1, 85.41264445955133, 230 
  z"
                 index="0"
                 role="presentation"
                 shape-rendering="auto"
-                style="fill: #4cb140; stroke: none; width: 10px; padding: 8px; stroke-width: 0;"
+                style="fill: #4cb140; stroke: none; width: 13px; padding: 8px; stroke-width: 0;"
               />
               <path
-                d="M -32, 230 
-A 0 0 0 0 1, -32, 230 
-L -32, 162.0127580997146 
-A 0 0 0 0 1, -32, 162.0127580997146 
-L -16, 162.0127580997146 
-A 0 0 0 0 1, -16, 162.0127580997146 
-L -16, 230 
-A 0 0 0 0 1, -16, 230 
+                d="M 186.00000000000003, 230 
+A 0 0 0 0 1, 186.00000000000003, 230 
+L 186.00000000000003, 162.0127580997146 
+A 0 0 0 0 1, 186.00000000000003, 162.0127580997146 
+L 202.00000000000003, 162.0127580997146 
+A 0 0 0 0 1, 202.00000000000003, 162.0127580997146 
+L 202.00000000000003, 230 
+A 0 0 0 0 1, 202.00000000000003, 230 
  z"
                 index="1"
                 role="presentation"
                 shape-rendering="auto"
-                style="fill: #4cb140; stroke: none; width: 10px; padding: 8px; stroke-width: 0;"
+                style="fill: #4cb140; stroke: none; width: 13px; padding: 8px; stroke-width: 0;"
               />
               <path
-                d="M -118.90258553147038, 230 
-A 0 0 0 0 1, -118.90258553147038, 230 
-L -118.90258553147038, 155.2140339096861 
-A 0 0 0 0 1, -118.90258553147038, 155.2140339096861 
-L -102.90258553147038, 155.2140339096861 
-A 0 0 0 0 1, -102.90258553147038, 155.2140339096861 
-L -102.90258553147038, 230 
-A 0 0 0 0 1, -102.90258553147038, 230 
+                d="M 302.58735554044875, 230 
+A 0 0 0 0 1, 302.58735554044875, 230 
+L 302.58735554044875, 155.2140339096861 
+A 0 0 0 0 1, 302.58735554044875, 155.2140339096861 
+L 318.58735554044875, 155.2140339096861 
+A 0 0 0 0 1, 318.58735554044875, 155.2140339096861 
+L 318.58735554044875, 230 
+A 0 0 0 0 1, 318.58735554044875, 230 
  z"
                 index="2"
                 role="presentation"
                 shape-rendering="auto"
-                style="fill: #4cb140; stroke: none; width: 10px; padding: 8px; stroke-width: 0;"
+                style="fill: #4cb140; stroke: none; width: 13px; padding: 8px; stroke-width: 0;"
               />
             </g>
             <g
               role="presentation"
             >
               <path
-                d="M 38.90258553147035, 230 
-A 0 0 0 0 1, 38.90258553147035, 230 
-L 38.90258553147035, 73.62934362934362 
-A 0 0 0 0 1, 38.90258553147035, 73.62934362934362 
-L 54.90258553147035, 73.62934362934362 
-A 0 0 0 0 1, 54.90258553147035, 73.62934362934362 
-L 54.90258553147035, 230 
-A 0 0 0 0 1, 54.90258553147035, 230 
+                d="M 85.41264445955133, 230 
+A 0 0 0 0 1, 85.41264445955133, 230 
+L 85.41264445955133, 73.62934362934362 
+A 0 0 0 0 1, 85.41264445955133, 73.62934362934362 
+L 101.41264445955133, 73.62934362934362 
+A 0 0 0 0 1, 101.41264445955133, 73.62934362934362 
+L 101.41264445955133, 230 
+A 0 0 0 0 1, 101.41264445955133, 230 
  z"
                 index="0"
                 role="presentation"
                 shape-rendering="auto"
-                style="fill: #bde2b9; stroke: none; width: 10px; padding: 8px; stroke-width: 0;"
+                style="fill: #bde2b9; stroke: none; width: 13px; padding: 8px; stroke-width: 0;"
               />
               <path
-                d="M -48, 230 
-A 0 0 0 0 1, -48, 230 
-L -48, 73.62934362934362 
-A 0 0 0 0 1, -48, 73.62934362934362 
-L -32, 73.62934362934362 
-A 0 0 0 0 1, -32, 73.62934362934362 
-L -32, 230 
-A 0 0 0 0 1, -32, 230 
+                d="M 202.00000000000003, 230 
+A 0 0 0 0 1, 202.00000000000003, 230 
+L 202.00000000000003, 73.62934362934362 
+A 0 0 0 0 1, 202.00000000000003, 73.62934362934362 
+L 218.00000000000003, 73.62934362934362 
+A 0 0 0 0 1, 218.00000000000003, 73.62934362934362 
+L 218.00000000000003, 230 
+A 0 0 0 0 1, 218.00000000000003, 230 
  z"
                 index="1"
                 role="presentation"
                 shape-rendering="auto"
-                style="fill: #bde2b9; stroke: none; width: 10px; padding: 8px; stroke-width: 0;"
+                style="fill: #bde2b9; stroke: none; width: 13px; padding: 8px; stroke-width: 0;"
               />
               <path
-                d="M -134.90258553147035, 230 
-A 0 0 0 0 1, -134.90258553147035, 230 
-L -134.90258553147035, 80.42806781937216 
-A 0 0 0 0 1, -134.90258553147035, 80.42806781937216 
-L -118.90258553147035, 80.42806781937216 
-A 0 0 0 0 1, -118.90258553147035, 80.42806781937216 
-L -118.90258553147035, 230 
-A 0 0 0 0 1, -118.90258553147035, 230 
+                d="M 318.5873555404487, 230 
+A 0 0 0 0 1, 318.5873555404487, 230 
+L 318.5873555404487, 80.42806781937216 
+A 0 0 0 0 1, 318.5873555404487, 80.42806781937216 
+L 334.5873555404487, 80.42806781937216 
+A 0 0 0 0 1, 334.5873555404487, 80.42806781937216 
+L 334.5873555404487, 230 
+A 0 0 0 0 1, 334.5873555404487, 230 
  z"
                 index="2"
                 role="presentation"
                 shape-rendering="auto"
-                style="fill: #bde2b9; stroke: none; width: 10px; padding: 8px; stroke-width: 0;"
+                style="fill: #bde2b9; stroke: none; width: 13px; padding: 8px; stroke-width: 0;"
               />
             </g>
             <g
               role="presentation"
             >
               <path
-                d="M 22.902585531470354, 230 
-A 0 0 0 0 1, 22.902585531470354, 230 
-L 22.902585531470354, 114.42168876951484 
-A 0 0 0 0 1, 22.902585531470354, 114.42168876951484 
-L 38.90258553147035, 114.42168876951484 
-A 0 0 0 0 1, 38.90258553147035, 114.42168876951484 
-L 38.90258553147035, 230 
-A 0 0 0 0 1, 38.90258553147035, 230 
+                d="M 101.41264445955133, 230 
+A 0 0 0 0 1, 101.41264445955133, 230 
+L 101.41264445955133, 114.42168876951484 
+A 0 0 0 0 1, 101.41264445955133, 114.42168876951484 
+L 117.41264445955133, 114.42168876951484 
+A 0 0 0 0 1, 117.41264445955133, 114.42168876951484 
+L 117.41264445955133, 230 
+A 0 0 0 0 1, 117.41264445955133, 230 
  z"
                 index="0"
                 role="presentation"
                 shape-rendering="auto"
-                style="fill: #23511e; stroke: none; width: 10px; padding: 8px; stroke-width: 0;"
+                style="fill: #23511e; stroke: none; width: 13px; padding: 8px; stroke-width: 0;"
               />
               <path
-                d="M -63.99999999999998, 230 
-A 0 0 0 0 1, -63.99999999999998, 230 
-L -63.99999999999998, 114.42168876951484 
-A 0 0 0 0 1, -63.99999999999998, 114.42168876951484 
-L -47.99999999999998, 114.42168876951484 
-A 0 0 0 0 1, -47.99999999999998, 114.42168876951484 
-L -47.99999999999998, 230 
-A 0 0 0 0 1, -47.99999999999998, 230 
+                d="M 218, 230 
+A 0 0 0 0 1, 218, 230 
+L 218, 114.42168876951484 
+A 0 0 0 0 1, 218, 114.42168876951484 
+L 234, 114.42168876951484 
+A 0 0 0 0 1, 234, 114.42168876951484 
+L 234, 230 
+A 0 0 0 0 1, 234, 230 
  z"
                 index="1"
                 role="presentation"
                 shape-rendering="auto"
-                style="fill: #23511e; stroke: none; width: 10px; padding: 8px; stroke-width: 0;"
+                style="fill: #23511e; stroke: none; width: 13px; padding: 8px; stroke-width: 0;"
               />
               <path
-                d="M -150.90258553147035, 230 
-A 0 0 0 0 1, -150.90258553147035, 230 
-L -150.90258553147035, 121.2204129595434 
-A 0 0 0 0 1, -150.90258553147035, 121.2204129595434 
-L -134.90258553147035, 121.2204129595434 
-A 0 0 0 0 1, -134.90258553147035, 121.2204129595434 
-L -134.90258553147035, 230 
-A 0 0 0 0 1, -134.90258553147035, 230 
+                d="M 334.5873555404487, 230 
+A 0 0 0 0 1, 334.5873555404487, 230 
+L 334.5873555404487, 121.2204129595434 
+A 0 0 0 0 1, 334.5873555404487, 121.2204129595434 
+L 350.5873555404487, 121.2204129595434 
+A 0 0 0 0 1, 350.5873555404487, 121.2204129595434 
+L 350.5873555404487, 230 
+A 0 0 0 0 1, 350.5873555404487, 230 
  z"
                 index="2"
                 role="presentation"
                 shape-rendering="auto"
-                style="fill: #23511e; stroke: none; width: 10px; padding: 8px; stroke-width: 0;"
+                style="fill: #23511e; stroke: none; width: 13px; padding: 8px; stroke-width: 0;"
               />
             </g>
           </g>
@@ -2290,11 +2941,11 @@ A 0 0 0 0 1, -134.90258553147035, 230
               style="fill: none;"
               vector-effect="non-scaling-stroke"
               width="132.896875"
-              x="306"
+              x="366"
               y="95.64250000000001"
             />
             <path
-              d="M 315.128, 114.51450000000001
+              d="M 375.128, 114.51450000000001
       h9.744000000000028
       v-9.744000000000028
       h-9.744000000000028
@@ -2304,7 +2955,7 @@ A 0 0 0 0 1, -134.90258553147035, 230
               style="fill: #4cb140;"
             />
             <path
-              d="M 315.128, 145.41950000000003
+              d="M 375.128, 145.41950000000003
       h9.744000000000028
       v-9.744000000000028
       h-9.744000000000028
@@ -2314,7 +2965,7 @@ A 0 0 0 0 1, -134.90258553147035, 230
               style="fill: #bde2b9;"
             />
             <path
-              d="M 315.128, 176.3245
+              d="M 375.128, 176.3245
       h9.744000000000028
       v-9.744000000000028
       h-9.744000000000028
@@ -2327,7 +2978,7 @@ A 0 0 0 0 1, -134.90258553147035, 230
               direction="inherit"
               dx="0"
               id="legend-3000-labels-0"
-              x="336.8"
+              x="396.8"
               y="114.61250000000001"
             >
               <tspan
@@ -2335,7 +2986,7 @@ A 0 0 0 0 1, -134.90258553147035, 230
                 dy="0"
                 style="cursor: pointer; font-family: \\"RedHatText\\",\\"Overpass\\",overpass,helvetica,arial,sans-serif; font-size: 14px; letter-spacing: normal; padding: 10px; stroke: transparent; fill: #252525;"
                 text-anchor="start"
-                x="336.8"
+                x="396.8"
               >
                 No Name
               </tspan>
@@ -2344,7 +2995,7 @@ A 0 0 0 0 1, -134.90258553147035, 230
               direction="inherit"
               dx="0"
               id="legend-3000-labels-1"
-              x="336.8"
+              x="396.8"
               y="145.5175"
             >
               <tspan
@@ -2352,7 +3003,7 @@ A 0 0 0 0 1, -134.90258553147035, 230
                 dy="0"
                 style="cursor: pointer; font-family: \\"RedHatText\\",\\"Overpass\\",overpass,helvetica,arial,sans-serif; font-size: 14px; letter-spacing: normal; padding: 10px; stroke: transparent; fill: #252525;"
                 text-anchor="start"
-                x="336.8"
+                x="396.8"
               >
                 organization_0
               </tspan>
@@ -2361,7 +3012,7 @@ A 0 0 0 0 1, -134.90258553147035, 230
               direction="inherit"
               dx="0"
               id="legend-3000-labels-2"
-              x="336.8"
+              x="396.8"
               y="176.4225"
             >
               <tspan
@@ -2369,7 +3020,7 @@ A 0 0 0 0 1, -134.90258553147035, 230
                 dy="0"
                 style="cursor: pointer; font-family: \\"RedHatText\\",\\"Overpass\\",overpass,helvetica,arial,sans-serif; font-size: 14px; letter-spacing: normal; padding: 10px; stroke: transparent; fill: #252525;"
                 text-anchor="start"
-                x="336.8"
+                x="396.8"
               >
                 organization_1
               </tspan>
@@ -2382,8 +3033,8 @@ A 0 0 0 0 1, -134.90258553147035, 230
           <svg
             height="300"
             style="overflow: visible; width: 100%; height: 100%;"
-            viewBox="0 0 0 300"
-            width="0"
+            viewBox="0 0 500 300"
+            width="500"
           />
         </div>
       </div>
@@ -2406,8 +3057,8 @@ exports[`Chart/Renderers/CreateWrapper should render a line chart 1`] = `
           height="300"
           role="img"
           style="pointer-events: all; width: 100%; height: 100%;"
-          viewBox="0 0 0 300"
-          width="0"
+          viewBox="0 0 500 300"
+          width="500"
         >
           <g
             role="presentation"
@@ -2418,7 +3069,7 @@ exports[`Chart/Renderers/CreateWrapper should render a line chart 1`] = `
               style="stroke: #d2d2d2; fill: transparent; stroke-width: 1; stroke-linecap: round; stroke-linejoin: round;"
               vector-effect="non-scaling-stroke"
               x1="70"
-              x2="-50"
+              x2="450"
               y1="230"
               y2="230"
             />
@@ -2426,7 +3077,7 @@ exports[`Chart/Renderers/CreateWrapper should render a line chart 1`] = `
               direction="inherit"
               dx="0"
               id="chart-axis-0-axisLabel-0"
-              x="10"
+              x="260"
               y="281.97"
             >
               <tspan
@@ -2434,7 +3085,7 @@ exports[`Chart/Renderers/CreateWrapper should render a line chart 1`] = `
                 dy="0"
                 style="font-family: \\"RedHatText\\",\\"Overpass\\",overpass,helvetica,arial,sans-serif; font-size: 14px; letter-spacing: normal; padding: 40px; stroke: transparent; text-anchor: middle; fill: #252525;"
                 text-anchor="middle"
-                x="10"
+                x="260"
               >
                 Date
               </tspan>
@@ -2447,16 +3098,16 @@ exports[`Chart/Renderers/CreateWrapper should render a line chart 1`] = `
                 shape-rendering="auto"
                 style="stroke: #d2d2d2; fill: transparent; size: 5px; stroke-linecap: round; stroke-linejoin: round; stroke-width: 1;"
                 vector-effect="non-scaling-stroke"
-                x1="-50"
-                x2="-50"
+                x1="70"
+                x2="70"
                 y1="230"
                 y2="235"
               />
               <text
                 direction="inherit"
                 dx="0"
-                id="chart-axis-0-tickLabels-5"
-                x="-50"
+                id="chart-axis-0-tickLabels-0"
+                x="70"
                 y="256.97"
               >
                 <tspan
@@ -2464,7 +3115,162 @@ exports[`Chart/Renderers/CreateWrapper should render a line chart 1`] = `
                   dy="0"
                   style="font-family: \\"RedHatText\\",\\"Overpass\\",overpass,helvetica,arial,sans-serif; font-size: 14px; letter-spacing: normal; padding: 10px; stroke: transparent; fill: #4f5255;"
                   text-anchor="middle"
-                  x="-50"
+                  x="70"
+                >
+                  10/31
+                </tspan>
+              </text>
+            </g>
+            <g
+              role="presentation"
+            >
+              <line
+                role="presentation"
+                shape-rendering="auto"
+                style="stroke: #d2d2d2; fill: transparent; size: 5px; stroke-linecap: round; stroke-linejoin: round; stroke-width: 1;"
+                vector-effect="non-scaling-stroke"
+                x1="146"
+                x2="146"
+                y1="230"
+                y2="235"
+              />
+              <text
+                direction="inherit"
+                dx="0"
+                id="chart-axis-0-tickLabels-1"
+                x="146"
+                y="256.97"
+              >
+                <tspan
+                  dx="0"
+                  dy="0"
+                  style="font-family: \\"RedHatText\\",\\"Overpass\\",overpass,helvetica,arial,sans-serif; font-size: 14px; letter-spacing: normal; padding: 10px; stroke: transparent; fill: #4f5255;"
+                  text-anchor="middle"
+                  x="146"
+                >
+                  11/01
+                </tspan>
+              </text>
+            </g>
+            <g
+              role="presentation"
+            >
+              <line
+                role="presentation"
+                shape-rendering="auto"
+                style="stroke: #d2d2d2; fill: transparent; size: 5px; stroke-linecap: round; stroke-linejoin: round; stroke-width: 1;"
+                vector-effect="non-scaling-stroke"
+                x1="222"
+                x2="222"
+                y1="230"
+                y2="235"
+              />
+              <text
+                direction="inherit"
+                dx="0"
+                id="chart-axis-0-tickLabels-2"
+                x="222"
+                y="256.97"
+              >
+                <tspan
+                  dx="0"
+                  dy="0"
+                  style="font-family: \\"RedHatText\\",\\"Overpass\\",overpass,helvetica,arial,sans-serif; font-size: 14px; letter-spacing: normal; padding: 10px; stroke: transparent; fill: #4f5255;"
+                  text-anchor="middle"
+                  x="222"
+                >
+                  11/02
+                </tspan>
+              </text>
+            </g>
+            <g
+              role="presentation"
+            >
+              <line
+                role="presentation"
+                shape-rendering="auto"
+                style="stroke: #d2d2d2; fill: transparent; size: 5px; stroke-linecap: round; stroke-linejoin: round; stroke-width: 1;"
+                vector-effect="non-scaling-stroke"
+                x1="298"
+                x2="298"
+                y1="230"
+                y2="235"
+              />
+              <text
+                direction="inherit"
+                dx="0"
+                id="chart-axis-0-tickLabels-3"
+                x="298"
+                y="256.97"
+              >
+                <tspan
+                  dx="0"
+                  dy="0"
+                  style="font-family: \\"RedHatText\\",\\"Overpass\\",overpass,helvetica,arial,sans-serif; font-size: 14px; letter-spacing: normal; padding: 10px; stroke: transparent; fill: #4f5255;"
+                  text-anchor="middle"
+                  x="298"
+                >
+                  11/03
+                </tspan>
+              </text>
+            </g>
+            <g
+              role="presentation"
+            >
+              <line
+                role="presentation"
+                shape-rendering="auto"
+                style="stroke: #d2d2d2; fill: transparent; size: 5px; stroke-linecap: round; stroke-linejoin: round; stroke-width: 1;"
+                vector-effect="non-scaling-stroke"
+                x1="374"
+                x2="374"
+                y1="230"
+                y2="235"
+              />
+              <text
+                direction="inherit"
+                dx="0"
+                id="chart-axis-0-tickLabels-4"
+                x="374"
+                y="256.97"
+              >
+                <tspan
+                  dx="0"
+                  dy="0"
+                  style="font-family: \\"RedHatText\\",\\"Overpass\\",overpass,helvetica,arial,sans-serif; font-size: 14px; letter-spacing: normal; padding: 10px; stroke: transparent; fill: #4f5255;"
+                  text-anchor="middle"
+                  x="374"
+                >
+                  11/04
+                </tspan>
+              </text>
+            </g>
+            <g
+              role="presentation"
+            >
+              <line
+                role="presentation"
+                shape-rendering="auto"
+                style="stroke: #d2d2d2; fill: transparent; size: 5px; stroke-linecap: round; stroke-linejoin: round; stroke-width: 1;"
+                vector-effect="non-scaling-stroke"
+                x1="450"
+                x2="450"
+                y1="230"
+                y2="235"
+              />
+              <text
+                direction="inherit"
+                dx="0"
+                id="chart-axis-0-tickLabels-5"
+                x="450"
+                y="256.97"
+              >
+                <tspan
+                  dx="0"
+                  dy="0"
+                  style="font-family: \\"RedHatText\\",\\"Overpass\\",overpass,helvetica,arial,sans-serif; font-size: 14px; letter-spacing: normal; padding: 10px; stroke: transparent; fill: #4f5255;"
+                  text-anchor="middle"
+                  x="450"
                 >
                   11/05
                 </tspan>
@@ -2700,14 +3506,14 @@ exports[`Chart/Renderers/CreateWrapper should render a line chart 1`] = `
                 <rect
                   height="180"
                   vector-effect="non-scaling-stroke"
-                  width="120"
-                  x="-50"
+                  width="380"
+                  x="70"
                   y="50"
                 />
               </clippath>
             </defs>
             <path
-              d="M70,95L46,95L22,50L-2,95L-26.000000000000004,95L-50,95"
+              d="M70,95L146,95L222,50L298,95L374,95L450,95"
               role="presentation"
               shape-rendering="auto"
               style="fill: transparent; stroke: #06c; opacity: 1; stroke-width: 2;"
@@ -2720,8 +3526,8 @@ exports[`Chart/Renderers/CreateWrapper should render a line chart 1`] = `
           <svg
             height="300"
             style="overflow: visible; width: 100%; height: 100%;"
-            viewBox="0 0 0 300"
-            width="0"
+            viewBox="0 0 500 300"
+            width="500"
           />
         </div>
       </div>
@@ -2744,8 +3550,8 @@ exports[`Chart/Renderers/CreateWrapper should render a scatter chart 1`] = `
           height="300"
           role="img"
           style="pointer-events: all; width: 100%; height: 100%;"
-          viewBox="0 0 0 300"
-          width="0"
+          viewBox="0 0 500 300"
+          width="500"
         >
           <g
             role="presentation"
@@ -2756,7 +3562,7 @@ exports[`Chart/Renderers/CreateWrapper should render a scatter chart 1`] = `
               style="stroke: #d2d2d2; fill: transparent; stroke-width: 1; stroke-linecap: round; stroke-linejoin: round;"
               vector-effect="non-scaling-stroke"
               x1="70"
-              x2="-50"
+              x2="450"
               y1="230"
               y2="230"
             />
@@ -2764,7 +3570,7 @@ exports[`Chart/Renderers/CreateWrapper should render a scatter chart 1`] = `
               direction="inherit"
               dx="0"
               id="chart-axis-0-axisLabel-0"
-              x="10"
+              x="260"
               y="281.97"
             >
               <tspan
@@ -2772,7 +3578,7 @@ exports[`Chart/Renderers/CreateWrapper should render a scatter chart 1`] = `
                 dy="0"
                 style="font-family: \\"RedHatText\\",\\"Overpass\\",overpass,helvetica,arial,sans-serif; font-size: 14px; letter-spacing: normal; padding: 40px; stroke: transparent; text-anchor: middle; fill: #252525;"
                 text-anchor="middle"
-                x="10"
+                x="260"
               >
                 Date
               </tspan>
@@ -2785,16 +3591,16 @@ exports[`Chart/Renderers/CreateWrapper should render a scatter chart 1`] = `
                 shape-rendering="auto"
                 style="stroke: #d2d2d2; fill: transparent; size: 5px; stroke-linecap: round; stroke-linejoin: round; stroke-width: 1;"
                 vector-effect="non-scaling-stroke"
-                x1="-50"
-                x2="-50"
+                x1="70"
+                x2="70"
                 y1="230"
                 y2="235"
               />
               <text
                 direction="inherit"
                 dx="0"
-                id="chart-axis-0-tickLabels-5"
-                x="-50"
+                id="chart-axis-0-tickLabels-0"
+                x="70"
                 y="256.97"
               >
                 <tspan
@@ -2802,7 +3608,162 @@ exports[`Chart/Renderers/CreateWrapper should render a scatter chart 1`] = `
                   dy="0"
                   style="font-family: \\"RedHatText\\",\\"Overpass\\",overpass,helvetica,arial,sans-serif; font-size: 14px; letter-spacing: normal; padding: 10px; stroke: transparent; fill: #4f5255;"
                   text-anchor="middle"
-                  x="-50"
+                  x="70"
+                >
+                  10/31
+                </tspan>
+              </text>
+            </g>
+            <g
+              role="presentation"
+            >
+              <line
+                role="presentation"
+                shape-rendering="auto"
+                style="stroke: #d2d2d2; fill: transparent; size: 5px; stroke-linecap: round; stroke-linejoin: round; stroke-width: 1;"
+                vector-effect="non-scaling-stroke"
+                x1="146"
+                x2="146"
+                y1="230"
+                y2="235"
+              />
+              <text
+                direction="inherit"
+                dx="0"
+                id="chart-axis-0-tickLabels-1"
+                x="146"
+                y="256.97"
+              >
+                <tspan
+                  dx="0"
+                  dy="0"
+                  style="font-family: \\"RedHatText\\",\\"Overpass\\",overpass,helvetica,arial,sans-serif; font-size: 14px; letter-spacing: normal; padding: 10px; stroke: transparent; fill: #4f5255;"
+                  text-anchor="middle"
+                  x="146"
+                >
+                  11/01
+                </tspan>
+              </text>
+            </g>
+            <g
+              role="presentation"
+            >
+              <line
+                role="presentation"
+                shape-rendering="auto"
+                style="stroke: #d2d2d2; fill: transparent; size: 5px; stroke-linecap: round; stroke-linejoin: round; stroke-width: 1;"
+                vector-effect="non-scaling-stroke"
+                x1="222"
+                x2="222"
+                y1="230"
+                y2="235"
+              />
+              <text
+                direction="inherit"
+                dx="0"
+                id="chart-axis-0-tickLabels-2"
+                x="222"
+                y="256.97"
+              >
+                <tspan
+                  dx="0"
+                  dy="0"
+                  style="font-family: \\"RedHatText\\",\\"Overpass\\",overpass,helvetica,arial,sans-serif; font-size: 14px; letter-spacing: normal; padding: 10px; stroke: transparent; fill: #4f5255;"
+                  text-anchor="middle"
+                  x="222"
+                >
+                  11/02
+                </tspan>
+              </text>
+            </g>
+            <g
+              role="presentation"
+            >
+              <line
+                role="presentation"
+                shape-rendering="auto"
+                style="stroke: #d2d2d2; fill: transparent; size: 5px; stroke-linecap: round; stroke-linejoin: round; stroke-width: 1;"
+                vector-effect="non-scaling-stroke"
+                x1="298"
+                x2="298"
+                y1="230"
+                y2="235"
+              />
+              <text
+                direction="inherit"
+                dx="0"
+                id="chart-axis-0-tickLabels-3"
+                x="298"
+                y="256.97"
+              >
+                <tspan
+                  dx="0"
+                  dy="0"
+                  style="font-family: \\"RedHatText\\",\\"Overpass\\",overpass,helvetica,arial,sans-serif; font-size: 14px; letter-spacing: normal; padding: 10px; stroke: transparent; fill: #4f5255;"
+                  text-anchor="middle"
+                  x="298"
+                >
+                  11/03
+                </tspan>
+              </text>
+            </g>
+            <g
+              role="presentation"
+            >
+              <line
+                role="presentation"
+                shape-rendering="auto"
+                style="stroke: #d2d2d2; fill: transparent; size: 5px; stroke-linecap: round; stroke-linejoin: round; stroke-width: 1;"
+                vector-effect="non-scaling-stroke"
+                x1="374"
+                x2="374"
+                y1="230"
+                y2="235"
+              />
+              <text
+                direction="inherit"
+                dx="0"
+                id="chart-axis-0-tickLabels-4"
+                x="374"
+                y="256.97"
+              >
+                <tspan
+                  dx="0"
+                  dy="0"
+                  style="font-family: \\"RedHatText\\",\\"Overpass\\",overpass,helvetica,arial,sans-serif; font-size: 14px; letter-spacing: normal; padding: 10px; stroke: transparent; fill: #4f5255;"
+                  text-anchor="middle"
+                  x="374"
+                >
+                  11/04
+                </tspan>
+              </text>
+            </g>
+            <g
+              role="presentation"
+            >
+              <line
+                role="presentation"
+                shape-rendering="auto"
+                style="stroke: #d2d2d2; fill: transparent; size: 5px; stroke-linecap: round; stroke-linejoin: round; stroke-width: 1;"
+                vector-effect="non-scaling-stroke"
+                x1="450"
+                x2="450"
+                y1="230"
+                y2="235"
+              />
+              <text
+                direction="inherit"
+                dx="0"
+                id="chart-axis-0-tickLabels-5"
+                x="450"
+                y="256.97"
+              >
+                <tspan
+                  dx="0"
+                  dy="0"
+                  style="font-family: \\"RedHatText\\",\\"Overpass\\",overpass,helvetica,arial,sans-serif; font-size: 14px; letter-spacing: normal; padding: 10px; stroke: transparent; fill: #4f5255;"
+                  text-anchor="middle"
+                  x="450"
                 >
                   11/05
                 </tspan>
@@ -3038,7 +3999,7 @@ exports[`Chart/Renderers/CreateWrapper should render a scatter chart 1`] = `
               style="fill: #151515; opacity: 1; stroke: transparent; stroke-width: 0;"
             />
             <path
-              d="M 46, 95
+              d="M 146, 95
       m -3, 0
       a 3, 3 0 1,0 6,0
       a 3, 3 0 1,0 -6,0"
@@ -3047,7 +4008,7 @@ exports[`Chart/Renderers/CreateWrapper should render a scatter chart 1`] = `
               style="fill: #151515; opacity: 1; stroke: transparent; stroke-width: 0;"
             />
             <path
-              d="M 22, 50
+              d="M 222, 50
       m -3, 0
       a 3, 3 0 1,0 6,0
       a 3, 3 0 1,0 -6,0"
@@ -3056,7 +4017,7 @@ exports[`Chart/Renderers/CreateWrapper should render a scatter chart 1`] = `
               style="fill: #151515; opacity: 1; stroke: transparent; stroke-width: 0;"
             />
             <path
-              d="M -2, 95
+              d="M 298, 95
       m -3, 0
       a 3, 3 0 1,0 6,0
       a 3, 3 0 1,0 -6,0"
@@ -3065,7 +4026,7 @@ exports[`Chart/Renderers/CreateWrapper should render a scatter chart 1`] = `
               style="fill: #151515; opacity: 1; stroke: transparent; stroke-width: 0;"
             />
             <path
-              d="M -26.000000000000004, 95
+              d="M 374, 95
       m -3, 0
       a 3, 3 0 1,0 6,0
       a 3, 3 0 1,0 -6,0"
@@ -3074,7 +4035,7 @@ exports[`Chart/Renderers/CreateWrapper should render a scatter chart 1`] = `
               style="fill: #151515; opacity: 1; stroke: transparent; stroke-width: 0;"
             />
             <path
-              d="M -50, 95
+              d="M 450, 95
       m -3, 0
       a 3, 3 0 1,0 6,0
       a 3, 3 0 1,0 -6,0"
@@ -3090,8 +4051,8 @@ exports[`Chart/Renderers/CreateWrapper should render a scatter chart 1`] = `
           <svg
             height="300"
             style="overflow: visible; width: 100%; height: 100%;"
-            viewBox="0 0 0 300"
-            width="0"
+            viewBox="0 0 500 300"
+            width="500"
           />
         </div>
       </div>
@@ -3114,8 +4075,8 @@ exports[`Chart/Renderers/CreateWrapper should render a stacked line and scatter 
           height="300"
           role="img"
           style="pointer-events: all; width: 100%; height: 100%;"
-          viewBox="0 0 0 300"
-          width="0"
+          viewBox="0 0 500 300"
+          width="500"
         >
           <g
             role="presentation"
@@ -3126,7 +4087,7 @@ exports[`Chart/Renderers/CreateWrapper should render a stacked line and scatter 
               style="stroke: #d2d2d2; fill: transparent; stroke-width: 1; stroke-linecap: round; stroke-linejoin: round;"
               vector-effect="non-scaling-stroke"
               x1="70"
-              x2="-50"
+              x2="450"
               y1="230"
               y2="230"
             />
@@ -3134,7 +4095,7 @@ exports[`Chart/Renderers/CreateWrapper should render a stacked line and scatter 
               direction="inherit"
               dx="0"
               id="chart-axis-0-axisLabel-0"
-              x="10"
+              x="260"
               y="281.97"
             >
               <tspan
@@ -3142,7 +4103,7 @@ exports[`Chart/Renderers/CreateWrapper should render a stacked line and scatter 
                 dy="0"
                 style="font-family: \\"RedHatText\\",\\"Overpass\\",overpass,helvetica,arial,sans-serif; font-size: 14px; letter-spacing: normal; padding: 40px; stroke: transparent; text-anchor: middle; fill: #252525;"
                 text-anchor="middle"
-                x="10"
+                x="260"
               >
                 Date
               </tspan>
@@ -3155,16 +4116,16 @@ exports[`Chart/Renderers/CreateWrapper should render a stacked line and scatter 
                 shape-rendering="auto"
                 style="stroke: #d2d2d2; fill: transparent; size: 5px; stroke-linecap: round; stroke-linejoin: round; stroke-width: 1;"
                 vector-effect="non-scaling-stroke"
-                x1="-50"
-                x2="-50"
+                x1="70"
+                x2="70"
                 y1="230"
                 y2="235"
               />
               <text
                 direction="inherit"
                 dx="0"
-                id="chart-axis-0-tickLabels-5"
-                x="-50"
+                id="chart-axis-0-tickLabels-0"
+                x="70"
                 y="256.97"
               >
                 <tspan
@@ -3172,9 +4133,71 @@ exports[`Chart/Renderers/CreateWrapper should render a stacked line and scatter 
                   dy="0"
                   style="font-family: \\"RedHatText\\",\\"Overpass\\",overpass,helvetica,arial,sans-serif; font-size: 14px; letter-spacing: normal; padding: 10px; stroke: transparent; fill: #4f5255;"
                   text-anchor="middle"
-                  x="-50"
+                  x="70"
                 >
-                  2020-11-05
+                  2020-10-31
+                </tspan>
+              </text>
+            </g>
+            <g
+              role="presentation"
+            >
+              <line
+                role="presentation"
+                shape-rendering="auto"
+                style="stroke: #d2d2d2; fill: transparent; size: 5px; stroke-linecap: round; stroke-linejoin: round; stroke-width: 1;"
+                vector-effect="non-scaling-stroke"
+                x1="222"
+                x2="222"
+                y1="230"
+                y2="235"
+              />
+              <text
+                direction="inherit"
+                dx="0"
+                id="chart-axis-0-tickLabels-2"
+                x="222"
+                y="256.97"
+              >
+                <tspan
+                  dx="0"
+                  dy="0"
+                  style="font-family: \\"RedHatText\\",\\"Overpass\\",overpass,helvetica,arial,sans-serif; font-size: 14px; letter-spacing: normal; padding: 10px; stroke: transparent; fill: #4f5255;"
+                  text-anchor="middle"
+                  x="222"
+                >
+                  2020-11-02
+                </tspan>
+              </text>
+            </g>
+            <g
+              role="presentation"
+            >
+              <line
+                role="presentation"
+                shape-rendering="auto"
+                style="stroke: #d2d2d2; fill: transparent; size: 5px; stroke-linecap: round; stroke-linejoin: round; stroke-width: 1;"
+                vector-effect="non-scaling-stroke"
+                x1="374"
+                x2="374"
+                y1="230"
+                y2="235"
+              />
+              <text
+                direction="inherit"
+                dx="0"
+                id="chart-axis-0-tickLabels-4"
+                x="374"
+                y="256.97"
+              >
+                <tspan
+                  dx="0"
+                  dy="0"
+                  style="font-family: \\"RedHatText\\",\\"Overpass\\",overpass,helvetica,arial,sans-serif; font-size: 14px; letter-spacing: normal; padding: 10px; stroke: transparent; fill: #4f5255;"
+                  text-anchor="middle"
+                  x="374"
+                >
+                  2020-11-04
                 </tspan>
               </text>
             </g>
@@ -3399,38 +4422,38 @@ exports[`Chart/Renderers/CreateWrapper should render a stacked line and scatter 
           </g>
           <g>
             <g
-              clip-path="url(#victory-clip-17)"
+              clip-path="url(#victory-clip-19)"
               style="height: 100%; width: 100%; user-select: none;"
             >
               <defs>
                 <clippath
-                  id="victory-clip-17"
+                  id="victory-clip-19"
                 >
                   <rect
                     height="180"
                     vector-effect="non-scaling-stroke"
-                    width="120"
-                    x="-50"
+                    width="380"
+                    x="70"
                     y="50"
                   />
                 </clippath>
               </defs>
               <path
-                d="M70,95L46,95L22,50L-2,95L-26.000000000000004,95L-50,95"
+                d="M70,95L146,95L222,50L298,95L374,95L450,95"
                 role="presentation"
                 shape-rendering="auto"
-                style="fill: none; stroke: #06c; width: 4px; opacity: 1; stroke-width: 2;"
+                style="fill: none; stroke: #06c; width: 14px; opacity: 1; stroke-width: 2;"
               />
             </g>
             <g>
               <path
-                d="M 22, 50
+                d="M 222, 50
       m -7, 0
       a 7, 7 0 1,0 14,0
       a 7, 7 0 1,0 -14,0"
                 role="presentation"
                 shape-rendering="auto"
-                style="fill: #c43a31; width: 4px; opacity: 1; stroke: transparent; stroke-width: 0;"
+                style="fill: #c43a31; width: 14px; opacity: 1; stroke: transparent; stroke-width: 0;"
               />
             </g>
           </g>
@@ -3441,8 +4464,8 @@ exports[`Chart/Renderers/CreateWrapper should render a stacked line and scatter 
           <svg
             height="300"
             style="overflow: visible; width: 100%; height: 100%;"
-            viewBox="0 0 0 300"
-            width="0"
+            viewBox="0 0 500 300"
+            width="500"
           />
         </div>
       </div>
@@ -3465,8 +4488,8 @@ exports[`Chart/Renderers/CreateWrapper should render a stacked line chart 1`] = 
           height="300"
           role="img"
           style="pointer-events: all; width: 100%; height: 100%;"
-          viewBox="0 0 0 300"
-          width="0"
+          viewBox="0 0 500 300"
+          width="500"
         >
           <g
             role="presentation"
@@ -3477,7 +4500,7 @@ exports[`Chart/Renderers/CreateWrapper should render a stacked line chart 1`] = 
               style="stroke: #d2d2d2; fill: transparent; stroke-width: 1; stroke-linecap: round; stroke-linejoin: round;"
               vector-effect="non-scaling-stroke"
               x1="70"
-              x2="-50"
+              x2="450"
               y1="230"
               y2="230"
             />
@@ -3485,7 +4508,7 @@ exports[`Chart/Renderers/CreateWrapper should render a stacked line chart 1`] = 
               direction="inherit"
               dx="0"
               id="chart-axis-0-axisLabel-0"
-              x="10"
+              x="260"
               y="281.97"
             >
               <tspan
@@ -3493,7 +4516,7 @@ exports[`Chart/Renderers/CreateWrapper should render a stacked line chart 1`] = 
                 dy="0"
                 style="font-family: \\"RedHatText\\",\\"Overpass\\",overpass,helvetica,arial,sans-serif; font-size: 14px; letter-spacing: normal; padding: 40px; stroke: transparent; text-anchor: middle; fill: #252525;"
                 text-anchor="middle"
-                x="10"
+                x="260"
               >
                 Date
               </tspan>
@@ -3506,16 +4529,16 @@ exports[`Chart/Renderers/CreateWrapper should render a stacked line chart 1`] = 
                 shape-rendering="auto"
                 style="stroke: #d2d2d2; fill: transparent; size: 5px; stroke-linecap: round; stroke-linejoin: round; stroke-width: 1;"
                 vector-effect="non-scaling-stroke"
-                x1="-50"
-                x2="-50"
+                x1="70"
+                x2="70"
                 y1="230"
                 y2="235"
               />
               <text
                 direction="inherit"
                 dx="0"
-                id="chart-axis-0-tickLabels-5"
-                x="-50"
+                id="chart-axis-0-tickLabels-0"
+                x="70"
                 y="256.97"
               >
                 <tspan
@@ -3523,7 +4546,162 @@ exports[`Chart/Renderers/CreateWrapper should render a stacked line chart 1`] = 
                   dy="0"
                   style="font-family: \\"RedHatText\\",\\"Overpass\\",overpass,helvetica,arial,sans-serif; font-size: 14px; letter-spacing: normal; padding: 10px; stroke: transparent; fill: #4f5255;"
                   text-anchor="middle"
-                  x="-50"
+                  x="70"
+                >
+                  10/31
+                </tspan>
+              </text>
+            </g>
+            <g
+              role="presentation"
+            >
+              <line
+                role="presentation"
+                shape-rendering="auto"
+                style="stroke: #d2d2d2; fill: transparent; size: 5px; stroke-linecap: round; stroke-linejoin: round; stroke-width: 1;"
+                vector-effect="non-scaling-stroke"
+                x1="146"
+                x2="146"
+                y1="230"
+                y2="235"
+              />
+              <text
+                direction="inherit"
+                dx="0"
+                id="chart-axis-0-tickLabels-1"
+                x="146"
+                y="256.97"
+              >
+                <tspan
+                  dx="0"
+                  dy="0"
+                  style="font-family: \\"RedHatText\\",\\"Overpass\\",overpass,helvetica,arial,sans-serif; font-size: 14px; letter-spacing: normal; padding: 10px; stroke: transparent; fill: #4f5255;"
+                  text-anchor="middle"
+                  x="146"
+                >
+                  11/01
+                </tspan>
+              </text>
+            </g>
+            <g
+              role="presentation"
+            >
+              <line
+                role="presentation"
+                shape-rendering="auto"
+                style="stroke: #d2d2d2; fill: transparent; size: 5px; stroke-linecap: round; stroke-linejoin: round; stroke-width: 1;"
+                vector-effect="non-scaling-stroke"
+                x1="222"
+                x2="222"
+                y1="230"
+                y2="235"
+              />
+              <text
+                direction="inherit"
+                dx="0"
+                id="chart-axis-0-tickLabels-2"
+                x="222"
+                y="256.97"
+              >
+                <tspan
+                  dx="0"
+                  dy="0"
+                  style="font-family: \\"RedHatText\\",\\"Overpass\\",overpass,helvetica,arial,sans-serif; font-size: 14px; letter-spacing: normal; padding: 10px; stroke: transparent; fill: #4f5255;"
+                  text-anchor="middle"
+                  x="222"
+                >
+                  11/02
+                </tspan>
+              </text>
+            </g>
+            <g
+              role="presentation"
+            >
+              <line
+                role="presentation"
+                shape-rendering="auto"
+                style="stroke: #d2d2d2; fill: transparent; size: 5px; stroke-linecap: round; stroke-linejoin: round; stroke-width: 1;"
+                vector-effect="non-scaling-stroke"
+                x1="298"
+                x2="298"
+                y1="230"
+                y2="235"
+              />
+              <text
+                direction="inherit"
+                dx="0"
+                id="chart-axis-0-tickLabels-3"
+                x="298"
+                y="256.97"
+              >
+                <tspan
+                  dx="0"
+                  dy="0"
+                  style="font-family: \\"RedHatText\\",\\"Overpass\\",overpass,helvetica,arial,sans-serif; font-size: 14px; letter-spacing: normal; padding: 10px; stroke: transparent; fill: #4f5255;"
+                  text-anchor="middle"
+                  x="298"
+                >
+                  11/03
+                </tspan>
+              </text>
+            </g>
+            <g
+              role="presentation"
+            >
+              <line
+                role="presentation"
+                shape-rendering="auto"
+                style="stroke: #d2d2d2; fill: transparent; size: 5px; stroke-linecap: round; stroke-linejoin: round; stroke-width: 1;"
+                vector-effect="non-scaling-stroke"
+                x1="374"
+                x2="374"
+                y1="230"
+                y2="235"
+              />
+              <text
+                direction="inherit"
+                dx="0"
+                id="chart-axis-0-tickLabels-4"
+                x="374"
+                y="256.97"
+              >
+                <tspan
+                  dx="0"
+                  dy="0"
+                  style="font-family: \\"RedHatText\\",\\"Overpass\\",overpass,helvetica,arial,sans-serif; font-size: 14px; letter-spacing: normal; padding: 10px; stroke: transparent; fill: #4f5255;"
+                  text-anchor="middle"
+                  x="374"
+                >
+                  11/04
+                </tspan>
+              </text>
+            </g>
+            <g
+              role="presentation"
+            >
+              <line
+                role="presentation"
+                shape-rendering="auto"
+                style="stroke: #d2d2d2; fill: transparent; size: 5px; stroke-linecap: round; stroke-linejoin: round; stroke-width: 1;"
+                vector-effect="non-scaling-stroke"
+                x1="450"
+                x2="450"
+                y1="230"
+                y2="235"
+              />
+              <text
+                direction="inherit"
+                dx="0"
+                id="chart-axis-0-tickLabels-5"
+                x="450"
+                y="256.97"
+              >
+                <tspan
+                  dx="0"
+                  dy="0"
+                  style="font-family: \\"RedHatText\\",\\"Overpass\\",overpass,helvetica,arial,sans-serif; font-size: 14px; letter-spacing: normal; padding: 10px; stroke: transparent; fill: #4f5255;"
+                  text-anchor="middle"
+                  x="450"
                 >
                   11/05
                 </tspan>
@@ -3729,14 +4907,14 @@ exports[`Chart/Renderers/CreateWrapper should render a stacked line chart 1`] = 
                   <rect
                     height="180"
                     vector-effect="non-scaling-stroke"
-                    width="120"
-                    x="-50"
+                    width="380"
+                    x="70"
                     y="50"
                   />
                 </clippath>
               </defs>
               <path
-                d="M70,153.3663366336634L46,140.89108910891088L22,92.77227722772278L-2,153.3663366336634L-26.000000000000004,50L-50,187.22772277227722"
+                d="M70,153.3663366336634L146,140.89108910891088L222,92.77227722772278L298,153.3663366336634L374,50L450,187.22772277227722"
                 role="presentation"
                 shape-rendering="auto"
                 style="fill: #6EC664; stroke: #8bc1f7; stroke-width: 1; opacity: 1;"
@@ -3753,14 +4931,14 @@ exports[`Chart/Renderers/CreateWrapper should render a stacked line chart 1`] = 
                   <rect
                     height="180"
                     vector-effect="non-scaling-stroke"
-                    width="120"
-                    x="-50"
+                    width="380"
+                    x="70"
                     y="50"
                   />
                 </clippath>
               </defs>
               <path
-                d="M70,187.22772277227722L46,187.22772277227722L22,172.97029702970298L-2,187.22772277227722L-26.000000000000004,187.22772277227722L-50,187.22772277227722"
+                d="M70,187.22772277227722L146,187.22772277227722L222,172.97029702970298L298,187.22772277227722L374,187.22772277227722L450,187.22772277227722"
                 role="presentation"
                 shape-rendering="auto"
                 style="fill: #A30000; stroke: #06c; stroke-width: 1; opacity: 1;"
@@ -3774,8 +4952,8 @@ exports[`Chart/Renderers/CreateWrapper should render a stacked line chart 1`] = 
           <svg
             height="300"
             style="overflow: visible; width: 100%; height: 100%;"
-            viewBox="0 0 0 300"
-            width="0"
+            viewBox="0 0 500 300"
+            width="500"
           />
         </div>
       </div>

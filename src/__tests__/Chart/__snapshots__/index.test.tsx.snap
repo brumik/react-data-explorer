@@ -29,8 +29,8 @@ exports[`Chart/Renderers/CreateWrapper should render one chart specified in the 
           height="300"
           role="img"
           style="pointer-events: all; width: 100%; height: 100%;"
-          viewBox="0 0 0 300"
-          width="0"
+          viewBox="0 0 500 300"
+          width="500"
         >
           <g
             role="presentation"
@@ -41,7 +41,7 @@ exports[`Chart/Renderers/CreateWrapper should render one chart specified in the 
               style="stroke: #d2d2d2; fill: transparent; stroke-width: 1; stroke-linecap: round; stroke-linejoin: round;"
               vector-effect="non-scaling-stroke"
               x1="70"
-              x2="-50"
+              x2="450"
               y1="230"
               y2="230"
             />
@@ -49,7 +49,7 @@ exports[`Chart/Renderers/CreateWrapper should render one chart specified in the 
               direction="inherit"
               dx="0"
               id="chart-axis-0-axisLabel-0"
-              x="10"
+              x="260"
               y="281.97"
             >
               <tspan
@@ -57,7 +57,7 @@ exports[`Chart/Renderers/CreateWrapper should render one chart specified in the 
                 dy="0"
                 style="font-family: \\"RedHatText\\",\\"Overpass\\",overpass,helvetica,arial,sans-serif; font-size: 14px; letter-spacing: normal; padding: 40px; stroke: transparent; text-anchor: middle; fill: #252525;"
                 text-anchor="middle"
-                x="10"
+                x="260"
               >
                 Date
               </tspan>
@@ -70,16 +70,16 @@ exports[`Chart/Renderers/CreateWrapper should render one chart specified in the 
                 shape-rendering="auto"
                 style="stroke: #d2d2d2; fill: transparent; size: 5px; stroke-linecap: round; stroke-linejoin: round; stroke-width: 1;"
                 vector-effect="non-scaling-stroke"
-                x1="-50"
-                x2="-50"
+                x1="70"
+                x2="70"
                 y1="230"
                 y2="235"
               />
               <text
                 direction="inherit"
                 dx="0"
-                id="chart-axis-0-tickLabels-5"
-                x="-50"
+                id="chart-axis-0-tickLabels-0"
+                x="70"
                 y="256.97"
               >
                 <tspan
@@ -87,9 +87,71 @@ exports[`Chart/Renderers/CreateWrapper should render one chart specified in the 
                   dy="0"
                   style="font-family: \\"RedHatText\\",\\"Overpass\\",overpass,helvetica,arial,sans-serif; font-size: 14px; letter-spacing: normal; padding: 10px; stroke: transparent; fill: #4f5255;"
                   text-anchor="middle"
-                  x="-50"
+                  x="70"
                 >
-                  2020-11-05
+                  2020-10-31
+                </tspan>
+              </text>
+            </g>
+            <g
+              role="presentation"
+            >
+              <line
+                role="presentation"
+                shape-rendering="auto"
+                style="stroke: #d2d2d2; fill: transparent; size: 5px; stroke-linecap: round; stroke-linejoin: round; stroke-width: 1;"
+                vector-effect="non-scaling-stroke"
+                x1="222"
+                x2="222"
+                y1="230"
+                y2="235"
+              />
+              <text
+                direction="inherit"
+                dx="0"
+                id="chart-axis-0-tickLabels-2"
+                x="222"
+                y="256.97"
+              >
+                <tspan
+                  dx="0"
+                  dy="0"
+                  style="font-family: \\"RedHatText\\",\\"Overpass\\",overpass,helvetica,arial,sans-serif; font-size: 14px; letter-spacing: normal; padding: 10px; stroke: transparent; fill: #4f5255;"
+                  text-anchor="middle"
+                  x="222"
+                >
+                  2020-11-02
+                </tspan>
+              </text>
+            </g>
+            <g
+              role="presentation"
+            >
+              <line
+                role="presentation"
+                shape-rendering="auto"
+                style="stroke: #d2d2d2; fill: transparent; size: 5px; stroke-linecap: round; stroke-linejoin: round; stroke-width: 1;"
+                vector-effect="non-scaling-stroke"
+                x1="374"
+                x2="374"
+                y1="230"
+                y2="235"
+              />
+              <text
+                direction="inherit"
+                dx="0"
+                id="chart-axis-0-tickLabels-4"
+                x="374"
+                y="256.97"
+              >
+                <tspan
+                  dx="0"
+                  dy="0"
+                  style="font-family: \\"RedHatText\\",\\"Overpass\\",overpass,helvetica,arial,sans-serif; font-size: 14px; letter-spacing: normal; padding: 10px; stroke: transparent; fill: #4f5255;"
+                  text-anchor="middle"
+                  x="374"
+                >
+                  2020-11-04
                 </tspan>
               </text>
             </g>
@@ -230,14 +292,14 @@ exports[`Chart/Renderers/CreateWrapper should render one chart specified in the 
                 <rect
                   height="180"
                   vector-effect="non-scaling-stroke"
-                  width="120"
-                  x="-50"
+                  width="380"
+                  x="70"
                   y="50"
                 />
               </clippath>
             </defs>
             <path
-              d="M70,185.58441558441558L46,169.22077922077924L22,124.80519480519482L-2,185.58441558441558L-26.000000000000004,50L-50,230"
+              d="M70,185.58441558441558L146,169.22077922077924L222,124.80519480519482L298,185.58441558441558L374,50L450,230"
               role="presentation"
               shape-rendering="auto"
               style="fill: transparent; stroke: #06c; opacity: 1; stroke-width: 2;"
@@ -250,8 +312,8 @@ exports[`Chart/Renderers/CreateWrapper should render one chart specified in the 
           <svg
             height="300"
             style="overflow: visible; width: 100%; height: 100%;"
-            viewBox="0 0 0 300"
-            width="0"
+            viewBox="0 0 500 300"
+            width="500"
           />
         </div>
       </div>
@@ -274,51 +336,51 @@ exports[`Chart/Renderers/CreateWrapper should render two charts specified in the
           height="300"
           role="img"
           style="pointer-events: all; width: 100%; height: 100%;"
-          viewBox="0 0 0 300"
-          width="0"
+          viewBox="0 0 500 300"
+          width="500"
         >
           <g>
             <path
-              d="M0,0Z"
+              d="M5.5109105961630896e-15,-90A90,90,0,0,1,14.51628001443512,-88.82160556161159L0,0Z"
               role="presentation"
               shape-rendering="auto"
               style="fill: #06c; padding: 8px; stroke: transparent; stroke-width: 1;"
-              transform="translate(10, 140)"
+              transform="translate(260, 140)"
             />
             <path
-              d="M0,0Z"
+              d="M14.51628001443512,-88.82160556161159A90,90,0,1,1,-32.474380171884526,83.93696821098504L0,0Z"
               role="presentation"
               shape-rendering="auto"
               style="fill: #8bc1f7; padding: 8px; stroke: transparent; stroke-width: 1;"
-              transform="translate(10, 140)"
+              transform="translate(260, 140)"
             />
             <path
-              d="M0,0Z"
+              d="M-32.474380171884526,83.93696821098504A90,90,0,0,1,-41.031029607108884,80.10277529137524L0,0Z"
               role="presentation"
               shape-rendering="auto"
               style="fill: #002f5d; padding: 8px; stroke: transparent; stroke-width: 1;"
-              transform="translate(10, 140)"
+              transform="translate(260, 140)"
             />
             <path
-              d="M0,0Z"
+              d="M-41.031029607108884,80.10277529137524A90,90,0,0,1,-49.0898372920156,75.43333397539469L0,0Z"
               role="presentation"
               shape-rendering="auto"
               style="fill: #519de9; padding: 8px; stroke: transparent; stroke-width: 1;"
-              transform="translate(10, 140)"
+              transform="translate(260, 140)"
             />
             <path
-              d="M0,0Z"
+              d="M-49.0898372920156,75.43333397539469A90,90,0,0,1,-56.622910616071444,69.95602899939635L0,0Z"
               role="presentation"
               shape-rendering="auto"
               style="fill: #004b95; padding: 8px; stroke: transparent; stroke-width: 1;"
-              transform="translate(10, 140)"
+              transform="translate(260, 140)"
             />
             <path
-              d="M0,0Z"
+              d="M-56.622910616071444,69.95602899939635A90,90,0,0,1,-1.6532731788489267e-14,-90L0,0Z"
               role="presentation"
               shape-rendering="auto"
               style="fill: #06c; padding: 8px; stroke: transparent; stroke-width: 1;"
-              transform="translate(10, 140)"
+              transform="translate(260, 140)"
             />
           </g>
         </svg>
@@ -328,8 +390,8 @@ exports[`Chart/Renderers/CreateWrapper should render two charts specified in the
           <svg
             height="300"
             style="overflow: visible; width: 100%; height: 100%;"
-            viewBox="0 0 0 300"
-            width="0"
+            viewBox="0 0 500 300"
+            width="500"
           />
         </div>
       </div>
@@ -347,8 +409,8 @@ exports[`Chart/Renderers/CreateWrapper should render two charts specified in the
           height="300"
           role="img"
           style="pointer-events: all; width: 100%; height: 100%;"
-          viewBox="0 0 0 300"
-          width="0"
+          viewBox="0 0 500 300"
+          width="500"
         >
           <g
             role="presentation"
@@ -359,7 +421,7 @@ exports[`Chart/Renderers/CreateWrapper should render two charts specified in the
               style="stroke: #d2d2d2; fill: transparent; stroke-width: 1; stroke-linecap: round; stroke-linejoin: round;"
               vector-effect="non-scaling-stroke"
               x1="70"
-              x2="-50"
+              x2="450"
               y1="230"
               y2="230"
             />
@@ -367,7 +429,7 @@ exports[`Chart/Renderers/CreateWrapper should render two charts specified in the
               direction="inherit"
               dx="0"
               id="chart-axis-0-axisLabel-0"
-              x="10"
+              x="260"
               y="281.97"
             >
               <tspan
@@ -375,7 +437,7 @@ exports[`Chart/Renderers/CreateWrapper should render two charts specified in the
                 dy="0"
                 style="font-family: \\"RedHatText\\",\\"Overpass\\",overpass,helvetica,arial,sans-serif; font-size: 14px; letter-spacing: normal; padding: 40px; stroke: transparent; text-anchor: middle; fill: #252525;"
                 text-anchor="middle"
-                x="10"
+                x="260"
               >
                 Date
               </tspan>
@@ -388,16 +450,16 @@ exports[`Chart/Renderers/CreateWrapper should render two charts specified in the
                 shape-rendering="auto"
                 style="stroke: #d2d2d2; fill: transparent; size: 5px; stroke-linecap: round; stroke-linejoin: round; stroke-width: 1;"
                 vector-effect="non-scaling-stroke"
-                x1="-50"
-                x2="-50"
+                x1="70"
+                x2="70"
                 y1="230"
                 y2="235"
               />
               <text
                 direction="inherit"
                 dx="0"
-                id="chart-axis-0-tickLabels-5"
-                x="-50"
+                id="chart-axis-0-tickLabels-0"
+                x="70"
                 y="256.97"
               >
                 <tspan
@@ -405,9 +467,71 @@ exports[`Chart/Renderers/CreateWrapper should render two charts specified in the
                   dy="0"
                   style="font-family: \\"RedHatText\\",\\"Overpass\\",overpass,helvetica,arial,sans-serif; font-size: 14px; letter-spacing: normal; padding: 10px; stroke: transparent; fill: #4f5255;"
                   text-anchor="middle"
-                  x="-50"
+                  x="70"
                 >
-                  2020-11-05
+                  2020-10-31
+                </tspan>
+              </text>
+            </g>
+            <g
+              role="presentation"
+            >
+              <line
+                role="presentation"
+                shape-rendering="auto"
+                style="stroke: #d2d2d2; fill: transparent; size: 5px; stroke-linecap: round; stroke-linejoin: round; stroke-width: 1;"
+                vector-effect="non-scaling-stroke"
+                x1="222"
+                x2="222"
+                y1="230"
+                y2="235"
+              />
+              <text
+                direction="inherit"
+                dx="0"
+                id="chart-axis-0-tickLabels-2"
+                x="222"
+                y="256.97"
+              >
+                <tspan
+                  dx="0"
+                  dy="0"
+                  style="font-family: \\"RedHatText\\",\\"Overpass\\",overpass,helvetica,arial,sans-serif; font-size: 14px; letter-spacing: normal; padding: 10px; stroke: transparent; fill: #4f5255;"
+                  text-anchor="middle"
+                  x="222"
+                >
+                  2020-11-02
+                </tspan>
+              </text>
+            </g>
+            <g
+              role="presentation"
+            >
+              <line
+                role="presentation"
+                shape-rendering="auto"
+                style="stroke: #d2d2d2; fill: transparent; size: 5px; stroke-linecap: round; stroke-linejoin: round; stroke-width: 1;"
+                vector-effect="non-scaling-stroke"
+                x1="374"
+                x2="374"
+                y1="230"
+                y2="235"
+              />
+              <text
+                direction="inherit"
+                dx="0"
+                id="chart-axis-0-tickLabels-4"
+                x="374"
+                y="256.97"
+              >
+                <tspan
+                  dx="0"
+                  dy="0"
+                  style="font-family: \\"RedHatText\\",\\"Overpass\\",overpass,helvetica,arial,sans-serif; font-size: 14px; letter-spacing: normal; padding: 10px; stroke: transparent; fill: #4f5255;"
+                  text-anchor="middle"
+                  x="374"
+                >
+                  2020-11-04
                 </tspan>
               </text>
             </g>
@@ -548,14 +672,14 @@ exports[`Chart/Renderers/CreateWrapper should render two charts specified in the
                 <rect
                   height="180"
                   vector-effect="non-scaling-stroke"
-                  width="120"
-                  x="-50"
+                  width="380"
+                  x="70"
                   y="50"
                 />
               </clippath>
             </defs>
             <path
-              d="M70,185.58441558441558L46,169.22077922077924L22,124.80519480519482L-2,185.58441558441558L-26.000000000000004,50L-50,230"
+              d="M70,185.58441558441558L146,169.22077922077924L222,124.80519480519482L298,185.58441558441558L374,50L450,230"
               role="presentation"
               shape-rendering="auto"
               style="fill: transparent; stroke: #06c; opacity: 1; stroke-width: 2;"
@@ -568,8 +692,8 @@ exports[`Chart/Renderers/CreateWrapper should render two charts specified in the
           <svg
             height="300"
             style="overflow: visible; width: 100%; height: 100%;"
-            viewBox="0 0 0 300"
-            width="0"
+            viewBox="0 0 500 300"
+            width="500"
           />
         </div>
       </div>

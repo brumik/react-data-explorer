@@ -75,8 +75,8 @@ exports[`Data Explorer should render pie chart in DataExplorer 1`] = `
               height="300"
               role="img"
               style="pointer-events: all; width: 100%; height: 100%;"
-              viewBox="0 0 0 300"
-              width="0"
+              viewBox="0 0 500 300"
+              width="500"
             >
               <g
                 role="presentation"
@@ -87,7 +87,7 @@ exports[`Data Explorer should render pie chart in DataExplorer 1`] = `
                   style="stroke: #d2d2d2; fill: transparent; stroke-width: 1; stroke-linecap: round; stroke-linejoin: round;"
                   vector-effect="non-scaling-stroke"
                   x1="70"
-                  x2="-50"
+                  x2="450"
                   y1="230"
                   y2="230"
                 />
@@ -95,7 +95,7 @@ exports[`Data Explorer should render pie chart in DataExplorer 1`] = `
                   direction="inherit"
                   dx="0"
                   id="chart-axis-0-axisLabel-0"
-                  x="10"
+                  x="260"
                   y="281.97"
                 >
                   <tspan
@@ -103,7 +103,7 @@ exports[`Data Explorer should render pie chart in DataExplorer 1`] = `
                     dy="0"
                     style="font-family: \\"RedHatText\\",\\"Overpass\\",overpass,helvetica,arial,sans-serif; font-size: 14px; letter-spacing: normal; padding: 40px; stroke: transparent; text-anchor: middle; fill: #252525;"
                     text-anchor="middle"
-                    x="10"
+                    x="260"
                   >
                     Date
                   </tspan>
@@ -116,16 +116,16 @@ exports[`Data Explorer should render pie chart in DataExplorer 1`] = `
                     shape-rendering="auto"
                     style="stroke: #d2d2d2; fill: transparent; size: 5px; stroke-linecap: round; stroke-linejoin: round; stroke-width: 1;"
                     vector-effect="non-scaling-stroke"
-                    x1="-50"
-                    x2="-50"
+                    x1="70"
+                    x2="70"
                     y1="230"
                     y2="235"
                   />
                   <text
                     direction="inherit"
                     dx="0"
-                    id="chart-axis-0-tickLabels-5"
-                    x="-50"
+                    id="chart-axis-0-tickLabels-0"
+                    x="70"
                     y="256.97"
                   >
                     <tspan
@@ -133,9 +133,71 @@ exports[`Data Explorer should render pie chart in DataExplorer 1`] = `
                       dy="0"
                       style="font-family: \\"RedHatText\\",\\"Overpass\\",overpass,helvetica,arial,sans-serif; font-size: 14px; letter-spacing: normal; padding: 10px; stroke: transparent; fill: #4f5255;"
                       text-anchor="middle"
-                      x="-50"
+                      x="70"
                     >
-                      2020-11-05
+                      2020-10-31
+                    </tspan>
+                  </text>
+                </g>
+                <g
+                  role="presentation"
+                >
+                  <line
+                    role="presentation"
+                    shape-rendering="auto"
+                    style="stroke: #d2d2d2; fill: transparent; size: 5px; stroke-linecap: round; stroke-linejoin: round; stroke-width: 1;"
+                    vector-effect="non-scaling-stroke"
+                    x1="222"
+                    x2="222"
+                    y1="230"
+                    y2="235"
+                  />
+                  <text
+                    direction="inherit"
+                    dx="0"
+                    id="chart-axis-0-tickLabels-2"
+                    x="222"
+                    y="256.97"
+                  >
+                    <tspan
+                      dx="0"
+                      dy="0"
+                      style="font-family: \\"RedHatText\\",\\"Overpass\\",overpass,helvetica,arial,sans-serif; font-size: 14px; letter-spacing: normal; padding: 10px; stroke: transparent; fill: #4f5255;"
+                      text-anchor="middle"
+                      x="222"
+                    >
+                      2020-11-02
+                    </tspan>
+                  </text>
+                </g>
+                <g
+                  role="presentation"
+                >
+                  <line
+                    role="presentation"
+                    shape-rendering="auto"
+                    style="stroke: #d2d2d2; fill: transparent; size: 5px; stroke-linecap: round; stroke-linejoin: round; stroke-width: 1;"
+                    vector-effect="non-scaling-stroke"
+                    x1="374"
+                    x2="374"
+                    y1="230"
+                    y2="235"
+                  />
+                  <text
+                    direction="inherit"
+                    dx="0"
+                    id="chart-axis-0-tickLabels-4"
+                    x="374"
+                    y="256.97"
+                  >
+                    <tspan
+                      dx="0"
+                      dy="0"
+                      style="font-family: \\"RedHatText\\",\\"Overpass\\",overpass,helvetica,arial,sans-serif; font-size: 14px; letter-spacing: normal; padding: 10px; stroke: transparent; fill: #4f5255;"
+                      text-anchor="middle"
+                      x="374"
+                    >
+                      2020-11-04
                     </tspan>
                   </text>
                 </g>
@@ -276,14 +338,14 @@ exports[`Data Explorer should render pie chart in DataExplorer 1`] = `
                     <rect
                       height="180"
                       vector-effect="non-scaling-stroke"
-                      width="120"
-                      x="-50"
+                      width="380"
+                      x="70"
                       y="50"
                     />
                   </clippath>
                 </defs>
                 <path
-                  d="M70,185.58441558441558L46,169.22077922077924L22,124.80519480519482L-2,185.58441558441558L-26.000000000000004,50L-50,230"
+                  d="M70,185.58441558441558L146,169.22077922077924L222,124.80519480519482L298,185.58441558441558L374,50L450,230"
                   role="presentation"
                   shape-rendering="auto"
                   style="fill: transparent; stroke: #06c; opacity: 1; stroke-width: 2;"
@@ -296,8 +358,8 @@ exports[`Data Explorer should render pie chart in DataExplorer 1`] = `
               <svg
                 height="300"
                 style="overflow: visible; width: 100%; height: 100%;"
-                viewBox="0 0 0 300"
-                width="0"
+                viewBox="0 0 500 300"
+                width="500"
               />
             </div>
           </div>

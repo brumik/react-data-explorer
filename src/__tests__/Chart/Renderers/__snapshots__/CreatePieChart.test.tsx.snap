@@ -14,51 +14,51 @@ exports[`Chart/Renderers/CreatePieChart should re-render a pie chart after legen
           height="300"
           role="img"
           style="pointer-events: all; width: 100%; height: 100%;"
-          viewBox="0 0 0 300"
-          width="0"
+          viewBox="0 0 500 300"
+          width="500"
         >
           <g>
             <path
-              d="M0,0Z"
+              d="M5.5109105961630896e-15,-90A90,90,0,0,1,14.51628001443512,-88.82160556161159L0,0Z"
               role="presentation"
               shape-rendering="auto"
               style="fill: #06c; padding: 8px; stroke: transparent; stroke-width: 1;"
-              transform="translate(-40, 140)"
+              transform="translate(210, 140)"
             />
             <path
-              d="M0,0Z"
+              d="M14.51628001443512,-88.82160556161159A90,90,0,1,1,-32.474380171884526,83.93696821098504L0,0Z"
               role="presentation"
               shape-rendering="auto"
               style="fill: #8bc1f7; padding: 8px; stroke: transparent; stroke-width: 1;"
-              transform="translate(-40, 140)"
+              transform="translate(210, 140)"
             />
             <path
-              d="M0,0Z"
+              d="M-32.474380171884526,83.93696821098504A90,90,0,0,1,-41.031029607108884,80.10277529137524L0,0Z"
               role="presentation"
               shape-rendering="auto"
               style="fill: #002f5d; padding: 8px; stroke: transparent; stroke-width: 1;"
-              transform="translate(-40, 140)"
+              transform="translate(210, 140)"
             />
             <path
-              d="M0,0Z"
+              d="M-41.031029607108884,80.10277529137524A90,90,0,0,1,-49.0898372920156,75.43333397539469L0,0Z"
               role="presentation"
               shape-rendering="auto"
               style="fill: #519de9; padding: 8px; stroke: transparent; stroke-width: 1;"
-              transform="translate(-40, 140)"
+              transform="translate(210, 140)"
             />
             <path
-              d="M0,0Z"
+              d="M-49.0898372920156,75.43333397539469A90,90,0,0,1,-56.622910616071444,69.95602899939635L0,0Z"
               role="presentation"
               shape-rendering="auto"
               style="fill: #004b95; padding: 8px; stroke: transparent; stroke-width: 1;"
-              transform="translate(-40, 140)"
+              transform="translate(210, 140)"
             />
             <path
-              d="M0,0Z"
+              d="M-56.622910616071444,69.95602899939635A90,90,0,0,1,-1.6532731788489267e-14,-90L0,0Z"
               role="presentation"
               shape-rendering="auto"
               style="fill: #06c; padding: 8px; stroke: transparent; stroke-width: 1;"
-              transform="translate(-40, 140)"
+              transform="translate(210, 140)"
             />
           </g>
           <g>
@@ -69,64 +69,64 @@ exports[`Chart/Renderers/CreatePieChart should re-render a pie chart after legen
               style="fill: none;"
               vector-effect="non-scaling-stroke"
               width="132.896875"
-              x="0"
+              x="308"
               y="49.28500000000001"
             />
             <path
-              d="M 9.128, 68.15700000000001
-      h9.744
-      v-9.744
-      h-9.744
+              d="M 317.128, 68.15700000000001
+      h9.744000000000028
+      v-9.744000000000028
+      h-9.744000000000028
       z"
               role="presentation"
               shape-rendering="auto"
               style="fill: #06c;"
             />
             <path
-              d="M 9.128, 99.06200000000001
-      h9.744
-      v-9.744
-      h-9.744
+              d="M 317.128, 99.06200000000001
+      h9.744000000000028
+      v-9.744000000000028
+      h-9.744000000000028
       z"
               role="presentation"
               shape-rendering="auto"
               style="fill: #8bc1f7;"
             />
             <path
-              d="M 9.128, 129.96699999999998
-      h9.744
-      v-9.744
-      h-9.744
+              d="M 317.128, 129.96699999999998
+      h9.744000000000028
+      v-9.744000000000028
+      h-9.744000000000028
       z"
               role="presentation"
               shape-rendering="auto"
               style="fill: #002f5d;"
             />
             <path
-              d="M 9.128, 160.872
-      h9.744
-      v-9.744
-      h-9.744
+              d="M 317.128, 160.872
+      h9.744000000000028
+      v-9.744000000000028
+      h-9.744000000000028
       z"
               role="presentation"
               shape-rendering="auto"
               style="fill: #519de9;"
             />
             <path
-              d="M 9.128, 191.777
-      h9.744
-      v-9.744
-      h-9.744
+              d="M 317.128, 191.777
+      h9.744000000000028
+      v-9.744000000000028
+      h-9.744000000000028
       z"
               role="presentation"
               shape-rendering="auto"
               style="fill: #004b95;"
             />
             <path
-              d="M 9.128, 222.68200000000002
-      h9.744
-      v-9.744
-      h-9.744
+              d="M 317.128, 222.68200000000002
+      h9.744000000000028
+      v-9.744000000000028
+      h-9.744000000000028
       z"
               role="presentation"
               shape-rendering="auto"
@@ -136,7 +136,7 @@ exports[`Chart/Renderers/CreatePieChart should re-render a pie chart after legen
               direction="inherit"
               dx="0"
               id="legend-4000-labels-0"
-              x="30.8"
+              x="338.8"
               y="68.25500000000001"
             >
               <tspan
@@ -144,7 +144,7 @@ exports[`Chart/Renderers/CreatePieChart should re-render a pie chart after legen
                 dy="0"
                 style="cursor: pointer; font-family: \\"RedHatText\\",\\"Overpass\\",overpass,helvetica,arial,sans-serif; font-size: 14px; letter-spacing: normal; padding: 10px; stroke: transparent; fill: #252525;"
                 text-anchor="start"
-                x="30.8"
+                x="338.8"
               >
                 organization_0
               </tspan>
@@ -153,7 +153,7 @@ exports[`Chart/Renderers/CreatePieChart should re-render a pie chart after legen
               direction="inherit"
               dx="0"
               id="legend-4000-labels-1"
-              x="30.8"
+              x="338.8"
               y="99.16000000000001"
             >
               <tspan
@@ -161,7 +161,7 @@ exports[`Chart/Renderers/CreatePieChart should re-render a pie chart after legen
                 dy="0"
                 style="cursor: pointer; font-family: \\"RedHatText\\",\\"Overpass\\",overpass,helvetica,arial,sans-serif; font-size: 14px; letter-spacing: normal; padding: 10px; stroke: transparent; fill: #252525;"
                 text-anchor="start"
-                x="30.8"
+                x="338.8"
               >
                 No Name
               </tspan>
@@ -170,7 +170,7 @@ exports[`Chart/Renderers/CreatePieChart should re-render a pie chart after legen
               direction="inherit"
               dx="0"
               id="legend-4000-labels-2"
-              x="30.8"
+              x="338.8"
               y="130.065"
             >
               <tspan
@@ -178,7 +178,7 @@ exports[`Chart/Renderers/CreatePieChart should re-render a pie chart after legen
                 dy="0"
                 style="cursor: pointer; font-family: \\"RedHatText\\",\\"Overpass\\",overpass,helvetica,arial,sans-serif; font-size: 14px; letter-spacing: normal; padding: 10px; stroke: transparent; fill: #252525;"
                 text-anchor="start"
-                x="30.8"
+                x="338.8"
               >
                 organization_3
               </tspan>
@@ -187,7 +187,7 @@ exports[`Chart/Renderers/CreatePieChart should re-render a pie chart after legen
               direction="inherit"
               dx="0"
               id="legend-4000-labels-3"
-              x="30.8"
+              x="338.8"
               y="160.97"
             >
               <tspan
@@ -195,7 +195,7 @@ exports[`Chart/Renderers/CreatePieChart should re-render a pie chart after legen
                 dy="0"
                 style="cursor: pointer; font-family: \\"RedHatText\\",\\"Overpass\\",overpass,helvetica,arial,sans-serif; font-size: 14px; letter-spacing: normal; padding: 10px; stroke: transparent; fill: #252525;"
                 text-anchor="start"
-                x="30.8"
+                x="338.8"
               >
                 organization_1
               </tspan>
@@ -204,7 +204,7 @@ exports[`Chart/Renderers/CreatePieChart should re-render a pie chart after legen
               direction="inherit"
               dx="0"
               id="legend-4000-labels-4"
-              x="30.8"
+              x="338.8"
               y="191.875"
             >
               <tspan
@@ -212,7 +212,7 @@ exports[`Chart/Renderers/CreatePieChart should re-render a pie chart after legen
                 dy="0"
                 style="cursor: pointer; font-family: \\"RedHatText\\",\\"Overpass\\",overpass,helvetica,arial,sans-serif; font-size: 14px; letter-spacing: normal; padding: 10px; stroke: transparent; fill: #252525;"
                 text-anchor="start"
-                x="30.8"
+                x="338.8"
               >
                 organization_2
               </tspan>
@@ -221,7 +221,7 @@ exports[`Chart/Renderers/CreatePieChart should re-render a pie chart after legen
               direction="inherit"
               dx="0"
               id="legend-4000-labels-5"
-              x="30.8"
+              x="338.8"
               y="222.78"
             >
               <tspan
@@ -229,7 +229,7 @@ exports[`Chart/Renderers/CreatePieChart should re-render a pie chart after legen
                 dy="0"
                 style="cursor: pointer; font-family: \\"RedHatText\\",\\"Overpass\\",overpass,helvetica,arial,sans-serif; font-size: 14px; letter-spacing: normal; padding: 10px; stroke: transparent; fill: #252525;"
                 text-anchor="start"
-                x="30.8"
+                x="338.8"
               >
                 26 Others
               </tspan>
@@ -242,8 +242,8 @@ exports[`Chart/Renderers/CreatePieChart should re-render a pie chart after legen
           <svg
             height="300"
             style="overflow: visible; width: 100%; height: 100%;"
-            viewBox="0 0 0 300"
-            width="0"
+            viewBox="0 0 500 300"
+            width="500"
           />
         </div>
       </div>
@@ -266,51 +266,51 @@ exports[`Chart/Renderers/CreatePieChart should re-render a pie chart after legen
           height="300"
           role="img"
           style="pointer-events: all; width: 100%; height: 100%;"
-          viewBox="0 0 0 300"
-          width="0"
+          viewBox="0 0 500 300"
+          width="500"
         >
           <g>
             <path
-              d="M0,0Z"
+              d="M5.5109105961630896e-15,-90L0,0Z"
               role="presentation"
               shape-rendering="auto"
               style="fill: #06c; padding: 8px; stroke: transparent; stroke-width: 1;"
-              transform="translate(-40, 140)"
+              transform="translate(210, 140)"
             />
             <path
-              d="M0,0Z"
+              d="M5.5109105961630896e-15,-90A90,90,0,1,1,-26.23376080895314,86.09175218230044L0,0Z"
               role="presentation"
               shape-rendering="auto"
               style="fill: #8bc1f7; padding: 8px; stroke: transparent; stroke-width: 1;"
-              transform="translate(-40, 140)"
+              transform="translate(210, 140)"
             />
             <path
-              d="M0,0Z"
+              d="M-26.23376080895314,86.09175218230044A90,90,0,0,1,-35.27699488740671,82.7981499292942L0,0Z"
               role="presentation"
               shape-rendering="auto"
               style="fill: #002f5d; padding: 8px; stroke: transparent; stroke-width: 1;"
-              transform="translate(-40, 140)"
+              transform="translate(210, 140)"
             />
             <path
-              d="M0,0Z"
+              d="M-35.27699488740671,82.7981499292942A90,90,0,0,1,-43.86068102094993,78.58906196398124L0,0Z"
               role="presentation"
               shape-rendering="auto"
               style="fill: #519de9; padding: 8px; stroke: transparent; stroke-width: 1;"
-              transform="translate(-40, 140)"
+              transform="translate(210, 140)"
             />
             <path
-              d="M0,0Z"
+              d="M-43.86068102094993,78.58906196398124A90,90,0,0,1,-51.94946657272961,73.49321684896402L0,0Z"
               role="presentation"
               shape-rendering="auto"
               style="fill: #004b95; padding: 8px; stroke: transparent; stroke-width: 1;"
-              transform="translate(-40, 140)"
+              transform="translate(210, 140)"
             />
             <path
-              d="M0,0Z"
+              d="M-51.94946657272961,73.49321684896402A90,90,0,0,1,-1.6532731788489267e-14,-90L0,0Z"
               role="presentation"
               shape-rendering="auto"
               style="fill: #06c; padding: 8px; stroke: transparent; stroke-width: 1;"
-              transform="translate(-40, 140)"
+              transform="translate(210, 140)"
             />
           </g>
           <g>
@@ -321,60 +321,60 @@ exports[`Chart/Renderers/CreatePieChart should re-render a pie chart after legen
               style="fill: none;"
               vector-effect="non-scaling-stroke"
               width="132.896875"
-              x="0"
+              x="308"
               y="49.28500000000001"
             />
             <path
-              d="m9.128, 56.28500000000001 .013 .013 0 0 2.179 2.219c.7-.204 1.418-.307 2.152-.307 2.859 0 5.464 1.551 7.814 4.654.243 .321.268 .753.073 1.097l-.073.111-.236.305c-.632.801-1.282 1.491-1.951 2.071l1.773 1.806c.382.389 .382 1.012 0 1.401l-.058.059c-.387.394-1.02.4-1.414.013l-.013-.013-11.732-11.956c-.382-.389-.382-1.012 0-1.401l.058-.059c.387-.394 1.02-.4 1.414-.013zm-.674 3.71 1.407 1.436c-.329.604-.516 1.298-.516 2.038 0 2.323 1.848 4.206 4.127 4.206.726 0 1.408-.191 2-.526l.966.984c-.956.396-1.945.593-2.966.593-2.859 0-5.464-1.551-7.814-4.654-.243-.321-.268-.753-.073-1.097l.073-.111.236-.305c.823-1.042 1.676-1.897 2.56-2.565zm2.177 2.22 4.072 4.149c-.377.167-.793.259-1.23.259-1.71 0-3.096-1.412-3.096-3.155 0-.445.091-.869.254-1.253zm2.842-2.953c-.43 0-.845.067-1.234.191l.865.882c.121-.015.244-.022.369-.022 1.71 0 3.096 1.412 3.096 3.155 0 .127-.007.252-.022.375l.866.882c.122-.397.187-.819.187-1.257 0-2.323-1.848-4.206-4.127-4.206z"
+              d="m317.128, 56.28500000000001 .013 .013 0 0 2.179 2.219c.7-.204 1.418-.307 2.152-.307 2.859 0 5.464 1.551 7.814 4.654.243 .321.268 .753.073 1.097l-.073.111-.236.305c-.632.801-1.282 1.491-1.951 2.071l1.773 1.806c.382.389 .382 1.012 0 1.401l-.058.059c-.387.394-1.02.4-1.414.013l-.013-.013-11.732-11.956c-.382-.389-.382-1.012 0-1.401l.058-.059c.387-.394 1.02-.4 1.414-.013zm-.674 3.71 1.407 1.436c-.329.604-.516 1.298-.516 2.038 0 2.323 1.848 4.206 4.127 4.206.726 0 1.408-.191 2-.526l.966.984c-.956.396-1.945.593-2.966.593-2.859 0-5.464-1.551-7.814-4.654-.243-.321-.268-.753-.073-1.097l.073-.111.236-.305c.823-1.042 1.676-1.897 2.56-2.565zm2.177 2.22 4.072 4.149c-.377.167-.793.259-1.23.259-1.71 0-3.096-1.412-3.096-3.155 0-.445.091-.869.254-1.253zm2.842-2.953c-.43 0-.845.067-1.234.191l.865.882c.121-.015.244-.022.369-.022 1.71 0 3.096 1.412 3.096 3.155 0 .127-.007.252-.022.375l.866.882c.122-.397.187-.819.187-1.257 0-2.323-1.848-4.206-4.127-4.206z"
               role="presentation"
               shape-rendering="auto"
               style="fill: #6a6e73;"
             />
             <path
-              d="M 9.128, 99.06200000000001
-      h9.744
-      v-9.744
-      h-9.744
+              d="M 317.128, 99.06200000000001
+      h9.744000000000028
+      v-9.744000000000028
+      h-9.744000000000028
       z"
               role="presentation"
               shape-rendering="auto"
               style="fill: #8bc1f7;"
             />
             <path
-              d="M 9.128, 129.96699999999998
-      h9.744
-      v-9.744
-      h-9.744
+              d="M 317.128, 129.96699999999998
+      h9.744000000000028
+      v-9.744000000000028
+      h-9.744000000000028
       z"
               role="presentation"
               shape-rendering="auto"
               style="fill: #002f5d;"
             />
             <path
-              d="M 9.128, 160.872
-      h9.744
-      v-9.744
-      h-9.744
+              d="M 317.128, 160.872
+      h9.744000000000028
+      v-9.744000000000028
+      h-9.744000000000028
       z"
               role="presentation"
               shape-rendering="auto"
               style="fill: #519de9;"
             />
             <path
-              d="M 9.128, 191.777
-      h9.744
-      v-9.744
-      h-9.744
+              d="M 317.128, 191.777
+      h9.744000000000028
+      v-9.744000000000028
+      h-9.744000000000028
       z"
               role="presentation"
               shape-rendering="auto"
               style="fill: #004b95;"
             />
             <path
-              d="M 9.128, 222.68200000000002
-      h9.744
-      v-9.744
-      h-9.744
+              d="M 317.128, 222.68200000000002
+      h9.744000000000028
+      v-9.744000000000028
+      h-9.744000000000028
       z"
               role="presentation"
               shape-rendering="auto"
@@ -384,7 +384,7 @@ exports[`Chart/Renderers/CreatePieChart should re-render a pie chart after legen
               direction="inherit"
               dx="0"
               id="legend-4000-labels-0"
-              x="30.8"
+              x="338.8"
               y="68.25500000000001"
             >
               <tspan
@@ -392,7 +392,7 @@ exports[`Chart/Renderers/CreatePieChart should re-render a pie chart after legen
                 dy="0"
                 style="cursor: pointer; font-family: \\"RedHatText\\",\\"Overpass\\",overpass,helvetica,arial,sans-serif; font-size: 14px; letter-spacing: normal; padding: 10px; stroke: transparent; fill: #6a6e73;"
                 text-anchor="start"
-                x="30.8"
+                x="338.8"
               >
                 organization_0
               </tspan>
@@ -401,7 +401,7 @@ exports[`Chart/Renderers/CreatePieChart should re-render a pie chart after legen
               direction="inherit"
               dx="0"
               id="legend-4000-labels-1"
-              x="30.8"
+              x="338.8"
               y="99.16000000000001"
             >
               <tspan
@@ -409,7 +409,7 @@ exports[`Chart/Renderers/CreatePieChart should re-render a pie chart after legen
                 dy="0"
                 style="cursor: pointer; font-family: \\"RedHatText\\",\\"Overpass\\",overpass,helvetica,arial,sans-serif; font-size: 14px; letter-spacing: normal; padding: 10px; stroke: transparent; fill: #252525;"
                 text-anchor="start"
-                x="30.8"
+                x="338.8"
               >
                 No Name
               </tspan>
@@ -418,7 +418,7 @@ exports[`Chart/Renderers/CreatePieChart should re-render a pie chart after legen
               direction="inherit"
               dx="0"
               id="legend-4000-labels-2"
-              x="30.8"
+              x="338.8"
               y="130.065"
             >
               <tspan
@@ -426,7 +426,7 @@ exports[`Chart/Renderers/CreatePieChart should re-render a pie chart after legen
                 dy="0"
                 style="cursor: pointer; font-family: \\"RedHatText\\",\\"Overpass\\",overpass,helvetica,arial,sans-serif; font-size: 14px; letter-spacing: normal; padding: 10px; stroke: transparent; fill: #252525;"
                 text-anchor="start"
-                x="30.8"
+                x="338.8"
               >
                 organization_3
               </tspan>
@@ -435,7 +435,7 @@ exports[`Chart/Renderers/CreatePieChart should re-render a pie chart after legen
               direction="inherit"
               dx="0"
               id="legend-4000-labels-3"
-              x="30.8"
+              x="338.8"
               y="160.97"
             >
               <tspan
@@ -443,7 +443,7 @@ exports[`Chart/Renderers/CreatePieChart should re-render a pie chart after legen
                 dy="0"
                 style="cursor: pointer; font-family: \\"RedHatText\\",\\"Overpass\\",overpass,helvetica,arial,sans-serif; font-size: 14px; letter-spacing: normal; padding: 10px; stroke: transparent; fill: #252525;"
                 text-anchor="start"
-                x="30.8"
+                x="338.8"
               >
                 organization_1
               </tspan>
@@ -452,7 +452,7 @@ exports[`Chart/Renderers/CreatePieChart should re-render a pie chart after legen
               direction="inherit"
               dx="0"
               id="legend-4000-labels-4"
-              x="30.8"
+              x="338.8"
               y="191.875"
             >
               <tspan
@@ -460,7 +460,7 @@ exports[`Chart/Renderers/CreatePieChart should re-render a pie chart after legen
                 dy="0"
                 style="cursor: pointer; font-family: \\"RedHatText\\",\\"Overpass\\",overpass,helvetica,arial,sans-serif; font-size: 14px; letter-spacing: normal; padding: 10px; stroke: transparent; fill: #252525;"
                 text-anchor="start"
-                x="30.8"
+                x="338.8"
               >
                 organization_2
               </tspan>
@@ -469,7 +469,7 @@ exports[`Chart/Renderers/CreatePieChart should re-render a pie chart after legen
               direction="inherit"
               dx="0"
               id="legend-4000-labels-5"
-              x="30.8"
+              x="338.8"
               y="222.78"
             >
               <tspan
@@ -477,7 +477,7 @@ exports[`Chart/Renderers/CreatePieChart should re-render a pie chart after legen
                 dy="0"
                 style="cursor: pointer; font-family: \\"RedHatText\\",\\"Overpass\\",overpass,helvetica,arial,sans-serif; font-size: 14px; letter-spacing: normal; padding: 10px; stroke: transparent; fill: #252525;"
                 text-anchor="start"
-                x="30.8"
+                x="338.8"
               >
                 26 Others
               </tspan>
@@ -490,8 +490,8 @@ exports[`Chart/Renderers/CreatePieChart should re-render a pie chart after legen
           <svg
             height="300"
             style="overflow: visible; width: 100%; height: 100%;"
-            viewBox="0 0 0 300"
-            width="0"
+            viewBox="0 0 500 300"
+            width="500"
           />
         </div>
       </div>
@@ -514,51 +514,51 @@ exports[`Chart/Renderers/CreatePieChart should render a 0 data chart without spe
           height="300"
           role="img"
           style="pointer-events: all; width: 100%; height: 100%;"
-          viewBox="0 0 0 300"
-          width="0"
+          viewBox="0 0 500 300"
+          width="500"
         >
           <g>
             <path
-              d="M0,0Z"
+              d="M5.5109105961630896e-15,-90L0,0Z"
               role="presentation"
               shape-rendering="auto"
               style="fill: #06c; padding: 8px; stroke: transparent; stroke-width: 1;"
-              transform="translate(-40, 140)"
+              transform="translate(210, 140)"
             />
             <path
-              d="M0,0Z"
+              d="M5.5109105961630896e-15,-90L0,0Z"
               role="presentation"
               shape-rendering="auto"
               style="fill: #8bc1f7; padding: 8px; stroke: transparent; stroke-width: 1;"
-              transform="translate(-40, 140)"
+              transform="translate(210, 140)"
             />
             <path
-              d="M0,0Z"
+              d="M5.5109105961630896e-15,-90L0,0Z"
               role="presentation"
               shape-rendering="auto"
               style="fill: #002f5d; padding: 8px; stroke: transparent; stroke-width: 1;"
-              transform="translate(-40, 140)"
+              transform="translate(210, 140)"
             />
             <path
-              d="M0,0Z"
+              d="M5.5109105961630896e-15,-90L0,0Z"
               role="presentation"
               shape-rendering="auto"
               style="fill: #519de9; padding: 8px; stroke: transparent; stroke-width: 1;"
-              transform="translate(-40, 140)"
+              transform="translate(210, 140)"
             />
             <path
-              d="M0,0Z"
+              d="M5.5109105961630896e-15,-90L0,0Z"
               role="presentation"
               shape-rendering="auto"
               style="fill: #004b95; padding: 8px; stroke: transparent; stroke-width: 1;"
-              transform="translate(-40, 140)"
+              transform="translate(210, 140)"
             />
             <path
-              d="M0,0Z"
+              d="M5.5109105961630896e-15,-90L0,0Z"
               role="presentation"
               shape-rendering="auto"
               style="fill: #06c; padding: 8px; stroke: transparent; stroke-width: 1;"
-              transform="translate(-40, 140)"
+              transform="translate(210, 140)"
             />
           </g>
           <g>
@@ -569,64 +569,64 @@ exports[`Chart/Renderers/CreatePieChart should render a 0 data chart without spe
               style="fill: none;"
               vector-effect="non-scaling-stroke"
               width="132.896875"
-              x="0"
+              x="308"
               y="49.28500000000001"
             />
             <path
-              d="M 9.128, 68.15700000000001
-      h9.744
-      v-9.744
-      h-9.744
+              d="M 317.128, 68.15700000000001
+      h9.744000000000028
+      v-9.744000000000028
+      h-9.744000000000028
       z"
               role="presentation"
               shape-rendering="auto"
               style="fill: #06c;"
             />
             <path
-              d="M 9.128, 99.06200000000001
-      h9.744
-      v-9.744
-      h-9.744
+              d="M 317.128, 99.06200000000001
+      h9.744000000000028
+      v-9.744000000000028
+      h-9.744000000000028
       z"
               role="presentation"
               shape-rendering="auto"
               style="fill: #8bc1f7;"
             />
             <path
-              d="M 9.128, 129.96699999999998
-      h9.744
-      v-9.744
-      h-9.744
+              d="M 317.128, 129.96699999999998
+      h9.744000000000028
+      v-9.744000000000028
+      h-9.744000000000028
       z"
               role="presentation"
               shape-rendering="auto"
               style="fill: #002f5d;"
             />
             <path
-              d="M 9.128, 160.872
-      h9.744
-      v-9.744
-      h-9.744
+              d="M 317.128, 160.872
+      h9.744000000000028
+      v-9.744000000000028
+      h-9.744000000000028
       z"
               role="presentation"
               shape-rendering="auto"
               style="fill: #519de9;"
             />
             <path
-              d="M 9.128, 191.777
-      h9.744
-      v-9.744
-      h-9.744
+              d="M 317.128, 191.777
+      h9.744000000000028
+      v-9.744000000000028
+      h-9.744000000000028
       z"
               role="presentation"
               shape-rendering="auto"
               style="fill: #004b95;"
             />
             <path
-              d="M 9.128, 222.68200000000002
-      h9.744
-      v-9.744
-      h-9.744
+              d="M 317.128, 222.68200000000002
+      h9.744000000000028
+      v-9.744000000000028
+      h-9.744000000000028
       z"
               role="presentation"
               shape-rendering="auto"
@@ -636,7 +636,7 @@ exports[`Chart/Renderers/CreatePieChart should render a 0 data chart without spe
               direction="inherit"
               dx="0"
               id="legend-4000-labels-0"
-              x="30.8"
+              x="338.8"
               y="68.25500000000001"
             >
               <tspan
@@ -644,7 +644,7 @@ exports[`Chart/Renderers/CreatePieChart should render a 0 data chart without spe
                 dy="0"
                 style="cursor: pointer; font-family: \\"RedHatText\\",\\"Overpass\\",overpass,helvetica,arial,sans-serif; font-size: 14px; letter-spacing: normal; padding: 10px; stroke: transparent; fill: #252525;"
                 text-anchor="start"
-                x="30.8"
+                x="338.8"
               >
                 organization_0
               </tspan>
@@ -653,7 +653,7 @@ exports[`Chart/Renderers/CreatePieChart should render a 0 data chart without spe
               direction="inherit"
               dx="0"
               id="legend-4000-labels-1"
-              x="30.8"
+              x="338.8"
               y="99.16000000000001"
             >
               <tspan
@@ -661,7 +661,7 @@ exports[`Chart/Renderers/CreatePieChart should render a 0 data chart without spe
                 dy="0"
                 style="cursor: pointer; font-family: \\"RedHatText\\",\\"Overpass\\",overpass,helvetica,arial,sans-serif; font-size: 14px; letter-spacing: normal; padding: 10px; stroke: transparent; fill: #252525;"
                 text-anchor="start"
-                x="30.8"
+                x="338.8"
               >
                 No Name
               </tspan>
@@ -670,7 +670,7 @@ exports[`Chart/Renderers/CreatePieChart should render a 0 data chart without spe
               direction="inherit"
               dx="0"
               id="legend-4000-labels-2"
-              x="30.8"
+              x="338.8"
               y="130.065"
             >
               <tspan
@@ -678,7 +678,7 @@ exports[`Chart/Renderers/CreatePieChart should render a 0 data chart without spe
                 dy="0"
                 style="cursor: pointer; font-family: \\"RedHatText\\",\\"Overpass\\",overpass,helvetica,arial,sans-serif; font-size: 14px; letter-spacing: normal; padding: 10px; stroke: transparent; fill: #252525;"
                 text-anchor="start"
-                x="30.8"
+                x="338.8"
               >
                 organization_3
               </tspan>
@@ -687,7 +687,7 @@ exports[`Chart/Renderers/CreatePieChart should render a 0 data chart without spe
               direction="inherit"
               dx="0"
               id="legend-4000-labels-3"
-              x="30.8"
+              x="338.8"
               y="160.97"
             >
               <tspan
@@ -695,7 +695,7 @@ exports[`Chart/Renderers/CreatePieChart should render a 0 data chart without spe
                 dy="0"
                 style="cursor: pointer; font-family: \\"RedHatText\\",\\"Overpass\\",overpass,helvetica,arial,sans-serif; font-size: 14px; letter-spacing: normal; padding: 10px; stroke: transparent; fill: #252525;"
                 text-anchor="start"
-                x="30.8"
+                x="338.8"
               >
                 organization_1
               </tspan>
@@ -704,7 +704,7 @@ exports[`Chart/Renderers/CreatePieChart should render a 0 data chart without spe
               direction="inherit"
               dx="0"
               id="legend-4000-labels-4"
-              x="30.8"
+              x="338.8"
               y="191.875"
             >
               <tspan
@@ -712,7 +712,7 @@ exports[`Chart/Renderers/CreatePieChart should render a 0 data chart without spe
                 dy="0"
                 style="cursor: pointer; font-family: \\"RedHatText\\",\\"Overpass\\",overpass,helvetica,arial,sans-serif; font-size: 14px; letter-spacing: normal; padding: 10px; stroke: transparent; fill: #252525;"
                 text-anchor="start"
-                x="30.8"
+                x="338.8"
               >
                 organization_2
               </tspan>
@@ -721,7 +721,7 @@ exports[`Chart/Renderers/CreatePieChart should render a 0 data chart without spe
               direction="inherit"
               dx="0"
               id="legend-4000-labels-5"
-              x="30.8"
+              x="338.8"
               y="222.78"
             >
               <tspan
@@ -729,7 +729,7 @@ exports[`Chart/Renderers/CreatePieChart should render a 0 data chart without spe
                 dy="0"
                 style="cursor: pointer; font-family: \\"RedHatText\\",\\"Overpass\\",overpass,helvetica,arial,sans-serif; font-size: 14px; letter-spacing: normal; padding: 10px; stroke: transparent; fill: #252525;"
                 text-anchor="start"
-                x="30.8"
+                x="338.8"
               >
                 26 Others
               </tspan>
@@ -742,8 +742,8 @@ exports[`Chart/Renderers/CreatePieChart should render a 0 data chart without spe
           <svg
             height="300"
             style="overflow: visible; width: 100%; height: 100%;"
-            viewBox="0 0 0 300"
-            width="0"
+            viewBox="0 0 500 300"
+            width="500"
           />
         </div>
       </div>
@@ -766,51 +766,51 @@ exports[`Chart/Renderers/CreatePieChart should render a pie chart 1`] = `
           height="300"
           role="img"
           style="pointer-events: all; width: 100%; height: 100%;"
-          viewBox="0 0 0 300"
-          width="0"
+          viewBox="0 0 500 300"
+          width="500"
         >
           <g>
             <path
-              d="M0,0Z"
+              d="M5.5109105961630896e-15,-90A90,90,0,0,1,14.51628001443512,-88.82160556161159L0,0Z"
               role="presentation"
               shape-rendering="auto"
               style="fill: #06c; padding: 8px; stroke: transparent; stroke-width: 1;"
-              transform="translate(10, 140)"
+              transform="translate(260, 140)"
             />
             <path
-              d="M0,0Z"
+              d="M14.51628001443512,-88.82160556161159A90,90,0,1,1,-32.474380171884526,83.93696821098504L0,0Z"
               role="presentation"
               shape-rendering="auto"
               style="fill: #8bc1f7; padding: 8px; stroke: transparent; stroke-width: 1;"
-              transform="translate(10, 140)"
+              transform="translate(260, 140)"
             />
             <path
-              d="M0,0Z"
+              d="M-32.474380171884526,83.93696821098504A90,90,0,0,1,-41.031029607108884,80.10277529137524L0,0Z"
               role="presentation"
               shape-rendering="auto"
               style="fill: #002f5d; padding: 8px; stroke: transparent; stroke-width: 1;"
-              transform="translate(10, 140)"
+              transform="translate(260, 140)"
             />
             <path
-              d="M0,0Z"
+              d="M-41.031029607108884,80.10277529137524A90,90,0,0,1,-49.0898372920156,75.43333397539469L0,0Z"
               role="presentation"
               shape-rendering="auto"
               style="fill: #519de9; padding: 8px; stroke: transparent; stroke-width: 1;"
-              transform="translate(10, 140)"
+              transform="translate(260, 140)"
             />
             <path
-              d="M0,0Z"
+              d="M-49.0898372920156,75.43333397539469A90,90,0,0,1,-56.622910616071444,69.95602899939635L0,0Z"
               role="presentation"
               shape-rendering="auto"
               style="fill: #004b95; padding: 8px; stroke: transparent; stroke-width: 1;"
-              transform="translate(10, 140)"
+              transform="translate(260, 140)"
             />
             <path
-              d="M0,0Z"
+              d="M-56.622910616071444,69.95602899939635A90,90,0,0,1,-1.6532731788489267e-14,-90L0,0Z"
               role="presentation"
               shape-rendering="auto"
               style="fill: #06c; padding: 8px; stroke: transparent; stroke-width: 1;"
-              transform="translate(10, 140)"
+              transform="translate(260, 140)"
             />
           </g>
         </svg>
@@ -820,8 +820,8 @@ exports[`Chart/Renderers/CreatePieChart should render a pie chart 1`] = `
           <svg
             height="300"
             style="overflow: visible; width: 100%; height: 100%;"
-            viewBox="0 0 0 300"
-            width="0"
+            viewBox="0 0 500 300"
+            width="500"
           />
         </div>
       </div>
@@ -844,51 +844,51 @@ exports[`Chart/Renderers/CreatePieChart should render a pie chart with legend 1`
           height="300"
           role="img"
           style="pointer-events: all; width: 100%; height: 100%;"
-          viewBox="0 0 0 300"
-          width="0"
+          viewBox="0 0 500 300"
+          width="500"
         >
           <g>
             <path
-              d="M0,0Z"
+              d="M5.5109105961630896e-15,-90A90,90,0,0,1,14.51628001443512,-88.82160556161159L0,0Z"
               role="presentation"
               shape-rendering="auto"
               style="fill: #06c; padding: 8px; stroke: transparent; stroke-width: 1;"
-              transform="translate(-40, 140)"
+              transform="translate(210, 140)"
             />
             <path
-              d="M0,0Z"
+              d="M14.51628001443512,-88.82160556161159A90,90,0,1,1,-32.474380171884526,83.93696821098504L0,0Z"
               role="presentation"
               shape-rendering="auto"
               style="fill: #8bc1f7; padding: 8px; stroke: transparent; stroke-width: 1;"
-              transform="translate(-40, 140)"
+              transform="translate(210, 140)"
             />
             <path
-              d="M0,0Z"
+              d="M-32.474380171884526,83.93696821098504A90,90,0,0,1,-41.031029607108884,80.10277529137524L0,0Z"
               role="presentation"
               shape-rendering="auto"
               style="fill: #002f5d; padding: 8px; stroke: transparent; stroke-width: 1;"
-              transform="translate(-40, 140)"
+              transform="translate(210, 140)"
             />
             <path
-              d="M0,0Z"
+              d="M-41.031029607108884,80.10277529137524A90,90,0,0,1,-49.0898372920156,75.43333397539469L0,0Z"
               role="presentation"
               shape-rendering="auto"
               style="fill: #519de9; padding: 8px; stroke: transparent; stroke-width: 1;"
-              transform="translate(-40, 140)"
+              transform="translate(210, 140)"
             />
             <path
-              d="M0,0Z"
+              d="M-49.0898372920156,75.43333397539469A90,90,0,0,1,-56.622910616071444,69.95602899939635L0,0Z"
               role="presentation"
               shape-rendering="auto"
               style="fill: #004b95; padding: 8px; stroke: transparent; stroke-width: 1;"
-              transform="translate(-40, 140)"
+              transform="translate(210, 140)"
             />
             <path
-              d="M0,0Z"
+              d="M-56.622910616071444,69.95602899939635A90,90,0,0,1,-1.6532731788489267e-14,-90L0,0Z"
               role="presentation"
               shape-rendering="auto"
               style="fill: #06c; padding: 8px; stroke: transparent; stroke-width: 1;"
-              transform="translate(-40, 140)"
+              transform="translate(210, 140)"
             />
           </g>
           <g>
@@ -899,64 +899,64 @@ exports[`Chart/Renderers/CreatePieChart should render a pie chart with legend 1`
               style="fill: none;"
               vector-effect="non-scaling-stroke"
               width="132.896875"
-              x="0"
+              x="308"
               y="49.28500000000001"
             />
             <path
-              d="M 9.128, 68.15700000000001
-      h9.744
-      v-9.744
-      h-9.744
+              d="M 317.128, 68.15700000000001
+      h9.744000000000028
+      v-9.744000000000028
+      h-9.744000000000028
       z"
               role="presentation"
               shape-rendering="auto"
               style="fill: #06c;"
             />
             <path
-              d="M 9.128, 99.06200000000001
-      h9.744
-      v-9.744
-      h-9.744
+              d="M 317.128, 99.06200000000001
+      h9.744000000000028
+      v-9.744000000000028
+      h-9.744000000000028
       z"
               role="presentation"
               shape-rendering="auto"
               style="fill: #8bc1f7;"
             />
             <path
-              d="M 9.128, 129.96699999999998
-      h9.744
-      v-9.744
-      h-9.744
+              d="M 317.128, 129.96699999999998
+      h9.744000000000028
+      v-9.744000000000028
+      h-9.744000000000028
       z"
               role="presentation"
               shape-rendering="auto"
               style="fill: #002f5d;"
             />
             <path
-              d="M 9.128, 160.872
-      h9.744
-      v-9.744
-      h-9.744
+              d="M 317.128, 160.872
+      h9.744000000000028
+      v-9.744000000000028
+      h-9.744000000000028
       z"
               role="presentation"
               shape-rendering="auto"
               style="fill: #519de9;"
             />
             <path
-              d="M 9.128, 191.777
-      h9.744
-      v-9.744
-      h-9.744
+              d="M 317.128, 191.777
+      h9.744000000000028
+      v-9.744000000000028
+      h-9.744000000000028
       z"
               role="presentation"
               shape-rendering="auto"
               style="fill: #004b95;"
             />
             <path
-              d="M 9.128, 222.68200000000002
-      h9.744
-      v-9.744
-      h-9.744
+              d="M 317.128, 222.68200000000002
+      h9.744000000000028
+      v-9.744000000000028
+      h-9.744000000000028
       z"
               role="presentation"
               shape-rendering="auto"
@@ -966,7 +966,7 @@ exports[`Chart/Renderers/CreatePieChart should render a pie chart with legend 1`
               direction="inherit"
               dx="0"
               id="legend-4000-labels-0"
-              x="30.8"
+              x="338.8"
               y="68.25500000000001"
             >
               <tspan
@@ -974,7 +974,7 @@ exports[`Chart/Renderers/CreatePieChart should render a pie chart with legend 1`
                 dy="0"
                 style="cursor: pointer; font-family: \\"RedHatText\\",\\"Overpass\\",overpass,helvetica,arial,sans-serif; font-size: 14px; letter-spacing: normal; padding: 10px; stroke: transparent; fill: #252525;"
                 text-anchor="start"
-                x="30.8"
+                x="338.8"
               >
                 organization_0
               </tspan>
@@ -983,7 +983,7 @@ exports[`Chart/Renderers/CreatePieChart should render a pie chart with legend 1`
               direction="inherit"
               dx="0"
               id="legend-4000-labels-1"
-              x="30.8"
+              x="338.8"
               y="99.16000000000001"
             >
               <tspan
@@ -991,7 +991,7 @@ exports[`Chart/Renderers/CreatePieChart should render a pie chart with legend 1`
                 dy="0"
                 style="cursor: pointer; font-family: \\"RedHatText\\",\\"Overpass\\",overpass,helvetica,arial,sans-serif; font-size: 14px; letter-spacing: normal; padding: 10px; stroke: transparent; fill: #252525;"
                 text-anchor="start"
-                x="30.8"
+                x="338.8"
               >
                 No Name
               </tspan>
@@ -1000,7 +1000,7 @@ exports[`Chart/Renderers/CreatePieChart should render a pie chart with legend 1`
               direction="inherit"
               dx="0"
               id="legend-4000-labels-2"
-              x="30.8"
+              x="338.8"
               y="130.065"
             >
               <tspan
@@ -1008,7 +1008,7 @@ exports[`Chart/Renderers/CreatePieChart should render a pie chart with legend 1`
                 dy="0"
                 style="cursor: pointer; font-family: \\"RedHatText\\",\\"Overpass\\",overpass,helvetica,arial,sans-serif; font-size: 14px; letter-spacing: normal; padding: 10px; stroke: transparent; fill: #252525;"
                 text-anchor="start"
-                x="30.8"
+                x="338.8"
               >
                 organization_3
               </tspan>
@@ -1017,7 +1017,7 @@ exports[`Chart/Renderers/CreatePieChart should render a pie chart with legend 1`
               direction="inherit"
               dx="0"
               id="legend-4000-labels-3"
-              x="30.8"
+              x="338.8"
               y="160.97"
             >
               <tspan
@@ -1025,7 +1025,7 @@ exports[`Chart/Renderers/CreatePieChart should render a pie chart with legend 1`
                 dy="0"
                 style="cursor: pointer; font-family: \\"RedHatText\\",\\"Overpass\\",overpass,helvetica,arial,sans-serif; font-size: 14px; letter-spacing: normal; padding: 10px; stroke: transparent; fill: #252525;"
                 text-anchor="start"
-                x="30.8"
+                x="338.8"
               >
                 organization_1
               </tspan>
@@ -1034,7 +1034,7 @@ exports[`Chart/Renderers/CreatePieChart should render a pie chart with legend 1`
               direction="inherit"
               dx="0"
               id="legend-4000-labels-4"
-              x="30.8"
+              x="338.8"
               y="191.875"
             >
               <tspan
@@ -1042,7 +1042,7 @@ exports[`Chart/Renderers/CreatePieChart should render a pie chart with legend 1`
                 dy="0"
                 style="cursor: pointer; font-family: \\"RedHatText\\",\\"Overpass\\",overpass,helvetica,arial,sans-serif; font-size: 14px; letter-spacing: normal; padding: 10px; stroke: transparent; fill: #252525;"
                 text-anchor="start"
-                x="30.8"
+                x="338.8"
               >
                 organization_2
               </tspan>
@@ -1051,7 +1051,7 @@ exports[`Chart/Renderers/CreatePieChart should render a pie chart with legend 1`
               direction="inherit"
               dx="0"
               id="legend-4000-labels-5"
-              x="30.8"
+              x="338.8"
               y="222.78"
             >
               <tspan
@@ -1059,7 +1059,7 @@ exports[`Chart/Renderers/CreatePieChart should render a pie chart with legend 1`
                 dy="0"
                 style="cursor: pointer; font-family: \\"RedHatText\\",\\"Overpass\\",overpass,helvetica,arial,sans-serif; font-size: 14px; letter-spacing: normal; padding: 10px; stroke: transparent; fill: #252525;"
                 text-anchor="start"
-                x="30.8"
+                x="338.8"
               >
                 26 Others
               </tspan>
@@ -1072,8 +1072,8 @@ exports[`Chart/Renderers/CreatePieChart should render a pie chart with legend 1`
           <svg
             height="300"
             style="overflow: visible; width: 100%; height: 100%;"
-            viewBox="0 0 0 300"
-            width="0"
+            viewBox="0 0 500 300"
+            width="500"
           />
         </div>
       </div>

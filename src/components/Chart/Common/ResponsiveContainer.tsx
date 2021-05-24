@@ -38,6 +38,8 @@ const ResponsiveContainer: FunctionComponent<Props> = ({
     const handleResize = () => {
         if (containerRef.current && containerRef.current.clientWidth) {
             setWidth(containerRef.current.clientWidth);
+        } else {
+            setWidth(500); // Container width to default to 500 (calculate for the padding)
         }
     };
 
