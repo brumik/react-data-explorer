@@ -3,7 +3,8 @@ import {
     Chart as PFChart,
     ChartAxis,
     ChartVoronoiContainer,
-    createContainer
+    createContainer,
+    ChartDomain
 } from '@patternfly/react-charts';
 import {
     ChartApiData,
@@ -76,7 +77,7 @@ const CreateWrapper: FunctionComponent<Props> = ({
     };
 
     const yAxis = {
-        domain: [0, 1],
+        domain: { x: [0, 1], y: [0, 1] } as ChartDomain,
         ...wrapper.yAxis,
         tickFormat: functions.axisFormat[wrapper.yAxis.tickFormat]
     };
