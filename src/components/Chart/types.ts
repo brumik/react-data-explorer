@@ -88,6 +88,7 @@ export interface ChartStack extends ChartBase {
 
 export interface ChartAxisProps extends Omit<PFChartAxisProps, 'tickFormat'> {
     tickFormat?: string
+    label?: string
 }
 
 export { ChartLegendPosition, ChartLegendOrientation };
