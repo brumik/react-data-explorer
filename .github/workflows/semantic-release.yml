@@ -11,39 +11,40 @@ jobs:
   github_pages: 
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
-    
-    - name: Use Node.js (15)
-      uses: actions/setup-node@v1
-      with:
-        node-version: '15'
+      - name: Checkout 🛎️
+        uses: actions/checkout@v2
 
-    - name: Install Pacakges 
-      run: npm i
-      
-    - name: Build & Deploy 
-      run: npm run deploy
+      - name: Install and Build 🔧
+        run: |
+          npm i
+          npm run build:demo
 
-  schemantic_release:
+      - name: Deploy 🚀
+        uses: JamesIves/github-pages-deploy-action@4
+        with:
+          BRANCH: gh-pages
+          FOLDER: demo/dist
+
+  semantic_release:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
-    
-    - name: Use Node.js (15)
-      uses: actions/setup-node@v1
-      with:
-        node-version: '15'
-
-    - name: Install Pacakges 
-      run: npm i
+      - uses: actions/checkout@v2
       
-    - name: Build Step 
-      env: 
-        CI: "" 
-      run: npm run build
+      - name: Use Node.js (15)
+        uses: actions/setup-node@v1
+        with:
+          node-version: '15'
 
-    - name: Run Semantic Release
-      run: npx semantic-release --dry-run
-      env:
-        NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-        GH_TOKEN: ${{ secrets.GH_TOKEN }}
+      - name: Install Pacakges 
+        run: npm i
+        
+      - name: Build Step 
+        env: 
+          CI: "" 
+        run: npm run build
+
+      - name: Run Semantic Release
+        run: npx semantic-release --dry-run
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
