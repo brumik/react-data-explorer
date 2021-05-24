@@ -29,7 +29,6 @@ const createDynamicChildren = (
     parent: number,
     data: ChartData
 ): ChartSchemaElement[] => ([
-    ...charts,
     ...data.map((_d, idx) => ({
         ...template,
         id: idx,
@@ -73,6 +72,7 @@ const createGroup = (
 
     return (
         <PFChartGroup
+            key={id}
             {...group.template
                 && group.template.type === ChartType.bar
                 && { offset: getBarWidthFromData(resolvedApi.data) }
