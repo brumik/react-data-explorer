@@ -1,6 +1,6 @@
 {
   "name": "react-data-explorer",
-  "version": "0.0.28",
+  "version": "0.0.29",
   "private": false,
   "description": "A data explorer component in react",
   "main": "dist/cjs/index.js",
