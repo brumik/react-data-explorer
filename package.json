@@ -1,10 +1,10 @@
 {
   "name": "react-data-explorer",
-  "version": "0.0.27",
+  "version": "0.0.28",
   "private": false,
   "description": "A data explorer component in react",
-  "main": "dist/src/index.js",
-  "types": "dist/src/index.d.ts",
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/brumik/react-data-explorer.git"
@@ -24,7 +24,9 @@
     "start": "webpack serve --config demo/webpack.config.js --mode development",
     "test": "jest --config jest.config.json --coverage",
     "test:watch": "jest --config jest.config.json --watch",
-    "build": "tsc",
+    "build": "npm run build:cjs && npm run build:esm",
+    "build:esm": "tsc -p tsconfig.esm.json --module es2015 --target es5",
+    "build:cjs": "tsc -p tsconfig.cjs.json",
     "lint": "eslint ./src/**/*.{js,ts,tsx}",
     "prepublishOnly": "npm run lint",
     "prepare": "rm -rf dist && npm run build",

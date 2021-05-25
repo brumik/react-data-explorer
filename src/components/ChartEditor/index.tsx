@@ -90,9 +90,10 @@ const ChartEditor: FunctionComponent<Props> = ({
             ];
         }
 
-        if (!chartTypeOptions.map(({key}) => key).includes(selectOptions.chartType)) {
+        if (!chartTypeOptions.map(({key}) => key as string).includes(selectOptions.chartType)) {
             setSelectoptions({
                 ...selectOptions,
+                // eslint-disable-next-line
                 chartType: chartTypeOptions[0].key
             });
         }
