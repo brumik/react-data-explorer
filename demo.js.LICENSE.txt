@@ -4,6 +4,11 @@ object-assign
 @license MIT
 */
 
+/*!
+* focus-trap 6.2.2
+* @license MIT, https://github.com/focus-trap/focus-trap/blob/master/LICENSE
+*/
+
 /*! *****************************************************************************
 Copyright (c) Microsoft Corporation.
 
