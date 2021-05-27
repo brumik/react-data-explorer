@@ -1,10 +1,16 @@
+/* eslint-disable */
 const { resolve } = require('path');
 const HtmlWebPackPlugin = require('html-webpack-plugin');
+const CopyPlugin = require('copy-webpack-plugin');
+
 
 module.exports = {
     context: __dirname,
+    devServer: {
+        contentBase: resolve(__dirname, './dist')
+    },
     entry: {
-        'demo': resolve(__dirname, './src/index.tsx'),
+        'demo': resolve(__dirname, './src/index.tsx')
     },
     devtool: 'source-map',
     output: {
@@ -14,12 +20,17 @@ module.exports = {
     plugins: [
         new HtmlWebPackPlugin({
             template: './public/index.html',
-            filename: './index.html',
+            filename: './index.html'
         }),
         new HtmlWebPackPlugin({
             template: './public/favicon.ico',
             filename: './favicon.ico',
             minify: false
+        }),
+        new CopyPlugin({
+            patterns: [
+                { from: 'api', to: 'api' }
+            ]
         })
     ],
     module: {
@@ -53,5 +64,5 @@ module.exports = {
             }
         ]
     },
-    resolve: {extensions: ['.js', '.ts','.tsx', '.css']},
+    resolve: {extensions: ['.js', '.ts','.tsx', '.css']}
 };
